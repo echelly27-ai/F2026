@@ -4,7 +4,7 @@ import * as THREE from "three";
 const STEPS = [
   {
     id: "move",
-    text: "WASD to walk. Arrow keys or right-drag look around.",
+    text: "Click the view, then look with the mouse. WASD walks. The opening is straight ahead.",
   },
   {
     id: "wood",
@@ -24,7 +24,7 @@ const STEPS = [
   },
   {
     id: "wall",
-    text: "Press B for build mode. Select Wooden Wall and left-click the green tile in the south gap.",
+    text: "Press B for build mode. Look at open ground until the ghost is green, then left-click.",
   },
   {
     id: "defense",
@@ -59,9 +59,8 @@ export class Tutorial {
   }
 
   allowsWaves() {
-    if (this.done) return true;
-    const step = STEPS[this.index];
-    return !!step && (step.id === "wave" || step.id === "upgrade");
+    // Lessons keep talking, but the first night is not locked behind them.
+    return true;
   }
 
   current() {

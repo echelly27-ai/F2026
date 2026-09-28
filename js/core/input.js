@@ -1,5 +1,6 @@
-// Keyboard and mouse state. The cursor stays visible so build menus and the
-// shop can be clicked. Hold the right mouse button to look around.
+// Keyboard and mouse. Clicking the view captures the mouse so looking works
+// like a normal game. Menus release that capture so buttons stay clickable.
+// Hold the right mouse button to look if capture is unavailable.
 
 export class Input {
   constructor(canvas) {
@@ -7,6 +8,8 @@ export class Input {
     this.keys = {};
     this.pressed = {};
     this.looking = false;
+    this.rmb = false;
+    this.capture = false;
     this.primary = false;
     this.primaryPressed = false;
     this.primaryReleased = false;
@@ -32,11 +35,25 @@ export class Input {
     canvas.addEventListener("mousedown", this._onMouseDown);
     canvas.addEventListener("wheel", this._onWheel, { passive: false });
     canvas.addEventListener("contextmenu", this._onContext);
+    document.addEventListener("pointerlockchange", () => this.syncLook());
     window.addEventListener("blur", () => {
       this.keys = {};
-      this.looking = false;
+      this.rmb = false;
       this.primary = false;
+      this.syncLook();
     });
+  }
+
+  get locked() {
+    return document.pointerLockElement === this.canvas;
+  }
+
+  syncLook() {
+    this.looking = this.rmb || this.locked;
+  }
+
+  release() {
+    if (this.locked) document.exitPointerLock();
   }
 
   onKey(e, down) {
@@ -58,15 +75,27 @@ export class Input {
   }
 
   onMouseDown(e) {
-    if (e.button === 2) this.looking = true;
+    if (e.button === 2) {
+      this.rmb = true;
+      this.syncLook();
+    }
     if (e.button === 0) {
       this.primary = true;
       this.primaryPressed = true;
+      // Must run inside the click, not on the next frame, or the browser
+      // rejects the lock and the mouse never looks.
+      if (this.capture && !this.locked) {
+        const pending = this.canvas.requestPointerLock();
+        if (pending && pending.catch) pending.catch(() => {});
+      }
     }
   }
 
   onMouseUp(e) {
-    if (e.button === 2) this.looking = false;
+    if (e.button === 2) {
+      this.rmb = false;
+      this.syncLook();
+    }
     if (e.button === 0) {
       this.primary = false;
       this.primaryReleased = true;
@@ -82,14 +111,10 @@ export class Input {
     }
   }
 
-  // NDC aim. While turning with the right mouse, shots leave from screen center.
+  // Shots and build ghosts always leave from the middle of the view, which
+  // is where the crosshair sits. The cursor is for menus, not for aiming.
   aimNdc() {
-    if (this.looking) return { x: 0, y: 0 };
-    const r = this.canvas.getBoundingClientRect();
-    return {
-      x: ((this.mx - r.left) / r.width) * 2 - 1,
-      y: -((this.my - r.top) / r.height) * 2 + 1,
-    };
+    return { x: 0, y: 0 };
   }
 
   down(k) {

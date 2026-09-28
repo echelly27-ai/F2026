@@ -105,7 +105,13 @@ export class BuildingSystem {
       this.place("wood_wall", gx, -4, 0, { free: true, silent: true });
       if (gx !== -1 && gx !== 0 && gx !== 1) this.place("wood_wall", gx, 4, 0, { free: true, silent: true });
     }
-    this.place("wood_gate", 1, 4, 0, { free: true, silent: true });
+    const gate = this.place("wood_gate", 1, 4, 0, { free: true, silent: true });
+    if (gate) {
+      gate.open = true;
+      const leaf = gate.mesh.getObjectByName("gateLeaf");
+      if (leaf) leaf.rotation.y = 1.15;
+      this.refreshSolids(gate);
+    }
     for (let gz = -3; gz <= 3; gz++) {
       this.place("wood_wall", -4, gz, 0, { free: true, silent: true });
       this.place("wood_wall", 4, gz, 0, { free: true, silent: true });

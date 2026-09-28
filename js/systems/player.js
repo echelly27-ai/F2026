@@ -10,7 +10,7 @@ export class Player {
     this.game = game;
     this.maxHp = game.progression.mods().maxHp;
     this.hp = this.maxHp;
-    this.yaw = 0;
+    this.yaw = Math.PI;
     this.pitch = -0.28;
     this.pos = new THREE.Vector3(0, 0, 4);
     this.velY = 0;
@@ -73,6 +73,7 @@ export class Player {
   respawn() {
     this.downed = 0;
     this.pos.set(0, 0, 4);
+    this.yaw = Math.PI;
     this.velY = 0;
     this.hp = this.maxHp * 0.65;
     this.invuln = 2.2;
@@ -86,8 +87,8 @@ export class Player {
     if (this.hp > this.maxHp) this.hp = this.maxHp;
 
     if (playing && this.downed <= 0) {
-      this.yaw -= input.lookX * 0.0023;
-      this.pitch = clamp(this.pitch - input.lookY * 0.002, -1.05, 0.8);
+      this.yaw -= input.lookX * 0.0032;
+      this.pitch = clamp(this.pitch - input.lookY * 0.0026, -1.05, 0.8);
       // Arrow keys turn the camera so the game is playable without a drag-look.
       const turn = 1.8 * dt;
       if (input.down("arrowleft")) this.yaw += turn;
@@ -130,8 +131,20 @@ export class Player {
       if (len > 0) {
         mx /= len;
         mz /= len;
-        this.pos.x += mx * speed * dt;
-        this.pos.z += mz * speed * dt;
+        // Move one axis at a time so a wall slides you along instead of stopping you.
+        const boxes = this.game.buildings ? this.game.buildings.collisionBoxes() : [];
+        const world = (this.game.world && this.game.world.blockers) || [];
+        const all = boxes.concat(world);
+        const filter = (b) => {
+          if (b.prop) return true;
+          return !!(b.building && b.building.blocks("player"));
+        };
+        let step = collideCircle(this.pos.x + mx * speed * dt, this.pos.z, this.radius, all, filter);
+        this.pos.x = step.x;
+        this.pos.z = step.z;
+        step = collideCircle(this.pos.x, this.pos.z + mz * speed * dt, this.radius, all, filter);
+        this.pos.x = step.x;
+        this.pos.z = step.z;
         this.traveled += speed * dt;
         this.bob += dt * (sprint ? 14 : 9);
       }
@@ -148,16 +161,6 @@ export class Player {
       this.velY = 0;
       this.grounded = true;
     }
-
-    const boxes = this.game.buildings ? this.game.buildings.collisionBoxes() : [];
-    const world = (this.game.world && this.game.world.blockers) || [];
-    const all = boxes.concat(world);
-    const resolved = collideCircle(this.pos.x, this.pos.z, this.radius, all, (b) => {
-      if (b.prop) return true;
-      return !!(b.building && b.building.blocks("player"));
-    });
-    this.pos.x = resolved.x;
-    this.pos.z = resolved.z;
 
     const border = WORLD.half - 4;
     const d = Math.hypot(this.pos.x, this.pos.z);
@@ -182,6 +185,15 @@ export class Player {
         }
       }
     }
+
+    const boxes = this.game.buildings ? this.game.buildings.collisionBoxes() : [];
+    const world = (this.game.world && this.game.world.blockers) || [];
+    const settled = collideCircle(this.pos.x, this.pos.z, this.radius, boxes.concat(world), (b) => {
+      if (b.prop) return true;
+      return !!(b.building && b.building.blocks("player"));
+    });
+    this.pos.x = settled.x;
+    this.pos.z = settled.z;
 
     this.invuln = Math.max(0, this.invuln - dt);
     let regen = mods.regen;

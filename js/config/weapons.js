@@ -13,7 +13,7 @@ export const WEAPONS = {
     mag: Infinity,
     magGrowth: 0,
     reload: 0,
-    range: 2.7,
+    range: 3.6,
     spread: 0,
     pellets: 1,
     ammo: null,

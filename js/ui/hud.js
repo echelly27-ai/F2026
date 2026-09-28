@@ -55,7 +55,7 @@ export class HUD {
             <button class="primary" data-act="new" type="button">NEW GAME</button>
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>
           </div>
-          <p class="keys">WASD move · Arrow keys or right-drag look · Left click fight or place · E gather · F repair · B build · G shop · J quests · K skills · U base · T call night · 1-4 weapons</p>
+          <p class="keys">Click the view to look · WASD move · Left click fight or place · E gather · F repair · B build · G shop · J quests · K skills · U base · T call night · Esc releases the mouse</p>
         </div>
       </div>
     `;
@@ -209,12 +209,8 @@ export class HUD {
       return;
     }
     c.style.display = "block";
-    if (input.looking) c.classList.add("center");
-    else {
-      c.classList.remove("center");
-      c.style.left = input.mx + "px";
-      c.style.top = input.my + "px";
-    }
+    c.classList.add("center");
+    void input;
   }
 
   drawTracker() {
@@ -376,7 +372,7 @@ export class HUD {
   }
 
   pausePanel() {
-    return `<h2>PAUSED</h2><div class="actions"><button class="primary" data-act="resume" type="button">RESUME</button><button data-act="save" type="button">SAVE</button><button data-act="mute" type="button">${this.game.audio.muted ? "UNMUTE" : "MUTE"}</button><button data-act="quit" type="button">QUIT TO TITLE</button></div><p class="keys">WASD move · Arrow keys or right-drag look · Left click attack or place · R reload / rotate · E gather or gates · F repair · X salvage in build mode · Q build category · T call the night · Scroll swaps weapons</p><p class="keys">Zombies path toward the pyre and chew whatever blocks them. Runners chase you. Tanks pick the toughest wall. Spitters hang back. Exploders detonate on contact. Powered turrets sleep without a generator.</p>`;
+    return `<h2>PAUSED</h2><div class="actions"><button class="primary" data-act="resume" type="button">RESUME</button><button data-act="save" type="button">SAVE</button><button data-act="mute" type="button">${this.game.audio.muted ? "UNMUTE" : "MUTE"}</button><button data-act="quit" type="button">QUIT TO TITLE</button></div><p class="keys">Click to look · WASD move · Left click attack or place · R reload / rotate · E gather or gates · F repair · X salvage in build mode · Q build category · T call the night · Esc releases the mouse</p><p class="keys">Zombies path toward the pyre and chew whatever blocks them. Runners chase you. Tanks pick the toughest wall. Spitters hang back. Exploders detonate on contact. Powered turrets sleep without a generator.</p>`;
   }
 
   onPanel(e) {

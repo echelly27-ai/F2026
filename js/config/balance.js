@@ -31,7 +31,7 @@ export const PLAYER = {
 };
 
 export const STARTING = {
-  wood: 24,
+  wood: 60,
   stone: 0,
   metal: 0,
   gold: 200,
@@ -173,7 +173,7 @@ export const COMBAT = {
   // Player rockets chip friendly structures. Zombie acid does not use this.
   rocketSelfDamage: 0.22,
   headshotBonus: 1.85,
-  meleeArc: 0.42,
+  meleeArc: 0.15,
 };
 
 export const DAY = {

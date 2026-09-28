@@ -164,7 +164,12 @@ export class Game {
 
   handleInput() {
     const input = this.input;
+    input.capture = this.state === "play" && !this.panel;
     if (input.edge("escape")) {
+      if (input.locked) {
+        input.release();
+        return;
+      }
       // Leave build mode before pausing, so cancel and pause stay distinct.
       if (this.buildMode) {
         this.buildMode = false;
@@ -225,6 +230,7 @@ export class Game {
 
   togglePanel(name) {
     if (this.state === "title") return;
+    if (this.input.locked) this.input.release();
     if (this.panel === name) {
       this.closePanel();
       return;
@@ -297,7 +303,8 @@ export class Game {
     if (node && this.resources.hold > 0) return "Gathering " + node.label + "  " + Math.floor(this.resources.hold * 100) + "%";
     if (node) return "Hold E  ·  " + node.label;
     const b = this.buildings.lookedAt(7);
-    if (!b) return "Arrow keys or right-drag to look. The dead come for the pyre.";
+    if (!this.input.locked) return "Click the view to look with the mouse. WASD walks. The opening is ahead.";
+    if (!b) return "The dead come for the pyre.";
     if (b.def.gate) return "E  ·  " + (b.open ? "Close " : "Open ") + b.def.name;
     if (b.hp < b.maxHp - 1) return "Hold F  ·  Repair " + b.def.name + "  " + Math.ceil(b.hp) + "/" + b.maxHp;
     if (b.def.upgradeable) return "Y  ·  Upgrade " + b.def.name + " to level " + ((b.level || 1) + 1);

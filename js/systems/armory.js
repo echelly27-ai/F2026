@@ -163,7 +163,11 @@ export class Armory {
 
   consumeShot() {
     const st = this.stats();
-    if (st.melee || st.mag === Infinity) return true;
+    if (this.cooldown > 0) return false;
+    if (st.melee || st.mag === Infinity) {
+      this.cooldown = 1 / (st.fireRate || 1);
+      return true;
+    }
     if (this.reload > 0) return false;
     if ((this.mag[this.equipped] || 0) <= 0) {
       this.startReload();
