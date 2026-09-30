@@ -21,6 +21,7 @@ import { Events } from "./systems/events.js";
 import { Loot } from "./systems/loot.js";
 import { DayNight } from "./systems/daynight.js";
 import { Tutorial } from "./systems/tutorial.js";
+import { Tycoon } from "./systems/tycoon.js";
 import { createCommands } from "./net/commands.js";
 import { HUD } from "./ui/hud.js";
 import { Juice } from "./fx/juice.js";
@@ -82,6 +83,7 @@ export class Game {
     this.armory = new Armory(this);
     this.player = new Player(this);
     this.buildings = new BuildingSystem(this);
+    this.tycoon = new Tycoon(this);
     this.resources = new Resources(this);
     this.loot = new Loot(this);
     this.combat = new Combat(this);
@@ -134,6 +136,7 @@ export class Game {
       this.updateCamera(dt);
       this.dayNight.update(dt);
       this.buildings.animate(dt);
+      this.tycoon.update(dt);
       this.fx.update(dt, this.camera);
       this.renderer.render(this.scene, this.camera);
       return;
@@ -148,6 +151,7 @@ export class Game {
     this.player.update(dt);
     this.resources.update(dt);
     this.buildings.update(dt);
+    this.tycoon.update(dt);
     this.zombies.update(dt);
     this.combat.update(dt);
     this.loot.update(dt);
@@ -299,9 +303,11 @@ export class Game {
       const why = h && !h.ok ? h.reason : "Left click to place";
       return def.name + "   " + cost + "   ·   " + why + "   ·   R rotate   X salvage";
     }
+    const padHint = this.tycoon ? this.tycoon.hint() : "";
     const node = this.resources.nearest();
     if (node && this.resources.hold > 0) return "Gathering " + node.label + "  " + Math.floor(this.resources.hold * 100) + "%";
     if (node) return "Hold E  ·  " + node.label;
+    if (padHint) return padHint;
     const b = this.buildings.lookedAt(7);
     if (!this.input.locked) return "Click the view to look with the mouse. WASD walks. The opening is ahead.";
     if (!b) return "The dead come for the pyre.";
@@ -411,6 +417,7 @@ export class Game {
       tutorial: this.tutorial.serialize(),
       waves: this.waves.serialize(),
       player: this.player.serialize(),
+      tycoon: this.tycoon.serialize(),
       stats: this.stats,
       flags: this.flags,
     };
@@ -432,6 +439,7 @@ export class Game {
     this.quests.hydrate(data.quests);
     this.tutorial.hydrate(data.tutorial);
     this.waves.hydrate(data.waves);
+    this.tycoon.hydrate(data.tycoon);
     this.player.attachWeapon(this.armory.equipped);
   }
 }

@@ -89,5 +89,8 @@ export function createCommands(game) {
     callWave() {
       game.waves.callEarly();
     },
+    buyPad(id) {
+      return game.tycoon.purchase(id);
+    },
   };
 }

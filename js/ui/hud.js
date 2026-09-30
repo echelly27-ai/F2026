@@ -50,7 +50,7 @@ export class HUD {
       <div id="title">
         <div class="title-card">
           <h1>PYRE<span>HOLD</span></h1>
-          <p>A cold pyre on an empty plot. Chop, quarry, and salvage. Raise walls before night. Spend gold like it has to last, because the dead get worse.</p>
+          <p>A cold pyre on an empty plot. The dropper spits gold coins — walk over them, then stand on a green pad to raise walls and the rest of the camp.</p>
           <div class="actions">
             <button class="primary" data-act="new" type="button">NEW GAME</button>
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>

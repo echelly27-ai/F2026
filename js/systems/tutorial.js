@@ -20,11 +20,11 @@ const STEPS = [
   },
   {
     id: "gold",
-    text: "Open the glowing cache, or drop the shambler, to earn gold.",
+    text: "The dropper north of the pyre spits gold coins. Walk over a coin to pick it up.",
   },
   {
     id: "wall",
-    text: "Press B for build mode. Look at open ground until the ghost is green, then left-click.",
+    text: "Stand on a green pad to buy the wall beside it. Or press B, look until the ghost is green, then left-click.",
   },
   {
     id: "defense",
@@ -124,10 +124,19 @@ export class Tutorial {
       return n ? { x: n.x, z: n.z } : null;
     }
     if (step.id === "gold") {
+      const drop = this.game.tycoon;
+      if (drop) return { x: drop.spillX, z: drop.spillZ };
       const n = nodes.find((node) => node.kind === "gold" && node.amount > 0);
       return n ? { x: n.x, z: n.z } : { x: 12, z: 16 };
     }
-    if (step.id === "wall" || step.id === "defense") return { x: -1, z: 9 };
+    if (step.id === "wall") {
+      const pad = this.game.tycoon && this.game.tycoon.pads.find((p) => p.building === "wood_wall");
+      return pad ? { x: pad.x, z: pad.z } : { x: -1, z: 9 };
+    }
+    if (step.id === "defense") {
+      const pad = this.game.tycoon && this.game.tycoon.pads.find((p) => p.building === "watchtower" || p.building === "barricade");
+      return pad ? { x: pad.x, z: pad.z } : { x: 2, z: 2 };
+    }
     if (step.id === "upgrade") return { x: 0, z: 0 };
     return null;
   }
