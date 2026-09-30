@@ -22,6 +22,7 @@ import { Loot } from "./systems/loot.js";
 import { DayNight } from "./systems/daynight.js";
 import { Tutorial } from "./systems/tutorial.js";
 import { Tycoon } from "./systems/tycoon.js";
+import { Weaponry } from "./systems/weaponry.js";
 import { createCommands } from "./net/commands.js";
 import { HUD } from "./ui/hud.js";
 import { Juice } from "./fx/juice.js";
@@ -84,6 +85,7 @@ export class Game {
     this.player = new Player(this);
     this.buildings = new BuildingSystem(this);
     this.tycoon = new Tycoon(this);
+    this.weaponry = new Weaponry(this);
     this.resources = new Resources(this);
     this.loot = new Loot(this);
     this.combat = new Combat(this);
@@ -137,6 +139,7 @@ export class Game {
       this.dayNight.update(dt);
       this.buildings.animate(dt);
       this.tycoon.update(dt);
+      this.weaponry.update(dt);
       this.fx.update(dt, this.camera);
       this.renderer.render(this.scene, this.camera);
       return;
@@ -152,6 +155,7 @@ export class Game {
     this.resources.update(dt);
     this.buildings.update(dt);
     this.tycoon.update(dt);
+    this.weaponry.update(dt);
     this.zombies.update(dt);
     this.combat.update(dt);
     this.loot.update(dt);
@@ -203,8 +207,11 @@ export class Game {
     if (input.edge("x") && this.buildMode) this.commands.demolish();
     if (input.edge("y")) this.commands.upgradeLooked();
     if (input.edge("e") && !this.buildMode && !this.resources.nearest()) {
-      const gate = this.buildings.lookedAt(6);
-      if (gate && gate.def.gate) this.commands.toggleGate(gate);
+      if (this.weaponry && this.weaponry.nearby()) this.togglePanel("weaponry");
+      else {
+        const gate = this.buildings.lookedAt(6);
+        if (gate && gate.def.gate) this.commands.toggleGate(gate);
+      }
     }
     const digit = input.digitEdge();
     if (digit && !this.panel) {
@@ -304,10 +311,13 @@ export class Game {
       return def.name + "   " + cost + "   ·   " + why + "   ·   R rotate   X salvage";
     }
     const padHint = this.tycoon ? this.tycoon.hint() : "";
+    const shopHint = this.weaponry ? this.weaponry.hint() : "";
     const node = this.resources.nearest();
     if (node && this.resources.hold > 0) return "Gathering " + node.label + "  " + Math.floor(this.resources.hold * 100) + "%";
     if (node) return "Hold E  ·  " + node.label;
+    if (this.weaponry && this.weaponry.onMat()) return shopHint;
     if (padHint) return padHint;
+    if (shopHint) return shopHint;
     const b = this.buildings.lookedAt(7);
     if (!this.input.locked) return "Click the view to look with the mouse. WASD walks. The opening is ahead.";
     if (!b) return "The dead come for the pyre.";

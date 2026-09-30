@@ -25,17 +25,34 @@ export class Armory {
     return computeWeaponStats(def, this.levels[id] || 1, this.game.progression.mods());
   }
 
-  priceOf(id) {
+  costOf(id) {
     const def = WEAPONS[id];
-    let price = def.price;
-    if (id === "pistol" && !this.game.tutorial.done && !this.owned.includes("pistol")) {
+    const base = def.materials || { gold: def.price || 0 };
+    const cost = {
+      wood: base.wood || 0,
+      stone: base.stone || 0,
+      gold: base.gold || 0,
+    };
+    let mul = 1;
+    if (id === "pistol" && this.game.tutorial && !this.game.tutorial.done && !this.owned.includes(id)) {
       // The quartermaster cuts the first sidearm so the opening lesson can finish.
-      price = 400;
+      mul *= 0.65;
     }
-    if (this.game.buildings && this.game.buildings.hasTag("armory")) {
-      price = Math.round(price * (1 - MARKET.armoryDiscount));
+    if (this.game.buildings && this.game.buildings.hasTag("armory")) mul *= 1 - MARKET.armoryDiscount;
+    if (mul !== 1) {
+      for (const key of Object.keys(cost)) {
+        if (cost[key] > 0) cost[key] = Math.max(1, Math.round(cost[key] * mul));
+      }
     }
-    return price;
+    return cost;
+  }
+
+  costText(id) {
+    const cost = this.costOf(id);
+    const parts = Object.entries(cost)
+      .filter(([, n]) => n > 0)
+      .map(([key, n]) => n + " " + key);
+    return parts.length ? parts.join(" · ") : "free";
   }
 
   canBuy(id) {
@@ -48,8 +65,13 @@ export class Armory {
     if (def.requires && !this.game.buildings.hasTag(def.requires)) {
       return { ok: false, reason: "Requires a " + def.requires };
     }
-    if (this.game.inventory.gold < this.priceOf(id)) return { ok: false, reason: "Not enough gold" };
-    return { ok: true };
+    const cost = this.costOf(id);
+    const short = [];
+    for (const [key, n] of Object.entries(cost)) {
+      if (n > 0 && this.game.inventory.amount(key) < n) short.push(n + " " + key);
+    }
+    if (short.length) return { ok: false, reason: "Need " + short.join(", ") };
+    return { ok: true, cost };
   }
 
   buy(id) {
@@ -60,7 +82,7 @@ export class Armory {
       return false;
     }
     const def = WEAPONS[id];
-    this.game.inventory.gold -= this.priceOf(id);
+    this.game.inventory.spend(check.cost);
     this.owned.push(id);
     this.levels[id] = 1;
     const st = this.stats(id);

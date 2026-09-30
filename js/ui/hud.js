@@ -50,7 +50,7 @@ export class HUD {
       <div id="title">
         <div class="title-card">
           <h1>PYRE<span>HOLD</span></h1>
-          <p>A cold pyre on an empty plot. The dropper spits gold coins — walk over them, then stand on a green pad to raise walls and the rest of the camp.</p>
+          <p>A cold pyre on an empty plot. The dropper spits gold coins — walk over them, then stand on a green pad to raise walls. The weaponry sells guns for wood, stone, and gold.</p>
           <div class="actions">
             <button class="primary" data-act="new" type="button">NEW GAME</button>
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>
@@ -274,6 +274,7 @@ export class HUD {
     const name = this.game.panel;
     let body = "";
     if (name === "trade") body = this.tradePanel();
+    else if (name === "weaponry") body = this.weaponryPanel();
     else if (name === "skills") body = this.skillPanel();
     else if (name === "quests") body = this.questPanel();
     else if (name === "upgrade") body = this.upgradePanel();
@@ -308,9 +309,9 @@ export class HUD {
       const def = WEAPONS[id];
       const owned = g.armory.owned.includes(id);
       const lvl = g.armory.levels[id] || 1;
-      const price = g.armory.priceOf(id);
+      const price = g.armory.costText(id);
       let buttons = "";
-      if (!owned) buttons = `<button class="primary" data-act="buy-weapon" data-id="${id}" type="button">BUY ${price}g</button>`;
+      if (!owned) buttons = `<button class="primary" data-act="buy-weapon" data-id="${id}" type="button">BUY ${esc(price)}</button>`;
       else {
         buttons = `<button data-act="equip" data-id="${id}" type="button">${g.armory.equipped === id ? "EQUIPPED" : "EQUIP"}</button>`;
         if (lvl < MAX_WEAPON_LEVEL) {
@@ -329,7 +330,25 @@ export class HUD {
     const buy = ["wood", "stone", "metal"]
       .map((r) => `<button data-act="buy-mat" data-id="${r}" type="button">Buy 10 ${r}</button>`)
       .join("");
-    return `<h2>ARMORY & TRADE</h2><p class="keys">Parts: ${g.armory.parts}. A workshop improves sale prices. An armory discounts guns. Weapon upgrades past level 2 need a workshop.</p>${rows}<div class="actions">${ammo}<button data-act="medkit" type="button">Field kit 80g</button></div><h2>SELL</h2><div class="actions">${sell}</div><h2>BUY MATERIALS</h2><div class="actions">${buy}</div><button data-act="close" type="button">CLOSE</button>`;
+    return `<h2>ARMORY & TRADE</h2><p class="keys">Parts: ${g.armory.parts}. Guns also sell at the weaponry stall for wood, stone, and gold. A workshop improves sale prices. An armory discounts guns. Weapon upgrades past level 2 need a workshop.</p>${rows}<div class="actions">${ammo}<button data-act="medkit" type="button">Field kit 80g</button></div><h2>SELL</h2><div class="actions">${sell}</div><h2>BUY MATERIALS</h2><div class="actions">${buy}</div><button data-act="close" type="button">CLOSE</button>`;
+  }
+
+  weaponryPanel() {
+    const g = this.game;
+    const rows = WEAPON_ORDER.filter((id) => id !== "bat")
+      .map((id) => {
+        const def = WEAPONS[id];
+        const owned = g.armory.owned.includes(id);
+        const cost = g.armory.costText(id);
+        const locked = def.tier > g.progression.tier;
+        let button = "";
+        if (owned) button = `<button data-act="equip" data-id="${id}" type="button">${g.armory.equipped === id ? "EQUIPPED" : "EQUIP"}</button>`;
+        else button = `<button class="primary" data-act="buy-weapon" data-id="${id}" type="button">${locked ? "LOCKED" : "BUY"}</button>`;
+        const tag = owned ? "Owned" : locked ? cost + " · needs a stronger base" : cost;
+        return `<div class="row"><div><b>${esc(def.name)}</b><p>${esc(def.blurb)}</p><p>${esc(tag)}</p></div><div class="actions">${button}</div></div>`;
+      })
+      .join("");
+    return `<h2>WEAPONRY</h2><p class="keys">Every gun costs wood, stone, and gold. Stand on the amber mat or press E.</p>${rows}<button data-act="close" type="button">CLOSE</button>`;
   }
 
   skillPanel() {

@@ -32,7 +32,7 @@ const STEPS = [
   },
   {
     id: "weapon",
-    text: "Press G and buy the Pistol. The first sidearm is discounted.",
+    text: "The amber weaponry stall sells guns for wood, stone, and gold. Stand on the mat and buy the Pistol.",
   },
   {
     id: "wave",
@@ -136,6 +136,10 @@ export class Tutorial {
     if (step.id === "defense") {
       const pad = this.game.tycoon && this.game.tycoon.pads.find((p) => p.building === "watchtower" || p.building === "barricade");
       return pad ? { x: pad.x, z: pad.z } : { x: 2, z: 2 };
+    }
+    if (step.id === "weapon") {
+      const shop = this.game.weaponry;
+      return shop ? { x: shop.matX, z: shop.matZ } : { x: 3, z: -1 };
     }
     if (step.id === "upgrade") return { x: 0, z: 0 };
     return null;
