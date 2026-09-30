@@ -186,6 +186,34 @@ export class Waves {
     this.game.audio.play("level");
   }
 
+  // Death ends the night. The same wave waits in daylight, and the yard is empty.
+  resetAfterDeath() {
+    this.game.flags.blood = false;
+    this.game.flags.bloodMoon = false;
+    this.game.flags.forceNight = false;
+    this.game.flags.horde = false;
+    this.queue = [];
+    this.bossPending = null;
+    this.coreDamage = 0;
+    this.failLock = false;
+    if (this.game.zombies) this.game.zombies.purgeFromBase();
+    if (this.phase === "wave" || this.phase === "dawn") {
+      const spec = getWave(this.number);
+      this.phase = "prep";
+      this.timer = spec.prep;
+      this.active = spec;
+      this.lanes = this.pickLanes(spec);
+      this.laneText = this.lanes.map((l) => l.name).join(" & ");
+      if (this.game.hud) {
+        this.game.hud.announce("DAWN", "The dead leave the yard. Shore up the walls before they return.");
+      }
+    }
+    if (this.game.dayNight) {
+      this.game.dayNight.factor = 0;
+      this.game.dayNight.update(0);
+    }
+  }
+
   failRaid() {
     if (this.failLock) return;
     this.failLock = true;

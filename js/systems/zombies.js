@@ -2,9 +2,9 @@
 // separation, and "hit the thing in front of you" are shared.
 import * as THREE from "three";
 import { ZOMBIES, scaledStats } from "../config/zombies.js";
-import { COMBAT, ZONES } from "../config/balance.js";
+import { COMBAT, ZONES, plotOf } from "../config/balance.js";
 import { buildZombie } from "../world/figures.js";
-import { collideCircle, dist2, firstBlocker } from "../core/util.js";
+import { CELL, collideCircle, dist2, firstBlocker } from "../core/util.js";
 
 const WILD = [
   { zone: "forest", types: ["normal", "normal", "runner"], cap: 4, tier: 0 },
@@ -140,6 +140,23 @@ export class Zombies {
 
   clearWave() {
     for (const z of [...this.list]) if (z.wave) this.despawn(z);
+  }
+
+  // The yard is the player's plot. A death sends every raider away and
+  // drops anyone already standing inside the walls.
+  inBase(x, z) {
+    const plot = plotOf(this.game.progression.tier);
+    const minX = plot.minX * CELL;
+    const maxX = (plot.maxX + 1) * CELL;
+    const minZ = plot.minZ * CELL;
+    const maxZ = (plot.maxZ + 1) * CELL;
+    return x >= minX && x <= maxX && z >= minZ && z <= maxZ;
+  }
+
+  purgeFromBase() {
+    for (const z of [...this.list]) {
+      if (z.wave || z.invasion || this.inBase(z.x, z.z)) this.despawn(z);
+    }
   }
 
   despawn(z) {

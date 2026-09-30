@@ -65,7 +65,8 @@ export class Player {
     this.downed = PLAYER.respawnDelay;
     const loss = Math.floor(this.game.inventory.gold * PLAYER.downGoldLoss);
     this.game.inventory.gold = Math.max(0, this.game.inventory.gold - loss);
-    this.game.notify("You fell. The pyre pulls you back.", "bad");
+    if (this.game.waves) this.game.waves.resetAfterDeath();
+    this.game.notify("You fell. Dawn returns, and the yard is clear.", "bad");
     this.game.audio.play("die");
     this.game.fx.addShake(0.25);
   }
@@ -75,9 +76,9 @@ export class Player {
     this.pos.set(0, 0, 4);
     this.yaw = Math.PI;
     this.velY = 0;
-    this.hp = this.maxHp * 0.65;
+    this.hp = this.maxHp;
     this.invuln = 2.2;
-    this.game.notify("Back on your feet.", "good");
+    this.game.notify("Back on your feet. The day is yours.", "good");
   }
 
   update(dt) {
