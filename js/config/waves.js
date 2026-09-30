@@ -2,7 +2,8 @@
 import { mulberry32 } from "../core/util.js";
 
 const SCRIPTED = {
-  1: { prep: 45, groups: { normal: 10 }, lanes: 1 },
+  // Opening daylight is long enough to chop, quarry, and haul scrap before night.
+  1: { prep: 180, groups: { normal: 10 }, lanes: 1 },
   2: { groups: { normal: 15, runner: 3 }, lanes: 2 },
   3: { groups: { normal: 20, runner: 5, spitter: 1 }, lanes: 2 },
   4: { groups: { normal: 16, runner: 6, crawler: 4, spitter: 2 }, lanes: 2 },

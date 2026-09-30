@@ -36,7 +36,7 @@ const STEPS = [
   },
   {
     id: "wave",
-    text: "Nights bring waves. Survive wave 1. Press T if you want them early. Repair with F.",
+    text: "The first night waits three minutes. Farm first, or press T to call it early. Repair with F.",
   },
   {
     id: "upgrade",

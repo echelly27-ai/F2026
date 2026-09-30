@@ -39,7 +39,19 @@ export class Waves {
     this.bossPending = null;
     this.lanes = this.pickLanes(spec);
     this.laneText = this.lanes.map((l) => l.name).join(" & ");
-    this.game.hud && this.game.hud.announce("WAVE " + this.number + " INCOMING", "They come from the " + this.laneText + ". Prepare your defenses!");
+    if (this.game.hud) {
+      if (this.number === 1) {
+        this.game.hud.announce(
+          "DAYLIGHT",
+          "Farm wood, stone, and metal. Night falls in three minutes — press T when you are ready."
+        );
+      } else {
+        this.game.hud.announce(
+          "WAVE " + this.number + " INCOMING",
+          "They come from the " + this.laneText + ". Prepare your defenses!"
+        );
+      }
+    }
     this.game.audio.play("wave");
   }
 
