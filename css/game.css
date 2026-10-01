@@ -282,6 +282,7 @@ button, input { font-family: inherit; }
 }
 .title-card h1 span { color: var(--pyre); }
 .title-card p { font-size: 18px; line-height: 1.45; color: var(--muted); }
+.title-card a { color: var(--brass); }
 .title-card .actions { display: flex; gap: 12px; justify-content: center; margin-top: 18px; }
 #title.hidden { display: none; }
 .fps { position: absolute; right: 16px; bottom: 16px; color: rgba(244,239,228,0.45); font-size: 12px; }

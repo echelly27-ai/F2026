@@ -56,6 +56,7 @@ export class HUD {
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>
           </div>
           <p class="keys">Click the view to look · WASD move · Left click fight or place · E gather · F repair · B build · G shop · J quests · K skills · U base · T call night · Esc releases the mouse</p>
+          <p class="keys"><a href="scroll.html">The long night</a></p>
         </div>
       </div>
     `;
