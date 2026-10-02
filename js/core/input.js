@@ -1,6 +1,6 @@
 // Keyboard and mouse. Clicking the view captures the mouse so looking works
 // like a normal game. Menus release that capture so buttons stay clickable.
-// Hold the right mouse button to look if capture is unavailable.
+// Right click fires the weapon in hand. Hold it to look if capture is unavailable.
 
 export class Input {
   constructor(canvas) {
@@ -13,6 +13,8 @@ export class Input {
     this.primary = false;
     this.primaryPressed = false;
     this.primaryReleased = false;
+    this.secondary = false;
+    this.secondaryPressed = false;
     this.mx = window.innerWidth / 2;
     this.my = window.innerHeight / 2;
     this.wheel = 0;
@@ -40,6 +42,7 @@ export class Input {
       this.keys = {};
       this.rmb = false;
       this.primary = false;
+      this.secondary = false;
       this.syncLook();
     });
   }
@@ -77,6 +80,8 @@ export class Input {
   onMouseDown(e) {
     if (e.button === 2) {
       this.rmb = true;
+      this.secondary = true;
+      this.secondaryPressed = true;
       this.syncLook();
     }
     if (e.button === 0) {
@@ -94,6 +99,7 @@ export class Input {
   onMouseUp(e) {
     if (e.button === 2) {
       this.rmb = false;
+      this.secondary = false;
       this.syncLook();
     }
     if (e.button === 0) {
@@ -136,6 +142,7 @@ export class Input {
     this.pressed = {};
     this.primaryPressed = false;
     this.primaryReleased = false;
+    this.secondaryPressed = false;
     this.wheel = 0;
     this.lookX = 0;
     this.lookY = 0;

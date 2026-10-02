@@ -228,8 +228,10 @@ export class Game {
     const weapon = this.armory.stats();
     if (this.buildMode) {
       if (input.primaryPressed) this.commands.place();
-    } else if (weapon && (weapon.fullAuto ? input.primary : input.primaryPressed)) {
-      this.combat.firePlayer();
+    } else if (weapon) {
+      const held = input.primary || input.secondary;
+      const tapped = input.primaryPressed || input.secondaryPressed;
+      if (weapon.fullAuto ? held : tapped) this.combat.firePlayer();
     }
   }
 

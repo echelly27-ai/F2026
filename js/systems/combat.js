@@ -53,6 +53,29 @@ export class Combat {
     return this.groundAim();
   }
 
+  // The camera ray drops into the dirt a few steps ahead, and a shot that
+  // leaves the hand stays beside the body. Face a zombie and the bullet
+  // travels from chest height straight along that facing.
+  shotAim(range) {
+    const player = this.game.player;
+    const ray = this.aimRay();
+    const hits = ray.intersectObjects(this.game.raycastables, true);
+    for (const hit of hits) {
+      if (hit.distance > range) break;
+      const zid = ud(hit.object, "zid");
+      const bid = ud(hit.object, "bid");
+      if (zid != null || bid != null) {
+        return { origin: player.muzzleWorld().clone(), point: hit.point.clone() };
+      }
+    }
+    player.faceVectors();
+    const origin = player.pos.clone();
+    origin.y = 0.95;
+    origin.addScaledVector(player.flatForward, 0.7);
+    const point = origin.clone().addScaledVector(player.flatForward, Math.min(range, 28));
+    return { origin, point };
+  }
+
   firePlayer() {
     const armory = this.game.armory;
     const stats = armory.stats();
@@ -61,9 +84,9 @@ export class Combat {
     const id = armory.equipped;
     this.game.audio.play(shotSound(id));
     this.game.player.swing = 1;
-    const origin = this.game.player.muzzleWorld().clone();
-    const point = this.aimPoint(stats.range + 10) || origin.clone().add(this.game.player.forward);
-    const dir = point.sub(origin);
+    const aim = this.shotAim(stats.range + 10);
+    const origin = aim.origin;
+    const dir = aim.point.sub(origin);
     if (dir.lengthSq() < 0.04) dir.copy(this.game.player.flatForward);
     dir.normalize();
     this.game.fx.muzzleFlash(origin);
