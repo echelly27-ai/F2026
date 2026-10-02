@@ -19,7 +19,6 @@
     </nav>
     <a class="play" href="index.html">Enter the yard</a>
   </header>
-  <div class="rail" aria-hidden="true"><i id="rail"></i></div>
 
   <main>
     <section id="hold" class="hero">
@@ -162,13 +161,9 @@
   </main>
 
   <script>
-    const rail = document.getElementById("rail");
     const links = [...document.querySelectorAll(".bar nav a")];
     const sections = ["daylight", "yard", "dead", "forts"].map((id) => document.getElementById(id));
     function onScroll() {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const t = max > 0 ? window.scrollY / max : 0;
-      rail.style.transform = "scaleY(" + t + ")";
       const mark = window.scrollY + window.innerHeight * 0.35;
       let current = sections[0].id;
       for (const section of sections) {
