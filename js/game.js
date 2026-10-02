@@ -12,7 +12,7 @@ import { Progression } from "./systems/progression.js";
 import { Armory } from "./systems/armory.js";
 import { Player } from "./systems/player.js";
 import { Resources } from "./systems/resources.js";
-import { BuildingSystem } from "./systems/buildings.js";
+import { BuildingSystem } from "./systems/buildings.js?v=3";
 import { Combat } from "./systems/combat.js";
 import { Zombies } from "./systems/zombies.js";
 import { Waves } from "./systems/waves.js";

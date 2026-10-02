@@ -12,7 +12,6 @@ import {
   aabbFromFootprint,
   dist2,
 } from "../core/util.js";
-import * as THREE from "three";
 import { makeBuildingMesh, tintGhost } from "../world/props.js";
 
 let NEXT_ID = 1;
@@ -504,9 +503,9 @@ export class BuildingSystem {
   muzzle(b) {
     const style = b.def.style;
     const y = style === "tower" ? 3.05 : style === "missile" ? 2.1 : 1.5;
-    const local = new THREE.Vector3(0, y, -0.7);
-    b.mesh.localToWorld(local);
-    return local;
+    const local = b._muzzle || (b._muzzle = b.mesh.position.clone());
+    local.set(0, y, -0.7);
+    return b.mesh.localToWorld(local);
   }
 
   animate(dt) {
