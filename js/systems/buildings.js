@@ -12,6 +12,7 @@ import {
   aabbFromFootprint,
   dist2,
 } from "../core/util.js";
+import * as THREE from "three";
 import { makeBuildingMesh, tintGhost } from "../world/props.js";
 
 let NEXT_ID = 1;
