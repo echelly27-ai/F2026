@@ -42,6 +42,16 @@ export class HUD {
       <canvas id="minimap" width="180" height="180"></canvas>
       <div class="tutorial" id="lesson" hidden></div>
       <div id="announce"><strong></strong><span></span></div>
+      <div id="gameover">
+        <div class="over-card">
+          <h1>GAME OVER</h1>
+          <p>The dead walked into the pyre.</p>
+          <div class="actions">
+            <button class="primary" id="overRetry" type="button">TRY AGAIN</button>
+            <button id="overQuit" type="button">QUIT</button>
+          </div>
+        </div>
+      </div>
       <div id="toasts"></div>
       <div id="panel"></div>
       <div id="cross"></div>
@@ -74,6 +84,8 @@ export class HUD {
     root.querySelector("#btnSkills").onclick = () => game.togglePanel("skills");
     root.querySelector("#btnQuests").onclick = () => game.togglePanel("quests");
     root.querySelector("#btnUp").onclick = () => game.togglePanel("upgrade");
+    root.querySelector("#overRetry").onclick = () => game.retryAfterLoss();
+    root.querySelector("#overQuit").onclick = () => game.quitToTitle();
     root.querySelector("#title").addEventListener("click", (e) => {
       const b = e.target.closest("[data-act]");
       if (!b) return;
@@ -113,6 +125,14 @@ export class HUD {
     box.appendChild(el);
     setTimeout(() => el.remove(), 2600);
     while (box.children.length > 4) box.firstChild.remove();
+  }
+
+  showGameOver() {
+    this.root.querySelector("#gameover").classList.add("show");
+  }
+
+  hideGameOver() {
+    this.root.querySelector("#gameover").classList.remove("show");
   }
 
   announce(title, sub) {
@@ -159,7 +179,7 @@ export class HUD {
     else {
       const mag = w.currentMag();
       const rel = w.reload > 0 ? "  RELOADING" : "";
-      this.text("wepAmmo", mag + " / " + w.reserve() + rel);
+      this.text("wepAmmo", mag + " / " + w.reserve() + (rel || "  RMB"));
     }
 
     const wave = g.waves;

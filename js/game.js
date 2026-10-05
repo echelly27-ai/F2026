@@ -12,7 +12,7 @@ import { Progression } from "./systems/progression.js";
 import { Armory } from "./systems/armory.js";
 import { Player } from "./systems/player.js";
 import { Resources } from "./systems/resources.js";
-import { BuildingSystem } from "./systems/buildings.js?v=4";
+import { BuildingSystem } from "./systems/buildings.js?v=5";
 import { Combat } from "./systems/combat.js";
 import { Zombies } from "./systems/zombies.js";
 import { Waves } from "./systems/waves.js";
@@ -144,8 +144,9 @@ export class Game {
       this.renderer.render(this.scene, this.camera);
       return;
     }
+    if (this.state === "play") this.armory.tick(dt);
     this.handleInput();
-    if (this.state === "paused") {
+    if (this.state === "paused" || this.state === "over") {
       this.hud.update(dt);
       this.renderer.render(this.scene, this.camera);
       return;
@@ -172,6 +173,7 @@ export class Game {
 
   handleInput() {
     const input = this.input;
+    if (this.state === "over") return;
     input.capture = this.state === "play" && !this.panel;
     if (input.edge("escape")) {
       if (input.locked) {
@@ -288,8 +290,47 @@ export class Game {
     this.audio.ensure();
   }
 
+  gameOver() {
+    if (this.state === "over" || this.state === "title") return;
+    this.state = "over";
+    this.buildMode = false;
+    this.panel = null;
+    this.input.release();
+    this.fx.floaters.forEach((f) => f.el.remove());
+    this.fx.floaters.length = 0;
+    this.hud.showGameOver();
+    this.audio.play("explode");
+    this.fx.addShake(0.4);
+  }
+
+  retryAfterLoss() {
+    this.hud.hideGameOver();
+    this.zombies.clearAll();
+    for (const p of this.combat.projectiles) this.scene.remove(p.mesh);
+    this.combat.projectiles.length = 0;
+    this.panel = null;
+    this.buildMode = false;
+    const data = readSave();
+    if (!data) {
+      clearSave();
+      location.reload();
+      return;
+    }
+    this.load(data);
+    this.flags.blood = false;
+    this.flags.bloodMoon = false;
+    this.flags.forceNight = false;
+    this.player.downed = 0;
+    this.player.hp = this.player.maxHp;
+    this.dayNight.factor = 0;
+    this.dayNight.update(0);
+    this.hud.hideTitle();
+    this.state = "play";
+    this.snapCam = true;
+  }
+
   quitToTitle() {
-    if (this.waves.phase !== "wave") writeSave(this.capture());
+    if (this.state !== "over" && this.waves.phase !== "wave") writeSave(this.capture());
     location.reload();
   }
 

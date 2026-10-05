@@ -17,7 +17,7 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #14110e; col
 button, input { font-family: inherit; }
 #view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
 #ui { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
-#ui button, #ui .panel, #ui .buildbar, #title, #title * { pointer-events: auto; }
+#ui button, #ui .panel, #ui .buildbar, #title, #title *, #gameover, #gameover * { pointer-events: auto; }
 
 .tl, .tr {
   position: absolute;
@@ -78,7 +78,7 @@ button, input { font-family: inherit; }
 }
 .weapon b { display: block; font-size: 22px; }
 .weapon span { color: var(--muted); font-size: 18px; }
-.hotbar button, .buildbar button, .panel button, .title button {
+.hotbar button, .buildbar button, .panel button, .title button, #gameover button {
   border: 1px solid var(--line);
   background: #2a211b;
   color: var(--cream);
@@ -88,7 +88,7 @@ button, input { font-family: inherit; }
   letter-spacing: 0.06em;
   cursor: pointer;
 }
-.hotbar button:hover, .panel button:hover, .title button:hover, .buildbar button:hover { background: #3a2c22; }
+.hotbar button:hover, .panel button:hover, .title button:hover, .buildbar button:hover, #gameover button:hover { background: #3a2c22; }
 .hotbar button small, .buildbar button small { display: block; font-weight: 600; letter-spacing: 0; color: var(--muted); font-size: 11px; }
 .hotbar button.on, .buildbar button.on { outline: 2px solid var(--pyre); }
 
@@ -176,6 +176,28 @@ button, input { font-family: inherit; }
   text-shadow: 0 10px 30px rgba(0,0,0,0.55);
 }
 #announce.show { opacity: 1; transform: translate(-50%, 0); }
+#gameover {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  background: rgba(18, 4, 3, 0.82);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#gameover.show { display: flex; }
+#gameover h1 {
+  margin: 0;
+  font-size: clamp(72px, 13vw, 148px);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: #ff2a2a;
+  text-shadow: 7px 7px 0 #4a0c0c;
+}
+#gameover p { margin: 14px 0 0; font-size: 22px; color: var(--cream); }
+#gameover .actions { display: flex; gap: 12px; justify-content: center; margin-top: 22px; }
+#gameover button.primary { background: #ff2a2a; color: #2a0606; border-color: transparent; }
 #announce strong { display: block; font-size: clamp(40px, 6vw, 76px); letter-spacing: 0.04em; }
 #announce span { font-size: 20px; color: var(--brass); }
 

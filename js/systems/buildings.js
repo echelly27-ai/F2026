@@ -74,6 +74,13 @@ export class BuildingSystem {
     plot.position.set(cx, 0.03, cz);
   }
 
+  zombieInPyre(x, z) {
+    const core = this.core;
+    if (!core || core.destroyed || core.hp <= 0) return false;
+    const cell = worldToCell(x, z);
+    return core.cells.some(([gx, gz]) => gx === cell.gx && gz === cell.gz);
+  }
+
   coreMaxHp() {
     const tier = TIERS[this.game.progression.tier] || TIERS[0];
     const bunker = this.hasTag("bunker") ? 1.5 : 1;

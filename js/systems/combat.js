@@ -53,42 +53,41 @@ export class Combat {
     return this.groundAim();
   }
 
-  // The camera ray drops into the dirt a few steps ahead, and a shot that
-  // leaves the hand stays beside the body. Face a zombie and the bullet
-  // travels from chest height straight along that facing.
-  shotAim(range) {
+  // Bullets leave along the crosshair, from just in front of the warden,
+  // so a pistol aimed at a zombie hits that zombie.
+  shotLine(range) {
     const player = this.game.player;
-    const ray = this.aimRay();
-    const hits = ray.intersectObjects(this.game.raycastables, true);
-    for (const hit of hits) {
-      if (hit.distance > range) break;
-      const zid = ud(hit.object, "zid");
-      const bid = ud(hit.object, "bid");
-      if (zid != null || bid != null) {
-        return { origin: player.muzzleWorld().clone(), point: hit.point.clone() };
-      }
-    }
     player.faceVectors();
-    const origin = player.pos.clone();
-    origin.y = 0.95;
-    origin.addScaledVector(player.flatForward, 0.7);
-    const point = origin.clone().addScaledVector(player.flatForward, Math.min(range, 28));
-    return { origin, point };
+    const ray = this.aimRay().ray;
+    const dir = ray.direction.clone();
+    const chest = player.pos.clone();
+    chest.y = 1.15;
+    const along = Math.max(0.3, chest.sub(ray.origin).dot(dir));
+    const origin = ray.origin.clone().addScaledVector(dir, along + 0.45);
+    return { origin, dir, range };
+  }
+
+  blocksShots(bid) {
+    const b = this.game.buildings.byId.get(bid);
+    if (!b || b.destroyed || b.hp <= 0 || b.open) return false;
+    const style = b.def.style;
+    return style !== "floor" && style !== "campfire";
   }
 
   firePlayer() {
     const armory = this.game.armory;
     const stats = armory.stats();
     if (!stats) return;
-    if (!armory.consumeShot()) return;
+    if (!armory.consumeShot()) {
+      if (!stats.melee && armory.reload > 0) this.game.notify("Reloading");
+      return;
+    }
     const id = armory.equipped;
     this.game.audio.play(shotSound(id));
     this.game.player.swing = 1;
-    const aim = this.shotAim(stats.range + 10);
-    const origin = aim.origin;
-    const dir = aim.point.sub(origin);
-    if (dir.lengthSq() < 0.04) dir.copy(this.game.player.flatForward);
-    dir.normalize();
+    const shot = this.shotLine(stats.range);
+    const origin = shot.origin;
+    const dir = shot.dir;
     this.game.fx.muzzleFlash(origin);
     if (stats.melee) {
       this.melee(stats);
@@ -162,13 +161,18 @@ export class Combat {
   hitscan(origin, dir, range, opts) {
     const ray = new THREE.Raycaster(origin, dir, 0, range);
     const hits = ray.intersectObjects(this.game.raycastables, true);
-    let end = origin.clone().addScaledVector(dir, range);
+    let end = origin.clone().addScaledVector(dir, Math.min(range, 28));
+    let blocked = range;
+    let struck = false;
     for (const hit of hits) {
+      if (hit.distance > range) break;
       const zid = ud(hit.object, "zid");
       const bid = ud(hit.object, "bid");
       if (opts.ignoreZid && zid === opts.ignoreZid) continue;
       if (opts.ignoreBid && bid === opts.ignoreBid) continue;
+      if (bid != null && !this.blocksShots(bid) && !opts.hurtBuildings) continue;
       end = hit.point.clone();
+      blocked = hit.distance;
       if (zid != null) {
         const z = this.game.zombies.byId.get(zid);
         if (z && z.alive) {
@@ -181,6 +185,7 @@ export class Combat {
             headMul: opts.headMul,
             source: opts.owner,
           });
+          struck = true;
         }
       } else if (bid != null && opts.hurtBuildings) {
         const b = this.game.buildings.byId.get(bid);
@@ -189,7 +194,40 @@ export class Combat {
       this.game.fx.burst(end, opts.color || 0xffe08a, 4, 2);
       break;
     }
+    if (!struck && opts.owner === "player") {
+      const near = this.zombieNearRay(origin, dir, blocked, 1.15);
+      if (near) {
+        this.damageZombie(near.z, opts.damage, {
+          pierce: opts.pierce,
+          crit: !!opts.crit,
+          headshot: false,
+          source: opts.owner,
+        });
+        end = near.point;
+        this.game.fx.burst(end, opts.color || 0xffe08a, 4, 2);
+      }
+    }
     this.game.fx.tracer(origin, end, opts.color || 0xffe08a);
+  }
+
+  zombieNearRay(origin, dir, limit, radius) {
+    let best = null;
+    let bestT = limit;
+    for (const z of this.game.zombies.list) {
+      if (!z.alive) continue;
+      const height = z.def.crawler ? 0.35 : (z.def.height || 1.7) * 0.55;
+      const body = new THREE.Vector3(z.x, height, z.z);
+      const rel = body.clone().sub(origin);
+      const t = rel.dot(dir);
+      if (t < 0.3 || t > limit) continue;
+      const miss = rel.clone().addScaledVector(dir, -t).length();
+      if (miss > radius + (z.radius || 0.4) * 0.3) continue;
+      if (t < bestT) {
+        best = { z, point: origin.clone().addScaledVector(dir, t) };
+        bestT = t;
+      }
+    }
+    return best;
   }
 
   fireTurret(building, stats, muzzle, target) {
@@ -401,9 +439,8 @@ export class Combat {
     if (b.def.core && this.game.waves) this.game.waves.noteCoreDamage(amount);
     if (b.hp <= 0) {
       b.hp = 0;
-      if (b.def.core) {
-        if (this.game.waves) this.game.waves.failRaid();
-      } else this.game.buildings.destroy(b);
+      if (b.def.core) this.game.gameOver();
+      else this.game.buildings.destroy(b);
     }
     void info;
   }

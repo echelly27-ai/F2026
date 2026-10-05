@@ -101,7 +101,7 @@ export class Armory {
     if (!this.owned.includes(id)) return;
     this.equipped = id;
     this.reload = 0;
-    this.cooldown = 0.15;
+    this.cooldown = 0;
     if (this.game.player) this.game.player.attachWeapon(id);
     this.game.audio.play("ui");
   }

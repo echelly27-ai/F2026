@@ -1,6 +1,6 @@
 // Keyboard and mouse. Clicking the view captures the mouse so looking works
 // like a normal game. Menus release that capture so buttons stay clickable.
-// Right click fires the weapon in hand. Hold it to look if capture is unavailable.
+// Right click fires the weapon in hand. Looking is the captured mouse.
 
 export class Input {
   constructor(canvas) {
@@ -34,6 +34,11 @@ export class Input {
     window.addEventListener("keyup", this._onKeyUp);
     window.addEventListener("mouseup", this._onMouseUp);
     window.addEventListener("mousemove", this._onMove);
+    window.addEventListener("mousedown", (e) => this.onRightClick(e));
+    window.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      this.onRightClick(e);
+    });
     canvas.addEventListener("mousedown", this._onMouseDown);
     canvas.addEventListener("wheel", this._onWheel, { passive: false });
     canvas.addEventListener("contextmenu", this._onContext);
@@ -52,7 +57,18 @@ export class Input {
   }
 
   syncLook() {
-    this.looking = this.rmb || this.locked;
+    this.looking = this.locked;
+  }
+
+  onRightClick(e) {
+    if (e.button != null && e.button !== 2 && e.type !== "contextmenu") return;
+    const ui = e.target && e.target.closest && e.target.closest("button, a, input, textarea, .panel, #title, #gameover");
+    if (ui) return;
+    this.secondaryPressed = true;
+    if (e.type !== "contextmenu") {
+      this.secondary = true;
+      this.rmb = true;
+    }
   }
 
   release() {

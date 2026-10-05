@@ -142,6 +142,10 @@ export class Zombies {
     for (const z of [...this.list]) if (z.wave) this.despawn(z);
   }
 
+  clearAll() {
+    for (const z of [...this.list]) this.despawn(z);
+  }
+
   // The yard is the player's plot. A death sends every raider away and
   // drops anyone already standing inside the walls.
   inBase(x, z) {
@@ -190,7 +194,10 @@ export class Zombies {
     }
     for (const z of [...this.list]) {
       if (!z.alive) this.tickDead(z, dt);
-      else this.think(z, dt);
+      else {
+        this.think(z, dt);
+        if (z.alive && this.game.buildings.zombieInPyre(z.x, z.z)) this.game.gameOver();
+      }
     }
   }
 
@@ -311,6 +318,7 @@ export class Zombies {
     const boxes = this.game.buildings.collisionBoxes().concat(this.game.world.blockers);
     const resolved = collideCircle(z.x, z.z, z.radius, boxes, (box) => {
       if (box.prop) return true;
+      if (box.building && box.building.def.core) return false;
       return !!(box.building && box.building.blocks(kind));
     });
     const blocked = Math.hypot(resolved.x - z.x, resolved.z - z.z) > 0.02;

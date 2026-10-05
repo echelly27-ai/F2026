@@ -49,14 +49,14 @@ export class Juice {
     const len = dir.length();
     if (len < 0.05) return;
     const mesh = new THREE.Mesh(
-      new THREE.BoxGeometry(0.04, 0.04, 1),
-      new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.85 })
+      new THREE.BoxGeometry(0.08, 0.08, 1),
+      new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.95 })
     );
     mesh.position.copy(from).addScaledVector(dir, 0.5);
     mesh.lookAt(to);
     mesh.scale.z = len;
     this.scene.add(mesh);
-    this.tracers.push({ mesh, life: 0.08 });
+    this.tracers.push({ mesh, life: 0.22 });
   }
 
   muzzleFlash(pos) {
