@@ -103,6 +103,9 @@ button, input { font-family: inherit; }
   width: min(920px, calc(100% - 32px));
   pointer-events: auto;
 }
+.buildbar[hidden] {
+  display: none;
+}
 .buildbar .cats, .buildbar .items { display: flex; gap: 8px; flex-wrap: wrap; }
 .buildbar .items button { text-align: left; min-width: 140px; }
 .buildbar button .cost { color: var(--brass); font-size: 12px; }

@@ -259,7 +259,9 @@ export class BuildingSystem {
 
   placeSelected() {
     if (!this.hover) return null;
-    return this.place(this.selected, this.hover.gx, this.hover.gz, this.game.buildRot || 0);
+    const built = this.place(this.selected, this.hover.gx, this.hover.gz, this.game.buildRot || 0);
+    if (built) this.game.buildMode = false;
+    return built;
   }
 
   demolishLooked() {

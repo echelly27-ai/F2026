@@ -12,7 +12,7 @@ import { Progression } from "./systems/progression.js";
 import { Armory } from "./systems/armory.js";
 import { Player } from "./systems/player.js";
 import { Resources } from "./systems/resources.js";
-import { BuildingSystem } from "./systems/buildings.js?v=5";
+import { BuildingSystem } from "./systems/buildings.js?v=6";
 import { Combat } from "./systems/combat.js";
 import { Zombies } from "./systems/zombies.js";
 import { Waves } from "./systems/waves.js";
@@ -176,14 +176,14 @@ export class Game {
     if (this.state === "over") return;
     input.capture = this.state === "play" && !this.panel;
     if (input.edge("escape")) {
-      if (input.locked) {
-        input.release();
-        return;
-      }
-      // Leave build mode before pausing, so cancel and pause stay distinct.
       if (this.buildMode) {
         this.buildMode = false;
         this.audio.play("ui");
+        if (input.locked) input.release();
+        return;
+      }
+      if (input.locked) {
+        input.release();
         return;
       }
       if (this.panel) this.closePanel();
