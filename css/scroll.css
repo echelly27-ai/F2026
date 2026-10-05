@@ -97,6 +97,11 @@ h1, h2, h3, .mark, .play {
   text-underline-offset: 4px;
 }
 
+.bar .source {
+  color: #fff;
+  font-family: "Courier New", "Liberation Mono", monospace;
+  font-size: 16px;
+}
 .play {
   text-decoration: none;
   background: var(--green);

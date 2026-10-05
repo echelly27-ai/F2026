@@ -66,7 +66,7 @@ export class HUD {
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>
           </div>
           <p class="keys">Click the view to look · WASD move · Left click fights or places · Right click shoots · E gather · F repair · B build · G shop · J quests · K skills · U base · T call night · Esc releases the mouse</p>
-          <p class="keys"><a href="scroll.html">The long night</a></p>
+          <p class="keys"><a href="scroll.html">The long night</a> · <a href="https://github.com/echelly27-ai/F2026/pull/1" target="_blank" rel="noopener">GitHub</a></p>
         </div>
       </div>
     `;
