@@ -3,7 +3,7 @@
 import * as THREE from "three";
 import { ZOMBIES, scaledStats } from "../config/zombies.js";
 import { COMBAT, ZONES, plotOf } from "../config/balance.js";
-import { buildZombie } from "../world/figures.js";
+import { buildZombie, stepLimbs } from "../world/figures.js";
 import { CELL, collideCircle, dist2, firstBlocker } from "../core/util.js";
 
 const WILD = [
@@ -363,8 +363,16 @@ export class Zombies {
     }
 
     z.hitFlash = Math.max(0, z.hitFlash - dt);
-    z.mesh.position.set(z.x, 0, z.z);
+    if (moved > 0.002) {
+      z.stride = (z.stride || 0) + Math.min(moved * 4.2, dt * 11);
+      z.gait = Math.min(1, (z.gait || 0) + dt * 10);
+    } else {
+      z.gait = Math.max(0, (z.gait || 0) - dt * 7);
+    }
+    stepLimbs(z.mesh, z.stride || 0, z.gait || 0, 0);
+    z.mesh.position.set(z.x, Math.abs(Math.sin(z.stride || 0)) * 0.08 * (z.gait || 0), z.z);
     if (Math.hypot(tx - z.x, tz - z.z) > 0.08) z.mesh.lookAt(tx, 0, tz);
+    z.mesh.rotation.z += Math.sin(z.stride || 0) * 0.08 * (z.gait || 0);
     const body = z.mesh.getObjectByName("body");
     if (body && body.material) {
       body.material.emissive.setHex(z.hitFlash > 0 ? 0xff4422 : 0x000000);

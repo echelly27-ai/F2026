@@ -372,6 +372,11 @@ export function buildWorld(scene) {
     starPos[i * 3 + 1] = 30 + Math.sin(phi) * r;
     starPos[i * 3 + 2] = Math.sin(theta) * Math.cos(phi) * r;
   }
+  group.traverse((o) => {
+    o.castShadow = false;
+  });
+  ground.receiveShadow = true;
+
   starsGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
   const stars = new THREE.Points(
     starsGeo,

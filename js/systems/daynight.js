@@ -13,7 +13,8 @@ export class DayNight {
     scene.add(this.hemi);
     this.sun = new THREE.DirectionalLight(0xfff2d8, 1.25);
     this.sun.castShadow = true;
-    this.sun.shadow.mapSize.set(1024, 1024);
+    this.sun.shadow.mapSize.set(512, 512);
+    this.sun.shadow.bias = -0.001;
     this.sun.shadow.camera.near = 1;
     this.sun.shadow.camera.far = 80;
     const s = 28;

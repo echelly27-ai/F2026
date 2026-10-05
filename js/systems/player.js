@@ -3,7 +3,7 @@
 import * as THREE from "three";
 import { PLAYER, ZONES, WORLD } from "../config/balance.js";
 import { clamp, collideCircle } from "../core/util.js";
-import { buildWarden, setWeaponVisual } from "../world/figures.js";
+import { buildWarden, setWeaponVisual, stepLimbs } from "../world/figures.js";
 
 export class Player {
   constructor(game) {
@@ -19,7 +19,11 @@ export class Player {
     this.invuln = 0;
     this.downed = 0;
     this.swing = 0;
+    this.stride = 0;
+    this.gait = 0;
     this.bob = 0;
+    this._ox = 0;
+    this._oz = 4;
     this.traveled = 0;
     this.zoneNote = "";
     this.mesh = buildWarden();
@@ -202,13 +206,21 @@ export class Player {
     if (regen > 0 && this.hp > 0 && this.downed <= 0) this.heal(regen * dt);
 
     this.swing = Math.max(0, this.swing - dt * 3.2);
-    const arm = this.mesh.userData.armR;
-    if (arm) arm.rotation.x = -1.1 * Math.sin(Math.min(1, this.swing) * Math.PI);
+    const moved = Math.hypot(this.pos.x - this._ox, this.pos.z - this._oz);
+    if (moved > 0.004 && this.downed <= 0) {
+      this.stride += Math.min(moved * 3.6, dt * 9);
+      this.gait = Math.min(1, this.gait + dt * 8);
+    } else {
+      this.gait = Math.max(0, this.gait - dt * 6);
+    }
+    this._ox = this.pos.x;
+    this._oz = this.pos.z;
+    stepLimbs(this.mesh, this.stride, this.gait, this.swing);
 
     this.mesh.position.set(this.pos.x, this.pos.y, this.pos.z);
     this.mesh.rotation.y = this.yaw;
-    this.mesh.rotation.z = 0;
-    this.mesh.position.y = this.pos.y + Math.sin(this.bob) * 0.03;
+    if (this.downed <= 0) this.mesh.rotation.z = Math.sin(this.stride) * 0.07 * this.gait;
+    this.mesh.position.y = this.pos.y + Math.abs(Math.sin(this.stride)) * 0.1 * this.gait;
     this.mesh.visible = this.invuln <= 0 || Math.sin(this.invuln * 28) > 0;
   }
 

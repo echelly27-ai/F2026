@@ -12,7 +12,7 @@ import { Progression } from "./systems/progression.js";
 import { Armory } from "./systems/armory.js";
 import { Player } from "./systems/player.js";
 import { Resources } from "./systems/resources.js";
-import { BuildingSystem } from "./systems/buildings.js?v=3";
+import { BuildingSystem } from "./systems/buildings.js?v=4";
 import { Combat } from "./systems/combat.js";
 import { Zombies } from "./systems/zombies.js";
 import { Waves } from "./systems/waves.js";
@@ -51,14 +51,14 @@ export class Game {
     this.canvas = document.createElement("canvas");
     this.canvas.id = "view";
     document.body.prepend(this.canvas);
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true, powerPreference: "high-performance" });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: false, powerPreference: "high-performance" });
+    this.renderer.setPixelRatio(1);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.05;
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.1, 220);
     this.clock = new THREE.Clock();
@@ -364,12 +364,13 @@ export class Game {
       return;
     }
     p.faceVectors();
-    const dist = 8.4;
-    const look = new THREE.Vector3(p.pos.x, p.pos.y + 1.5, p.pos.z);
+    const dist = 5.8;
+    const look = new THREE.Vector3(p.pos.x, p.pos.y + 1.4, p.pos.z);
     const cp = Math.cos(p.pitch);
     const camDir = new THREE.Vector3(-Math.sin(p.yaw) * cp, Math.sin(p.pitch), -Math.cos(p.yaw) * cp);
     const desired = look.clone().addScaledVector(camDir, -dist);
-    desired.y = Math.max(0.8, desired.y + 0.35);
+    desired.addScaledVector(p.flatRight, 1.45);
+    desired.y = Math.max(1.1, desired.y + 0.4);
     const ray = new THREE.Raycaster(look, desired.clone().sub(look).normalize(), 0, dist);
     const hits = ray.intersectObjects(this.raycastables, true);
     for (const hit of hits) {
@@ -397,7 +398,7 @@ export class Game {
       this.camera.position.x += (Math.random() - 0.5) * shake;
       this.camera.position.y += (Math.random() - 0.5) * shake * 0.6;
     }
-    this.camera.lookAt(look.clone().addScaledVector(camDir, 6));
+    this.camera.lookAt(look.clone().addScaledVector(camDir, 7.5));
   }
 
   autosave(dt) {
