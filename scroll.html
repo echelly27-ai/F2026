@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PYREHOLD — The long night</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%231a140f' width='100' height='100'/%3E%3Ctext y='.78em' x='10' font-size='70'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="css/scroll.css?v=7" />
+  <link rel="stylesheet" href="css/scroll.css?v=8" />
 </head>
 <body>
   <a class="skip" href="#daylight">Skip to the day</a>
@@ -23,24 +23,114 @@
 
   <main>
     <section id="hold" class="hero">
-      <div class="sky"></div>
-      <div class="pines" aria-hidden="true">
-        <i></i><i></i><i></i><i></i><i></i><i></i>
+      <div class="raid" aria-hidden="true">
+        <div class="moon"></div>
+        <div class="stars">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="bats"><i></i><i></i><i></i></div>
+        <div class="embers">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="hills"></div>
+        <div class="pines">
+          <i></i><i class="bare"></i><i></i><i></i><i class="bare"></i><i></i>
+          <i></i><i class="bare"></i><i></i><i></i><i class="bare"></i><i></i>
+        </div>
+        <div class="camp">
+          <div class="shack">
+            <i class="roof"></i>
+            <i class="wall"></i>
+            <i class="door"></i>
+            <i class="win"></i>
+            <i class="blaze"></i>
+            <i class="smoke a"></i>
+            <i class="smoke b"></i>
+          </div>
+          <div class="pyre">
+            <i class="glow"></i>
+            <i class="flame"></i>
+            <i class="flame b"></i>
+            <i class="log"></i>
+            <i class="log cross"></i>
+            <i class="smoke a"></i>
+          </div>
+          <div class="tower">
+            <i class="roof"></i>
+            <i class="deck"></i>
+            <i class="story tall"></i>
+            <i class="story"></i>
+            <i class="win"></i>
+            <i class="torch"></i>
+            <span class="lookout"><b class="px warden"></b></span>
+          </div>
+          <div class="inside">
+            <span class="mini a"><b class="px sham"></b></span>
+            <span class="mini b"><b class="px sham"></b></span>
+            <span class="mini c"><b class="px run"></b></span>
+          </div>
+          <div class="palisade">
+            <div class="run">
+              <i></i><i class="burn"></i><i></i><i></i><i class="short"></i><i></i>
+            </div>
+            <div class="breach"></div>
+            <div class="run">
+              <i class="broke"></i><i></i><i class="burn"></i><i></i><i class="short"></i>
+            </div>
+            <div class="breach wide"></div>
+            <div class="run">
+              <i></i><i></i><i class="burn"></i><i class="short"></i><i></i><i></i><i class="broke"></i>
+            </div>
+          </div>
+          <i class="gate l"></i>
+          <i class="gate r"></i>
+          <div class="sign">ASHPINE</div>
+          <div class="horde">
+            <span class="mini a"><b class="px sham"></b></span>
+            <span class="mini b"><b class="px run"></b></span>
+            <span class="mini c"><b class="px sham"></b></span>
+            <span class="mini d"><b class="px sham"></b></span>
+            <span class="mini e"><b class="px run"></b></span>
+            <span class="mini f"><b class="px sham"></b></span>
+            <span class="mini g"><b class="px sham"></b></span>
+          </div>
+          <div class="spikes">
+            <i></i><i></i><i></i><i></i><i class="gone"></i><i></i><i></i>
+            <i></i><i class="gone"></i><i></i><i></i><i></i><i></i><i class="gone"></i><i></i>
+          </div>
+        </div>
+        <div class="dirt">
+          <i class="rock a"></i>
+          <i class="rock b"></i>
+          <i class="rock c"></i>
+          <i class="blood a"></i>
+          <i class="blood b"></i>
+          <i class="barrel"></i>
+          <i class="stake"></i>
+        </div>
+        <div class="front">
+          <span class="actor run"><i class="px run"></i></span>
+          <span class="actor tank"><i class="px tank"></i></span>
+          <span class="actor sham"><i class="px sham"></i></span>
+          <span class="actor crawl"><i class="px crawl"></i></span>
+          <span class="actor warden"><i class="px warden"></i><i class="flash"></i></span>
+        </div>
       </div>
       <div class="stage">
-        <p class="eyebrow">Ashpine · a cold plot</p>
+        <p class="eyebrow">Ashpine · night on the plot</p>
         <h1>Hold the pyre.</h1>
-        <p class="lede">Daylight is for wood, stone, and gold. Night is for whatever walks out of the trees. Scroll the long night, then take the yard.</p>
+        <p class="lede">You keep one cold yard and the fire in the middle of it. Daylight is short: chop the pines, crack stone, and pick the gold coins off the dirt. When the light goes, the dead leave the trees and walk for the hearth. They chew every wall in the way. One of them in the fire, and the hold is lost.</p>
+        <ul class="facts">
+          <li>Three quiet minutes</li>
+          <li>Coins on the dirt</li>
+          <li>Right click fires</li>
+          <li>Hearth breach loses</li>
+        </ul>
         <div class="hero-actions">
           <a class="play big" href="index.html">Enter the yard</a>
           <a class="ghost" href="#daylight">Start at dawn</a>
         </div>
-      </div>
-      <div class="hearth" aria-hidden="true">
-        <div class="flame"></div>
-        <div class="log"></div>
-        <div class="log cross"></div>
-        <div class="ring"></div>
       </div>
       <p class="cue">Scroll</p>
     </section>
