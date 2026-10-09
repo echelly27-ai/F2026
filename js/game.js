@@ -12,7 +12,7 @@ import { Progression } from "./systems/progression.js";
 import { Armory } from "./systems/armory.js";
 import { Player } from "./systems/player.js";
 import { Resources } from "./systems/resources.js";
-import { BuildingSystem } from "./systems/buildings.js?v=6";
+import { BuildingSystem } from "./systems/buildings.js?v=8";
 import { Combat } from "./systems/combat.js";
 import { Zombies } from "./systems/zombies.js";
 import { Waves } from "./systems/waves.js";
@@ -206,7 +206,7 @@ export class Game {
       this.buildings.cat = BUILD_CATS[(i + 1) % BUILD_CATS.length].id;
       this.hud.buildSig = "";
     }
-    if (input.edge("x") && this.buildMode) this.commands.demolish();
+    if (input.edge("x")) this.commands.demolish();
     if (input.edge("y")) this.commands.upgradeLooked();
     if (input.edge("e") && !this.buildMode && !this.resources.nearest()) {
       if (this.weaponry && this.weaponry.nearby()) this.togglePanel("weaponry");
@@ -351,7 +351,7 @@ export class Game {
       if (!def) return "";
       const cost = h ? this.buildings.costText(h.cost) : "";
       const why = h && !h.ok ? h.reason : "Left click to place";
-      return def.name + "   " + cost + "   ·   " + why + "   ·   R rotate   X salvage";
+      return def.name + "   " + cost + "   ·   " + why + "   ·   R rotate   X break wall";
     }
     const padHint = this.tycoon ? this.tycoon.hint() : "";
     const shopHint = this.weaponry ? this.weaponry.hint() : "";
@@ -361,10 +361,15 @@ export class Game {
     if (this.weaponry && this.weaponry.onMat()) return shopHint;
     if (padHint) return padHint;
     if (shopHint) return shopHint;
-    const b = this.buildings.lookedAt(7);
+    const b = this.buildings.lookedAt(7) || this.buildings.breakTarget();
     if (!this.input.locked) return "Click the view to look with the mouse. WASD walks. The opening is ahead.";
     if (!b) return "The dead come for the pyre.";
-    if (b.def.gate) return "E  ·  " + (b.open ? "Close " : "Open ") + b.def.name;
+    if (b.def.gate) return "E  ·  " + (b.open ? "Close " : "Open ") + "  ·  X break " + b.def.name;
+    if (this.buildings.canBreak(b) && b.hp < b.maxHp - 1) return "Hold F to repair  ·  X to break " + b.def.name;
+    if (this.buildings.canBreak(b)) {
+      const extra = b.def.upgradeable ? "Y upgrade  ·  " : "";
+      return extra + "X  ·  Break " + b.def.name;
+    }
     if (b.hp < b.maxHp - 1) return "Hold F  ·  Repair " + b.def.name + "  " + Math.ceil(b.hp) + "/" + b.maxHp;
     if (b.def.upgradeable) return "Y  ·  Upgrade " + b.def.name + " to level " + ((b.level || 1) + 1);
     if (b.def.core) return "U  ·  Upgrade " + this.progression.tierDef().name;

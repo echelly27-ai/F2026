@@ -40,9 +40,9 @@ export const STARTING = {
 
 // Inventory caps by storage level. Levels past the table continue the last step.
 export const STORAGE_TABLE = [
-  { wood: 100, stone: 50, metal: 25 },
-  { wood: 250, stone: 150, metal: 75 },
+  { wood: 300, stone: 180, metal: 90 },
   { wood: 500, stone: 300, metal: 150 },
+  { wood: 700, stone: 420, metal: 220 },
   { wood: 800, stone: 500, metal: 280 },
   { wood: 1200, stone: 800, metal: 450 },
   { wood: 1800, stone: 1200, metal: 700 },
@@ -89,11 +89,11 @@ export const AMMO_PACKS = {
 };
 
 export const GATHER = {
-  wood: { chunk: 8, time: 0.48 },
-  stone: { chunk: 5, time: 0.7 },
-  metal: { chunk: 3, time: 0.85 },
-  gold: { chunk: 40, time: 0.4 },
-  crate: { chunk: 1, time: 0.6 },
+  wood: { chunk: 16, time: 0.32 },
+  stone: { chunk: 10, time: 0.42 },
+  metal: { chunk: 6, time: 0.5 },
+  gold: { chunk: 60, time: 0.28 },
+  crate: { chunk: 1, time: 0.4 },
 };
 
 export const ZONES = [

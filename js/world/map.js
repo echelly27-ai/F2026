@@ -235,25 +235,28 @@ export function buildWorld(scene) {
   const outsideCamp = (x, z) => Math.hypot(x, z) > 18;
 
   for (const p of scatter(rng, 42, ZONES[1], outsideCamp)) {
-    pushNode(nodes, blockers, { kind: "wood", x: p.x, z: p.z, amount: 40, respawn: 28, label: "Chop pine" });
+    pushNode(nodes, blockers, { kind: "wood", x: p.x, z: p.z, amount: 72, respawn: 16, label: "Chop pine" });
   }
   for (const p of scatter(rng, 26, ZONES[2], outsideCamp)) {
-    pushNode(nodes, blockers, { kind: "stone", x: p.x, z: p.z, amount: 30, respawn: 40, label: "Mine stone" });
+    pushNode(nodes, blockers, { kind: "stone", x: p.x, z: p.z, amount: 56, respawn: 22, label: "Mine stone" });
   }
   for (const p of scatter(rng, 20, ZONES[3], (x, z) => x < -52)) {
-    pushNode(nodes, blockers, { kind: "metal", x: p.x, z: p.z, amount: 18, respawn: 70, label: "Salvage metal" });
+    pushNode(nodes, blockers, { kind: "metal", x: p.x, z: p.z, amount: 32, respawn: 36, label: "Salvage metal" });
   }
   for (const p of [
     [14, 8],
     [-14, 10],
     [16, -6],
+    [12, 16],
+    [-16, -8],
   ]) {
-    pushNode(nodes, blockers, { kind: "wood", x: p[0], z: p[1], amount: 32, respawn: 22, label: "Chop pine" });
+    pushNode(nodes, blockers, { kind: "wood", x: p[0], z: p[1], amount: 64, respawn: 14, label: "Chop pine" });
   }
-  pushNode(nodes, blockers, { kind: "stone", x: -14, z: -6, amount: 24, respawn: 36, label: "Mine stone" });
-  pushNode(nodes, blockers, { kind: "stone", x: 18, z: 12, amount: 24, respawn: 36, label: "Mine stone" });
-  pushNode(nodes, blockers, { kind: "metal", x: 9, z: -12, amount: 12, respawn: 55, label: "Salvage metal" });
-  pushNode(nodes, blockers, { kind: "metal", x: -8, z: 14, amount: 9, respawn: 55, label: "Salvage metal" });
+  pushNode(nodes, blockers, { kind: "stone", x: -14, z: -6, amount: 48, respawn: 18, label: "Mine stone" });
+  pushNode(nodes, blockers, { kind: "stone", x: 18, z: 12, amount: 48, respawn: 18, label: "Mine stone" });
+  pushNode(nodes, blockers, { kind: "stone", x: 11, z: -16, amount: 48, respawn: 18, label: "Mine stone" });
+  pushNode(nodes, blockers, { kind: "metal", x: 9, z: -12, amount: 24, respawn: 28, label: "Salvage metal" });
+  pushNode(nodes, blockers, { kind: "metal", x: -8, z: 14, amount: 20, respawn: 28, label: "Salvage metal" });
   pushNode(nodes, blockers, {
     kind: "gold",
     x: 7,

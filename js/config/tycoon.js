@@ -11,9 +11,9 @@ export const DROPPER = {
   gz: -2,
   dirX: 1,
   dirZ: 0,
-  interval: 1.15,
-  amount: 12,
-  maxLoose: 18,
+  interval: 0.85,
+  amount: 18,
+  maxLoose: 24,
   first: 0.4,
 };
 
@@ -21,11 +21,11 @@ export const DROPPER = {
 export const PAD_DWELL = 0.34;
 
 export const PADS = [
-  { id: "floor-w1", name: "Wood Floor", price: 25, building: "wood_floor", gx: -2, gz: -1, padGx: -3, padGz: -1 },
-  { id: "floor-w2", name: "Wood Floor", price: 25, building: "wood_floor", gx: -2, gz: 0, padGx: -3, padGz: 0 },
-  { id: "floor-w3", name: "Wood Floor", price: 25, building: "wood_floor", gx: -2, gz: 1, padGx: -3, padGz: 1 },
-  { id: "floor-e1", name: "Wood Floor", price: 25, building: "wood_floor", gx: 1, gz: 1, padGx: 2, padGz: 1 },
-  { id: "floor-e2", name: "Wood Floor", price: 25, building: "wood_floor", gx: 1, gz: 2, padGx: 2, padGz: 2 },
+  { id: "wall-n2", name: "Wood Wall", price: 70, building: "wood_wall", gx: -2, gz: -3, padGx: -1, padGz: -3 },
+  { id: "wall-n1", name: "Wood Wall", price: 70, building: "wood_wall", gx: 1, gz: -3, padGx: 1, padGz: -2 },
+  { id: "wall-w1", name: "Wood Wall", price: 70, building: "wood_wall", gx: -3, gz: -1, padGx: -2, padGz: -1 },
+  { id: "wall-w2", name: "Wood Wall", price: 70, building: "wood_wall", gx: -3, gz: 0, padGx: -2, padGz: 0 },
+  { id: "wall-e1", name: "Wood Wall", price: 70, building: "wood_wall", gx: 3, gz: 0, padGx: 2, padGz: 0 },
   { id: "wall-nw", name: "Wood Wall", price: 70, building: "wood_wall", gx: -3, gz: -3, padGx: -3, padGz: -2 },
   { id: "wall-ne", name: "Wood Wall", price: 70, building: "wood_wall", gx: 3, gz: -3, padGx: 3, padGz: -2 },
   { id: "wall-sw", name: "Wood Wall", price: 70, building: "wood_wall", gx: -3, gz: 3, padGx: -2, padGz: 3 },

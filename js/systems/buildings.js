@@ -264,20 +264,40 @@ export class BuildingSystem {
     return built;
   }
 
+  canBreak(b) {
+    if (!b || b.destroyed || b.hp <= 0 || b.def.core) return false;
+    return !!(b.def.blocksPlayer || b.def.gate || b.def.style === "wall" || b.def.style === "barricade");
+  }
+
+  // The wall you are looking at, or the one you are standing against.
+  breakTarget() {
+    const looked = this.lookedAt(7);
+    if (this.canBreak(looked)) return looked;
+    const p = this.game.player.pos;
+    let best = null;
+    let bestD = 2.35 * 2.35;
+    for (const b of this.list) {
+      if (!this.canBreak(b)) continue;
+      const d = dist2(p.x, p.z, b.mesh.position.x, b.mesh.position.z);
+      if (d < bestD) {
+        best = b;
+        bestD = d;
+      }
+    }
+    return best;
+  }
+
   demolishLooked() {
-    const b = this.lookedAt(8);
-    if (!b) return;
-    if (b.def.core) {
-      this.game.notify("The hearth stays.", "bad");
+    const b = this.breakTarget();
+    if (!b) {
+      this.game.notify("Stand by a wall and press X to break it", "bad");
       return;
     }
-    if (b.hp < b.maxHp * 0.45) {
-      this.game.notify("Too damaged to salvage", "bad");
-      return;
-    }
-    const refund = scaledCost(b.def.cost, 0.4);
-    for (const [k, v] of Object.entries(refund)) this.game.inventory.add(k, v, { silent: k === "gold" });
-    this.game.notify("Salvaged " + b.def.name, "good");
+    const refund = scaledCost(b.def.cost, 0.5);
+    for (const [k, v] of Object.entries(refund)) this.game.inventory.add(k, v, { silent: true });
+    this.game.notify("Broke " + b.def.name, "good");
+    this.game.audio.play("gather");
+    this.game.fx.burst(b.mesh.position.clone().setY(1.1), 0x8a5a32, 10, 3);
     this.remove(b);
   }
 

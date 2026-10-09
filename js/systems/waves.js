@@ -43,7 +43,7 @@ export class Waves {
       if (this.number === 1) {
         this.game.hud.announce(
           "DAYLIGHT",
-          "Farm wood, stone, and metal. Night falls in three minutes — press T when you are ready."
+          "Farm wood, stone, and metal. Night falls in five minutes — press T when you are ready."
         );
       } else {
         this.game.hud.announce(
@@ -241,7 +241,7 @@ export class Waves {
     this.bossPending = null;
     this.game.flags.blood = false;
     this.phase = "prep";
-    this.timer = 28;
+    this.timer = getWave(this.number).prep;
     this.game.hud.announce("THE HEARTH WENT DARK", "The raid broke. You lost " + loss + " gold. Rebuild before they return.");
     this.game.audio.play("explode");
     this.game.fx.addShake(0.3);

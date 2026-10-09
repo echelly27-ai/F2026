@@ -12,7 +12,7 @@ export class Resources {
     this.holdNode = null;
   }
 
-  nearest(maxDist = 4.6) {
+  nearest(maxDist = 5.8) {
     const p = this.game.player;
     let best = null;
     let bestD = maxDist * maxDist;

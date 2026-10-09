@@ -65,7 +65,7 @@ export class HUD {
             <button class="primary" data-act="new" type="button">NEW GAME</button>
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>
           </div>
-          <p class="keys">Click the view to look · WASD move · Left click fights or places · Right click shoots · E gather · F repair · B build · G shop · J quests · K skills · U base · T call night · Esc releases the mouse</p>
+          <p class="keys">Click the view to look · WASD move · Left click fights or places · Right click shoots · E gather · X break a wall · F repair · B build · G shop · J quests · K skills · U base · T call night · Esc releases the mouse</p>
           <p class="keys"><a href="scroll.html">The long night</a> · <a href="https://github.com/echelly27-ai/F2026/pull/1" target="_blank" rel="noopener">GitHub</a></p>
         </div>
       </div>
@@ -412,7 +412,7 @@ export class HUD {
   }
 
   pausePanel() {
-    return `<h2>PAUSED</h2><div class="actions"><button class="primary" data-act="resume" type="button">RESUME</button><button data-act="save" type="button">SAVE</button><button data-act="mute" type="button">${this.game.audio.muted ? "UNMUTE" : "MUTE"}</button><button data-act="quit" type="button">QUIT TO TITLE</button></div><p class="keys">Click to look · WASD move · Left click attacks or places · Right click shoots · R reload / rotate · E gather or gates · F repair · X salvage in build mode · Q build category · T call the night · Esc releases the mouse</p><p class="keys">Zombies path toward the pyre and chew whatever blocks them. Runners chase you. Tanks pick the toughest wall. Spitters hang back. Exploders detonate on contact. Powered turrets sleep without a generator.</p>`;
+    return `<h2>PAUSED</h2><div class="actions"><button class="primary" data-act="resume" type="button">RESUME</button><button data-act="save" type="button">SAVE</button><button data-act="mute" type="button">${this.game.audio.muted ? "UNMUTE" : "MUTE"}</button><button data-act="quit" type="button">QUIT TO TITLE</button></div><p class="keys">Click to look · WASD move · Left click attacks or places · Right click shoots · R reload / rotate · E gather or gates · F repair · X break a wall · Q build category · T call the night · Esc releases the mouse</p><p class="keys">Zombies path toward the pyre and chew whatever blocks them. Runners chase you. Tanks pick the toughest wall. Spitters hang back. Exploders detonate on contact. Powered turrets sleep without a generator.</p>`;
   }
 
   onPanel(e) {

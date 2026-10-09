@@ -36,7 +36,7 @@ const STEPS = [
   },
   {
     id: "wave",
-    text: "The first night waits three minutes. Farm first, or press T to call it early. Repair with F.",
+    text: "The first night waits five minutes. Farm first, or press T to call it early. Press X to break a wall. Repair with F.",
   },
   {
     id: "upgrade",

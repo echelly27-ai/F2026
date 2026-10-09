@@ -3,7 +3,7 @@ import { mulberry32 } from "../core/util.js";
 
 const SCRIPTED = {
   // Opening daylight is long enough to chop, quarry, and haul scrap before night.
-  1: { prep: 180, groups: { normal: 10 }, lanes: 1 },
+  1: { prep: 300, groups: { normal: 10 }, lanes: 1 },
   2: { groups: { normal: 15, runner: 3 }, lanes: 2 },
   3: { groups: { normal: 20, runner: 5, spitter: 1 }, lanes: 2 },
   4: { groups: { normal: 16, runner: 6, crawler: 4, spitter: 2 }, lanes: 2 },
@@ -57,7 +57,8 @@ export function getWave(n) {
     base.boss = BOSSES[Math.floor(n / 5 - 2) % BOSSES.length];
   }
   base.number = n;
-  base.prep = base.prep ?? Math.max(18, 34 - Math.floor(n * 0.7));
+  // Later days stay long enough to restock. The gap shrinks slowly, then holds at two minutes.
+  base.prep = base.prep ?? Math.max(120, 210 - Math.floor(n * 4));
   return base;
 }
 
