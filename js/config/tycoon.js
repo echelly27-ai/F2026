@@ -12,7 +12,7 @@ export const DROPPER = {
   dirX: 1,
   dirZ: 0,
   interval: 0.85,
-  amount: 18,
+  amount: 20,
   maxLoose: 24,
   first: 0.4,
 };

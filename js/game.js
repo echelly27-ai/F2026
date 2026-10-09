@@ -21,7 +21,7 @@ import { Events } from "./systems/events.js";
 import { Loot } from "./systems/loot.js";
 import { DayNight } from "./systems/daynight.js";
 import { Tutorial } from "./systems/tutorial.js";
-import { Tycoon } from "./systems/tycoon.js";
+import { Tycoon } from "./systems/tycoon.js?v=9";
 import { Weaponry } from "./systems/weaponry.js";
 import { createCommands } from "./net/commands.js";
 import { HUD } from "./ui/hud.js";

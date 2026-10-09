@@ -2,7 +2,7 @@
 // raise the matching structure, the way a tycoon button builds a part.
 import * as THREE from "three";
 import { BUILDINGS } from "../config/buildings.js";
-import { DROPPER, PADS, PAD_DWELL, cellCenter } from "../config/tycoon.js";
+import { DROPPER, PADS, PAD_DWELL, cellCenter } from "../config/tycoon.js?v=9";
 import { footprint } from "../core/util.js";
 
 const NEON = 0x39ff6a;
