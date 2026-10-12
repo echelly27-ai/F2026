@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { Input } from "./core/input.js";
 import { AudioBus } from "./core/audio.js";
 import { readSave, writeSave, hasSave, clearSave } from "./core/save.js";
-import { MARKET, AMMO_PACKS } from "./config/balance.js?v=10";
+import { MARKET, AMMO_PACKS } from "./config/balance.js?v=11";
 import { BUILDINGS, BUILD_CATS, buildingsInCat } from "./config/buildings.js?v=10";
 import { Inventory } from "./systems/inventory.js";
 import { Progression } from "./systems/progression.js";
@@ -17,16 +17,16 @@ import { Combat } from "./systems/combat.js?v=10";
 import { Zombies } from "./systems/zombies.js";
 import { Waves } from "./systems/waves.js";
 import { Quests } from "./systems/quests.js";
-import { Events } from "./systems/events.js?v=10";
+import { Events } from "./systems/events.js?v=11";
 import { Loot } from "./systems/loot.js";
-import { DayNight } from "./systems/daynight.js?v=10";
-import { Tutorial } from "./systems/tutorial.js?v=10";
+import { DayNight } from "./systems/daynight.js?v=11";
+import { Tutorial } from "./systems/tutorial.js?v=11";
 import { Tycoon } from "./systems/tycoon.js?v=9";
 import { Weaponry } from "./systems/weaponry.js";
 import { createCommands } from "./net/commands.js";
-import { HUD } from "./ui/hud.js?v=10";
+import { HUD } from "./ui/hud.js?v=11";
 import { Juice } from "./fx/juice.js";
-import { buildWorld } from "./world/map.js?v=10";
+import { buildWorld } from "./world/map.js?v=11";
 
 function defaultStats() {
   return {

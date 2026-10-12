@@ -3,7 +3,7 @@ import { BUILD_CATS } from "../config/buildings.js";
 import { buildingsInCat } from "../config/buildings.js";
 import { WEAPON_ORDER, WEAPONS, upgradeCost, MAX_WEAPON_LEVEL } from "../config/weapons.js";
 import { SKILL_TREES, MAX_SKILL_RANK } from "../config/skills.js";
-import { TIERS, XP, storageUpgradeCost, AMMO_PACKS } from "../config/balance.js?v=10";
+import { TIERS, XP, storageUpgradeCost, AMMO_PACKS } from "../config/balance.js?v=11";
 import { formatNum } from "../core/util.js";
 
 function esc(s) {
@@ -60,7 +60,7 @@ export class HUD {
       <div id="title">
         <div class="title-card">
           <h1>PYRE<span>HOLD</span></h1>
-          <p>A cold pyre in ruined Paris. Haussmann stone stands around the courtyard. The dropper spits gold coins — walk over them, then stand on a green pad to raise walls. Press G to buy ammo. The weaponry sells guns for wood, stone, and gold.</p>
+          <p>A cold pyre in a dark forest. Dead pines and jagged rocks ring the yard. The dropper spits gold coins — walk over them, then stand on a green pad to raise walls. Press G to buy ammo. The weaponry sells guns for wood, stone, and gold.</p>
           <div class="actions">
             <button class="primary" data-act="new" type="button">NEW GAME</button>
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>

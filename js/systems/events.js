@@ -1,6 +1,6 @@
 // Random events keep a long preparation from turning into a checklist.
 import * as THREE from "three";
-import { EVENTS, rollEvent } from "../config/events.js?v=10";
+import { EVENTS, rollEvent } from "../config/events.js?v=11";
 import { mulberry32 } from "../core/util.js";
 
 export class Events {

@@ -97,12 +97,12 @@ export const GATHER = {
 };
 
 export const ZONES = [
-  { id: "camp", name: "Pyre Courtyard", minTier: 0, x: -22, z: -22, w: 44, h: 44 },
-  { id: "forest", name: "Luxembourg Park", minTier: 0, x: -46, z: -112, w: 92, h: 62 },
-  { id: "quarry", name: "Montmartre Cut", minTier: 0, x: 42, z: -36, w: 70, h: 78 },
-  { id: "city", name: "Haussmann Ruins", minTier: 1, x: -116, z: -40, w: 62, h: 86 },
-  { id: "military", name: "Les Invalides", minTier: 3, x: -34, z: 48, w: 74, h: 64 },
-  { id: "lab", name: "Institut Noir", minTier: 4, x: 48, z: -112, w: 64, h: 52 },
+  { id: "camp", name: "Starting Camp", minTier: 0, x: -22, z: -22, w: 44, h: 44 },
+  { id: "forest", name: "Ashpine Forest", minTier: 0, x: -46, z: -112, w: 92, h: 62 },
+  { id: "quarry", name: "Cinder Quarry", minTier: 0, x: 42, z: -36, w: 70, h: 78 },
+  { id: "city", name: "Rust City", minTier: 1, x: -116, z: -40, w: 62, h: 86 },
+  { id: "military", name: "Fort Halden", minTier: 3, x: -34, z: 48, w: 74, h: 64 },
+  { id: "lab", name: "Blackglass Lab", minTier: 4, x: 48, z: -112, w: 64, h: 52 },
 ];
 
 export const TIER_ORDER = ["camp", "wood", "stone", "military", "fortress", "bunker"];
@@ -111,7 +111,7 @@ export const TIERS = [
   {
     id: "camp",
     name: "Starter Camp",
-    blurb: "A cold pyre in a ruined Paris courtyard.",
+    blurb: "A cold pyre and a ring of pine walls.",
     coreHp: 1200,
   },
   {

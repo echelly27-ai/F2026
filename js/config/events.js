@@ -23,7 +23,7 @@ export const EVENTS = [
   {
     id: "convoy",
     name: "Military Convoy",
-    desc: "The dead of Les Invalides are walking again. Drop them for a weapon crate.",
+    desc: "Fort Halden's dead are walking again. Drop them for a weapon crate.",
     weight: 2,
   },
   {
@@ -35,7 +35,7 @@ export const EVENTS = [
   {
     id: "rush",
     name: "Resource Rush",
-    desc: "The plane trees and shelves are loose. Gathering yields more for a minute.",
+    desc: "The pines and shelves are loose. Gathering yields more for a minute.",
     weight: 3,
   },
   {
