@@ -94,9 +94,9 @@ const SCENERY = {
   bare: mat(0x3d3228),
   pine: mat(0x1a3426),
   pineHi: mat(0x243e2e),
-  stone: mat(0x3a3632),
-  stoneDark: mat(0x221e1b),
-  stoneChip: mat(0x514c46),
+  stone: mat(0x6a645c),
+  stoneDark: mat(0x3a342e),
+  stoneChip: mat(0x7a746c),
 };
 const TRUNK_GEO = new THREE.CylinderGeometry(0.18, 0.42, 1, 5);
 const BRANCH_GEO = new THREE.BoxGeometry(1, 0.09, 0.09);
@@ -157,15 +157,15 @@ function deadPine(group, blockers, x, z, scale, lean) {
 
 function jaggedRock(group, blockers, x, z, scale) {
   const g = new THREE.Group();
-  const body = new THREE.Mesh(new THREE.DodecahedronGeometry(0.58 * scale, 0), SCENERY.stone);
-  body.scale.set(1.55, 0.9, 1.2);
-  body.position.y = 0.4 * scale;
+  const body = new THREE.Mesh(new THREE.DodecahedronGeometry(0.62 * scale, 0), SCENERY.stone);
+  body.scale.set(1.45, 1.15, 1.25);
+  body.position.y = 0.55 * scale;
   body.castShadow = true;
   g.add(body);
   for (let i = 0; i < 3; i++) {
     const spike = new THREE.Mesh(SPIKE_GEO, SCENERY.stoneDark);
     spike.scale.set(scale, 1.15 * scale, scale);
-    spike.position.set((i - 1) * 0.32 * scale, 0.85 * scale, (i % 2) * 0.18 * scale);
+    spike.position.set((i - 1) * 0.32 * scale, 1.15 * scale, (i % 2) * 0.18 * scale);
     spike.rotation.z = (i - 1) * 0.4;
     spike.rotation.x = (i - 1) * 0.2;
     g.add(spike);
@@ -423,14 +423,19 @@ export function buildWorld(scene) {
     jaggedRock(group, blockers, p.x, p.z, 0.9 + rng() * 1.35);
   }
   const boulders = [
-    [-12, 3, 1.55],
-    [13, 1, 1.45],
-    [16, -11, 1.7],
-    [-16, -11, 1.4],
-    [7, -17, 1.35],
-    [-18, 14, 1.5],
-    [12, 18, 1.3],
-    [-9, 16, 1.2],
+    [-12.5, -3, 2.3],
+    [14, -1, 2.15],
+    [-13, 6, 2.05],
+    [14.5, 5, 2.1],
+    [0, -15, 2.6],
+    [-8, -14, 1.9],
+    [9, -15, 2.0],
+    [-16, -12, 1.7],
+    [17, -12, 1.75],
+    [11, 18, 1.85],
+    [-11, 22, 2.0],
+    [10, 30, 1.65],
+    [-10, 34, 1.75],
   ];
   for (const [x, z, scale] of boulders) jaggedRock(group, blockers, x, z, scale);
   for (const p of scatter(rng, 18, ZONES[2], () => true)) {
