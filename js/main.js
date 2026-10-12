@@ -1,5 +1,5 @@
 // Boot Pyrehold. The page is a canvas plus a DOM HUD; all rules live in js/.
-import { Game } from "./game.js?v=9";
+import { Game } from "./game.js?v=10";
 
 try {
   const game = new Game();

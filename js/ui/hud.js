@@ -3,7 +3,7 @@ import { BUILD_CATS } from "../config/buildings.js";
 import { buildingsInCat } from "../config/buildings.js";
 import { WEAPON_ORDER, WEAPONS, upgradeCost, MAX_WEAPON_LEVEL } from "../config/weapons.js";
 import { SKILL_TREES, MAX_SKILL_RANK } from "../config/skills.js";
-import { TIERS, XP, storageUpgradeCost, AMMO_PACKS } from "../config/balance.js";
+import { TIERS, XP, storageUpgradeCost, AMMO_PACKS } from "../config/balance.js?v=10";
 import { formatNum } from "../core/util.js";
 
 function esc(s) {
@@ -60,7 +60,7 @@ export class HUD {
       <div id="title">
         <div class="title-card">
           <h1>PYRE<span>HOLD</span></h1>
-          <p>A cold pyre on an empty plot. The dropper spits gold coins — walk over them, then stand on a green pad to raise walls. The weaponry sells guns for wood, stone, and gold.</p>
+          <p>A cold pyre in ruined Paris. Haussmann stone stands around the courtyard. The dropper spits gold coins — walk over them, then stand on a green pad to raise walls. Press G to buy ammo. The weaponry sells guns for wood, stone, and gold.</p>
           <div class="actions">
             <button class="primary" data-act="new" type="button">NEW GAME</button>
             <button data-act="continue" id="continueBtn" type="button" hidden>CONTINUE</button>
@@ -312,6 +312,7 @@ export class HUD {
       g.inventory.stone,
       g.inventory.metal,
       g.armory.parts,
+      JSON.stringify(g.armory.ammo),
       g.armory.owned.join(","),
       g.armory.equipped,
       JSON.stringify(g.armory.levels),
@@ -343,7 +344,11 @@ export class HUD {
       return `<div class="row"><div><b>${esc(def.name)}</b> tier ${def.tier}${owned ? " · L" + lvl : ""}<p>${esc(def.blurb)} · DMG ${def.damage}${def.pellets > 1 ? " x" + def.pellets : ""} · ${def.melee ? "melee" : def.fireRate + "/s"}</p></div><div class="actions">${buttons}</div></div>`;
     }).join("");
     const ammo = Object.entries(AMMO_PACKS)
-      .map(([id, pack]) => `<button data-act="ammo" data-id="${id}" type="button">${esc(pack.name)} ${pack.rounds} · ${pack.price}g</button>`)
+      .map(([id, pack]) => {
+        const have = g.armory.ammo[id] || 0;
+        const price = Math.round(pack.price * g.marketBuyMul());
+        return `<div class="row"><div><b>${esc(pack.name)}</b><p>In reserve: ${have}. A pack is ${pack.rounds} rounds.</p></div><div class="actions"><button class="primary" data-act="ammo" data-id="${id}" type="button">BUY ${price}g</button></div></div>`;
+      })
       .join("");
     const sell = ["wood", "stone", "metal"]
       .map((r) => `<button data-act="sell" data-id="${r}" data-n="10" type="button">Sell 10 ${r}</button><button data-act="sell" data-id="${r}" data-n="all" type="button">Sell all ${r}</button>`)
@@ -351,7 +356,7 @@ export class HUD {
     const buy = ["wood", "stone", "metal"]
       .map((r) => `<button data-act="buy-mat" data-id="${r}" type="button">Buy 10 ${r}</button>`)
       .join("");
-    return `<h2>ARMORY & TRADE</h2><p class="keys">Parts: ${g.armory.parts}. Guns also sell at the weaponry stall for wood, stone, and gold. A workshop improves sale prices. An armory discounts guns. Weapon upgrades past level 2 need a workshop.</p>${rows}<div class="actions">${ammo}<button data-act="medkit" type="button">Field kit 80g</button></div><h2>SELL</h2><div class="actions">${sell}</div><h2>BUY MATERIALS</h2><div class="actions">${buy}</div><button data-act="close" type="button">CLOSE</button>`;
+    return `<h2>AMMO</h2><p class="keys">Gold buys rounds for the gun in your hand. Pistol rounds, shells, rifle rounds, rockets, and energy cells.</p>${ammo}<h2>ARMORY & TRADE</h2><p class="keys">Parts: ${g.armory.parts}. Guns also sell at the weaponry stall for wood, stone, and gold. A workshop improves sale prices. An armory discounts guns. Weapon upgrades past level 2 need a workshop.</p>${rows}<div class="actions"><button data-act="medkit" type="button">Field kit 80g</button></div><h2>SELL</h2><div class="actions">${sell}</div><h2>BUY MATERIALS</h2><div class="actions">${buy}</div><button data-act="close" type="button">CLOSE</button>`;
   }
 
   weaponryPanel() {

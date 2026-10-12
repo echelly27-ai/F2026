@@ -1,7 +1,7 @@
 // Grid base. Placement, power, turrets, repairs, and the pyre hearth all
 // live here so combat can ask "what is blocking this zombie?" without
 // knowing how walls are built.
-import { BUILDINGS, buildingsInCat, scaledCost, repairCostOf } from "../config/buildings.js";
+import { BUILDINGS, buildingsInCat, scaledCost, repairCostOf } from "../config/buildings.js?v=10";
 import { TIERS, plotOf } from "../config/balance.js";
 import {
   CELL,
@@ -12,7 +12,7 @@ import {
   aabbFromFootprint,
   dist2,
 } from "../core/util.js";
-import { makeBuildingMesh, tintGhost } from "../world/props.js";
+import { makeBuildingMesh, tintGhost } from "../world/props.js?v=10";
 
 let NEXT_ID = 1;
 
@@ -266,7 +266,7 @@ export class BuildingSystem {
 
   canBreak(b) {
     if (!b || b.destroyed || b.hp <= 0 || b.def.core) return false;
-    return !!(b.def.blocksPlayer || b.def.gate || b.def.style === "wall" || b.def.style === "barricade");
+    return !!(b.def.blocksPlayer || b.def.gate || b.def.style === "wall" || b.def.style === "barricade" || b.def.spike || b.def.burn || b.def.turret);
   }
 
   // The wall you are looking at, or the one you are standing against.
@@ -432,6 +432,7 @@ export class BuildingSystem {
     this.tickGenerators(dt);
     this.tickAcid(dt);
     this.tickShock(dt);
+    this.tickAuras(dt);
     this.tickTurrets(dt);
     this.animate(dt);
   }
@@ -471,6 +472,28 @@ export class BuildingSystem {
       const dps = b.acid;
       b.acid = Math.max(0, b.acid - dt * 4);
       this.game.combat.damageBuilding(b, dps * dt, { acid: true });
+    }
+  }
+
+  tickAuras(dt) {
+    for (const b of this.list) {
+      if (b.destroyed) continue;
+      const spike = b.def.spike || 0;
+      const burn = b.def.burn || 0;
+      if (!spike && !burn) continue;
+      const radius = spike ? b.def.spikeRadius || 1.35 : b.def.burnRadius || 3.6;
+      const reach = radius * radius;
+      const x = b.mesh.position.x;
+      const z = b.mesh.position.z;
+      for (const zombie of this.game.zombies.list) {
+        if (!zombie.alive) continue;
+        if (dist2(zombie.x, zombie.z, x, z) > reach) continue;
+        this.game.combat.damageZombie(zombie, (spike || burn) * dt, {
+          source: spike ? "spike" : "fire",
+          pierce: true,
+          silent: true,
+        });
+      }
     }
   }
 
@@ -531,7 +554,7 @@ export class BuildingSystem {
 
   muzzle(b) {
     const style = b.def.style;
-    const y = style === "tower" ? 3.05 : style === "missile" ? 2.1 : 1.5;
+    const y = style === "tower" ? 3.05 : style === "missile" ? 2.1 : style === "mortar" ? 0.85 : style === "ballista" ? 1.15 : 1.5;
     const local = b._muzzle || (b._muzzle = b.mesh.position.clone());
     local.set(0, y, -0.7);
     return b.mesh.localToWorld(local);

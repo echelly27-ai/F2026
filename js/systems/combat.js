@@ -236,12 +236,30 @@ export class Combat {
     const dir = new THREE.Vector3(target.x - origin.x, aimY - origin.y, target.z - origin.z);
     if (dir.lengthSq() < 0.01) return;
     dir.normalize();
-    const d = this.spread(dir, stats.kind === "sniper" ? 0.004 : 0.02);
+    if (stats.kind === "shotgun") {
+      const pellets = stats.pellets || 6;
+      for (let i = 0; i < pellets; i++) {
+        const pellet = this.spread(dir, 0.14);
+        this.hitscan(origin, pellet, stats.range, {
+          damage: stats.damage,
+          pierce: false,
+          crit: false,
+          headMul: 1.1,
+          owner: "turret",
+          ignoreBid: building.id,
+          color: 0xffc14a,
+        });
+      }
+      this.game.audio.play("shotgun");
+      this.game.fx.muzzleFlash(origin);
+      return;
+    }
+    const d = this.spread(dir, stats.kind === "sniper" ? 0.004 : stats.kind === "bolt" ? 0.012 : 0.02);
     if (stats.kind === "rocket") {
       this.launch({
         origin,
         dir: d,
-        speed: 22,
+        speed: stats.speed || 22,
         damage: stats.damage,
         splash: stats.splash || 3,
         range: stats.range,
@@ -254,14 +272,14 @@ export class Combat {
     } else {
       this.hitscan(origin, d, stats.range, {
         damage: stats.damage,
-        pierce: stats.kind === "sniper" || stats.kind === "laser",
+        pierce: stats.kind === "sniper" || stats.kind === "laser" || stats.kind === "bolt",
         crit: false,
         headMul: stats.kind === "sniper" ? 1.6 : 1.2,
         owner: "turret",
         ignoreBid: building.id,
-        color: stats.kind === "laser" ? 0xff6a3a : stats.kind === "sniper" ? 0xfff2c4 : 0xffe08a,
+        color: stats.kind === "laser" ? 0xff6a3a : stats.kind === "bolt" ? 0xd7c4a2 : stats.kind === "sniper" ? 0xfff2c4 : 0xffe08a,
       });
-      this.game.audio.play(stats.kind === "laser" ? "energy" : stats.kind === "sniper" ? "sniper" : "auto");
+      this.game.audio.play(stats.kind === "laser" ? "energy" : stats.kind === "sniper" || stats.kind === "bolt" ? "sniper" : "auto");
     }
     this.game.fx.muzzleFlash(origin);
   }
@@ -425,9 +443,11 @@ export class Combat {
     z.hp -= dmg;
     z.hitFlash = 0.12;
     z.aggro = true;
-    const label = Math.max(1, Math.round(dmg)) + (info.headshot ? " HEAD" : info.crit ? " CRIT" : "");
-    const color = info.headshot ? "#ffb13a" : info.crit ? "#ffd27a" : "#f4efe4";
-    this.game.fx.floatText(new THREE.Vector3(z.x, (z.def.height || 1.6) + 0.3, z.z), label, color);
+    if (!info.silent) {
+      const label = Math.max(1, Math.round(dmg)) + (info.headshot ? " HEAD" : info.crit ? " CRIT" : "");
+      const color = info.headshot ? "#ffb13a" : info.crit ? "#ffd27a" : "#f4efe4";
+      this.game.fx.floatText(new THREE.Vector3(z.x, (z.def.height || 1.6) + 0.3, z.z), label, color);
+    }
     if (info.source === "player") this.game.audio.play(info.headshot ? "head" : "hit");
     if (z.hp <= 0) this.game.zombies.kill(z);
     return dmg;

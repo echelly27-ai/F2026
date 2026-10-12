@@ -8,11 +8,11 @@ const STEPS = [
   },
   {
     id: "wood",
-    text: "Walk up to a pine and hold E to chop wood.",
+    text: "Walk up to a plane tree and hold E to chop wood.",
   },
   {
     id: "stone",
-    text: "Hold E on a grey rock to gather stone. The quarry east has much more.",
+    text: "Hold E on pale limestone to gather stone. The Montmartre cut to the east has much more.",
   },
   {
     id: "metal",
@@ -28,7 +28,7 @@ const STEPS = [
   },
   {
     id: "defense",
-    text: "Build a Barricade or a Watchtower. Crawlers slip under barricades — walls stop them.",
+    text: "Build a Barricade, Watchtower, Spike Trap, Ballista, Scatter Gun, Flame Cask, or Mortar Pit. Crawlers slip under barricades — walls stop them.",
   },
   {
     id: "weapon",

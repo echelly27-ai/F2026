@@ -201,6 +201,58 @@ export function makeBuildingMesh(def) {
       dome.name = "flame";
       break;
     }
+    case "spikes": {
+      add(g, boxG(1.7, 0.08, 1.7), trim, 0, 0.04, 0);
+      for (const [x, z] of [[-0.45, -0.45], [0, -0.5], [0.45, -0.4], [-0.5, 0.1], [0.15, 0.15], [0.5, 0.45], [-0.15, 0.5]]) {
+        const spike = add(g, new THREE.ConeGeometry(0.08, 0.55, 5), metal, x, 0.32, z);
+        spike.castShadow = true;
+      }
+      break;
+    }
+    case "cask": {
+      const barrel = add(g, new THREE.CylinderGeometry(0.38, 0.42, 0.7, 8), trim, 0, 0.4, 0);
+      barrel.castShadow = true;
+      const hoop = add(g, new THREE.TorusGeometry(0.4, 0.04, 5, 8), metal, 0, 0.55, 0);
+      hoop.rotation.x = Math.PI / 2;
+      const flame = add(
+        g,
+        new THREE.ConeGeometry(0.22, 0.7, 6),
+        mat(0xff7a32, { emissive: 0xff4a10, emissiveIntensity: 1 }),
+        0,
+        0.95,
+        0
+      );
+      flame.name = "flame";
+      break;
+    }
+    case "ballista": {
+      add(g, boxG(1.3, 0.16, 0.7), trim, 0, 0.55, 0);
+      add(g, boxG(0.1, 0.7, 0.1), main, -0.45, 0.35, 0);
+      add(g, boxG(0.1, 0.7, 0.1), main, 0.45, 0.35, 0);
+      const bow = add(g, boxG(0.1, 0.9, 0.1), metal, 0, 0.95, -0.28);
+      bow.rotation.z = 0.4;
+      const bow2 = add(g, boxG(0.1, 0.9, 0.1), metal, 0, 0.95, -0.28);
+      bow2.rotation.z = -0.4;
+      const bolt = add(g, boxG(0.06, 0.06, 0.9), mat(0xd7c4a2), 0, 0.85, -0.15);
+      bolt.name = "barrel";
+      break;
+    }
+    case "scatter": {
+      add(g, boxG(1.1, 0.7, 0.7), main, 0, 0.4, 0);
+      add(g, boxG(0.9, 0.16, 0.9), trim, 0, 0.8, 0);
+      for (const x of [-0.22, 0, 0.22]) {
+        const barrel = add(g, boxG(0.1, 0.1, 0.7), metal, x, 0.95, -0.35);
+        barrel.name = "barrel";
+      }
+      break;
+    }
+    case "mortar": {
+      add(g, new THREE.CylinderGeometry(0.7, 0.8, 0.28, 8), trim, 0, 0.14, 0);
+      const tube = add(g, new THREE.CylinderGeometry(0.18, 0.24, 0.85, 8), metal, 0, 0.55, 0);
+      tube.rotation.x = 0.7;
+      tube.name = "barrel";
+      break;
+    }
     case "pyre": {
       add(g, new THREE.CylinderGeometry(1.5, 1.7, 0.45, 8), trim, 0, 0.22, 0);
       add(g, boxG(0.3, 0.9, 0.3), main, 0, 0.7, 0);

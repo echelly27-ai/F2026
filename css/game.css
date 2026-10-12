@@ -107,6 +107,7 @@ button, input { font-family: inherit; }
   display: none;
 }
 .buildbar .cats, .buildbar .items { display: flex; gap: 8px; flex-wrap: wrap; }
+.buildbar .items { max-height: 42vh; overflow: auto; }
 .buildbar .items button { text-align: left; min-width: 140px; }
 .buildbar button .cost { color: var(--brass); font-size: 12px; }
 .buildbar button.bad { opacity: 0.55; }
