@@ -236,6 +236,30 @@ export class Combat {
     const dir = new THREE.Vector3(target.x - origin.x, aimY - origin.y, target.z - origin.z);
     if (dir.lengthSq() < 0.01) return;
     dir.normalize();
+    if (stats.kind === "flame") {
+      const yaw = building.mesh.rotation.y;
+      const fx = -Math.sin(yaw);
+      const fz = -Math.cos(yaw);
+      const x = building.mesh.position.x;
+      const z = building.mesh.position.z;
+      let hit = false;
+      for (const zombie of this.game.zombies.list) {
+        if (!zombie.alive) continue;
+        const dx = zombie.x - x;
+        const dz = zombie.z - z;
+        const along = dx * fx + dz * fz;
+        if (along < 0.3 || along > stats.range) continue;
+        const side = Math.abs(dx * fz - dz * fx);
+        if (side > 0.55 + along * 0.45) continue;
+        this.damageZombie(zombie, stats.damage, { source: "fire", pierce: true, silent: true });
+        hit = true;
+      }
+      if (hit) {
+        this.game.audio.play("energy");
+        this.game.fx.muzzleFlash(origin);
+      }
+      return;
+    }
     if (stats.kind === "shotgun") {
       const pellets = stats.pellets || 6;
       for (let i = 0; i < pellets; i++) {

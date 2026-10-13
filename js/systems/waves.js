@@ -1,7 +1,7 @@
 // Day is preparation. Night is the raid. The clock lives here so the
 // day/night lighting and the zombie spawner stay in agreement.
 import { LANES, WAVE } from "../config/balance.js";
-import { getWave } from "../config/waves.js";
+import { getWave } from "../config/waves.js?v=12";
 import { mulberry32 } from "../core/util.js";
 
 export class Waves {
@@ -43,7 +43,7 @@ export class Waves {
       if (this.number === 1) {
         this.game.hud.announce(
           "DAYLIGHT",
-          "Farm wood, stone, and metal. Night falls in five minutes — press T when you are ready."
+          "Farm wood, stone, and metal. Night falls in fifty seconds — press T when you are ready."
         );
       } else {
         this.game.hud.announce(

@@ -1,7 +1,7 @@
 // Grid base. Placement, power, turrets, repairs, and the pyre hearth all
 // live here so combat can ask "what is blocking this zombie?" without
 // knowing how walls are built.
-import { BUILDINGS, buildingsInCat, scaledCost, repairCostOf } from "../config/buildings.js?v=10";
+import { BUILDINGS, buildingsInCat, scaledCost, repairCostOf } from "../config/buildings.js?v=12";
 import { TIERS, plotOf } from "../config/balance.js";
 import {
   CELL,
@@ -12,7 +12,7 @@ import {
   aabbFromFootprint,
   dist2,
 } from "../core/util.js";
-import { makeBuildingMesh, tintGhost } from "../world/props.js?v=10";
+import { makeBuildingMesh, tintGhost } from "../world/props.js?v=12";
 
 let NEXT_ID = 1;
 
@@ -266,16 +266,33 @@ export class BuildingSystem {
 
   canBreak(b) {
     if (!b || b.destroyed || b.hp <= 0 || b.def.core) return false;
-    return !!(b.def.blocksPlayer || b.def.gate || b.def.style === "wall" || b.def.style === "barricade" || b.def.spike || b.def.burn || b.def.turret);
+    return true;
   }
 
-  // The wall you are looking at, or the one you are standing against.
+  // The building under the crosshair, or the one you are standing against.
   breakTarget() {
-    const looked = this.lookedAt(7);
+    const ray = this.game.combat && this.game.combat.aimRay();
+    if (ray) {
+      const hits = ray.intersectObjects(this.game.raycastables, true);
+      for (const hit of hits) {
+        if (hit.distance > 9) break;
+        let o = hit.object;
+        while (o) {
+          const id = o.userData && o.userData.bid;
+          if (id != null) {
+            const b = this.byId.get(id);
+            if (this.canBreak(b)) return b;
+            break;
+          }
+          o = o.parent;
+        }
+      }
+    }
+    const looked = this.lookedAt(8);
     if (this.canBreak(looked)) return looked;
     const p = this.game.player.pos;
     let best = null;
-    let bestD = 2.35 * 2.35;
+    let bestD = 3.2 * 3.2;
     for (const b of this.list) {
       if (!this.canBreak(b)) continue;
       const d = dist2(p.x, p.z, b.mesh.position.x, b.mesh.position.z);
@@ -290,7 +307,7 @@ export class BuildingSystem {
   demolishLooked() {
     const b = this.breakTarget();
     if (!b) {
-      this.game.notify("Stand by a wall and press X to break it", "bad");
+      this.game.notify("Look at a wall, barricade, or other building and press X", "bad");
       return;
     }
     const refund = scaledCost(b.def.cost, 0.5);
@@ -540,8 +557,15 @@ export class BuildingSystem {
     let bestScore = Infinity;
     for (const z of zombies) {
       if (!z.alive || z.wild && !z.aggro) continue;
-      const d = Math.hypot(z.x - b.mesh.position.x, z.z - b.mesh.position.z);
+      const dx = z.x - b.mesh.position.x;
+      const dz = z.z - b.mesh.position.z;
+      const d = Math.hypot(dx, dz);
       if (d > stats.range) continue;
+      if (stats.kind === "flame") {
+        const yaw = b.mesh.rotation.y;
+        const along = dx * -Math.sin(yaw) + dz * -Math.cos(yaw);
+        if (along < 0.3) continue;
+      }
       let score = d;
       if (stats.priority === "big" && (z.def.big || z.def.boss || z.def.explode)) score -= 20;
       if (score < bestScore) {
@@ -554,7 +578,13 @@ export class BuildingSystem {
 
   muzzle(b) {
     const style = b.def.style;
-    const y = style === "tower" ? 3.05 : style === "missile" ? 2.1 : style === "mortar" ? 0.85 : style === "ballista" ? 1.15 : 1.5;
+    const y =
+      style === "tower" ? 3.05
+      : style === "missile" ? 2.1
+      : style === "mortar" ? 0.85
+      : style === "ballista" || style === "cannon" ? 1.15
+      : style === "jet" || style === "sentry" || style === "repeater" ? 1.25
+      : 1.5;
     const local = b._muzzle || (b._muzzle = b.mesh.position.clone());
     local.set(0, y, -0.7);
     return b.mesh.localToWorld(local);

@@ -28,7 +28,7 @@ const STEPS = [
   },
   {
     id: "defense",
-    text: "Build a Barricade, Watchtower, Spike Trap, Ballista, Scatter Gun, Flame Cask, or Mortar Pit. Crawlers slip under barricades — walls stop them.",
+    text: "Build a Barricade, Watchtower, Sentry Post, Stake Row, Flame Jet, Ballista, or Mortar Pit. Crawlers slip under barricades — walls stop them.",
   },
   {
     id: "weapon",
@@ -36,7 +36,7 @@ const STEPS = [
   },
   {
     id: "wave",
-    text: "The first night waits five minutes. Farm first, or press T to call it early. Press X to break a wall. Repair with F.",
+    text: "The next night waits fifty seconds. Farm first, or press T to call it early. Press X to break walls, barricades, and other buildings. Repair with F.",
   },
   {
     id: "upgrade",
@@ -90,7 +90,28 @@ export class Tutorial {
     if (step.id === "gold") pass = (s.goldEarned || 0) >= 40;
     if (step.id === "wall") pass = (s.built.wood_wall || 0) + (s.built.stone_wall || 0) + (s.built.wood_gate || 0) >= 1;
     if (step.id === "defense") {
-      pass = ["barricade", "watchtower", "stone_tower", "mg_turret", "electric_fence"].some((id) => (s.built[id] || 0) > 0);
+      pass = [
+        "barricade",
+        "watchtower",
+        "stone_tower",
+        "mg_turret",
+        "electric_fence",
+        "spike_trap",
+        "flame_cask",
+        "ballista",
+        "scatter_gun",
+        "mortar_pit",
+        "sentry",
+        "stake_row",
+        "flame_jet",
+        "repeater",
+        "cannon",
+        "sniper_tower",
+        "rocket_turret",
+        "auto_turret",
+        "laser_turret",
+        "missile_defense",
+      ].some((id) => (s.built[id] || 0) > 0);
     }
     if (step.id === "weapon") pass = this.game.armory.owned.includes("pistol");
     if (step.id === "wave") pass = (s.wavesCleared || 0) >= 1;

@@ -253,6 +253,56 @@ export function makeBuildingMesh(def) {
       tube.name = "barrel";
       break;
     }
+    case "sentry": {
+      add(g, boxG(1.2, 1.15, 1.05), main, 0, 0.6, 0);
+      add(g, boxG(1.35, 0.14, 1.2), roof, 0, 1.22, 0);
+      const slit = add(g, boxG(0.55, 0.16, 0.55), metal, 0, 0.85, -0.45);
+      slit.name = "barrel";
+      break;
+    }
+    case "stakes": {
+      add(g, boxG(3.4, 0.08, 1.15), trim, 0, 0.04, 0);
+      for (let i = 0; i < 7; i++) {
+        const spike = add(g, new THREE.ConeGeometry(0.09, 0.7, 5), metal, -1.35 + i * 0.45, 0.38, (i % 2) * 0.18 - 0.08);
+        spike.castShadow = true;
+      }
+      break;
+    }
+    case "jet": {
+      add(g, boxG(0.9, 0.7, 0.7), main, 0, 0.4, 0);
+      const nozzle = add(g, new THREE.CylinderGeometry(0.12, 0.2, 0.7, 6), metal, 0, 0.85, -0.35);
+      nozzle.rotation.x = Math.PI / 2;
+      nozzle.name = "barrel";
+      const flame = add(
+        g,
+        new THREE.ConeGeometry(0.16, 0.45, 6),
+        mat(0xff7a32, { emissive: 0xff4a10, emissiveIntensity: 1 }),
+        0,
+        0.85,
+        -0.85
+      );
+      flame.rotation.x = Math.PI / 2;
+      flame.name = "flame";
+      break;
+    }
+    case "repeater": {
+      add(g, boxG(1.15, 0.9, 0.7), main, 0, 0.5, 0);
+      add(g, boxG(1.3, 0.12, 0.85), roof, 0, 1.05, 0);
+      for (const y of [0.7, 0.95]) {
+        const rail = add(g, boxG(0.08, 0.08, 0.85), metal, 0, y, -0.4);
+        rail.name = "barrel";
+      }
+      break;
+    }
+    case "cannon": {
+      add(g, boxG(1.2, 0.35, 0.9), trim, 0, 0.45, 0);
+      const tube = add(g, new THREE.CylinderGeometry(0.22, 0.28, 1.15, 8), metal, 0, 0.85, -0.35);
+      tube.rotation.x = Math.PI / 2;
+      tube.name = "barrel";
+      add(g, boxG(0.16, 0.55, 0.16), main, -0.4, 0.28, 0.2);
+      add(g, boxG(0.16, 0.55, 0.16), main, 0.4, 0.28, 0.2);
+      break;
+    }
     case "pyre": {
       add(g, new THREE.CylinderGeometry(1.5, 1.7, 0.45, 8), trim, 0, 0.22, 0);
       add(g, boxG(0.3, 0.9, 0.3), main, 0, 0.7, 0);
