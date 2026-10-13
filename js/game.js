@@ -24,7 +24,7 @@ import { Tutorial } from "./systems/tutorial.js?v=12";
 import { Tycoon } from "./systems/tycoon.js?v=9";
 import { Weaponry } from "./systems/weaponry.js";
 import { createCommands } from "./net/commands.js";
-import { HUD } from "./ui/hud.js?v=12";
+import { HUD } from "./ui/hud.js?v=13";
 import { Juice } from "./fx/juice.js";
 import { buildWorld } from "./world/map.js?v=11";
 

@@ -1,6 +1,5 @@
 // DOM HUD. The simulation never writes text itself; it asks the HUD to.
-import { BUILD_CATS } from "../config/buildings.js";
-import { buildingsInCat } from "../config/buildings.js";
+import { BUILD_CATS, buildingsInCat } from "../config/buildings.js?v=12";
 import { WEAPON_ORDER, WEAPONS, upgradeCost, MAX_WEAPON_LEVEL } from "../config/weapons.js";
 import { SKILL_TREES, MAX_SKILL_RANK } from "../config/skills.js";
 import { TIERS, XP, storageUpgradeCost, AMMO_PACKS } from "../config/balance.js?v=11";
