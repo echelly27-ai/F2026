@@ -62,4 +62,4 @@ GitHub Pages serves the static export at [https://echelly27-ai.github.io/F2026/]
 
 ## Photography
 
-Arena images are stored in `public/images`. Prospect pages use `public/images/fallback.jpg` because the ranking page did not provide a stable portrait URL to store. If an image fails to load, the UI uses that same fallback.
+Arena images and prospect photos are stored in `public/images`. Prospect photos are the public 247Sports recruiting pictures saved in the repo. Yohane Kabongo and Anthony Brown still use `public/images/fallback.jpg` because a verified public photo was not found. If an image fails to load, the UI uses that same fallback.

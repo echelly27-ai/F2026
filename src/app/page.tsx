@@ -109,7 +109,7 @@ export default function HomePage() {
               </h2>
               <p className="mt-2 max-w-xl text-sm text-mist">
                 The first three names on the ESPN 2027 SC Next 100 checked October 19, 2026. Rankings change.
-                Photos here are a generic fallback, not portraits.
+                Photos are the public 247Sports recruiting pictures when one was available.
               </p>
             </div>
             <ButtonLink href="/players" variant="secondary">

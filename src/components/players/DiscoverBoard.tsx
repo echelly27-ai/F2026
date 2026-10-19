@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Container, PageHeader } from "@/components/layout/Container";
+import { SafeImage } from "@/components/ui/SafeImage";
 import { PlayerCard } from "@/components/players/PlayerCard";
 import { Button } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -207,6 +208,9 @@ export function DiscoverBoard() {
               <thead className="bg-navy text-xs uppercase tracking-wide text-mist">
                 <tr>
                   <th scope="col" className="px-3 py-3 font-semibold">
+                    Photo
+                  </th>
+                  <th scope="col" className="px-3 py-3 font-semibold">
                     Rank
                   </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
@@ -246,6 +250,14 @@ export function DiscoverBoard() {
                   const report = safeHttpsUrl(player.reportUrl);
                   return (
                     <tr key={player.id} className="border-t border-line">
+                      <td className="px-3 py-2">
+                        <SafeImage
+                          src={player.photo}
+                          alt={player.photoAlt}
+                          frameClassName="h-14 w-11"
+                          sizes="44px"
+                        />
+                      </td>
                       <td className="px-3 py-3 font-semibold text-lime">{player.rank}</td>
                       <th scope="row" className="px-3 py-3 font-medium text-paper">
                         <Link href={`/players/${player.id}`} className="hover:text-lime">
