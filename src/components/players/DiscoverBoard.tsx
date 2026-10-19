@@ -200,16 +200,13 @@ export function DiscoverBoard() {
         </div>
       ) : (
         <>
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-line">
-            <table className="w-full min-w-[1080px] border-collapse text-left text-sm">
+          <div className="mt-4 overflow-x-auto rounded-2xl border border-line bg-ink">
+            <table className="w-full min-w-[980px] border-collapse text-left text-sm">
               <caption className="sr-only">
                 Publicly listed rows from the {RANKING_SOURCE.title}, checked {RANKING_SOURCE.checkedOn}
               </caption>
-              <thead className="bg-navy text-xs uppercase tracking-wide text-mist">
+              <thead className="bg-navy text-[11px] uppercase tracking-[0.14em] text-mist">
                 <tr>
-                  <th scope="col" className="px-3 py-3 font-semibold">
-                    Photo
-                  </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
                     Rank
                   </th>
@@ -217,16 +214,16 @@ export function DiscoverBoard() {
                     Player
                   </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
-                    Pos
+                    Position
                   </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
                     Hometown
                   </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
-                    Ht
+                    Height
                   </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
-                    Wt
+                    Weight
                   </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
                     Stars
@@ -238,9 +235,6 @@ export function DiscoverBoard() {
                     School
                   </th>
                   <th scope="col" className="px-3 py-3 font-semibold">
-                    Listed commitment
-                  </th>
-                  <th scope="col" className="px-3 py-3 font-semibold">
                     Links
                   </th>
                 </tr>
@@ -248,47 +242,51 @@ export function DiscoverBoard() {
               <tbody>
                 {players.map((player) => {
                   const report = safeHttpsUrl(player.reportUrl);
+                  const video = player.videoUrl ? safeHttpsUrl(player.videoUrl) : null;
                   return (
-                    <tr key={player.id} className="border-t border-line">
-                      <td className="px-3 py-2">
-                        <SafeImage
-                          src={player.photo}
-                          alt={player.photoAlt}
-                          frameClassName="h-14 w-11"
-                          sizes="44px"
-                        />
-                      </td>
-                      <td className="px-3 py-3 font-semibold text-lime">{player.rank}</td>
-                      <th scope="row" className="px-3 py-3 font-medium text-paper">
-                        <Link href={`/players/${player.id}`} className="hover:text-lime">
-                          {player.name}
-                        </Link>
-                      </th>
-                      <td className="px-3 py-3 text-paper">{player.positionAbbr}</td>
-                      <td className="px-3 py-3 text-paper">{player.hometown}</td>
-                      <td className="px-3 py-3 text-paper">{formatHeight(player.heightInches)}</td>
-                      <td className="px-3 py-3 text-paper">{player.weight}</td>
-                      <td className="px-3 py-3 text-paper">{player.stars}</td>
-                      <td className="px-3 py-3 text-paper">{player.grade}</td>
-                      <td className="px-3 py-3 text-paper">{player.school}</td>
-                      <td className="px-3 py-3 text-mist">
-                        {player.listedCommitment
-                          ? `${player.listedCommitment.school} · ${player.listedCommitment.date}`
-                          : "—"}
-                      </td>
-                      <td className="px-3 py-3">
-                        <div className="flex flex-col gap-1">
-                          <Link href={`/players/${player.id}`} className="text-lime hover:text-lime-2">
-                            Profile
+                    <tr key={player.id} className="border-t border-line odd:bg-ink even:bg-navy/60">
+                      <td className="px-3 py-2 font-display text-2xl text-lime">{player.rank}</td>
+                      <th scope="row" className="px-3 py-2 font-medium text-paper">
+                        <div className="flex items-center gap-3">
+                          <SafeImage
+                            src={player.photo}
+                            alt=""
+                            frameClassName="h-12 w-10 shrink-0 rounded-md"
+                            sizes="40px"
+                          />
+                          <Link href={`/players/${player.id}`} className="hover:text-lime">
+                            {player.name}
                           </Link>
+                        </div>
+                      </th>
+                      <td className="px-3 py-2 font-semibold text-paper" title={player.position}>
+                        {player.positionAbbr}
+                      </td>
+                      <td className="px-3 py-2 text-paper">{player.hometown}</td>
+                      <td className="px-3 py-2 text-paper">{formatHeight(player.heightInches)}</td>
+                      <td className="px-3 py-2 text-paper">{player.weight}</td>
+                      <td className="px-3 py-2">
+                        <span aria-label={`${player.stars} stars`} className="text-lime">
+                          {"★".repeat(player.stars)}
+                          <span className="text-line">{"★".repeat(Math.max(0, 5 - player.stars))}</span>
+                        </span>
+                      </td>
+                      <td className="px-3 py-2 font-semibold text-paper">{player.grade}</td>
+                      <td className="px-3 py-2 text-paper">{player.school}</td>
+                      <td className="px-3 py-2">
+                        <div className="flex flex-col gap-1">
+                          {video ? (
+                            <a href={video} className="text-lime hover:text-lime-2" target="_blank" rel="noopener noreferrer">
+                              Video
+                            </a>
+                          ) : null}
                           {report ? (
                             <a href={report} className="text-lime hover:text-lime-2" target="_blank" rel="noopener noreferrer">
-                              Report
+                              Scouting report
                             </a>
                           ) : (
-                            <span className="text-mist">No report link</span>
+                            <span className="text-mist">—</span>
                           )}
-                          <span className="text-mist">No video URL</span>
                         </div>
                       </td>
                     </tr>
