@@ -41,6 +41,3 @@ export function isHudlUrl(value: string) {
   const host = new URL(safe).hostname;
   return host === "hudl.com" || host.endsWith(".hudl.com");
 }
-
-export const SAMPLE_FILM_NOTE =
-  "Sample public skills video for this layout. It is not film of the fictional player.";

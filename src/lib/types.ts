@@ -29,38 +29,32 @@ export interface Highlight {
   url: string;
 }
 
-export interface PlayerStats {
-  ppg: number;
-  rpg: number;
-  apg: number;
-  spg: number;
-  bpg: number;
-  fgPct: number;
-  threePct: number;
-  ftPct: number;
-  games: number;
+export interface ListedCommitment {
+  school: string;
+  date: string;
 }
 
-export interface DemoPlayer {
+export interface Prospect {
   id: string;
+  rank: number;
   name: string;
   position: Position;
+  positionAbbr: "PG" | "SG" | "SF" | "PF" | "C";
   heightInches: number;
+  weight: number;
+  stars: number;
+  grade: number;
   gradYear: number;
   city: string;
   state: string;
+  hometown: string;
   school: string;
-  gpa: number | null;
-  sat: number | null;
-  intendedMajor: string;
+  listedCommitment: ListedCommitment | null;
   photo: string;
   photoAlt: string;
-  stats: PlayerStats;
-  strengths: string[];
-  playingStyle: string;
-  highlights: Highlight[];
-  collegeInterests: string[];
-  bio: string;
+  profileUrl: string;
+  reportUrl: string;
+  videoUrl: string | null;
 }
 
 export interface AthleteProfile {

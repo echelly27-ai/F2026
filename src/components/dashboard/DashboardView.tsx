@@ -7,7 +7,7 @@ import { ProfileForm } from "@/components/dashboard/ProfileForm";
 import { Container } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { getPlayer } from "@/lib/demo-players";
+import { getPlayer } from "@/lib/prospects";
 import { nextFollowUp, profileCompletion, statusCounts } from "@/lib/board";
 import { formatDate, formatHeightParts, formatWhen, locationLabel } from "@/lib/format";
 
@@ -212,7 +212,7 @@ export function DashboardView() {
                 Open recruiting tracker
               </ButtonLink>
               <ButtonLink href="/players" variant="secondary">
-                Browse demonstration players
+                Browse the public list
               </ButtonLink>
             </div>
           </section>
@@ -297,7 +297,7 @@ export function DashboardView() {
           </h2>
           {savedPlayers.length === 0 ? (
             <p className="mt-3 text-sm text-mist">
-              Save interest on a demonstration profile and it will show up here.
+              Save interest on a public profile and it will show up here. Your own profile stays on this board.
             </p>
           ) : (
             <ul className="mt-4 space-y-3">

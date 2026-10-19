@@ -1,6 +1,6 @@
 # NEXTUP
 
-NEXTUP is a basketball recruiting workspace. Athletes can keep a profile, film links, a checklist, and the schools they are researching in one place. The discovery roster is fictional demonstration data.
+NEXTUP is a basketball recruiting workspace. Athletes can keep a profile, film links, a checklist, and the schools they are researching in one place. The public directory is the ESPN 2027 SC Next 100 as listed on October 19, 2026: https://www.espn.com/college-sports/basketball/recruiting/playerrankings/_/class/2027/view/scouts100
 
 No credentials are required to use the app.
 
@@ -23,14 +23,14 @@ npm run lint
 
 ## What works without setup
 
-- Landing page, discovery, and individual demonstration profiles
-- Search, filters, and sort on the player board
+- Landing page, the public 2027 directory, and individual prospect profiles
+- Search, filters, and sort on the ranking table and cards
 - Demo sign-in (name and email stored in this browser only; no demo password)
 - Dashboard profile editing, completion percentage, checklist, film links, and saved players
 - College tracker with statuses Interested, Contacted, and Evaluating
 - Local persistence in `localStorage` (`nextup-board-v1` and `nextup-session-v1`)
 
-Demonstration players are not real athletes. Statistics, academics, and school names on those profiles are sample content. Outreach dates are dates you enter yourself. The app does not invent offers or coach contacts.
+Directory facts come from that public ranking table: rank, name, position, hometown, high school, height, weight, stars, and grade. A commitment is shown only when that row lists one. GPA, season statistics, and highlight URLs were not published as data on the rows, so those fields stay blank. Scouting reports link out to ESPN instead of being copied. Your dashboard profile is separate and does not overwrite a prospect. Outreach dates are dates you enter yourself. The app does not invent offers or coach contacts.
 
 ## Optional Supabase
 
@@ -58,4 +58,4 @@ Then run the SQL in `supabase/schema.sql` in the Supabase SQL editor. It creates
 
 ## Photography
 
-Player and arena images are stored in `public/images` so the pages do not depend on a remote image host at runtime. Sources are Unsplash and Pexels. If a file fails to load, the UI falls back to `public/images/fallback.jpg`.
+Arena images are stored in `public/images`. Prospect pages use `public/images/fallback.jpg` because the ranking page did not provide a stable portrait URL to store. If an image fails to load, the UI uses that same fallback.
