@@ -47,6 +47,10 @@ Use the anon public key only. Do not create a `NEXT_PUBLIC_` variable for the se
 
 Then run the SQL in `supabase/schema.sql` in the Supabase SQL editor. It creates `athlete_boards` with row level security so a signed-in user can read and write only their own row. Email confirmation depends on your Supabase Auth settings. If confirmation is required, create the account, confirm the email, then sign in. Demo mode still works beside that.
 
+## Live site
+
+GitHub Pages serves the static export at [https://echelly27-ai.github.io/F2026/](https://echelly27-ai.github.io/F2026/). Pushes to `main` run `.github/workflows/pages.yml` with `GITHUB_PAGES=true`, which sets `basePath` to `/F2026`. A normal `npm run build` stays a standard Next.js build for Vercel.
+
 ## Publish with GitHub and Vercel
 
 1. Push this repository to GitHub.
