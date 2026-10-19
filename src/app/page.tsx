@@ -3,7 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { PlayerCard } from "@/components/players/PlayerCard";
 import { ButtonLink } from "@/components/ui/Button";
 import { SafeImage } from "@/components/ui/SafeImage";
-import { DEMO_PLAYERS } from "@/lib/demo-players";
+import { PROSPECTS } from "@/lib/prospects";
 
 const BENEFITS = [
   {
@@ -14,7 +14,7 @@ const BENEFITS = [
   {
     icon: Search,
     title: "A scouting board",
-    text: "Search the demonstration roster by position, class, height, and location.",
+    text: "Search the public 2027 ranking by position, class, height, location, school, rank, and stars.",
   },
   {
     icon: Target,
@@ -23,8 +23,8 @@ const BENEFITS = [
   },
   {
     icon: Shield,
-    title: "Honest sample data",
-    text: "Featured players are fictional. NEXTUP does not invent offers or coach contacts.",
+    title: "Published facts only",
+    text: "Directory profiles use the public ranking row. Missing stats stay blank. NEXTUP does not invent offers or coach contacts.",
   },
 ];
 
@@ -47,7 +47,7 @@ const STEPS = [
 ];
 
 export default function HomePage() {
-  const featured = DEMO_PLAYERS.slice(0, 3);
+  const featured = PROSPECTS.slice(0, 3);
 
   return (
     <>
@@ -74,7 +74,7 @@ export default function HomePage() {
             <dl className="mt-8 grid max-w-lg grid-cols-3 gap-3 text-sm">
               <div>
                 <dt className="text-mist">Profiles</dt>
-                <dd className="mt-1 font-semibold text-paper">10 fictional</dd>
+                <dd className="mt-1 font-semibold text-paper">100 public</dd>
               </div>
               <div>
                 <dt className="text-mist">Your board</dt>
@@ -105,10 +105,11 @@ export default function HomePage() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Featured</p>
               <h2 id="featured-heading" className="mt-2 font-display text-5xl uppercase text-paper">
-                Demonstration profiles
+                Top of the public list
               </h2>
               <p className="mt-2 max-w-xl text-sm text-mist">
-                Fictional athletes for the product demo. Not real recruits and not real achievements.
+                The first three names on the ESPN 2027 SC Next 100 checked October 19, 2026. Rankings change.
+                Photos here are a generic fallback, not portraits.
               </p>
             </div>
             <ButtonLink href="/players" variant="secondary">

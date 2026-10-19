@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PlayerProfileView } from "@/components/players/PlayerProfileView";
-import { DEMO_PLAYERS, getPlayer } from "@/lib/demo-players";
+import { getPlayer, PROSPECTS } from "@/lib/prospects";
 
 export function generateStaticParams() {
-  return DEMO_PLAYERS.map((player) => ({ id: player.id }));
+  return PROSPECTS.map((player) => ({ id: player.id }));
 }
 
 export async function generateMetadata({
@@ -17,7 +17,7 @@ export async function generateMetadata({
   if (!player) return { title: "Profile not found" };
   return {
     title: player.name,
-    description: `Fictional NEXTUP demonstration profile for ${player.name}. Not a real recruit.`,
+    description: `${player.name}, No. ${player.rank} on the public ESPN 2027 SC Next 100. Rankings change.`,
   };
 }
 

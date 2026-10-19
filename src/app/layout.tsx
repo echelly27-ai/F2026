@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s · NEXTUP",
   },
   description:
-    "NEXTUP is a basketball recruiting workspace for your profile, film links, and the schools you are researching. Demonstration players are fictional.",
+    "NEXTUP is a basketball recruiting workspace. The public directory lists the ESPN 2027 SC Next 100. Your dashboard and school tracker stay yours.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

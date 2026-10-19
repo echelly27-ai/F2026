@@ -1,22 +1,26 @@
 import Link from "next/link";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { formatHeight, locationLabel } from "@/lib/format";
-import type { DemoPlayer } from "@/lib/types";
+import type { Prospect } from "@/lib/types";
 
-export function PlayerCard({ player }: { player: DemoPlayer }) {
+export function PlayerCard({ player }: { player: Prospect }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-panel">
       <SafeImage
         src={player.photo}
-        alt={player.photoAlt}
+        alt={`Generic basketball photograph. Not a portrait of ${player.name}.`}
         frameClassName="aspect-[4/5]"
         sizes="(max-width: 768px) 100vw, 33vw"
       />
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime">Demo profile</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime">
+          No. {player.rank} · {player.stars}-star
+        </p>
         <div>
           <h2 className="font-display text-3xl uppercase leading-none text-paper">{player.name}</h2>
-          <p className="mt-1 text-sm text-mist">{player.position}</p>
+          <p className="mt-1 text-sm text-mist">
+            {player.positionAbbr} · {player.position}
+          </p>
         </div>
         <dl className="grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
           <div>

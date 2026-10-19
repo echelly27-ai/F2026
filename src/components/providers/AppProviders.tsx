@@ -370,8 +370,8 @@ export function AppProviders({ children }: { children: ReactNode }) {
             activity: withActivity(
               prev.activity,
               saved
-                ? `Removed interest in the ${playerName} demonstration profile.`
-                : `Saved interest in the ${playerName} demonstration profile.`,
+                ? `Removed interest in ${playerName}.`
+                : `Saved interest in ${playerName}.`,
             ),
           });
         });
@@ -391,8 +391,8 @@ export function AppProviders({ children }: { children: ReactNode }) {
             activity: withActivity(
               prev.activity,
               trimmed
-                ? `Saved a private note on the ${playerName} demonstration profile.`
-                : `Cleared the private note on the ${playerName} demonstration profile.`,
+                ? `Saved a private note on ${playerName}.`
+                : `Cleared the private note on ${playerName}.`,
             ),
           });
         });

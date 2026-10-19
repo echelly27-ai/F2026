@@ -57,7 +57,9 @@ export function ProfileForm() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="font-display text-4xl uppercase text-paper">Edit profile</h2>
-          <p className="mt-1 text-sm text-mist">This is your board, separate from the fictional discovery profiles.</p>
+          <p className="mt-1 text-sm text-mist">
+            This is your board. Editing it does not change a public prospect profile.
+          </p>
         </div>
         {message ? (
           <p role="status" className="text-sm font-medium text-lime">

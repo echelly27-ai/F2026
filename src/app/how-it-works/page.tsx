@@ -15,7 +15,7 @@ const STEPS = [
   },
   {
     title: "Keep film links with the profile",
-    text: "Paste a YouTube link to embed it, or a Hudl link to open safely in a new tab. Removing a link updates the list immediately. Sample videos on fictional profiles are public skills clips, not game film of those profiles.",
+    text: "Paste a YouTube link to embed it, or a Hudl link to open safely in a new tab. Removing a link updates the list immediately. Public prospect pages only embed a highlight when the ranking row published a stable URL.",
   },
   {
     title: "Track schools and your own dates",
@@ -29,7 +29,7 @@ export default function HowItWorksPage() {
       <PageHeader
         eyebrow="How it works"
         title="A board, not a rumor mill"
-        lede="NEXTUP is for organizing a recruiting journey. Demonstration players are fiction. Your dashboard and tracker save on this device unless you connect your own Supabase project."
+        lede="NEXTUP organizes a recruiting journey. The directory shows publicly listed 2027 ranking facts. Your dashboard and tracker stay yours and save on this device unless you connect your own Supabase project."
       />
       <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <ol className="space-y-6">

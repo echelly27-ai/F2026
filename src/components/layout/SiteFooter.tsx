@@ -17,8 +17,8 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-mist">
-            NEXTUP is a basketball recruiting workspace. Sample players are fictional demonstration
-            profiles. The product does not claim offers, rankings, or coach contact.
+            NEXTUP is a basketball recruiting workspace. The public directory repeats ranking facts from
+            ESPN&apos;s 2027 SC Next 100 and links out for reports. It does not invent offers or coach contacts.
           </p>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-2 text-sm">
