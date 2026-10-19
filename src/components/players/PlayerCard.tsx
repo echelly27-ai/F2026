@@ -8,7 +8,7 @@ export function PlayerCard({ player }: { player: Prospect }) {
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-panel">
       <SafeImage
         src={player.photo}
-        alt={`Generic basketball photograph. Not a portrait of ${player.name}.`}
+        alt={player.photoAlt}
         frameClassName="aspect-[4/5]"
         sizes="(max-width: 768px) 100vw, 33vw"
       />

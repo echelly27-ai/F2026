@@ -36,13 +36,20 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
       </Link>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <SafeImage
-          src={player.photo}
-          alt={`Generic basketball photograph. Not a portrait of ${player.name}.`}
-          priority
-          frameClassName="aspect-[4/5] min-h-[320px] rounded-3xl border border-line lg:min-h-[560px]"
-          sizes="(max-width: 1024px) 100vw, 40vw"
-        />
+        <div>
+          <SafeImage
+            src={player.photo}
+            alt={player.photoAlt}
+            priority
+            frameClassName="aspect-[4/5] min-h-[320px] rounded-3xl border border-line lg:min-h-[560px]"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+          />
+          <p className="mt-2 text-xs leading-relaxed text-mist">
+            {player.photo.endsWith("/fallback.jpg")
+              ? "No separate public recruiting photo was available for this player, so the generic basketball image is shown."
+              : "Public recruiting photo from 247Sports. It is not from a private account."}
+          </p>
+        </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime">
             No. {player.rank} · class of {player.gradYear}
