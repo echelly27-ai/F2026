@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Container, PageHeader } from "@/components/layout/Container";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { PlayerPortrait } from "@/components/players/PlayerPortrait";
 import { PlayerCard } from "@/components/players/PlayerCard";
 import { Button } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -248,11 +248,12 @@ export function DiscoverBoard() {
                       <td className="px-3 py-2 font-display text-2xl text-lime">{player.rank}</td>
                       <th scope="row" className="px-3 py-2 font-medium text-paper">
                         <div className="flex items-center gap-3">
-                          <SafeImage
-                            src={player.photo}
-                            alt=""
+                          <PlayerPortrait
+                            player={player}
+                            decorative
                             frameClassName="h-12 w-10 shrink-0 rounded-md"
                             sizes="40px"
+                            initialsClassName="text-xs"
                           />
                           <Link href={`/players/${player.id}`} className="hover:text-lime">
                             {player.name}

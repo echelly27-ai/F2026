@@ -6,11 +6,9 @@ import { cn } from "@/lib/format";
 
 function publicSrc(path: string) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  if (!base || !path.startsWith("/") || path.startsWith(`${base}/`)) return path;
+  if (!path.startsWith("/") || path.startsWith(`${base}/`) || !base) return path;
   return `${base}${path}`;
 }
-
-const FALLBACK = publicSrc("/images/fallback.jpg");
 
 export function SafeImage({
   src,
@@ -30,10 +28,16 @@ export function SafeImage({
   const initial = publicSrc(src);
   const [current, setCurrent] = useState(initial);
   const [source, setSource] = useState(initial);
+  const [failed, setFailed] = useState(false);
 
   if (initial !== source) {
     setSource(initial);
     setCurrent(initial);
+    setFailed(false);
+  }
+
+  if (!current || failed) {
+    return <div className={cn("bg-navy", frameClassName)} role="img" aria-label={alt || "Image unavailable"} />;
   }
 
   return (
@@ -45,9 +49,7 @@ export function SafeImage({
         sizes={sizes}
         priority={priority}
         className={cn("object-cover", className)}
-        onError={() => {
-          if (current !== FALLBACK) setCurrent(FALLBACK);
-        }}
+        onError={() => setFailed(true)}
       />
     </div>
   );

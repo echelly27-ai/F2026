@@ -1,9 +1,11 @@
 import { ArrowRight, ClipboardList, Search, Shield, Target } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PlayerCard } from "@/components/players/PlayerCard";
+import { PlayerPortrait } from "@/components/players/PlayerPortrait";
 import { ButtonLink } from "@/components/ui/Button";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { formatHeight } from "@/lib/format";
 import { PROSPECTS } from "@/lib/prospects";
+import type { Prospect } from "@/lib/types";
 
 const BENEFITS = [
   {
@@ -46,29 +48,70 @@ const STEPS = [
   },
 ];
 
+function ProfilePreview({ player }: { player: Prospect }) {
+  return (
+    <aside className="rounded-3xl border border-line bg-panel p-4 sm:p-5" aria-label="Sample public profile">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-lime">Profile preview</p>
+      <div className="mt-4 overflow-hidden rounded-2xl border border-line">
+        <PlayerPortrait
+          player={player}
+          priority
+          frameClassName="aspect-[4/5] max-h-[440px]"
+          sizes="(max-width: 1024px) 100vw, 36vw"
+        />
+      </div>
+      <div className="mt-4">
+        <p className="font-display text-4xl uppercase leading-none text-paper">{player.name}</p>
+        <p className="mt-2 text-sm text-mist">
+          No. {player.rank} · {player.positionAbbr} · Class of {player.gradYear}
+        </p>
+        <dl className="mt-4 grid grid-cols-3 gap-3 text-sm">
+          <div>
+            <dt className="text-mist">Height</dt>
+            <dd className="mt-1 font-semibold text-paper">{formatHeight(player.heightInches)}</dd>
+          </div>
+          <div>
+            <dt className="text-mist">Weight</dt>
+            <dd className="mt-1 font-semibold text-paper">{player.weight} lb</dd>
+          </div>
+          <div>
+            <dt className="text-mist">Stars</dt>
+            <dd className="mt-1 font-semibold text-paper">{player.stars}-star</dd>
+          </div>
+        </dl>
+        <p className="mt-4 text-xs leading-relaxed text-mist">
+          A public ranking profile on NEXTUP, using a published recruiting photograph. The profile you build stays on
+          your own board.
+        </p>
+      </div>
+    </aside>
+  );
+}
+
 export default function HomePage() {
   const featured = PROSPECTS.slice(0, 3);
+  const preview = PROSPECTS[0];
 
   return (
     <>
       <section className="border-b border-line">
-        <Container className="grid items-center gap-8 py-12 lg:grid-cols-12 lg:py-16">
+        <Container className="grid items-center gap-10 py-14 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Basketball recruiting</p>
-            <h1 className="mt-3 max-w-4xl font-display text-[clamp(3.1rem,8vw,6.4rem)] uppercase leading-[0.88] text-paper">
-              YOUR NEXT LEVEL STARTS HERE.
+            <h1 className="mt-4 max-w-3xl font-display text-[clamp(3.2rem,7.2vw,6rem)] uppercase leading-[0.88] text-paper">
+              Get recruited from a profile you built.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-mist sm:text-lg">
-              Showcase your game and manage the recruiting journey from one board: profile, film, academics, and the
-              schools you are researching.
+              Build a recruiting profile and organize your path to college basketball, from measurables and film to the
+              schools on your list.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <ButtonLink href="/players">
-                Explore Players
+              <ButtonLink href="/dashboard#profile-editor">
+                Build your profile
                 <ArrowRight aria-hidden="true" size={16} />
               </ButtonLink>
-              <ButtonLink href="/dashboard#profile-editor" variant="secondary">
-                Build Your Profile
+              <ButtonLink href="/players" variant="secondary">
+                See the ranking
               </ButtonLink>
             </div>
             <dl className="mt-8 grid max-w-lg grid-cols-3 gap-3 text-sm">
@@ -86,16 +129,11 @@ export default function HomePage() {
               </div>
             </dl>
           </div>
-          <div className="lg:col-span-5">
-            <SafeImage
-              src="/images/hero.jpg"
-              alt="Basketball dropping through a net in a dark arena"
-              priority
-              frameClassName="aspect-[4/5] rounded-3xl border border-line"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-            />
-            <p className="mt-2 text-xs text-mist">Stock arena photography. Not a photo of a NEXTUP athlete.</p>
-          </div>
+          {preview ? (
+            <div className="lg:col-span-5">
+              <ProfilePreview player={preview} />
+            </div>
+          ) : null}
         </Container>
       </section>
 
@@ -142,33 +180,23 @@ export default function HomePage() {
       </section>
 
       <section id="how-it-works" className="py-14" aria-labelledby="steps-heading">
-        <Container className="grid items-center gap-8 lg:grid-cols-2">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">How it works</p>
-            <h2 id="steps-heading" className="mt-2 font-display text-5xl uppercase text-paper">
-              Three steps
-            </h2>
-            <ol className="mt-6 space-y-5">
-              {STEPS.map((step) => (
-                <li key={step.n} className="grid grid-cols-[auto_1fr] gap-4">
-                  <span className="font-display text-4xl text-lime">{step.n}</span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-paper">{step.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-mist">{step.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <ButtonLink href="/how-it-works" variant="secondary" className="mt-6">
-              Read the full walkthrough
-            </ButtonLink>
-          </div>
-          <SafeImage
-            src="/images/dusk-court.jpg"
-            alt="Outdoor basketball hoop at dusk after rain"
-            frameClassName="aspect-[4/5] rounded-3xl border border-line"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
+        <Container>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">How it works</p>
+          <h2 id="steps-heading" className="mt-2 font-display text-5xl uppercase text-paper">
+            Three steps
+          </h2>
+          <ol className="mt-6 grid gap-5 lg:grid-cols-3">
+            {STEPS.map((step) => (
+              <li key={step.n} className="rounded-2xl border border-line bg-panel p-5">
+                <span className="font-display text-4xl text-lime">{step.n}</span>
+                <h3 className="mt-3 text-lg font-semibold text-paper">{step.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-mist">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+          <ButtonLink href="/how-it-works" variant="secondary" className="mt-6">
+            Read the full walkthrough
+          </ButtonLink>
         </Container>
       </section>
 
