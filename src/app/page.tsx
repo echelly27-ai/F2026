@@ -1,11 +1,9 @@
 import { ArrowRight, ClipboardList, Search, Shield, Target } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PlayerCard } from "@/components/players/PlayerCard";
-import { PlayerPortrait } from "@/components/players/PlayerPortrait";
 import { ButtonLink } from "@/components/ui/Button";
-import { formatHeight } from "@/lib/format";
+import { SafeImage } from "@/components/ui/SafeImage";
 import { PROSPECTS } from "@/lib/prospects";
-import type { Prospect } from "@/lib/types";
 
 const BENEFITS = [
   {
@@ -48,49 +46,8 @@ const STEPS = [
   },
 ];
 
-function ProfilePreview({ player }: { player: Prospect }) {
-  return (
-    <aside className="rounded-3xl border border-line bg-panel p-4 sm:p-5" aria-label="Sample public profile">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-lime">Profile preview</p>
-      <div className="mt-4 overflow-hidden rounded-2xl border border-line">
-        <PlayerPortrait
-          player={player}
-          priority
-          frameClassName="aspect-[4/5] max-h-[440px]"
-          sizes="(max-width: 1024px) 100vw, 36vw"
-        />
-      </div>
-      <div className="mt-4">
-        <p className="font-display text-4xl uppercase leading-none text-paper">{player.name}</p>
-        <p className="mt-2 text-sm text-mist">
-          No. {player.rank} · {player.positionAbbr} · Class of {player.gradYear}
-        </p>
-        <dl className="mt-4 grid grid-cols-3 gap-3 text-sm">
-          <div>
-            <dt className="text-mist">Height</dt>
-            <dd className="mt-1 font-semibold text-paper">{formatHeight(player.heightInches)}</dd>
-          </div>
-          <div>
-            <dt className="text-mist">Weight</dt>
-            <dd className="mt-1 font-semibold text-paper">{player.weight} lb</dd>
-          </div>
-          <div>
-            <dt className="text-mist">Stars</dt>
-            <dd className="mt-1 font-semibold text-paper">{player.stars}-star</dd>
-          </div>
-        </dl>
-        <p className="mt-4 text-xs leading-relaxed text-mist">
-          A public ranking profile on NEXTUP, using a published recruiting photograph. The profile you build stays on
-          your own board.
-        </p>
-      </div>
-    </aside>
-  );
-}
-
 export default function HomePage() {
   const featured = PROSPECTS.slice(0, 3);
-  const preview = PROSPECTS[0];
 
   return (
     <>
@@ -99,11 +56,10 @@ export default function HomePage() {
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Basketball recruiting</p>
             <h1 className="mt-4 max-w-3xl font-display text-[clamp(3.2rem,7.2vw,6rem)] uppercase leading-[0.88] text-paper">
-              Get recruited from a profile you built.
+              Show your game. Get recruited.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-mist sm:text-lg">
-              Build a recruiting profile and organize your path to college basketball, from measurables and film to the
-              schools on your list.
+              Build a profile, add your film and stats, and track the colleges on your list.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <ButtonLink href="/dashboard#profile-editor">
@@ -111,7 +67,7 @@ export default function HomePage() {
                 <ArrowRight aria-hidden="true" size={16} />
               </ButtonLink>
               <ButtonLink href="/players" variant="secondary">
-                See the ranking
+                Explore players
               </ButtonLink>
             </div>
             <dl className="mt-8 grid max-w-lg grid-cols-3 gap-3 text-sm">
@@ -129,11 +85,16 @@ export default function HomePage() {
               </div>
             </dl>
           </div>
-          {preview ? (
-            <div className="lg:col-span-5">
-              <ProfilePreview player={preview} />
-            </div>
-          ) : null}
+          <div className="lg:col-span-5">
+            <SafeImage
+              src="/images/arena.jpg"
+              alt="Players and a crowd inside a packed basketball arena"
+              priority
+              frameClassName="aspect-[4/5] rounded-3xl border border-line"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+            <p className="mt-2 text-xs text-mist">A real arena photograph. If it cannot load, the frame stays dark.</p>
+          </div>
         </Container>
       </section>
 
