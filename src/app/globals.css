@@ -6,8 +6,8 @@
   --color-panel: #121a2a;
   --color-panel-2: #1a2438;
   --color-line: #2a3548;
-  --color-lime: #c6f135;
-  --color-lime-2: #d7ff67;
+  --color-lime: #3e74ff;
+  --color-lime-2: #74a4ff;
   --color-mist: #9aa6b8;
   --color-paper: #f4f7fb;
   --font-sans: var(--font-nextup-body), "Manrope", sans-serif;
@@ -26,7 +26,7 @@ body {
 }
 
 ::selection {
-  background: #c6f135;
+  background: #3e74ff;
   color: #07090d;
 }
 

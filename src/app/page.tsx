@@ -1,8 +1,8 @@
 import { ArrowRight, ClipboardList, Search, Shield, Target } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PlayerCard } from "@/components/players/PlayerCard";
+import { SamplePhone } from "@/components/home/SamplePhone";
 import { ButtonLink } from "@/components/ui/Button";
-import { SafeImage } from "@/components/ui/SafeImage";
 import { PROSPECTS } from "@/lib/prospects";
 
 const BENEFITS = [
@@ -86,14 +86,7 @@ export default function HomePage() {
             </dl>
           </div>
           <div className="lg:col-span-5">
-            <SafeImage
-              src="/images/arena.jpg"
-              alt="Players and a crowd inside a packed basketball arena"
-              priority
-              frameClassName="aspect-[4/5] rounded-3xl border border-line"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-            />
-            <p className="mt-2 text-xs text-mist">A real arena photograph. If it cannot load, the frame stays dark.</p>
+            <SamplePhone />
           </div>
         </Container>
       </section>
