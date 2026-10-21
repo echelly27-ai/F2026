@@ -7,9 +7,6 @@ export const RANKING_SOURCE = {
   checkedOn: "2026-10-19",
 } as const;
 
-const PORTRAIT =
-  "Generic basketball photograph. Not a portrait of this prospect. NEXTUP did not publish a photo from the ranking page.";
-
 export const PROSPECTS: Prospect[] = [
   {
     id: "beckham-black",
@@ -1391,8 +1388,8 @@ export const PROSPECTS: Prospect[] = [
     hometown: "Daytona Beach, FL",
     school: "DME Academy",
     listedCommitment: null,
-    photo: "/images/fallback.jpg",
-    photoAlt: PORTRAIT,
+    photo: "",
+    photoAlt: "No public photo available for Yohane Kabongo.",
     profileUrl: "https://www.espn.com/college-sports/basketball/recruiting/player/_/id/271367/yohane-kabongo",
     reportUrl: "https://www.espn.com/college-sports/basketball/recruiting/player/evaluation/_/id/271367/yohane-kabongo",
     videoUrl: null,
@@ -2051,8 +2048,8 @@ export const PROSPECTS: Prospect[] = [
     hometown: "Tarpon Springs, FL",
     school: "Boca Ciega High School",
     listedCommitment: { school: "Tulsa", date: "09/15/2026" },
-    photo: "/images/fallback.jpg",
-    photoAlt: PORTRAIT,
+    photo: "",
+    photoAlt: "No public photo available for Anthony Brown.",
     profileUrl: "https://www.espn.com/college-sports/basketball/recruiting/player/_/id/273553/anthony-brown",
     reportUrl: "https://www.espn.com/college-sports/basketball/recruiting/player/evaluation/_/id/273553/anthony-brown",
     videoUrl: null,

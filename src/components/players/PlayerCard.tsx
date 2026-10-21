@@ -1,16 +1,16 @@
 import Link from "next/link";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { PlayerPortrait } from "@/components/players/PlayerPortrait";
 import { formatHeight, locationLabel } from "@/lib/format";
 import type { Prospect } from "@/lib/types";
 
 export function PlayerCard({ player }: { player: Prospect }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-panel">
-      <SafeImage
-        src={player.photo}
-        alt={player.photoAlt}
+      <PlayerPortrait
+        player={player}
         frameClassName="aspect-[4/5]"
         sizes="(max-width: 768px) 100vw, 33vw"
+        initialsClassName="text-5xl"
       />
       <div className="flex flex-1 flex-col gap-3 p-4">
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime">

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FilmFrame } from "@/components/players/FilmFrame";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { hasPlayerPhoto, PlayerPortrait } from "@/components/players/PlayerPortrait";
 import { inputClass } from "@/components/ui/Field";
 import { formatHeight, formatWhen, locationLabel } from "@/lib/format";
 import { safeHttpsUrl } from "@/lib/media";
@@ -37,17 +37,17 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <SafeImage
-            src={player.photo}
-            alt={player.photoAlt}
+          <PlayerPortrait
+            player={player}
             priority
             frameClassName="aspect-[4/5] min-h-[320px] rounded-3xl border border-line lg:min-h-[560px]"
             sizes="(max-width: 1024px) 100vw, 40vw"
+            initialsClassName="text-7xl"
           />
           <p className="mt-2 text-xs leading-relaxed text-mist">
-            {player.photo.endsWith("/fallback.jpg")
-              ? "No separate public recruiting photo was available for this player, so the generic basketball image is shown."
-              : "Public recruiting photo from 247Sports. It is not from a private account."}
+            {hasPlayerPhoto(player.photo)
+              ? "Public recruiting photo from 247Sports. It is not from a private account."
+              : "No verified public photo was available, so initials are shown on a plain dark placeholder."}
           </p>
         </div>
         <div>
