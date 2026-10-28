@@ -36,7 +36,7 @@ export interface ListedCommitment {
 
 export interface Prospect {
   id: string;
-  rank: number;
+  rank: number | null;
   name: string;
   position: Position;
   positionAbbr: "PG" | "SG" | "SF" | "PF" | "C";

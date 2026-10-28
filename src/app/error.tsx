@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { Container } from "@/components/layout/Container";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 
 export default function Error({
   error,
@@ -21,9 +21,12 @@ export default function Error({
       <p className="mt-4 max-w-md text-sm leading-relaxed text-mist">
         This page hit an error. Your saved board is still in this browser if storage is available.
       </p>
-      <Button className="mt-6" onClick={reset}>
-        Try again
-      </Button>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Button onClick={reset}>Try again</Button>
+        <ButtonLink href="/players" variant="secondary">
+          Back to players
+        </ButtonLink>
+      </div>
     </Container>
   );
 }

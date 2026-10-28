@@ -17,7 +17,8 @@ import {
   type RankFilter,
   type StarFilter,
 } from "@/lib/filters";
-import { PROSPECTS, RANKING_SOURCE } from "@/lib/prospects";
+import { groupByGraduationClass, RANKING_SOURCE } from "@/lib/rankings";
+import { PROSPECTS } from "@/lib/prospects";
 import { POSITIONS, type Position } from "@/lib/types";
 
 const YEARS = Array.from(new Set(PROSPECTS.map((player) => String(player.gradYear)))).sort();
@@ -35,18 +36,24 @@ export function DiscoverBoard() {
   return (
     <Container className="py-10 sm:py-14">
       <PageHeader
-        eyebrow="Discover"
-        title="2027 recruiting database"
-        lede="The publicly listed ESPN 2027 SC Next 100. Search by name, then filter by position, class, height, location, school, rank, and stars."
+        eyebrow="Browse and explore"
+        title="Find players"
+        lede="Search the public directory, filter with the fields that are stored, and open a full profile. The published ranking is below, grouped by class."
       />
       <p className="mt-5 max-w-3xl text-sm leading-relaxed text-mist">
-        {PROSPECTS.length} players were on the public {RANKING_SOURCE.title} page checked {RANKING_SOURCE.checkedOn}.
-        Rankings change. High school, hometown, height, weight, stars, and grade are the figures from that table.
-        Season stats and GPAs were not on the rows, so they are not shown.{" "}
+        {PROSPECTS.length} players are stored from the {RANKING_SOURCE.publisher} {RANKING_SOURCE.title}, checked{" "}
+        {RANKING_SOURCE.checkedOn}. Rankings change. Missing stats and academics stay blank.{" "}
+        <a href="#rankings" className="text-lime hover:text-lime-2">
+          Compare the ranking
+        </a>
         {sourceUrl ? (
-          <a href={sourceUrl} className="text-lime hover:text-lime-2" target="_blank" rel="noopener noreferrer">
-            Open the source ranking
-          </a>
+          <>
+            {" "}
+            or{" "}
+            <a href={sourceUrl} className="text-lime hover:text-lime-2" target="_blank" rel="noopener noreferrer">
+              open the ESPN source
+            </a>
+          </>
         ) : null}
         .
       </p>
@@ -61,7 +68,7 @@ export function DiscoverBoard() {
             value={filters.query}
             onChange={(event) => update("query", event.target.value)}
             className={inputClass}
-            placeholder="Beckham Black"
+            placeholder="Name, school, or city"
             autoComplete="off"
           />
         </Field>
@@ -146,6 +153,7 @@ export function DiscoverBoard() {
             <option value="11-25">11–25</option>
             <option value="26-50">26–50</option>
             <option value="51-100">51–100</option>
+            <option value="unranked">Unranked</option>
           </select>
         </Field>
         <Field label="Stars" id="player-stars">
@@ -182,7 +190,7 @@ export function DiscoverBoard() {
         </div>
       </form>
 
-      <p className="mt-5 text-sm text-mist" role="status">
+      <p className="mt-6 text-sm text-mist" role="status">
         Showing {players.length} of {PROSPECTS.length} publicly listed prospects
       </p>
 
@@ -190,7 +198,7 @@ export function DiscoverBoard() {
         <div className="mt-4">
           <EmptyState
             title="No profiles match"
-            body="Try a different name, school, or rank band, or clear the filters to see the full public list."
+            body="Try another name, school, class, or rank band. Clear the filters to see everyone stored from the public list."
             action={
               <Button variant="primary" onClick={() => setFilters(INITIAL_FILTERS)}>
                 Clear filters
@@ -200,12 +208,36 @@ export function DiscoverBoard() {
         </div>
       ) : (
         <>
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-line bg-ink">
-            <table className="w-full min-w-[980px] border-collapse text-left text-sm">
-              <caption className="sr-only">
-                Publicly listed rows from the {RANKING_SOURCE.title}, checked {RANKING_SOURCE.checkedOn}
-              </caption>
-              <thead className="bg-navy text-[11px] uppercase tracking-[0.14em] text-mist">
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {players.map((player) => (
+              <PlayerCard key={player.id} player={player} />
+            ))}
+          </div>
+
+          <section id="rankings" className="mt-16 scroll-mt-24 border-t border-line pt-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Secondary</p>
+            <h2 className="mt-2 font-display text-5xl uppercase text-paper">Rankings</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-mist">
+              {RANKING_SOURCE.publisher} {RANKING_SOURCE.title}, checked {RANKING_SOURCE.checkedOn}. Classes are grouped
+              from the stored graduation year. A player without a published rank stays marked Unranked. This table uses
+              the same filters as the cards above.
+            </p>
+            {groupByGraduationClass(players).map((group) => (
+              <div key={group.year} className="mt-8">
+                <div className="flex flex-wrap items-end justify-between gap-2">
+                  <h3 className="font-display text-3xl uppercase text-paper">Class of {group.year}</h3>
+                  <p className="text-sm text-mist">
+                    {group.ranked} ranked
+                    {group.unranked > 0 ? ` · ${group.unranked} unranked` : ""}
+                  </p>
+                </div>
+                <p className="mt-2 text-xs text-mist sm:hidden">Swipe sideways to compare columns.</p>
+                <div className="mt-3 overflow-x-auto rounded-2xl border border-line bg-ink">
+                  <table className="w-full min-w-[980px] border-collapse text-left text-sm">
+                    <caption className="sr-only">
+                      Class of {group.year} from the {RANKING_SOURCE.title}, checked {RANKING_SOURCE.checkedOn}
+                    </caption>
+                    <thead className="bg-navy text-[11px] uppercase tracking-[0.14em] text-mist">
                 <tr>
                   <th scope="col" className="px-3 py-3 font-semibold">
                     Rank
@@ -239,13 +271,19 @@ export function DiscoverBoard() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {players.map((player) => {
-                  const report = safeHttpsUrl(player.reportUrl);
-                  const video = player.videoUrl ? safeHttpsUrl(player.videoUrl) : null;
-                  return (
-                    <tr key={player.id} className="border-t border-line odd:bg-ink even:bg-navy/60">
-                      <td className="px-3 py-2 font-display text-2xl text-lime">{player.rank}</td>
+                    <tbody>
+                      {group.players.map((player) => {
+                        const report = safeHttpsUrl(player.reportUrl);
+                        const video = player.videoUrl ? safeHttpsUrl(player.videoUrl) : null;
+                        return (
+                          <tr key={player.id} className="border-t border-line odd:bg-ink even:bg-navy/60">
+                            <td className="px-3 py-2 font-display text-2xl text-lime">
+                              {player.rank == null ? (
+                                <span className="text-sm font-semibold tracking-normal text-mist">Unranked</span>
+                              ) : (
+                                player.rank
+                              )}
+                            </td>
                       <th scope="row" className="px-3 py-2 font-medium text-paper">
                         <div className="flex items-center gap-3">
                           <PlayerPortrait
@@ -290,19 +328,15 @@ export function DiscoverBoard() {
                           )}
                         </div>
                       </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          <h2 className="mt-10 font-display text-4xl uppercase text-paper">Cards</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {players.map((player) => (
-              <PlayerCard key={player.id} player={player} />
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             ))}
-          </div>
+          </section>
         </>
       )}
     </Container>
