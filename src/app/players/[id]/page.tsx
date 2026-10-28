@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PlayerProfileView } from "@/components/players/PlayerProfileView";
 import { getPlayer, PROSPECTS } from "@/lib/prospects";
+import { RANKING_SOURCE, rankLabel } from "@/lib/rankings";
 
 export function generateStaticParams() {
   return PROSPECTS.map((player) => ({ id: player.id }));
@@ -17,7 +18,10 @@ export async function generateMetadata({
   if (!player) return { title: "Profile not found" };
   return {
     title: player.name,
-    description: `${player.name}, No. ${player.rank} on the public ESPN 2027 SC Next 100. Rankings change.`,
+    description:
+      player.rank == null
+        ? `${player.name} is listed without a published rank.`
+        : `${player.name}, ${rankLabel(player)} on the public ${RANKING_SOURCE.publisher} ${RANKING_SOURCE.title}. Rankings change.`,
   };
 }
 

@@ -3,7 +3,8 @@ import { DiscoverBoard } from "@/components/players/DiscoverBoard";
 
 export const metadata: Metadata = {
   title: "Discover players",
-  description: "Search the publicly listed ESPN 2027 SC Next 100 by name, position, class, height, location, school, rank, and stars.",
+  description:
+    "Browse the public directory by class, position, location, height, and rank. The ESPN 2027 list stays labeled and grouped by graduation year.",
 };
 
 export default function PlayersPage() {

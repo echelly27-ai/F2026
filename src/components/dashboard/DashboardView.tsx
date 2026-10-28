@@ -297,7 +297,7 @@ export function DashboardView() {
           </h2>
           {savedPlayers.length === 0 ? (
             <p className="mt-3 text-sm text-mist">
-              Save interest on a public profile and it will show up here. Your own profile stays on this board.
+              Save a player from Explore or a profile. The watchlist stays in this browser.
             </p>
           ) : (
             <ul className="mt-4 space-y-3">

@@ -2,7 +2,7 @@ import type { Position, Prospect } from "@/lib/types";
 
 export type HeightFilter = "any" | "lt70" | "70-74" | "75-78" | "79plus";
 export type SortKey = "rank" | "stars" | "name" | "year" | "height" | "position";
-export type RankFilter = "any" | "1-10" | "11-25" | "26-50" | "51-100";
+export type RankFilter = "any" | "1-10" | "11-25" | "26-50" | "51-100" | "unranked";
 export type StarFilter = "any" | "5" | "4";
 
 export interface PlayerFilters {
@@ -37,7 +37,9 @@ function matchesHeight(inches: number, filter: HeightFilter) {
   return true;
 }
 
-function matchesRank(rank: number, filter: RankFilter) {
+function matchesRank(rank: number | null, filter: RankFilter) {
+  if (filter === "unranked") return rank == null;
+  if (rank == null) return filter === "any";
   if (filter === "1-10") return rank >= 1 && rank <= 10;
   if (filter === "11-25") return rank >= 11 && rank <= 25;
   if (filter === "26-50") return rank >= 26 && rank <= 50;
@@ -45,11 +47,21 @@ function matchesRank(rank: number, filter: RankFilter) {
   return true;
 }
 
+function byRank(a: Prospect, b: Prospect) {
+  if (a.rank == null && b.rank == null) return a.name.localeCompare(b.name);
+  if (a.rank == null) return 1;
+  if (b.rank == null) return -1;
+  return a.rank - b.rank;
+}
+
 export function filterPlayers(players: Prospect[], filters: PlayerFilters) {
   const query = filters.query.trim().toLowerCase();
   const school = filters.school.trim().toLowerCase();
   const result = players.filter((player) => {
-    if (query && !player.name.toLowerCase().includes(query)) return false;
+    if (query) {
+      const haystack = `${player.name} ${player.school} ${player.hometown} ${player.city}`.toLowerCase();
+      if (!haystack.includes(query)) return false;
+    }
     if (school && !player.school.toLowerCase().includes(school)) return false;
     if (filters.position !== "any" && player.position !== filters.position) return false;
     if (filters.gradYear !== "any" && String(player.gradYear) !== filters.gradYear) return false;
@@ -62,21 +74,21 @@ export function filterPlayers(players: Prospect[], filters: PlayerFilters) {
 
   result.sort((a, b) => {
     if (filters.sort === "year") {
-      return a.gradYear - b.gradYear || a.rank - b.rank;
+      return a.gradYear - b.gradYear || byRank(a, b);
     }
     if (filters.sort === "height") {
-      return b.heightInches - a.heightInches || a.rank - b.rank;
+      return b.heightInches - a.heightInches || byRank(a, b);
     }
     if (filters.sort === "position") {
-      return a.position.localeCompare(b.position) || a.rank - b.rank;
+      return a.position.localeCompare(b.position) || byRank(a, b);
     }
     if (filters.sort === "stars") {
-      return b.stars - a.stars || a.rank - b.rank;
+      return b.stars - a.stars || byRank(a, b);
     }
     if (filters.sort === "name") {
       return a.name.localeCompare(b.name);
     }
-    return a.rank - b.rank;
+    return byRank(a, b);
   });
 
   return result;
