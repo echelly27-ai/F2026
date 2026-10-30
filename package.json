@@ -11,12 +11,14 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
     "lucide-react": "^1.58.0",
+    "matter-js": "^0.20.0",
     "next": "16.4.2",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
+    "@types/matter-js": "^0.19.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
