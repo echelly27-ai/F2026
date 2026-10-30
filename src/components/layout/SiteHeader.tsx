@@ -11,6 +11,7 @@ import { cn } from "@/lib/format";
 
 const LINKS = [
   { href: "/", label: "Home" },
+  { href: "/challenges", label: "Challenges" },
   { href: "/players", label: "Discover Players" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/dashboard", label: "Dashboard" },
