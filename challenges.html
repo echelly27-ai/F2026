@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eight Challenges · Matter.js</title>
+  <style>
+    :root {
+      --page: #d7e2e9;
+      --stage: #e7eef3;
+      --line: #c3ced6;
+      --ink: #1c252c;
+      --label: #66737c;
+      --rust: #b24b2e;
+      --caption: 40px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: var(--page);
+      color: var(--ink);
+      font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    .sheet {
+      height: 100%;
+      max-height: 100dvh;
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 18px 28px 14px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      flex: 0 0 auto;
+      margin: 0 0 8px;
+      text-align: center;
+      font-weight: 560;
+      font-size: clamp(34px, 4.6vh, 58px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+
+    .grid {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      gap: 4px 26px;
+    }
+
+    .cell {
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .frame {
+      flex: 1;
+      min-height: 0;
+      width: 100%;
+      container-type: size;
+      display: grid;
+      place-items: center;
+    }
+
+    .stage,
+    .center {
+      width: min(100cqw, calc(100cqh * 6 / 5));
+      aspect-ratio: 6 / 5;
+      position: relative;
+    }
+
+    .stage {
+      background: var(--stage);
+      border: 1.5px solid var(--line);
+      overflow: hidden;
+    }
+
+    /* Matter sets an inline pixel size; the stage keeps the 6:5 frame. */
+    .stage canvas {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    #stage-drag,
+    #stage-connect {
+      touch-action: none;
+    }
+
+    #stage-drag canvas,
+    #stage-connect canvas {
+      cursor: grab;
+    }
+
+    .caption {
+      flex: 0 0 auto;
+      height: var(--caption);
+      margin: 7px 0 0;
+      text-align: center;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-size: clamp(13px, 1.45vw, 16px);
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--label);
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .center h2 {
+      margin: 0;
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 680;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+
+    .center .sub {
+      margin: 12px 0 0;
+      color: var(--rust);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-weight: 600;
+      font-size: clamp(13px, 1.4vw, 16px);
+    }
+
+    .hud {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .count-badge,
+    .readout {
+      position: absolute;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      color: var(--label);
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .count-badge {
+      top: 8px;
+      right: 10px;
+    }
+
+    .readout {
+      right: 10px;
+      bottom: 8px;
+    }
+
+    .spark {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      width: 72px;
+      height: 22px;
+    }
+
+    .stepper {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stepper button {
+      pointer-events: auto;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid #b7c4cd;
+      background: rgba(255, 255, 255, 0.78);
+      color: #3d4b58;
+      font: 600 18px/1 "Avenir Next", "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+
+    .stepper button:hover {
+      background: #fff;
+    }
+
+    .stepper button:focus-visible {
+      outline: 2px solid var(--rust);
+      outline-offset: 2px;
+    }
+
+    .error {
+      margin: 12px;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--rust);
+    }
+
+    @media (max-width: 760px) {
+      body { height: auto; }
+      .sheet {
+        height: auto;
+        max-height: none;
+        padding: 20px 16px 32px;
+      }
+      .grid {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .cell { min-height: none; }
+      .center-cell { order: -1; }
+      .frame {
+        container-type: normal;
+        display: block;
+      }
+      .stage,
+      .center {
+        width: 100%;
+        aspect-ratio: 6 / 5;
+      }
+      .caption-spacer { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <h1>Eight Challenges</h1>
+    <div class="grid">
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-gravity" aria-label="Balls falling and piling up under gravity"></div>
+        </div>
+        <p class="caption">Create a world with gravity</p>
+      </section>
+
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-types" aria-label="Circles, squares, and triangles falling together"></div>
+        </div>
+        <p class="caption">Add multiple types of objects</p>
+      </section>
+
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-drag" aria-label="Two squares you can drag with the mouse"></div>
+        </div>
+        <p class="caption">Add mouse dragging</p>
+      </section>
+
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-count" aria-label="Pile of bodies with controls to add or remove them">
+            <div class="hud">
+              <span class="count-badge" data-count>30</span>
+              <div class="stepper">
+                <button type="button" data-remove aria-label="Remove a body">−</button>
+                <button type="button" data-add aria-label="Add a body">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="caption">Adjust numbers of bodies dynamically</p>
+      </section>
+
+      <section class="cell center-cell">
+        <div class="frame">
+          <div class="center">
+            <h2>Fall Hack-a-Thon<br />2026</h2>
+            <p class="sub">Matter.js Simulations</p>
+          </div>
+        </div>
+        <div class="caption caption-spacer" aria-hidden="true"></div>
+      </section>
+
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-collision" aria-label="Bouncing bodies flashing when they collide"></div>
+        </div>
+        <p class="caption">Collision Detection</p>
+      </section>
+
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-forces" aria-label="Small bodies orbiting a center under an extra force"></div>
+        </div>
+        <p class="caption">Additional Forces</p>
+      </section>
+
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-connect" aria-label="Newton's cradle made of bodies joined by constraints"></div>
+        </div>
+        <p class="caption">Connect bodies</p>
+      </section>
+
+      <section class="cell">
+        <div class="frame">
+          <div class="stage" id="stage-stats" aria-label="A body rolling down a ramp with its speed shown">
+            <div class="hud">
+              <svg class="spark" viewBox="0 0 72 22" aria-hidden="true">
+                <polyline data-spark fill="none" stroke="#5c6b75" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+              </svg>
+              <span class="readout" data-speed>0.0</span>
+            </div>
+          </div>
+        </div>
+        <p class="caption">Show stats</p>
+      </section>
+    </div>
+  </main>
+  <script src="vendor/matter.min.js"></script>
+  <script src="challenges.js"></script>
+</body>
+</html>

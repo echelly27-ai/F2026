@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLASH • Reaction Time</title>
+  <style>
+    :root {
+      --ink: #1a1033;
+      --panel: rgba(255, 255, 255, 0.16);
+      --glow: #ff4fd8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      cursor: none;
+      overflow: hidden;
+      font-family: "Trebuchet MS", "Avenir Next", system-ui, sans-serif;
+      color: #fff;
+      background: #12081f;
+    }
+
+    body {
+      transition: background 180ms ease;
+    }
+
+    body.wait {
+      background: radial-gradient(1200px 800px at 50% 40%, #3a1b6e, #12081f 70%);
+    }
+
+    canvas#spark {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 2;
+      min-height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+      padding: 28px;
+    }
+
+    header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 18px #ff7ad9, 0 0 40px #5cf2ff;
+    }
+
+    h1 span { color: #ffe566; }
+
+    .tag {
+      pointer-events: auto;
+      background: var(--panel);
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      padding: 8px 16px;
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+    }
+
+    .stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 18px;
+      border-radius: 32px;
+      border: 3px dashed rgba(255,255,255,0.28);
+      background: rgba(0,0,0,0.12);
+      min-height: 62vh;
+      padding: 32px;
+      user-select: none;
+    }
+
+    .hint {
+      font-size: 1.15rem;
+      max-width: 28rem;
+      line-height: 1.45;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+    }
+
+    .timer {
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      min-height: 1.1em;
+      text-shadow: 0 8px 0 rgba(0,0,0,0.15), 0 0 30px #fff;
+    }
+
+    .btn {
+      cursor: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 36px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #1a1033;
+      background: linear-gradient(90deg, #ffe566, #ff8ad4, #7af0ff);
+      background-size: 200% 100%;
+      box-shadow: 0 10px 0 #c45ad0, 0 16px 40px rgba(255, 79, 216, 0.35);
+      animation: shine 2.4s linear infinite;
+    }
+
+    .btn:active { transform: translateY(4px); box-shadow: 0 6px 0 #c45ad0; }
+
+    @keyframes shine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    .board {
+      background: rgba(18, 8, 31, 0.55);
+      border: 2px solid rgba(255,255,255,0.28);
+      border-radius: 24px;
+      padding: 20px 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+
+    .board h2 {
+      font-size: 1.05rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      color: #ffe566;
+    }
+
+    .name-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .name-row input {
+      cursor: none;
+      flex: 1;
+      border: 0;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      outline: none;
+    }
+
+    ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    li {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      font-weight: 700;
+    }
+
+    li:nth-child(1) { background: linear-gradient(90deg, #ffd24a, #ff8a4a); color: #3a1600; }
+    li:nth-child(2) { background: linear-gradient(90deg, #e8eef8, #9fd4ff); color: #153047; }
+    li:nth-child(3) { background: linear-gradient(90deg, #ffb48a, #ff7a9a); color: #3a1020; }
+
+    .rank { opacity: 0.8; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      top: 88px;
+      transform: translateX(-50%) translateY(-12px);
+      opacity: 0;
+      z-index: 60;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: #ff4d6d;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.45);
+      font-weight: 800;
+      pointer-events: none;
+      transition: 0.25s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .burst {
+      animation: pop 0.45s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.9); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 840px) {
+      .wrap { grid-template-columns: 1fr; padding: 16px; }
+      .board { order: 2; }
+    }
+  </style>
+</head>
+<body class="wait">
+  <canvas id="spark"></canvas>
+  <div class="wrap">
+    <header>
+      <h1>FLASH <span>•</span> TAP</h1>
+      <div class="tag">click or space</div>
+    </header>
+
+    <main class="stage" id="stage">
+      <p class="hint" id="hint">Hit start, wait for the screen to explode with color, then click or smash space as fast as you can.</p>
+      <div class="timer" id="timer">0.000s</div>
+      <button class="btn" id="start" type="button">Start round</button>
+    </main>
+
+    <aside class="board">
+      <h2>Fastest flashes</h2>
+      <div class="name-row">
+        <input id="name" maxlength="12" value="JSL" aria-label="Player initials" />
+      </div>
+      <ol id="scores"></ol>
+    </aside>
+  </div>
+  <div class="toast" id="toast">Too soon! Wait for the color.</div>
+
+  <script>
+    const COLORS = [
+      "#ff3d7f", "#ffd93d", "#3dffb0", "#3dc7ff",
+      "#b44dff", "#ff7a3d", "#7aff3d", "#ff4df0"
+    ];
+
+    const stage = document.getElementById("stage");
+    const hint = document.getElementById("hint");
+    const timerEl = document.getElementById("timer");
+    const startBtn = document.getElementById("start");
+    const toast = document.getElementById("toast");
+    const scoresEl = document.getElementById("scores");
+    const nameEl = document.getElementById("name");
+    const canvas = document.getElementById("spark");
+    const ctx = canvas.getContext("2d");
+
+    let state = "idle"; // idle | waiting | go | done
+    let waitTimer = null;
+    let startTime = 0;
+    let raf = null;
+    let mouse = { x: innerWidth / 2, y: innerHeight / 2 };
+    const sparks = [];
+
+    const KEY = "flash-tap-board";
+
+    function loadScores() {
+      try {
+        const raw = localStorage.getItem(KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (_) {}
+      return [
+        { name: "JSL", ms: 187 },
+        { name: "JSL", ms: 214 },
+        { name: "JSL", ms: 241 }
+      ];
+    }
+
+    function saveScores(list) {
+      localStorage.setItem(KEY, JSON.stringify(list.slice(0, 8)));
+    }
+
+    let scores = loadScores();
+
+    function renderScores() {
+      scoresEl.innerHTML = scores
+        .slice(0, 8)
+        .map((s, i) => `<li><span class="rank">${i + 1}</span><span>${escapeHtml(s.name)}</span><span>${(s.ms / 1000).toFixed(3)}s</span></li>`)
+        .join("");
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
+    }
+
+    function playerName() {
+      const n = nameEl.value.trim().toUpperCase() || "JSL";
+      nameEl.value = n;
+      return n;
+    }
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1400);
+    }
+
+    function clearWait() {
+      if (waitTimer) {
+        clearTimeout(waitTimer);
+        waitTimer = null;
+      }
+      cancelAnimationFrame(raf);
+    }
+
+    function setIdle() {
+      state = "idle";
+      document.body.className = "wait";
+      document.body.style.background = "";
+      hint.textContent = "Hit start, wait for the screen to explode with color, then click or smash space as fast as you can.";
+      timerEl.textContent = "0.000s";
+      startBtn.hidden = false;
+      startBtn.textContent = "Start round";
+    }
+
+    function startRound() {
+      clearWait();
+      state = "waiting";
+      startBtn.hidden = true;
+      document.body.className = "wait";
+      document.body.style.background = "";
+      hint.textContent = "Wait for it… don’t jump the flash.";
+      timerEl.textContent = "…";
+      const delay = 900 + Math.random() * 2800;
+      waitTimer = setTimeout(go, delay);
+    }
+
+    function go() {
+      state = "go";
+      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      document.body.style.background = color;
+      document.body.classList.remove("wait");
+      hint.textContent = "NOW! Click or space!";
+      timerEl.textContent = "0.000s";
+      startTime = performance.now();
+      tick();
+      burst(innerWidth / 2, innerHeight / 2, color);
+    }
+
+    function tick() {
+      if (state !== "go") return;
+      const ms = performance.now() - startTime;
+      timerEl.textContent = (ms / 1000).toFixed(3) + "s";
+      raf = requestAnimationFrame(tick);
+    }
+
+    function stop() {
+      if (state === "waiting") {
+        clearWait();
+        showToast("Too soon! Wait for the color.");
+        setIdle();
+        startBtn.hidden = false;
+        startBtn.textContent = "Try again";
+        return;
+      }
+      if (state !== "go") return;
+      clearWait();
+      const ms = performance.now() - startTime;
+      state = "done";
+      timerEl.textContent = (ms / 1000).toFixed(3) + "s";
+      timerEl.classList.remove("burst");
+      void timerEl.offsetWidth;
+      timerEl.classList.add("burst");
+      hint.textContent = ms < 180 ? "Lightning reflexes!" : ms < 250 ? "Speedy!" : "Nice catch. Go again?";
+      scores.push({ name: playerName(), ms: Math.round(ms) });
+      scores.sort((a, b) => a.ms - b.ms);
+      saveScores(scores);
+      renderScores();
+      startBtn.hidden = false;
+      startBtn.textContent = "Again!";
+      burst(mouse.x, mouse.y, "#fff");
+    }
+
+    function onAct(e) {
+      if (e.target === nameEl) return;
+      if (e.target === startBtn) return;
+      if (state === "waiting" || state === "go") {
+        e.preventDefault();
+        stop();
+      }
+    }
+
+    startBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      startRound();
+    });
+
+    window.addEventListener("pointerdown", onAct);
+    window.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        e.preventDefault();
+        if (state === "idle" || state === "done") startRound();
+        else onAct(e);
+      }
+    });
+
+    function resize() {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    window.addEventListener("pointermove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      for (let i = 0; i < 3; i++) {
+        sparks.push({
+          x: e.clientX,
+          y: e.clientY,
+          vx: (Math.random() - 0.5) * 6,
+          vy: (Math.random() - 0.5) * 6,
+          life: 1,
+          size: 4 + Math.random() * 8,
+          hue: (e.clientX + e.clientY + i * 40) % 360
+        });
+      }
+    });
+
+    function burst(x, y, color) {
+      for (let i = 0; i < 40; i++) {
+        const a = Math.random() * Math.PI * 2;
+        const sp = 2 + Math.random() * 10;
+        sparks.push({
+          x, y,
+          vx: Math.cos(a) * sp,
+          vy: Math.sin(a) * sp,
+          life: 1,
+          size: 6 + Math.random() * 10,
+          hue: null,
+          color
+        });
+      }
+    }
+
+    function drawCursor() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const s = sparks[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life -= 0.03;
+        s.size *= 0.96;
+        if (s.life <= 0) {
+          sparks.splice(i, 1);
+          continue;
+        }
+        ctx.globalAlpha = s.life;
+        ctx.fillStyle = s.color || `hsl(${s.hue} 100% 60%)`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 28);
+      g.addColorStop(0, "#fff");
+      g.addColorStop(0.4, "#ffe566");
+      g.addColorStop(1, "rgba(255, 77, 216, 0)");
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 28, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 10, 0, Math.PI * 2);
+      ctx.stroke();
+      requestAnimationFrame(drawCursor);
+    }
+
+    renderScores();
+    drawCursor();
+  </script>
+</body>
+</html>
