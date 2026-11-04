@@ -154,7 +154,8 @@ export function DashboardView() {
             <div>
               <dt className="text-mist">Location</dt>
               <dd className="text-paper">
-                {locationLabel(board.profile.city, board.profile.state) || "Not added yet"}
+                {locationLabel(board.profile.city, board.profile.state, board.profile.country) ||
+                  "Not added yet"}
               </dd>
             </div>
             <div>
@@ -232,7 +233,11 @@ export function DashboardView() {
         </div>
       </div>
 
-      <ProfileForm key={resetNonce} />
+      {ready ? (
+        <ProfileForm key={resetNonce} />
+      ) : (
+        <div className="h-40 animate-pulse rounded-2xl bg-panel" />
+      )}
 
       <section className="rounded-2xl border border-line bg-panel p-5" aria-labelledby="checklist-heading">
         <h2 id="checklist-heading" className="font-display text-4xl uppercase text-paper">
