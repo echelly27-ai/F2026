@@ -71,6 +71,7 @@ export function emptyProfile(): AthleteProfile {
     gradYear: "",
     city: "",
     state: "",
+    country: "",
     school: "",
     gpa: "",
     intendedMajor: "",

@@ -45,6 +45,6 @@ export function todayISO() {
   return `${date.getFullYear()}-${month}-${day}`;
 }
 
-export function locationLabel(city: string, state: string) {
-  return [city, state].filter(Boolean).join(", ");
+export function locationLabel(city: string, state: string, country = "") {
+  return [city, state, country].filter(Boolean).join(", ");
 }

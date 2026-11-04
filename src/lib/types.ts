@@ -67,6 +67,7 @@ export interface AthleteProfile {
   gradYear: string;
   city: string;
   state: string;
+  country: string;
   school: string;
   gpa: string;
   intendedMajor: string;

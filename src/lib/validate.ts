@@ -1,6 +1,7 @@
 import type { AthleteProfile, CollegeEntry } from "@/lib/types";
 import { todayISO } from "@/lib/format";
 import { safeHttpsUrl } from "@/lib/media";
+import { isGraduationClass } from "@/lib/profile-options";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -37,7 +38,7 @@ export function validateProfile(profile: AthleteProfile) {
       errors.gpa = "GPA should be a number from 0 to 5.00.";
     }
   }
-  if (profile.gradYear.trim() && !/^(202[5-9]|203[0-2])$/.test(profile.gradYear.trim())) {
+  if (profile.gradYear.trim() && !isGraduationClass(profile.gradYear.trim())) {
     errors.gradYear = "Use a graduation year from 2025 to 2032.";
   }
   if (profile.heightFeet.trim()) {

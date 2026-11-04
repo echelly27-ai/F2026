@@ -4,6 +4,13 @@ import { useState } from "react";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button } from "@/components/ui/Button";
 import { Field, inputClass } from "@/components/ui/Field";
+import {
+  COUNTRIES,
+  US_STATES,
+  graduationClassOptions,
+  optionsIncludingCurrent,
+  type ProfileOption,
+} from "@/lib/profile-options";
 import type { AthleteProfile } from "@/lib/types";
 import { POSITIONS } from "@/lib/types";
 
@@ -11,6 +18,47 @@ function describedBy(id: string, error?: string, hint?: string) {
   if (error) return `${id}-error`;
   if (hint) return `${id}-hint`;
   return undefined;
+}
+
+function ScrollSelect({
+  id,
+  label,
+  value,
+  options,
+  placeholder,
+  error,
+  autoComplete,
+  onChange,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  options: readonly ProfileOption[];
+  placeholder: string;
+  error?: string;
+  autoComplete?: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <Field label={label} id={id} error={error}>
+      <select
+        id={id}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className={inputClass}
+        autoComplete={autoComplete}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={describedBy(id, error)}
+      >
+        <option value="">{placeholder}</option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </Field>
+  );
 }
 
 export function ProfileForm() {
@@ -141,18 +189,15 @@ export function ProfileForm() {
             aria-describedby={describedBy("heightInches", errors.heightInches)}
           />
         </Field>
-        <Field label="Graduation year" id="gradYear" error={errors.gradYear}>
-          <input
-            id="gradYear"
-            inputMode="numeric"
-            value={draft.gradYear}
-            onChange={(event) => setField("gradYear", event.target.value)}
-            className={inputClass}
-            aria-invalid={Boolean(errors.gradYear)}
-            aria-describedby={describedBy("gradYear", errors.gradYear)}
-            placeholder="2027"
-          />
-        </Field>
+        <ScrollSelect
+          id="gradYear"
+          label="Graduation class"
+          value={draft.gradYear}
+          options={graduationClassOptions(draft.gradYear)}
+          placeholder="Select a class"
+          error={errors.gradYear}
+          onChange={(value) => setField("gradYear", value)}
+        />
         <Field label="Current school or team" id="school">
           <input
             id="school"
@@ -164,16 +209,24 @@ export function ProfileForm() {
         <Field label="City" id="city">
           <input id="city" value={draft.city} onChange={(event) => setField("city", event.target.value)} className={inputClass} />
         </Field>
-        <Field label="State" id="state">
-          <input
-            id="state"
-            value={draft.state}
-            onChange={(event) => setField("state", event.target.value.toUpperCase().slice(0, 2))}
-            className={inputClass}
-            maxLength={2}
-            aria-label="State abbreviation"
-          />
-        </Field>
+        <ScrollSelect
+          id="state"
+          label="State"
+          value={draft.state}
+          options={optionsIncludingCurrent(US_STATES, draft.state)}
+          placeholder="Select a state"
+          autoComplete="address-level1"
+          onChange={(value) => setField("state", value)}
+        />
+        <ScrollSelect
+          id="country"
+          label="Country"
+          value={draft.country}
+          options={optionsIncludingCurrent(COUNTRIES, draft.country)}
+          placeholder="Select a country"
+          autoComplete="country-name"
+          onChange={(value) => setField("country", value)}
+        />
         <Field label="GPA" id="gpa" error={errors.gpa} hint="Optional. Use your own number, 0 to 5.00.">
           <input
             id="gpa"
