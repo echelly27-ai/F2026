@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/Container";
 import { PlayerCard } from "@/components/players/PlayerCard";
 import { SamplePhone } from "@/components/home/SamplePhone";
 import { ButtonLink } from "@/components/ui/Button";
+import { SafeImage } from "@/components/ui/SafeImage";
 import { PROSPECTS } from "@/lib/prospects";
 
 const BENEFITS = [
@@ -51,8 +52,20 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="border-b border-line">
-        <Container className="grid items-center gap-10 py-14 lg:grid-cols-12 lg:py-20">
+      <section className="relative isolate overflow-hidden border-b border-line">
+        <SafeImage
+          src="/images/hero-action.jpg"
+          alt="College basketball players contest a shot during a game"
+          priority
+          sizes="100vw"
+          frameClassName="absolute inset-0 h-full w-full"
+        />
+        <div className="absolute inset-0 bg-ink/45" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/25 to-ink/70 lg:bg-gradient-to-r lg:from-ink/80 lg:via-ink/45 lg:to-ink/20"
+          aria-hidden="true"
+        />
+        <Container className="relative z-10 grid items-center gap-10 py-14 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Basketball recruiting</p>
             <h1 className="mt-4 max-w-3xl font-display text-[clamp(3.2rem,7.2vw,6rem)] uppercase leading-[0.88] text-paper">
@@ -66,7 +79,7 @@ export default function HomePage() {
                 Build your profile
                 <ArrowRight aria-hidden="true" size={16} />
               </ButtonLink>
-              <ButtonLink href="/players" variant="secondary">
+              <ButtonLink href="/players" variant="secondary" className="bg-ink/80!">
                 Explore players
               </ButtonLink>
             </div>

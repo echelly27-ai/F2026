@@ -31,7 +31,7 @@ export function SiteFooter() {
       </Container>
       <Container className="flex flex-col gap-2 border-t border-line py-4 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
         <p>© NEXTUP. Demo data stays in your browser unless you connect Supabase.</p>
-        <p>Basketball photography from Unsplash and Pexels.</p>
+        <p>Basketball photography from Unsplash, Pexels, and public game photographs.</p>
       </Container>
     </footer>
   );
