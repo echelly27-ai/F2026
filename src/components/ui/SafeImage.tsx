@@ -36,12 +36,14 @@ export function SafeImage({
     setFailed(false);
   }
 
+  const coversSection = frameClassName?.split(/\s+/).includes("absolute");
+
   if (!current || failed) {
     return <div className={cn("bg-navy", frameClassName)} role="img" aria-label={alt || "Image unavailable"} />;
   }
 
   return (
-    <div className={cn("relative overflow-hidden bg-navy", frameClassName)}>
+    <div className={cn(coversSection ? null : "relative", "overflow-hidden bg-navy", frameClassName)}>
       <Image
         src={current}
         alt={alt}
