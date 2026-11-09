@@ -83,20 +83,6 @@ export default function HomePage() {
                 Explore players
               </ButtonLink>
             </div>
-            <dl className="mt-8 grid max-w-lg grid-cols-3 gap-3 text-sm">
-              <div>
-                <dt className="text-mist">Profiles</dt>
-                <dd className="mt-1 font-semibold text-paper">100 public</dd>
-              </div>
-              <div>
-                <dt className="text-mist">Your board</dt>
-                <dd className="mt-1 font-semibold text-paper">Saved locally</dd>
-              </div>
-              <div>
-                <dt className="text-mist">Offers</dt>
-                <dd className="mt-1 font-semibold text-paper">None invented</dd>
-              </div>
-            </dl>
           </div>
           <div className="lg:col-span-5">
             <SamplePhone />

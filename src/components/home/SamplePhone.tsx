@@ -80,10 +80,6 @@ export function SamplePhone() {
           </div>
         ))}
       </div>
-      <p className="mx-auto mt-4 max-w-md text-center text-xs leading-relaxed text-mist">
-        This phone is a sample. The player, school, academics, and colleges are fictional, and the photo is a real game
-        photograph. It is not a 2027 ranking profile.
-      </p>
     </aside>
   );
 }
