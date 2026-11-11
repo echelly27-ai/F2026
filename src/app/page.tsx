@@ -3,6 +3,7 @@ import { RecruitingGuide } from "@/components/home/RecruitingGuide";
 import { Container } from "@/components/layout/Container";
 import { SamplePhone } from "@/components/home/SamplePhone";
 import { ButtonLink } from "@/components/ui/Button";
+import { SafeImage } from "@/components/ui/SafeImage";
 
 const BENEFITS = [
   {
@@ -30,8 +31,19 @@ const BENEFITS = [
 export default function HomePage() {
   return (
     <>
-      <section className="border-b border-line bg-ink">
-        <Container className="grid items-center gap-10 py-14 lg:grid-cols-12 lg:py-20">
+      <section className="relative isolate overflow-hidden border-b border-line">
+        <SafeImage
+          src="/images/hero-action.jpg"
+          alt="College basketball players contest a shot during a game"
+          priority
+          sizes="100vw"
+          frameClassName="absolute inset-0 h-full w-full"
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(7_9_13/0.82)_0%,rgb(7_9_13/0.38)_46%,rgb(7_9_13/0.16)_100%)] lg:bg-[linear-gradient(90deg,rgb(7_9_13/0.9)_0%,rgb(7_9_13/0.62)_34%,rgb(7_9_13/0.18)_62%,transparent_84%)]"
+          aria-hidden="true"
+        />
+        <Container className="relative z-10 grid items-center gap-10 py-14 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Basketball recruiting</p>
             <h1 className="mt-4 max-w-3xl font-display text-[clamp(3.2rem,7.2vw,6rem)] uppercase leading-[0.88] text-paper">
@@ -45,7 +57,7 @@ export default function HomePage() {
                 Build your profile
                 <ArrowRight aria-hidden="true" size={16} />
               </ButtonLink>
-              <ButtonLink href="/players" variant="secondary">
+              <ButtonLink href="/players" variant="secondary" className="bg-ink/75!">
                 Explore players
               </ButtonLink>
             </div>
