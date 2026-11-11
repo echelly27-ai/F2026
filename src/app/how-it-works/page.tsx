@@ -1,74 +1,182 @@
 import type { Metadata } from "next";
-import { Container, PageHeader } from "@/components/layout/Container";
+import { Check, Clapperboard, GraduationCap, School, SlidersHorizontal } from "lucide-react";
+import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { SafeImage } from "@/components/ui/SafeImage";
+import { createDefaultBoard, emptyProfile, profileCompletion } from "@/lib/board";
+import type { AthleteProfile } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "How it works",
-  description: "How NEXTUP organizes a basketball recruiting profile, film links, and a personal school list.",
+  description:
+    "How to build one basketball profile, add film, list target schools, and track the outreach you send.",
 };
 
 const STEPS = [
   {
-    title: "Build the profile you control",
-    text: "The dashboard is your workspace. Add a name, position, height, class, school, GPA if you want it public on your board, a short bio, and the season numbers you choose to enter. Completion is calculated from the fields that are filled.",
+    title: "Build one profile",
+    text: "Sport, class, height, and the academics you choose to share, in a single file.",
   },
   {
-    title: "Keep film links with the profile",
-    text: "Paste a YouTube link to embed it, or a Hudl link to open safely in a new tab. Removing a link updates the list immediately. Public prospect pages only embed a highlight when the ranking row published a stable URL.",
+    title: "Add your film",
+    text: "Keep a YouTube or Hudl link you control next to those facts.",
   },
   {
-    title: "Track schools and your own dates",
-    text: "Add a program, write notes, and move it among Interested, Contacted, and Evaluating. The contact date is the day you reached out. The follow-up date is the reminder you set. NEXTUP does not contact coaches and does not list offers.",
+    title: "List target schools",
+    text: "Name the programs you are researching and sort them as the list changes.",
   },
-];
+  {
+    title: "Track outreach",
+    text: "Log the day you reached out and the follow-up you set. You send every message.",
+  },
+] as const;
+
+const sampleProfile: AthleteProfile = {
+  ...emptyProfile(),
+  firstName: "Avery",
+  lastName: "Lang",
+  position: "Shooting Guard",
+  heightFeet: "6",
+  heightInches: "4",
+  gradYear: "2028",
+  city: "Tempe",
+  state: "AZ",
+  school: "Westbridge High",
+  gpa: "3.6",
+};
+
+function statusLabel(status: string) {
+  if (status === "interested") return "Interested";
+  if (status === "contacted") return "Contacted";
+  if (status === "evaluating") return "Evaluating";
+  return status;
+}
 
 export default function HowItWorksPage() {
+  const completion = profileCompletion(sampleProfile);
+  const sampleSchools = createDefaultBoard().colleges;
+
   return (
-    <Container className="py-10 sm:py-14">
-      <PageHeader
-        eyebrow="How it works"
-        title="A board, not a rumor mill"
-        lede="NEXTUP organizes a recruiting journey. The directory shows publicly listed 2027 ranking facts. Your dashboard and tracker stay yours and save on this device unless you connect your own Supabase project."
-      />
-      <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <ol className="space-y-6">
-          {STEPS.map((step, index) => (
-            <li key={step.title} className="rounded-2xl border border-line bg-panel p-5">
-              <p className="font-display text-4xl text-lime">0{index + 1}</p>
-              <h2 className="mt-2 text-xl font-semibold text-paper">{step.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-mist">{step.text}</p>
-            </li>
-          ))}
-        </ol>
-        <SafeImage
-          src="/images/arena.jpg"
-          alt="Wide photograph of a packed basketball arena before tip"
-          frameClassName="aspect-[4/5] rounded-3xl border border-line lg:aspect-auto lg:min-h-[520px]"
-          sizes="(max-width: 1024px) 100vw, 40vw"
-        />
-      </div>
-      <section className="mt-10" aria-labelledby="try-heading">
-        <h2 id="try-heading" className="font-display text-4xl uppercase text-paper">
-          Try the demo
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-mist">
-          No account is required. Sign in with a demo name if you want the welcome line personalized. Checklist
-          marks, profile edits, film links, saved players, and school notes persist in local storage.
-        </p>
-        <div className="mt-5 flex flex-wrap gap-3">
-          <ButtonLink href="/players">Explore players</ButtonLink>
-          <ButtonLink href="/dashboard" variant="secondary">
-            Open dashboard
-          </ButtonLink>
-          <ButtonLink href="/tracker" variant="secondary">
-            Open tracker
-          </ButtonLink>
-          <ButtonLink href="/sign-in" variant="ghost">
-            Demo sign in
+    <Container className="py-12 sm:py-16 lg:py-20">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Personal profile</p>
+          <h1 className="mt-4 max-w-xl font-display text-[clamp(3.1rem,6vw,5.4rem)] uppercase leading-[0.88] text-paper">
+            Build the file. Run the process.
+          </h1>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-mist sm:text-lg">
+            College recruiting gets clearer when sport, class, measurables, academics, and film live in one place.
+            Then you name the schools you want and record the outreach you send. NEXTUP keeps that work on your
+            board. It does not contact coaches or assign someone to recruit for you.
+          </p>
+          <ol className="mt-8 space-y-4">
+            {STEPS.map((step) => (
+              <li key={step.title} className="flex gap-3">
+                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-lime text-ink">
+                  <Check aria-hidden="true" size={14} strokeWidth={3} />
+                </span>
+                <span>
+                  <span className="block font-semibold text-paper">{step.title}</span>
+                  <span className="mt-0.5 block text-sm leading-relaxed text-mist">{step.text}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+          <ButtonLink href="/dashboard#profile-editor" className="mt-8">
+            Build your profile
           </ButtonLink>
         </div>
-      </section>
+
+        <aside aria-label="Sample profile summary for Avery Lang" className="lg:pl-2">
+          <div className="rounded-[1.75rem] border border-line bg-navy p-4 shadow-[0_0_48px_rgba(62,116,255,0.14)] sm:p-5">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-line bg-panel font-display text-3xl text-lime">
+                  AL
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-lime">Sample profile</p>
+                  <p className="font-display text-4xl uppercase leading-none text-paper">Avery Lang</p>
+                  <p className="mt-1 text-xs text-mist">Basketball · Class of 2028</p>
+                </div>
+              </div>
+              <p className="rounded-full border border-lime/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-lime">
+                Fictional
+              </p>
+            </div>
+
+            <div className="mt-5 rounded-2xl border border-line bg-panel p-4">
+              <div className="flex items-end justify-between gap-3">
+                <p className="text-sm text-mist">Profile completion</p>
+                <p className="font-display text-5xl leading-none text-paper">{completion.percent}%</p>
+              </div>
+              <div
+                className="mt-3 h-2 overflow-hidden rounded-full bg-ink"
+                role="meter"
+                aria-valuenow={completion.percent}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label="Sample profile completion"
+              >
+                <div className="h-full bg-lime" style={{ width: `${completion.percent}%` }} />
+              </div>
+              <p className="mt-2 text-xs text-mist">
+                {completion.filled} of {completion.total} fields on this sample. Blank fields stay blank.
+              </p>
+            </div>
+
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <section className="rounded-2xl border border-line bg-panel p-4">
+                <div className="flex items-center gap-2 text-lime">
+                  <Clapperboard aria-hidden="true" size={16} />
+                  <h2 className="text-xs font-semibold uppercase tracking-[0.16em]">Film</h2>
+                </div>
+                <p className="mt-3 text-sm font-semibold text-paper">No highlight link</p>
+                <p className="mt-1 text-xs leading-relaxed text-mist">
+                  Sample slot. Add a URL you control. This is not a real tape.
+                </p>
+              </section>
+
+              <section className="rounded-2xl border border-line bg-panel p-4">
+                <div className="flex items-center gap-2 text-lime">
+                  <GraduationCap aria-hidden="true" size={16} />
+                  <h2 className="text-xs font-semibold uppercase tracking-[0.16em]">Academics</h2>
+                </div>
+                <p className="mt-3 text-sm font-semibold text-paper">GPA 3.6</p>
+                <p className="mt-1 text-xs text-paper">SAT 1200 · ACT 25</p>
+                <p className="mt-1 text-xs leading-relaxed text-mist">Sample academics. Not a real student record.</p>
+              </section>
+
+              <section className="rounded-2xl border border-line bg-panel p-4">
+                <div className="flex items-center gap-2 text-lime">
+                  <School aria-hidden="true" size={16} />
+                  <h2 className="text-xs font-semibold uppercase tracking-[0.16em]">School</h2>
+                </div>
+                <p className="mt-3 text-sm font-semibold text-paper">Westbridge High</p>
+                <p className="mt-1 text-xs text-paper">Tempe, AZ</p>
+                <p className="mt-1 text-xs text-mist">6&apos;4&quot; · 185 lb</p>
+              </section>
+
+              <section className="rounded-2xl border border-line bg-panel p-4">
+                <div className="flex items-center gap-2 text-lime">
+                  <SlidersHorizontal aria-hidden="true" size={16} />
+                  <h2 className="text-xs font-semibold uppercase tracking-[0.16em]">Preferences</h2>
+                </div>
+                <p className="mt-3 text-sm font-semibold text-paper">Shooting guard</p>
+                <ul className="mt-2 space-y-1">
+                  {sampleSchools.map((school) => (
+                    <li key={school.id} className="text-xs text-paper">
+                      {school.name} · {statusLabel(school.status)}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-xs leading-relaxed text-mist">
+                  Fictional campuses from the demo board. Not offers, and no coach is attached.
+                </p>
+              </section>
+            </div>
+          </div>
+        </aside>
+      </div>
     </Container>
   );
 }
