@@ -1,4 +1,5 @@
 import { ArrowRight, ClipboardList, Search, Shield, Target } from "lucide-react";
+import { RecruitingGuide } from "@/components/home/RecruitingGuide";
 import { Container } from "@/components/layout/Container";
 import { SamplePhone } from "@/components/home/SamplePhone";
 import { ButtonLink } from "@/components/ui/Button";
@@ -23,24 +24,6 @@ const BENEFITS = [
     icon: Shield,
     title: "Published facts only",
     text: "Directory profiles use the public ranking row. Missing stats stay blank. NEXTUP does not invent offers or coach contacts.",
-  },
-];
-
-const STEPS = [
-  {
-    n: "01",
-    title: "Build the profile",
-    text: "Add the measurables, academics, and film links you want in one place.",
-  },
-  {
-    n: "02",
-    title: "Sort your list",
-    text: "Move schools between Interested, Contacted, and Evaluating as your process changes.",
-  },
-  {
-    n: "03",
-    title: "Log your outreach",
-    text: "Record the date you reached out and when you plan to follow up. NEXTUP does not contact programs for you.",
   },
 ];
 
@@ -73,6 +56,10 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <section className="border-b border-line bg-ink" aria-labelledby="guide-heading">
+        <RecruitingGuide headingId="guide-heading" />
+      </section>
+
       <section className="border-y border-line bg-navy py-14" aria-labelledby="benefits-heading">
         <Container>
           <h2 id="benefits-heading" className="font-display text-5xl uppercase text-paper">
@@ -87,27 +74,6 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-        </Container>
-      </section>
-
-      <section id="how-it-works" className="py-14" aria-labelledby="steps-heading">
-        <Container>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">How it works</p>
-          <h2 id="steps-heading" className="mt-2 font-display text-5xl uppercase text-paper">
-            Three steps
-          </h2>
-          <ol className="mt-6 grid gap-5 lg:grid-cols-3">
-            {STEPS.map((step) => (
-              <li key={step.n} className="rounded-2xl border border-line bg-panel p-5">
-                <span className="font-display text-4xl text-lime">{step.n}</span>
-                <h3 className="mt-3 text-lg font-semibold text-paper">{step.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-mist">{step.text}</p>
-              </li>
-            ))}
-          </ol>
-          <ButtonLink href="/how-it-works" variant="secondary" className="mt-6">
-            Read the full walkthrough
-          </ButtonLink>
         </Container>
       </section>
 
