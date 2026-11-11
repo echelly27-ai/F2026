@@ -1,10 +1,7 @@
 import { ArrowRight, ClipboardList, Search, Shield, Target } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { PlayerCard } from "@/components/players/PlayerCard";
 import { SamplePhone } from "@/components/home/SamplePhone";
 import { ButtonLink } from "@/components/ui/Button";
-import { SafeImage } from "@/components/ui/SafeImage";
-import { PROSPECTS } from "@/lib/prospects";
 
 const BENEFITS = [
   {
@@ -48,24 +45,10 @@ const STEPS = [
 ];
 
 export default function HomePage() {
-  const featured = PROSPECTS.slice(0, 3);
-
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-line">
-        <SafeImage
-          src="/images/hero-action.jpg"
-          alt="College basketball players contest a shot during a game"
-          priority
-          sizes="100vw"
-          frameClassName="absolute inset-0 h-full w-full"
-        />
-        <div className="absolute inset-0 bg-ink/45" aria-hidden="true" />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/25 to-ink/70 lg:bg-gradient-to-r lg:from-ink/80 lg:via-ink/45 lg:to-ink/20"
-          aria-hidden="true"
-        />
-        <Container className="relative z-10 grid items-center gap-10 py-14 lg:grid-cols-12 lg:py-20">
+      <section className="border-b border-line bg-ink">
+        <Container className="grid items-center gap-10 py-14 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Basketball recruiting</p>
             <h1 className="mt-4 max-w-3xl font-display text-[clamp(3.2rem,7.2vw,6rem)] uppercase leading-[0.88] text-paper">
@@ -79,38 +62,13 @@ export default function HomePage() {
                 Build your profile
                 <ArrowRight aria-hidden="true" size={16} />
               </ButtonLink>
-              <ButtonLink href="/players" variant="secondary" className="bg-ink/80!">
+              <ButtonLink href="/players" variant="secondary">
                 Explore players
               </ButtonLink>
             </div>
           </div>
           <div className="lg:col-span-5">
             <SamplePhone />
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-14" aria-labelledby="featured-heading">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime">Featured</p>
-              <h2 id="featured-heading" className="mt-2 font-display text-5xl uppercase text-paper">
-                Top of the public list
-              </h2>
-              <p className="mt-2 max-w-xl text-sm text-mist">
-                The first three names on the ESPN 2027 SC Next 100 checked October 19, 2026. Rankings change.
-                Photos are the public 247Sports recruiting pictures when one was available.
-              </p>
-            </div>
-            <ButtonLink href="/players" variant="secondary">
-              See all players
-            </ButtonLink>
-          </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {featured.map((player) => (
-              <PlayerCard key={player.id} player={player} />
-            ))}
           </div>
         </Container>
       </section>
