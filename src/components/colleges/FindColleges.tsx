@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import colleges from "@/data/colleges.json";
 import mapPaths from "@/data/us-map.json";
@@ -15,15 +15,15 @@ import {
   DEMONSTRATION_OPENINGS,
   OPENING_POSITIONS,
 } from "@/lib/college-facts";
+import {
+  collegeLocation,
+  collegeSearchParams,
+  parseCollegeSearch,
+  stateName,
+  type DirectoryCollege,
+} from "@/lib/college-results";
 import { US_STATES } from "@/lib/profile-options";
 import { cn } from "@/lib/format";
-
-type DirectoryCollege = {
-  id: string;
-  name: string;
-  state: string;
-  control: "Public" | "Private" | null;
-};
 
 const DIRECTORY = colleges as DirectoryCollege[];
 const PATHS = mapPaths as { id: string; d: string }[];
@@ -31,13 +31,7 @@ const BY_ID = new Map(DIRECTORY.map((college) => [college.id, college]));
 const CONFERENCES = [...new Set(Object.values(CHECKED_COLLEGE_FACTS).map((fact) => fact.conference))].sort();
 
 function stateLabel(code: string) {
-  return US_STATES.find((state) => state.value === code)?.label ?? code;
-}
-
-function locationLine(college: DirectoryCollege) {
-  const fact = CHECKED_COLLEGE_FACTS[college.id];
-  if (fact) return `${fact.city}, ${college.state}`;
-  return stateLabel(college.state);
+  return stateName(code);
 }
 
 export function FindColleges() {
@@ -47,31 +41,26 @@ export function FindColleges() {
   const { ready, board, addCollege } = useApp();
   const [tab, setTab] = useState<"colleges" | "openings">("colleges");
   const [draftQuery, setDraftQuery] = useState("");
-  const [query, setQuery] = useState("");
   const [states, setStates] = useState<string[]>([]);
   const [control, setControl] = useState<"any" | "Public" | "Private">("any");
   const [division, setDivision] = useState("any");
   const [conference, setConference] = useState("any");
-  const [visibleCount, setVisibleCount] = useState(24);
   const [saveMessage, setSaveMessage] = useState("");
   const [openingPosition, setOpeningPosition] = useState("any");
   const [openingYear, setOpeningYear] = useState("any");
   const [openingState, setOpeningState] = useState("any");
 
   const selected = schoolId ? BY_ID.get(schoolId) : undefined;
+  const searchKey = collegeSearchParams(parseCollegeSearch(params)).toString();
 
-  const results = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    return DIRECTORY.filter((college) => {
-      if (states.length > 0 && !states.includes(college.state)) return false;
-      if (control !== "any" && college.control !== control) return false;
-      const fact = CHECKED_COLLEGE_FACTS[college.id];
-      if (division !== "any" && fact?.division !== division) return false;
-      if (conference !== "any" && fact?.conference !== conference) return false;
-      if (!needle) return true;
-      return college.name.toLowerCase().includes(needle);
-    });
-  }, [conference, control, division, query, states]);
+  useEffect(() => {
+    const parsed = parseCollegeSearch(new URLSearchParams(searchKey));
+    setDraftQuery(parsed.query);
+    setStates(parsed.states);
+    setControl(parsed.control);
+    setDivision(parsed.division);
+    setConference(parsed.conference);
+  }, [searchKey]);
 
   const openings = useMemo(() => {
     return DEMONSTRATION_OPENINGS.filter((opening) => {
@@ -85,8 +74,19 @@ export function FindColleges() {
   }, [openingPosition, openingState, openingYear]);
 
   function toggleState(code: string) {
-    setVisibleCount(24);
     setStates((current) => (current.includes(code) ? current.filter((item) => item !== code) : [...current, code]));
+  }
+
+  function openResults() {
+    const next = collegeSearchParams({
+      query: draftQuery.trim(),
+      states,
+      control,
+      division,
+      conference,
+    });
+    const queryString = next.toString();
+    router.push(queryString ? `/find-colleges/results?${queryString}` : "/find-colleges/results");
   }
 
   function openSchool(id: string) {
@@ -99,14 +99,18 @@ export function FindColleges() {
     const next = new URLSearchParams(params.toString());
     next.delete("school");
     const queryString = next.toString();
-    router.push(queryString ? `/find-colleges?${queryString}` : "/find-colleges", { scroll: false });
+    if (queryString) {
+      router.push(`/find-colleges/results?${queryString}`);
+      return;
+    }
+    router.push("/find-colleges", { scroll: false });
   }
 
   function saveCollege(college: DirectoryCollege) {
     const fact = CHECKED_COLLEGE_FACTS[college.id];
     const error = addCollege({
       name: college.name,
-      location: locationLine(college),
+      location: collegeLocation(college),
       division: fact?.division ?? "",
       conference: fact?.conference ?? "",
       status: "interested",
@@ -166,8 +170,7 @@ export function FindColleges() {
             className="flex flex-col gap-3 rounded-2xl border border-line bg-panel p-4 sm:flex-row sm:items-end"
             onSubmit={(event) => {
               event.preventDefault();
-              setQuery(draftQuery);
-              setVisibleCount(24);
+              openResults();
             }}
           >
             <div className="flex-1">
@@ -190,6 +193,9 @@ export function FindColleges() {
                 States
               </h2>
               <div className="flex gap-2">
+                <Button type="button" size="sm" onClick={openResults}>
+                  Search
+                </Button>
                 <Button type="button" variant="secondary" size="sm" onClick={() => setStates(US_STATES.map((state) => state.value))}>
                   Select all
                 </Button>
@@ -252,7 +258,6 @@ export function FindColleges() {
                 value={control}
                 onChange={(event) => {
                   setControl(event.target.value as typeof control);
-                  setVisibleCount(24);
                 }}
               >
                 <option value="any">Any</option>
@@ -267,7 +272,6 @@ export function FindColleges() {
                 value={division}
                 onChange={(event) => {
                   setDivision(event.target.value);
-                  setVisibleCount(24);
                 }}
               >
                 <option value="any">Any</option>
@@ -281,7 +285,6 @@ export function FindColleges() {
                 value={conference}
                 onChange={(event) => {
                   setConference(event.target.value);
-                  setVisibleCount(24);
                 }}
               >
                 <option value="any">Any</option>
@@ -304,12 +307,15 @@ export function FindColleges() {
                 setControl("any");
                 setDivision("any");
                 setConference("any");
-                setVisibleCount(24);
               }}
             >
               Reset filters
             </Button>
           </section>
+
+          <p className="text-sm text-mist">
+            Choose one or more states, then press Search. The results list opens on its own page.
+          </p>
 
           {selected ? (
             <CollegeDetail
@@ -321,61 +327,6 @@ export function FindColleges() {
               onSave={() => saveCollege(selected)}
             />
           ) : null}
-
-          <section aria-labelledby="results-heading">
-            <h2 id="results-heading" className="font-display text-3xl uppercase text-paper">
-              Results
-            </h2>
-            <p className="mt-1 text-sm text-mist">{results.length} colleges</p>
-            {results.length === 0 ? (
-              <div className="mt-4">
-                <EmptyState title="No colleges match" body="Try another name, clear a filter, or remove a state." />
-              </div>
-            ) : (
-              <ul className="mt-4 grid gap-3">
-                {results.slice(0, visibleCount).map((college) => {
-                  const fact = CHECKED_COLLEGE_FACTS[college.id];
-                  return (
-                    <li key={college.id} className="rounded-2xl border border-line bg-panel p-4">
-                      <div className="flex flex-wrap items-start justify-between gap-3">
-                        <div>
-                          <h3 className="text-lg font-semibold text-paper">{college.name}</h3>
-                          <p className="mt-1 text-sm text-mist">
-                            {locationLine(college)}
-                            {college.control ? ` · ${college.control}` : ""}
-                            {fact ? ` · ${fact.division} · ${fact.conference}` : ""}
-                          </p>
-                        </div>
-                        <div className="flex gap-2">
-                          <Button type="button" variant="secondary" size="sm" onClick={() => openSchool(college.id)}>
-                            View
-                          </Button>
-                          <Button
-                            type="button"
-                            size="sm"
-                            disabled={!ready || savedNames.has(college.name.toLowerCase())}
-                            onClick={() => saveCollege(college)}
-                          >
-                            {savedNames.has(college.name.toLowerCase()) ? "Saved" : "Save"}
-                          </Button>
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-            {visibleCount < results.length ? (
-              <Button type="button" variant="secondary" className="mt-4" onClick={() => setVisibleCount((count) => count + 24)}>
-                Show more
-              </Button>
-            ) : null}
-            {saveMessage ? (
-              <p role="status" className="mt-3 text-sm text-lime">
-                {saveMessage}
-              </p>
-            ) : null}
-          </section>
         </div>
       ) : (
         <section className="mt-6 space-y-4" aria-labelledby="openings-heading">
@@ -431,7 +382,7 @@ export function FindColleges() {
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime">Demonstration</p>
                     <h3 className="mt-2 text-lg font-semibold text-paper">{college.name}</h3>
                     <p className="mt-1 text-sm text-mist">
-                      {locationLine(college)}
+                      {collegeLocation(college)}
                       {fact ? ` · ${fact.division} · ${fact.conference}` : ""}
                     </p>
                     <p className="mt-3 text-sm text-paper">
@@ -476,12 +427,12 @@ function CollegeDetail({
   return (
     <article className="rounded-2xl border border-line bg-navy p-5" aria-labelledby="college-detail-heading">
       <button type="button" onClick={onBack} className="text-sm font-semibold text-lime">
-        Back to results
+        Back
       </button>
       <h2 id="college-detail-heading" className="mt-3 font-display text-4xl uppercase text-paper">
         {college.name}
       </h2>
-      <p className="mt-2 text-sm text-mist">{locationLine(college)}</p>
+      <p className="mt-2 text-sm text-mist">{collegeLocation(college)}</p>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
         <div>
           <dt className="text-mist">Control</dt>
