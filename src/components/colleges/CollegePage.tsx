@@ -7,7 +7,9 @@ import { Star } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button } from "@/components/ui/Button";
+import { SchoolMark } from "@/components/colleges/SchoolMark";
 import { DemoNote } from "@/components/ui/DemoNote";
+import { schoolLogo } from "@/lib/school-logo";
 import { Field, inputClass } from "@/components/ui/Field";
 import { verifiedStaff } from "@/lib/basketball-staff";
 import { CHECKED_COLLEGE_FACTS, DEMONSTRATION_OPENINGS } from "@/lib/college-facts";
@@ -101,9 +103,14 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
         <ResultsBackLink />
       </Suspense>
       <header className="mt-4 rounded-2xl border border-line bg-navy p-5 sm:p-7">
-        <h1 className="font-display text-5xl uppercase leading-[0.9] text-paper sm:text-6xl">{college.name}</h1>
-        <p className="mt-3 text-base text-mist">{place}</p>
-        <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-lime">{division}</p>
+        <div className="flex items-center gap-4">
+          <SchoolMark name={college.name} logo={schoolLogo(college.id)} size="lg" />
+          <div className="min-w-0">
+            <h1 className="font-display text-5xl uppercase leading-[0.9] text-paper sm:text-6xl">{college.name}</h1>
+            <p className="mt-3 text-base text-mist">{place}</p>
+            <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-lime">{division}</p>
+          </div>
+        </div>
         <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-start">
           <Button
             type="button"

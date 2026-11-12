@@ -7,7 +7,9 @@ import { Star } from "lucide-react";
 import { Container, PageHeader } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { ButtonLink } from "@/components/ui/Button";
+import { SchoolMark } from "@/components/colleges/SchoolMark";
 import { DemoNote } from "@/components/ui/DemoNote";
+import { schoolLogo } from "@/lib/school-logo";
 import {
   collegeLocation,
   collegeSearchParams,
@@ -158,12 +160,17 @@ export function CollegeResults() {
                       </button>
                     </td>
                     <td className="px-3 py-3">
-                      <Link href={detailHref} className="font-semibold text-paper hover:text-lime">
-                        {row.college.name}
-                      </Link>
-                      <p className="mt-1 text-mist">
-                        {row.city ? `${row.city}, ${row.college.state}` : `City not listed · ${row.college.state}`}
-                      </p>
+                      <div className="flex items-center gap-3">
+                        <SchoolMark name={row.college.name} logo={schoolLogo(row.college.id)} />
+                        <div className="min-w-0">
+                          <Link href={detailHref} className="font-semibold text-paper hover:text-lime">
+                            {row.college.name}
+                          </Link>
+                          <p className="mt-1 text-mist">
+                            {row.city ? `${row.city}, ${row.college.state}` : `City not listed · ${row.college.state}`}
+                          </p>
+                        </div>
+                      </div>
                     </td>
                     <td className="px-3 py-3 text-paper">{row.division || "Not listed"}</td>
                     <td className="px-3 py-3 text-paper">{row.athletic}</td>
