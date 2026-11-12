@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { SignedOutState } from "@/components/auth/SignedOutState";
 import { HighlightsManager } from "@/components/dashboard/HighlightsManager";
 import { ProfileForm } from "@/components/dashboard/ProfileForm";
 import { Container } from "@/components/layout/Container";
@@ -143,6 +144,10 @@ export function ProfileSummary() {
     setErrors({});
     setMessage("Saved on this device.");
     setEditing(null);
+  }
+
+  if (!session) {
+    return <SignedOutState pageTitle="My profile" />;
   }
 
   return (

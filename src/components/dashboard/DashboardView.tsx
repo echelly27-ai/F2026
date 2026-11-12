@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { SignedOutState } from "@/components/auth/SignedOutState";
 import { Container } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button, ButtonLink } from "@/components/ui/Button";
@@ -16,7 +17,6 @@ export function DashboardView() {
     board,
     storageOk,
     warning,
-    supabaseEnabled,
     toggleWatch,
     resetDemo,
   } = useApp();
@@ -34,6 +34,10 @@ export function DashboardView() {
   const savedPlayers = board.watchlist
     .map((id) => getPlayer(id))
     .filter((player): player is NonNullable<typeof player> => Boolean(player));
+
+  if (!session) {
+    return <SignedOutState pageTitle="Dashboard" />;
+  }
 
   if (!ready) {
     return (
@@ -53,11 +57,9 @@ export function DashboardView() {
           {displayName ? `Welcome, ${displayName}.` : "Welcome to your board."}
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist">
-          {session
-            ? session.mode === "demo"
-              ? `Demo session for ${session.email}. Nothing here is a real recruiting account.`
-              : `Supabase session for ${session.email}. Your board also stays on this device.`
-            : "You can edit without signing in. Start a demo session if you want your name attached."}
+          {session.mode === "demo"
+            ? `Demo session for ${session.email}. Nothing here is a real recruiting account.`
+            : `Supabase session for ${session.email}. Your board also stays on this device.`}
         </p>
       </header>
 
@@ -67,16 +69,6 @@ export function DashboardView() {
         </p>
       ) : null}
       {warning ? <p className="rounded-xl border border-line bg-panel px-4 py-3 text-sm text-mist">{warning}</p> : null}
-      {!session ? (
-        <p className="rounded-xl border border-line bg-panel px-4 py-3 text-sm text-mist">
-          Working without a session.{" "}
-          <Link href="/sign-in" className="font-semibold text-lime">
-            Sign in
-          </Link>{" "}
-          to label the board. {supabaseEnabled ? "Supabase is configured." : "Supabase is not configured, so demo mode is the account path."}
-        </p>
-      ) : null}
-
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Recruiting progress">
         <article className="rounded-2xl border border-line bg-panel p-4">
           <p className="text-sm text-mist">Profile completion</p>
