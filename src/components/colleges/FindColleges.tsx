@@ -5,8 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import colleges from "@/data/colleges.json";
 import mapPaths from "@/data/us-map.json";
 import { Container, PageHeader } from "@/components/layout/Container";
-import { useApp } from "@/components/providers/AppProviders";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 import { DemoNote } from "@/components/ui/DemoNote";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Field, inputClass } from "@/components/ui/Field";
@@ -38,20 +37,25 @@ export function FindColleges() {
   const router = useRouter();
   const params = useSearchParams();
   const schoolId = params.get("school");
-  const { ready, board, addCollege } = useApp();
   const [tab, setTab] = useState<"colleges" | "openings">("colleges");
   const [draftQuery, setDraftQuery] = useState("");
   const [states, setStates] = useState<string[]>([]);
   const [control, setControl] = useState<"any" | "Public" | "Private">("any");
   const [division, setDivision] = useState("any");
   const [conference, setConference] = useState("any");
-  const [saveMessage, setSaveMessage] = useState("");
   const [openingPosition, setOpeningPosition] = useState("any");
   const [openingYear, setOpeningYear] = useState("any");
   const [openingState, setOpeningState] = useState("any");
 
-  const selected = schoolId ? BY_ID.get(schoolId) : undefined;
   const searchKey = collegeSearchParams(parseCollegeSearch(params)).toString();
+
+  useEffect(() => {
+    if (!schoolId || !BY_ID.has(schoolId)) return;
+    const next = new URLSearchParams(params.toString());
+    next.delete("school");
+    const rest = next.toString();
+    router.replace(rest ? `/find-colleges/${schoolId}?${rest}` : `/find-colleges/${schoolId}`);
+  }, [params, router, schoolId]);
 
   useEffect(() => {
     const parsed = parseCollegeSearch(new URLSearchParams(searchKey));
@@ -88,40 +92,6 @@ export function FindColleges() {
     const queryString = next.toString();
     router.push(queryString ? `/find-colleges/results?${queryString}` : "/find-colleges/results");
   }
-
-  function openSchool(id: string) {
-    const next = new URLSearchParams(params.toString());
-    next.set("school", id);
-    router.push(`/find-colleges?${next.toString()}`, { scroll: false });
-  }
-
-  function clearSchool() {
-    const next = new URLSearchParams(params.toString());
-    next.delete("school");
-    const queryString = next.toString();
-    if (queryString) {
-      router.push(`/find-colleges/results?${queryString}`);
-      return;
-    }
-    router.push("/find-colleges", { scroll: false });
-  }
-
-  function saveCollege(college: DirectoryCollege) {
-    const fact = CHECKED_COLLEGE_FACTS[college.id];
-    const error = addCollege({
-      name: college.name,
-      location: collegeLocation(college),
-      division: fact?.division ?? "",
-      conference: fact?.conference ?? "",
-      status: "interested",
-      notes: "Saved from the college directory. NEXTUP did not contact this school.",
-      contactDate: "",
-      followUpDate: "",
-    });
-    setSaveMessage(error ?? `${college.name} saved to My Colleges.`);
-  }
-
-  const savedNames = new Set(board.colleges.map((college) => college.name.toLowerCase()));
 
   return (
     <Container className="py-10 sm:py-14">
@@ -316,17 +286,6 @@ export function FindColleges() {
           <p className="text-sm text-mist">
             Choose one or more states, then press Search. The results list opens on its own page.
           </p>
-
-          {selected ? (
-            <CollegeDetail
-              college={selected}
-              saved={savedNames.has(selected.name.toLowerCase())}
-              ready={ready}
-              message={saveMessage}
-              onBack={clearSchool}
-              onSave={() => saveCollege(selected)}
-            />
-          ) : null}
         </div>
       ) : (
         <section className="mt-6 space-y-4" aria-labelledby="openings-heading">
@@ -391,12 +350,9 @@ export function FindColleges() {
                     <p className="mt-2 text-xs leading-relaxed text-mist">
                       Not a live roster spot. No coach email or phone is attached.
                     </p>
-                    <Button type="button" variant="secondary" size="sm" className="mt-4" onClick={() => {
-                      setTab("colleges");
-                      openSchool(college.id);
-                    }}>
+                    <ButtonLink href={`/find-colleges/${college.id}`} variant="secondary" size="sm" className="mt-4">
                       View program
-                    </Button>
+                    </ButtonLink>
                   </li>
                 );
               })}
@@ -405,64 +361,5 @@ export function FindColleges() {
         </section>
       )}
     </Container>
-  );
-}
-
-function CollegeDetail({
-  college,
-  saved,
-  ready,
-  message,
-  onBack,
-  onSave,
-}: {
-  college: DirectoryCollege;
-  saved: boolean;
-  ready: boolean;
-  message: string;
-  onBack: () => void;
-  onSave: () => void;
-}) {
-  const fact = CHECKED_COLLEGE_FACTS[college.id];
-  return (
-    <article className="rounded-2xl border border-line bg-navy p-5" aria-labelledby="college-detail-heading">
-      <button type="button" onClick={onBack} className="text-sm font-semibold text-lime">
-        Back
-      </button>
-      <h2 id="college-detail-heading" className="mt-3 font-display text-4xl uppercase text-paper">
-        {college.name}
-      </h2>
-      <p className="mt-2 text-sm text-mist">{collegeLocation(college)}</p>
-      <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-        <div>
-          <dt className="text-mist">Control</dt>
-          <dd className="text-paper">{college.control ?? "Not listed"}</dd>
-        </div>
-        <div>
-          <dt className="text-mist">State</dt>
-          <dd className="text-paper">{stateLabel(college.state)}</dd>
-        </div>
-        <div>
-          <dt className="text-mist">Division</dt>
-          <dd className="text-paper">{fact?.division ?? "Not listed"}</dd>
-        </div>
-        <div>
-          <dt className="text-mist">Conference</dt>
-          <dd className="text-paper">{fact?.conference ?? "Not listed"}</dd>
-        </div>
-      </dl>
-      <p className="mt-4 text-sm leading-relaxed text-mist">
-        Tuition, roster, and coaching staff are not included. NEXTUP does not invent those and does not contact the
-        school.
-      </p>
-      <Button type="button" className="mt-4" disabled={!ready || saved} onClick={onSave}>
-        {saved ? "Saved to My Colleges" : "Save to My Colleges"}
-      </Button>
-      {message ? (
-        <p role="status" className="mt-3 text-sm text-lime">
-          {message}
-        </p>
-      ) : null}
-    </article>
   );
 }

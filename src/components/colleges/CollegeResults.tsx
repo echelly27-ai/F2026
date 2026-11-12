@@ -140,8 +140,9 @@ export function CollegeResults() {
             <tbody>
               {rows.map((row) => {
                 const saved = savedByName.has(row.college.name.toLowerCase());
-                const detail = new URLSearchParams(returnQuery);
-                detail.set("school", row.college.id);
+                const detailHref = returnQuery
+                  ? `/find-colleges/${row.college.id}?${returnQuery}`
+                  : `/find-colleges/${row.college.id}`;
                 return (
                   <tr key={row.college.id} className="border-t border-line bg-panel align-top">
                     <td className="px-3 py-3">
@@ -157,7 +158,7 @@ export function CollegeResults() {
                       </button>
                     </td>
                     <td className="px-3 py-3">
-                      <Link href={`/find-colleges?${detail.toString()}`} className="font-semibold text-paper hover:text-lime">
+                      <Link href={detailHref} className="font-semibold text-paper hover:text-lime">
                         {row.college.name}
                       </Link>
                       <p className="mt-1 text-mist">
