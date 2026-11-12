@@ -51,6 +51,12 @@ export function validateProfile(profile: AthleteProfile) {
       errors.heightInches = "Inches should be from 0 to 11.";
     }
   }
+  if (profile.weight.trim()) {
+    const weight = Number(profile.weight);
+    if (!Number.isInteger(weight) || weight < 80 || weight > 400) {
+      errors.weight = "Weight should be a whole number of pounds from 80 to 400.";
+    }
+  }
   for (const key of ["ppg", "rpg", "apg", "spg", "bpg"] as const) {
     const raw = profile[key].trim();
     if (!raw) continue;
