@@ -23,8 +23,8 @@ export default function Error({
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
         <Button onClick={reset}>Try again</Button>
-        <ButtonLink href="/players" variant="secondary">
-          Back to players
+        <ButtonLink href="/" variant="secondary">
+          Back home
         </ButtonLink>
       </div>
     </Container>

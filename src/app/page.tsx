@@ -13,8 +13,8 @@ const BENEFITS = [
   },
   {
     icon: Search,
-    title: "A scouting board",
-    text: "Search the public 2027 ranking by position, class, height, location, school, rank, and stars.",
+    title: "Find colleges",
+    text: "Search schools by name and state, then save the ones you are researching.",
   },
   {
     icon: Target,
@@ -23,8 +23,8 @@ const BENEFITS = [
   },
   {
     icon: Shield,
-    title: "Published facts only",
-    text: "Directory profiles use the public ranking row. Missing stats stay blank. NEXTUP does not invent offers or coach contacts.",
+    title: "Your file stays yours",
+    text: "Contact details stay on your board. NEXTUP does not invent offers or coach contacts.",
   },
 ];
 
@@ -56,9 +56,6 @@ export default function HomePage() {
               <ButtonLink href="/dashboard#profile-editor">
                 Build your profile
                 <ArrowRight aria-hidden="true" size={16} />
-              </ButtonLink>
-              <ButtonLink href="/players" variant="secondary" className="bg-ink/75!">
-                Explore players
               </ButtonLink>
             </div>
           </div>
