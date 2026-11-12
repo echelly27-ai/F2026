@@ -68,6 +68,7 @@ export function emptyProfile(): AthleteProfile {
     position: "",
     heightFeet: "",
     heightInches: "",
+    weight: "",
     gradYear: "",
     city: "",
     state: "",

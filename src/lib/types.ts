@@ -64,6 +64,7 @@ export interface AthleteProfile {
   position: string;
   heightFeet: string;
   heightInches: string;
+  weight: string;
   gradYear: string;
   city: string;
   state: string;
