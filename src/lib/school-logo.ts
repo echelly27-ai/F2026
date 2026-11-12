@@ -3,7 +3,12 @@ import logoData from "@/data/school-logos.json";
 const LOGOS = logoData as Record<string, string>;
 
 // Header marks that are drawn in dark ink disappear on the navy chip.
-const PAPER_CHIP = new Set(["/logos/198385.svg"]);
+const PAPER_CHIP = new Set([
+  "/logos/198385.svg",
+  "/logos/139959.svg",
+  "/logos/178244.svg",
+  "/logos/209409.svg",
+]);
 
 export function schoolLogo(collegeId: string) {
   return LOGOS[collegeId] ?? null;
