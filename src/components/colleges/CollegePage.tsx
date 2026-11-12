@@ -9,6 +9,7 @@ import { useApp } from "@/components/providers/AppProviders";
 import { Button } from "@/components/ui/Button";
 import { DemoNote } from "@/components/ui/DemoNote";
 import { Field, inputClass } from "@/components/ui/Field";
+import { verifiedStaff } from "@/lib/basketball-staff";
 import { CHECKED_COLLEGE_FACTS, DEMONSTRATION_OPENINGS } from "@/lib/college-facts";
 import {
   collegeLocation,
@@ -40,6 +41,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
   const fact = CHECKED_COLLEGE_FACTS[college.id];
   const sample = sampleMetrics(college.id, college.control);
   const opening = DEMONSTRATION_OPENINGS.find((item) => item.collegeId === college.id);
+  const staff = verifiedStaff(college.id);
   const saved = board.colleges.find((item) => item.name.toLowerCase() === college.name.toLowerCase());
   const place = fact ? `${fact.city}, ${stateName(college.state)}` : `City not listed · ${stateName(college.state)}`;
   const division = fact?.division ?? "Division not listed";
@@ -185,7 +187,32 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
           ) : null}
           <div className="mt-6 rounded-xl border border-line bg-navy p-4">
             <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-paper">Coaching staff</h3>
-            <p className="mt-2 text-sm leading-relaxed text-mist">Staff contacts are not published here.</p>
+            {staff.length ? (
+              <ul className="mt-4 space-y-4">
+                {staff.map((coach) => {
+                  const roleLabel = coach.role === "head" ? "Head coach" : "Assistant coach";
+                  const showTitle = coach.title.toLowerCase() !== roleLabel.toLowerCase();
+                  return (
+                    <li key={`${coach.name}-${coach.email}`} className="border-t border-line pt-4 first:border-t-0 first:pt-0">
+                      <p className="font-semibold text-paper">{coach.name}</p>
+                      <p className="mt-1 text-sm text-mist">{roleLabel}</p>
+                      {showTitle ? <p className="text-sm text-mist">{coach.title}</p> : null}
+                      <a className="mt-1 inline-block text-sm font-semibold text-lime" href={`mailto:${coach.email}`}>
+                        {coach.email}
+                      </a>
+                      <p className="mt-1 break-all text-xs text-mist">
+                        Source{" "}
+                        <a className="text-lime" href={coach.sourceUrl} rel="noreferrer">
+                          {coach.sourceUrl}
+                        </a>
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="mt-2 text-sm leading-relaxed text-mist">Staff contacts are not published here.</p>
+            )}
           </div>
           <div className="mt-4">
             <DemoNote>
