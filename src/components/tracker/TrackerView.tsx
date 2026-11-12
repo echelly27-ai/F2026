@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Star } from "lucide-react";
+import { SignedOutState } from "@/components/auth/SignedOutState";
 import { Container, PageHeader } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button, ButtonLink } from "@/components/ui/Button";
@@ -57,7 +58,7 @@ const EMPTY_FORM = {
 };
 
 export function TrackerView() {
-  const { ready, board, addCollege, updateCollege, removeCollege, restoreCollege } = useApp();
+  const { ready, session, board, addCollege, updateCollege, removeCollege, restoreCollege } = useApp();
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [message, setMessage] = useState("");
@@ -89,6 +90,10 @@ export function TrackerView() {
 
   function setField<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((current) => ({ ...current, [key]: value }));
+  }
+
+  if (!session) {
+    return <SignedOutState pageTitle="My Colleges" />;
   }
 
   return (
