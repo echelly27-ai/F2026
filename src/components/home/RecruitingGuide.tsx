@@ -88,7 +88,7 @@ export function RecruitingGuide({
               </li>
             ))}
           </ol>
-          <ButtonLink href="/dashboard#profile-editor" className="mt-8">
+          <ButtonLink href="/profile#profile-editor" className="mt-8">
             Build your profile
           </ButtonLink>
         </div>

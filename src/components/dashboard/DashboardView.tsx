@@ -2,23 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { HighlightsManager } from "@/components/dashboard/HighlightsManager";
-import { ProfileForm } from "@/components/dashboard/ProfileForm";
 import { Container } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { getPlayer } from "@/lib/prospects";
 import { nextFollowUp, profileCompletion, statusCounts } from "@/lib/board";
 import { formatDate, formatHeightParts, formatWhen, locationLabel } from "@/lib/format";
-
-function focusSection(id: string) {
-  const node = document.getElementById(id);
-  node?.scrollIntoView({ behavior: "smooth", block: "start" });
-  if (node instanceof HTMLElement) {
-    const field = node.querySelector("input, textarea, select");
-    if (field instanceof HTMLElement) field.focus();
-  }
-}
 
 export function DashboardView() {
   const {
@@ -28,10 +17,8 @@ export function DashboardView() {
     storageOk,
     warning,
     supabaseEnabled,
-    toggleChecklist,
     toggleWatch,
     resetDemo,
-    resetNonce,
   } = useApp();
   const [confirmReset, setConfirmReset] = useState(false);
   const completion = profileCompletion(board.profile);
@@ -127,7 +114,7 @@ export function DashboardView() {
           <h2 id="overview-heading" className="font-display text-4xl uppercase text-paper">
             Profile overview
           </h2>
-          <p className="mt-1 text-sm text-mist">Updates after you save the form below.</p>
+          <p className="mt-1 text-sm text-mist">Updates after you save on My Profile.</p>
           <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
             <div>
               <dt className="text-mist">Name</dt>
@@ -203,12 +190,9 @@ export function DashboardView() {
               Quick actions
             </h2>
             <div className="mt-4 flex flex-col gap-2">
-              <Button variant="secondary" onClick={() => focusSection("profile-editor")}>
-                Edit profile
-              </Button>
-              <Button variant="secondary" onClick={() => focusSection("highlights")}>
-                Add a film link
-              </Button>
+              <ButtonLink href="/profile" variant="secondary">
+                My Profile
+              </ButtonLink>
               <ButtonLink href="/tracker" variant="secondary">
                 Open recruiting tracker
               </ButtonLink>
@@ -232,41 +216,6 @@ export function DashboardView() {
           </section>
         </div>
       </div>
-
-      {ready ? (
-        <ProfileForm key={resetNonce} />
-      ) : (
-        <div className="h-40 animate-pulse rounded-2xl bg-panel" />
-      )}
-
-      <section className="rounded-2xl border border-line bg-panel p-5" aria-labelledby="checklist-heading">
-        <h2 id="checklist-heading" className="font-display text-4xl uppercase text-paper">
-          Recruiting checklist
-        </h2>
-        <p className="mt-2 text-sm text-mist">Checking an item updates this list and stays on this device.</p>
-        <ul className="mt-4 grid gap-3 md:grid-cols-2">
-          {board.checklist.map((item) => (
-            <li key={item.id}>
-              <label className="flex cursor-pointer gap-3 rounded-xl border border-line bg-navy px-3 py-3">
-                <input
-                  type="checkbox"
-                  className="mt-1 size-4 accent-lime"
-                  checked={item.done}
-                  onChange={() => toggleChecklist(item.id)}
-                />
-                <span>
-                  <span className={item.done ? "text-sm font-medium text-mist line-through" : "text-sm font-medium text-paper"}>
-                    {item.label}
-                  </span>
-                  <span className="mt-1 block text-sm text-mist">{item.detail}</span>
-                </span>
-              </label>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <HighlightsManager />
 
       <div className="grid gap-4 lg:grid-cols-2">
         <section className="rounded-2xl border border-line bg-panel p-5" aria-labelledby="schools-heading">

@@ -2,7 +2,9 @@
 
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { HighlightsManager } from "@/components/dashboard/HighlightsManager";
+import { ProfileForm } from "@/components/dashboard/ProfileForm";
 import { Container } from "@/components/layout/Container";
+import { RecruitingChecklist } from "@/components/profile/RecruitingChecklist";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button } from "@/components/ui/Button";
 import { Field, inputClass } from "@/components/ui/Field";
@@ -105,6 +107,15 @@ export function ProfileSummary() {
   }
 
   function showSection(next: SectionId) {
+    if (next === "video") {
+      setSection("summary");
+      setEditing(null);
+      setDraft(board.profile);
+      setErrors({});
+      setMessage("");
+      document.getElementById("highlights")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     setSection(next);
     setEditing(null);
     setDraft(board.profile);
@@ -244,8 +255,6 @@ export function ProfileSummary() {
             )
           ) : null}
 
-          {section === "video" ? <HighlightsManager /> : null}
-
           {section === "athletics" ? (
             <SectionForm title="Athletics" lede="Position and size saved on this device." message={message} errors={errors} onSubmit={save}>
               <PositionField value={draft.position} onChange={(value) => setField("position", value)} />
@@ -321,6 +330,16 @@ export function ProfileSummary() {
             </SectionForm>
           ) : null}
         </div>
+      </div>
+
+      {section === "summary" && !editing ? (
+        <div className="mt-8">
+          <ProfileForm />
+        </div>
+      ) : null}
+      <div className="mt-8 space-y-8">
+        <RecruitingChecklist />
+        <HighlightsManager />
       </div>
     </Container>
   );

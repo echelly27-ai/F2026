@@ -115,7 +115,7 @@ export function AcademyView() {
           ))}
         </div>
       )}
-      <ButtonLink href="/dashboard#profile-editor" className="mt-6">
+      <ButtonLink href="/profile#profile-editor" className="mt-6">
         Build your profile
       </ButtonLink>
     </Container>
