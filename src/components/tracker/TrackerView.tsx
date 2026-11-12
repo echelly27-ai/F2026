@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Star } from "lucide-react";
 import { Container, PageHeader } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button } from "@/components/ui/Button";
@@ -17,6 +18,32 @@ const STATUS_LABEL: Record<RecruitStatus, string> = {
   contacted: "Contacted",
   evaluating: "Evaluating",
 };
+
+const SAMPLE_LINES = [
+  "Sample view counted for this row. Not a visit by a program.",
+  "Sample search counted for this row. Not someone looking up your file.",
+  "Sample follow counted for this row. Not a program following you.",
+  "Sample open counted for this row. Not a message that was opened.",
+] as const;
+
+type SortKey = "name" | "division" | "views" | "searches" | "follows" | "opens";
+
+function sampleHash(id: string) {
+  let hash = 0;
+  for (const char of id) hash = (Math.imul(hash, 33) + char.charCodeAt(0)) >>> 0;
+  return hash;
+}
+
+function sampleActivity(college: CollegeEntry) {
+  const hash = sampleHash(college.id);
+  return {
+    line: SAMPLE_LINES[hash % SAMPLE_LINES.length],
+    views: hash % 5,
+    searches: Math.floor(hash / 8) % 4,
+    follows: Math.floor(hash / 64) % 3,
+    opens: Math.floor(hash / 512) % 3,
+  };
+}
 
 const EMPTY_FORM = {
   name: "",
@@ -36,11 +63,14 @@ export function TrackerView() {
   const [message, setMessage] = useState("");
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<RecruitStatus | "all">("all");
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [sortKey, setSortKey] = useState<SortKey>("name");
   const [undo, setUndo] = useState<CollegeEntry | null>(null);
 
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return board.colleges.filter((college) => {
+    const rows = board.colleges.filter((college) => {
+      if (favoritesOnly && !college.favorite) return false;
       if (statusFilter !== "all" && college.status !== statusFilter) return false;
       if (!needle) return true;
       return [college.name, college.location, college.conference, college.notes, college.division]
@@ -48,37 +78,321 @@ export function TrackerView() {
         .toLowerCase()
         .includes(needle);
     });
-  }, [board.colleges, query, statusFilter]);
+    return rows.sort((a, b) => {
+      if (sortKey === "name") return a.name.localeCompare(b.name);
+      if (sortKey === "division") return (a.division || "zzz").localeCompare(b.division || "zzz") || a.name.localeCompare(b.name);
+      const left = sampleActivity(a)[sortKey];
+      const right = sampleActivity(b)[sortKey];
+      return right - left || a.name.localeCompare(b.name);
+    });
+  }, [board.colleges, favoritesOnly, query, sortKey, statusFilter]);
+
+  const totals = useMemo(() => {
+    return visible.reduce(
+      (sum, college) => {
+        const activity = sampleActivity(college);
+        sum.views += activity.views;
+        sum.searches += activity.searches;
+        sum.follows += activity.follows;
+        sum.opens += activity.opens;
+        return sum;
+      },
+      { views: 0, searches: 0, follows: 0, opens: 0 },
+    );
+  }, [visible]);
 
   function setField<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((current) => ({ ...current, [key]: value }));
   }
 
-  if (!ready) {
-    return (
-      <Container className="space-y-4 py-10">
-        <div className="h-16 animate-pulse rounded-2xl bg-panel" />
-        <div className="h-48 animate-pulse rounded-2xl bg-panel" />
-      </Container>
-    );
-  }
-
   return (
     <Container className="py-10 sm:py-14">
       <PageHeader
-        eyebrow="Tracker"
-        title="College recruiting tracker"
-        lede="Add schools you are researching, sort them into Interested, Contacted, and Evaluating, and record the dates you choose for outreach and follow-up."
+        eyebrow="My Colleges"
+        title="My Colleges"
+        lede="Schools on your board, with sample activity for the layout. Interested, Contacted, and Evaluating still sort the same list."
       />
       <div className="mt-6">
         <DemoNote>
-          Sample schools on a fresh board are fictional placeholders. A contact date means the day you reached out.
-          NEXTUP does not store coach phone numbers and does not claim a program contacted you.
+          The activity on this page is a sample. Counts are not coach actions. No coach name, email, or opened message
+          is attached to a school.
         </DemoNote>
       </div>
 
+      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label="Sample totals">
+        {(
+          [
+            ["Views", totals.views],
+            ["Searches", totals.searches],
+            ["Follows", totals.follows],
+            ["Opens", totals.opens],
+          ] as const
+        ).map(([label, value]) => (
+          <div key={label} className="rounded-2xl border border-line bg-panel px-4 py-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-mist">Sample {label}</p>
+            <p className="mt-1 font-display text-4xl text-paper">{value}</p>
+          </div>
+        ))}
+      </div>
+
+
+      <div className="mt-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-end">
+          <div className="min-w-0 flex-1">
+          <Field label="Search your list" id="tracker-search">
+            <input
+              id="tracker-search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              className={inputClass}
+              placeholder="School, city, conference, or note"
+            />
+          </Field>
+          </div>
+          <div className="w-full sm:w-48">
+          <Field label="Sort" id="college-sort">
+            <select
+              id="college-sort"
+              value={sortKey}
+              onChange={(event) => setSortKey(event.target.value as SortKey)}
+              className={inputClass}
+            >
+              <option value="name">Name</option>
+              <option value="division">Division</option>
+              <option value="views">Views</option>
+              <option value="searches">Searches</option>
+              <option value="follows">Follows</option>
+              <option value="opens">Opens</option>
+            </select>
+          </Field>
+          </div>
+        </div>
+        <label className="flex items-center gap-2 text-sm font-semibold text-paper">
+          <input
+            id="favorites-only"
+            type="checkbox"
+            className="size-4 accent-[#3e74ff]"
+            checked={favoritesOnly}
+            onChange={(event) => setFavoritesOnly(event.target.checked)}
+          />
+          Favorites only
+        </label>
+      </div>
+      <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filter by status">
+          {(["all", ...STATUSES] as const).map((status) => (
+            <button
+              key={status}
+              type="button"
+              aria-pressed={statusFilter === status}
+              onClick={() => setStatusFilter(status)}
+              className={
+                statusFilter === status
+                  ? "rounded-full bg-lime px-3 py-2 text-sm font-semibold text-ink"
+                  : "rounded-full border border-line px-3 py-2 text-sm font-semibold text-paper"
+              }
+            >
+              {status === "all" ? "All" : STATUS_LABEL[status]}
+            </button>
+          ))}
+        </div>
+
+      {undo ? (
+        <p role="status" className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-line bg-panel px-4 py-3 text-sm text-mist">
+          Removed {undo.name}.
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => {
+              restoreCollege(undo);
+              setUndo(null);
+            }}
+          >
+            Undo
+          </Button>
+        </p>
+      ) : null}
+
+      {board.colleges.length === 0 ? (
+        <div className="mt-4">
+          <EmptyState
+            title="No schools yet"
+            body="Add a program you are researching. It joins this list in the status you pick."
+          />
+        </div>
+      ) : visible.length === 0 ? (
+        <div className="mt-4">
+          <EmptyState
+            title="Nothing matches"
+            body="No schools match that filter. Clear it to see the full list."
+            action={
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setQuery("");
+                  setStatusFilter("all");
+                  setFavoritesOnly(false);
+                }}
+              >
+                Clear filters
+              </Button>
+            }
+          />
+        </div>
+      ) : (
+        <ul className="mt-4 space-y-3" aria-label="Colleges">
+          {visible.map((college) => {
+            const activity = sampleActivity(college);
+            const place = college.location.trim() || "City and state not listed";
+            const division = college.division.trim() || "Division not listed";
+            return (
+              <li key={college.id} className="rounded-2xl border border-line bg-panel p-4">
+                <div className="flex items-start gap-3">
+                  <button
+                    type="button"
+                    className={college.favorite ? "mt-1 text-lime" : "mt-1 text-mist"}
+                    aria-pressed={Boolean(college.favorite)}
+                    aria-label={college.favorite ? `Remove ${college.name} from favorites` : `Save ${college.name} as a favorite`}
+                    disabled={!ready}
+                    onClick={() =>
+                      updateCollege(
+                        college.id,
+                        { favorite: !college.favorite },
+                        college.favorite
+                          ? `Removed ${college.name} from favorites.`
+                          : `Saved ${college.name} as a favorite.`,
+                      )
+                    }
+                  >
+                    <Star className="size-5" fill={college.favorite ? "currentColor" : "none"} aria-hidden="true" />
+                  </button>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                      <div className="min-w-0">
+                        <h2 className="text-lg font-semibold text-paper">{college.name}</h2>
+                        <p className="mt-1 text-sm text-mist">
+                          {division} · {place}
+                        </p>
+                        <p className="mt-2 text-sm text-paper">{activity.line}</p>
+                      </div>
+                      <dl className="grid grid-cols-4 gap-3 text-center">
+                        {(
+                          [
+                            ["Views", activity.views],
+                            ["Searches", activity.searches],
+                            ["Follows", activity.follows],
+                            ["Opens", activity.opens],
+                          ] as const
+                        ).map(([label, value]) => (
+                          <div key={label}>
+                            <dt className="text-xs uppercase tracking-[0.14em] text-mist">{label}</dt>
+                            <dd className="mt-1 text-lg font-semibold text-paper">{value}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                    <div className="mt-4 flex flex-wrap items-end gap-3">
+                      <Field label="Status" id={`status-${college.id}`}>
+                        <select
+                          id={`status-${college.id}`}
+                          value={college.status}
+                          className={inputClass}
+                          onChange={(event) => {
+                            const next = event.target.value as RecruitStatus;
+                            updateCollege(college.id, { status: next }, `Moved ${college.name} to ${STATUS_LABEL[next]}.`);
+                          }}
+                        >
+                          {STATUSES.map((option) => (
+                            <option key={option} value={option}>
+                              {STATUS_LABEL[option]}
+                            </option>
+                          ))}
+                        </select>
+                      </Field>
+                    </div>
+                    <details className="mt-3">
+                      <summary className="cursor-pointer text-sm font-semibold text-lime">Dates and notes</summary>
+                      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                        <Field label="Date you reached out" id={`contact-${college.id}`}>
+                          <input
+                            id={`contact-${college.id}`}
+                            type="date"
+                            value={college.contactDate}
+                            className={inputClass}
+                            onChange={(event) => {
+                              const contactDate = event.target.value;
+                              if (contactDate) {
+                                const problem = validateCollege({ ...college, contactDate }).contactDate;
+                                if (problem) {
+                                  setMessage(problem);
+                                  return;
+                                }
+                              }
+                              updateCollege(
+                                college.id,
+                                { contactDate },
+                                contactDate
+                                  ? `Recorded your outreach to ${college.name} on ${formatDate(contactDate)}.`
+                                  : `Cleared the outreach date for ${college.name}.`,
+                              );
+                            }}
+                          />
+                        </Field>
+                        <Field label="Your follow-up date" id={`follow-${college.id}`}>
+                          <input
+                            id={`follow-${college.id}`}
+                            type="date"
+                            value={college.followUpDate}
+                            className={inputClass}
+                            onChange={(event) => {
+                              const followUpDate = event.target.value;
+                              if (followUpDate && college.contactDate && followUpDate < college.contactDate) {
+                                setMessage("Follow-up should be on or after the outreach date.");
+                                return;
+                              }
+                              updateCollege(
+                                college.id,
+                                { followUpDate },
+                                followUpDate
+                                  ? `Set a follow-up for ${college.name} on ${formatDate(followUpDate)}.`
+                                  : `Cleared the follow-up for ${college.name}.`,
+                              );
+                            }}
+                          />
+                        </Field>
+                        <div className="sm:col-span-2">
+                          <Field label="Notes" id={`notes-${college.id}`}>
+                            <textarea
+                              id={`notes-${college.id}`}
+                              value={college.notes}
+                              rows={3}
+                              maxLength={500}
+                              className={inputClass}
+                              onChange={(event) => updateCollege(college.id, { notes: event.target.value })}
+                            />
+                          </Field>
+                        </div>
+                      </div>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        className="mt-3"
+                        onClick={() => {
+                          setUndo(college);
+                          removeCollege(college.id);
+                        }}
+                      >
+                        Remove {college.name}
+                      </Button>
+                    </details>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
       <form
-        className="mt-6 grid gap-4 rounded-2xl border border-line bg-panel p-4 md:grid-cols-2"
+        className="mt-8 grid gap-4 rounded-2xl border border-line bg-panel p-4 md:grid-cols-2"
         noValidate
         onSubmit={(event) => {
           event.preventDefault();
@@ -216,195 +530,6 @@ export function TrackerView() {
         </div>
       </form>
 
-      <div className="mt-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-        <Field label="Search your list" id="tracker-search">
-          <input
-            id="tracker-search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            className={inputClass}
-            placeholder="School, city, conference, or note"
-          />
-        </Field>
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by status">
-          {(["all", ...STATUSES] as const).map((status) => (
-            <button
-              key={status}
-              type="button"
-              aria-pressed={statusFilter === status}
-              onClick={() => setStatusFilter(status)}
-              className={
-                statusFilter === status
-                  ? "rounded-full bg-lime px-3 py-2 text-sm font-semibold text-ink"
-                  : "rounded-full border border-line px-3 py-2 text-sm font-semibold text-paper"
-              }
-            >
-              {status === "all" ? "All" : STATUS_LABEL[status]}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {undo ? (
-        <p role="status" className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-line bg-panel px-4 py-3 text-sm text-mist">
-          Removed {undo.name}.
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => {
-              restoreCollege(undo);
-              setUndo(null);
-            }}
-          >
-            Undo
-          </Button>
-        </p>
-      ) : null}
-
-      {board.colleges.length === 0 ? (
-        <div className="mt-4">
-          <EmptyState
-            title="No schools yet"
-            body="Add a program you are researching. The new card shows up in the column that matches the status you pick."
-          />
-        </div>
-      ) : visible.length === 0 ? (
-        <div className="mt-4">
-          <EmptyState
-            title="Nothing matches"
-            body="No schools match that search or status. Clear the search to see the full list."
-            action={
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  setQuery("");
-                  setStatusFilter("all");
-                }}
-              >
-                Clear search
-              </Button>
-            }
-          />
-        </div>
-      ) : (
-        <div className="mt-4 grid gap-4 lg:grid-cols-3">
-          {STATUSES.filter((status) => statusFilter === "all" || statusFilter === status).map((status) => {
-            const column = visible.filter((college) => college.status === status);
-            return (
-              <section key={status} aria-labelledby={`column-${status}`} className="space-y-3">
-                <h2 id={`column-${status}`} className="font-display text-3xl uppercase text-paper">
-                  {STATUS_LABEL[status]}
-                  <span className="ml-2 text-lg text-mist">{column.length}</span>
-                </h2>
-                {column.length === 0 ? (
-                  <p className="rounded-2xl border border-dashed border-line px-4 py-6 text-sm text-mist">
-                    None in {STATUS_LABEL[status]}.
-                  </p>
-                ) : (
-                  column.map((college) => (
-                    <article key={college.id} className="space-y-3 rounded-2xl border border-line bg-panel p-4">
-                      <div>
-                        <h3 className="text-lg font-semibold text-paper">{college.name}</h3>
-                        <p className="text-sm text-mist">
-                          {[college.location, college.division, college.conference].filter(Boolean).join(" · ")}
-                        </p>
-                      </div>
-                      <Field label="Status" id={`status-${college.id}`}>
-                        <select
-                          id={`status-${college.id}`}
-                          value={college.status}
-                          className={inputClass}
-                          onChange={(event) => {
-                            const next = event.target.value as RecruitStatus;
-                            updateCollege(
-                              college.id,
-                              { status: next },
-                              `Moved ${college.name} to ${STATUS_LABEL[next]}.`,
-                            );
-                          }}
-                        >
-                          {STATUSES.map((option) => (
-                            <option key={option} value={option}>
-                              {STATUS_LABEL[option]}
-                            </option>
-                          ))}
-                        </select>
-                      </Field>
-                      <Field label="Date you reached out" id={`contact-${college.id}`}>
-                        <input
-                          id={`contact-${college.id}`}
-                          type="date"
-                          value={college.contactDate}
-                          className={inputClass}
-                          onChange={(event) => {
-                            const contactDate = event.target.value;
-                            if (contactDate) {
-                              const problem = validateCollege({ ...college, contactDate }).contactDate;
-                              if (problem) {
-                                setMessage(problem);
-                                return;
-                              }
-                            }
-                            updateCollege(
-                              college.id,
-                              { contactDate },
-                              contactDate
-                                ? `Recorded your outreach to ${college.name} on ${formatDate(contactDate)}.`
-                                : `Cleared the outreach date for ${college.name}.`,
-                            );
-                          }}
-                        />
-                      </Field>
-                      <Field label="Your follow-up date" id={`follow-${college.id}`}>
-                        <input
-                          id={`follow-${college.id}`}
-                          type="date"
-                          value={college.followUpDate}
-                          className={inputClass}
-                          onChange={(event) => {
-                            const followUpDate = event.target.value;
-                            if (followUpDate && college.contactDate && followUpDate < college.contactDate) {
-                              setMessage("Follow-up should be on or after the outreach date.");
-                              return;
-                            }
-                            updateCollege(
-                              college.id,
-                              { followUpDate },
-                              followUpDate
-                                ? `Set a follow-up for ${college.name} on ${formatDate(followUpDate)}.`
-                                : `Cleared the follow-up for ${college.name}.`,
-                            );
-                          }}
-                        />
-                      </Field>
-                      <Field label="Notes" id={`notes-${college.id}`}>
-                        <textarea
-                          id={`notes-${college.id}`}
-                          value={college.notes}
-                          rows={3}
-                          maxLength={500}
-                          className={inputClass}
-                          onChange={(event) => updateCollege(college.id, { notes: event.target.value })}
-                        />
-                      </Field>
-                      <Button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => {
-                          setUndo(college);
-                          removeCollege(college.id);
-                        }}
-                      >
-                        Remove {college.name}
-                      </Button>
-                    </article>
-                  ))
-                )}
-              </section>
-            );
-          })}
-        </div>
-      )}
     </Container>
   );
 }

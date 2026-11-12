@@ -100,6 +100,7 @@ export interface CollegeEntry {
   notes: string;
   contactDate: string;
   followUpDate: string;
+  favorite?: boolean;
 }
 
 export interface ActivityItem {
