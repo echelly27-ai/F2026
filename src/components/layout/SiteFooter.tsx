@@ -3,6 +3,7 @@ import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/layout/Container";
 
 const LINKS = [
+  { href: "/challenges", label: "Eight challenges" },
   { href: "/players", label: "Discover players" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/dashboard", label: "Dashboard" },
