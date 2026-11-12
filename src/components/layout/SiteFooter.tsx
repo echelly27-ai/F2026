@@ -3,7 +3,6 @@ import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/layout/Container";
 
 const LINKS = [
-  { href: "/players", label: "Discover players" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/profile", label: "My profile" },
@@ -21,8 +20,8 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-4 max-w-md text-sm leading-relaxed text-mist">
-            NEXTUP is a basketball recruiting workspace. The public directory repeats ranking facts from
-            ESPN&apos;s 2027 SC Next 100 and links out for reports. It does not invent offers or coach contacts.
+            NEXTUP is a basketball recruiting workspace. Build a profile, keep your school list, and look up
+            colleges. It does not invent offers or coach contacts.
           </p>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-2 text-sm">
