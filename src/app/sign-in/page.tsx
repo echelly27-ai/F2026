@@ -3,7 +3,7 @@ import { SignInView } from "@/components/auth/SignInView";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Start a NEXTUP demo session. Supabase sign-in appears only when public environment variables are set.",
+  description: "Start a NEXTUP demo session. A name and email stay in this browser. No password is stored for the demo.",
 };
 
 export default function SignInPage() {

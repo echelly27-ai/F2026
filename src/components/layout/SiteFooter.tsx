@@ -6,7 +6,11 @@ const LINKS = [
   { href: "/players", label: "Discover players" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/tracker", label: "Recruiting tracker" },
+  { href: "/profile", label: "My profile" },
+  { href: "/tracker", label: "My Colleges" },
+  { href: "/academy", label: "NXTUP Academy" },
+  { href: "/find-colleges", label: "Find Colleges" },
+  { href: "/development", label: "Player Development" },
   { href: "/sign-in", label: "Sign in" },
 ];
 
@@ -30,7 +34,7 @@ export function SiteFooter() {
         </nav>
       </Container>
       <Container className="flex flex-col gap-2 border-t border-line py-4 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
-        <p>© NEXTUP. Demo data stays in your browser unless you connect Supabase.</p>
+        <p>© NEXTUP. Demo data stays in your browser.</p>
         <p>Basketball photography from Unsplash, Pexels, and public game photographs.</p>
       </Container>
     </footer>

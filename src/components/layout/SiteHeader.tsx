@@ -14,7 +14,11 @@ const LINKS = [
   { href: "/players", label: "Discover Players" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/tracker", label: "Tracker" },
+  { href: "/profile", label: "My Profile" },
+  { href: "/tracker", label: "My Colleges" },
+  { href: "/academy", label: "NXTUP Academy" },
+  { href: "/find-colleges", label: "Find Colleges" },
+  { href: "/development", label: "Player Development" },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -44,7 +48,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-line bg-ink">
       <Container className="flex items-center justify-between gap-4 py-3">
         <Logo />
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary">
+        <nav className="hidden min-w-0 flex-1 flex-wrap items-center justify-end gap-x-3 gap-y-1 lg:flex" aria-label="Primary">
           {LINKS.map((link) => (
             <Link
               key={link.href}
