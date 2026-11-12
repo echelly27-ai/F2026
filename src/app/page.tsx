@@ -53,7 +53,7 @@ export default function HomePage() {
               Build a profile, add your film and stats, and track the colleges on your list.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <ButtonLink href="/dashboard#profile-editor">
+              <ButtonLink href="/profile#profile-editor">
                 Build your profile
                 <ArrowRight aria-hidden="true" size={16} />
               </ButtonLink>
