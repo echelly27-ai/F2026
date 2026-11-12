@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Star } from "lucide-react";
 import { Container, PageHeader } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 import { DemoNote } from "@/components/ui/DemoNote";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Field, inputClass } from "@/components/ui/Field";
@@ -87,20 +87,6 @@ export function TrackerView() {
     });
   }, [board.colleges, favoritesOnly, query, sortKey, statusFilter]);
 
-  const totals = useMemo(() => {
-    return visible.reduce(
-      (sum, college) => {
-        const activity = sampleActivity(college);
-        sum.views += activity.views;
-        sum.searches += activity.searches;
-        sum.follows += activity.follows;
-        sum.opens += activity.opens;
-        return sum;
-      },
-      { views: 0, searches: 0, follows: 0, opens: 0 },
-    );
-  }, [visible]);
-
   function setField<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((current) => ({ ...current, [key]: value }));
   }
@@ -110,7 +96,7 @@ export function TrackerView() {
       <PageHeader
         eyebrow="My Colleges"
         title="My Colleges"
-        lede="Schools on your board, with sample activity for the layout. Interested, Contacted, and Evaluating still sort the same list."
+        lede="Schools you save from Find Colleges. Interested, Contacted, and Evaluating still sort the same list."
       />
       <div className="mt-6">
         <DemoNote>
@@ -118,23 +104,6 @@ export function TrackerView() {
           is attached to a school.
         </DemoNote>
       </div>
-
-      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label="Sample totals">
-        {(
-          [
-            ["Views", totals.views],
-            ["Searches", totals.searches],
-            ["Follows", totals.follows],
-            ["Opens", totals.opens],
-          ] as const
-        ).map(([label, value]) => (
-          <div key={label} className="rounded-2xl border border-line bg-panel px-4 py-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-mist">Sample {label}</p>
-            <p className="mt-1 font-display text-4xl text-paper">{value}</p>
-          </div>
-        ))}
-      </div>
-
 
       <div className="mt-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-end">
@@ -215,8 +184,9 @@ export function TrackerView() {
       {board.colleges.length === 0 ? (
         <div className="mt-4">
           <EmptyState
-            title="No schools yet"
-            body="Add a program you are researching. It joins this list in the status you pick."
+            title="No colleges yet"
+            body="Search on Find Colleges and save a school. It will show up on this list."
+            action={<ButtonLink href="/find-colleges">Find Colleges</ButtonLink>}
           />
         </div>
       ) : visible.length === 0 ? (

@@ -1,7 +1,7 @@
 import { Check, Clapperboard, GraduationCap, School, SlidersHorizontal } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { createDefaultBoard, emptyProfile, profileCompletion } from "@/lib/board";
+import { emptyProfile, profileCompletion } from "@/lib/board";
 import type { AthleteProfile } from "@/lib/types";
 
 const STEPS = [
@@ -52,7 +52,10 @@ export function RecruitingGuide({
   headingId?: string;
 }) {
   const completion = profileCompletion(sampleProfile);
-  const sampleSchools = createDefaultBoard().colleges;
+  const sampleSchools = [
+    { id: "guide-harborview", name: "Harborview University", status: "interested" },
+    { id: "guide-summit", name: "Summit State", status: "evaluating" },
+  ];
   const Title = heading;
   const PanelTitle = heading === "h1" ? "h2" : "h3";
 
@@ -174,7 +177,7 @@ export function RecruitingGuide({
                   ))}
                 </ul>
                 <p className="mt-2 text-xs leading-relaxed text-mist">
-                  Fictional campuses from the demo board. Not offers, and no coach is attached.
+                  Fictional campuses on this sample. Not offers, and no coach is attached.
                 </p>
               </section>
             </div>

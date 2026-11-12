@@ -92,32 +92,7 @@ export function createDefaultBoard(): BoardState {
   return {
     profile: emptyProfile(),
     checklist: CHECKLIST_TEMPLATE.map((item) => ({ ...item })),
-    colleges: [
-      {
-        id: "sample-harborview",
-        name: "Harborview University",
-        location: "Fictional campus",
-        division: "NCAA Division II",
-        conference: "Sample conference",
-        status: "interested",
-        notes:
-          "Sample entry. Replace this with a school you are actually researching. No coach is attached.",
-        contactDate: "",
-        followUpDate: "",
-      },
-      {
-        id: "sample-summit",
-        name: "Summit State",
-        location: "Fictional campus",
-        division: "NCAA Division III",
-        conference: "Sample conference",
-        status: "evaluating",
-        notes:
-          "Sample entry in Evaluating. Dates stay empty until you record your own outreach.",
-        contactDate: "",
-        followUpDate: "",
-      },
-    ],
+    colleges: [],
     activity: [
       {
         id: "seed",
@@ -129,6 +104,13 @@ export function createDefaultBoard(): BoardState {
     notes: [],
     updatedAt: "",
   };
+}
+
+const PRELOADED_COLLEGE_IDS = new Set(["sample-harborview", "sample-summit"]);
+const PRELOADED_COLLEGE_NAMES = new Set(["harborview university", "summit state"]);
+
+function isPreloadedCollege(item: { id: string; name: string }) {
+  return PRELOADED_COLLEGE_IDS.has(item.id) || PRELOADED_COLLEGE_NAMES.has(item.name.trim().toLowerCase());
 }
 
 function isStatus(value: unknown): value is RecruitStatus {
@@ -181,7 +163,7 @@ export function parseBoard(value: unknown): BoardState | null {
           followUpDate: asString(item.followUpDate).slice(0, 10),
           favorite: item.favorite === true,
         }))
-        .filter((item) => item.name.trim().length > 0)
+        .filter((item) => item.name.trim().length > 0 && !isPreloadedCollege(item))
         .slice(0, 40)
     : base.colleges;
 
