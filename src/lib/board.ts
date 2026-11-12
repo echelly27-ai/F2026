@@ -179,6 +179,7 @@ export function parseBoard(value: unknown): BoardState | null {
           notes: asString(item.notes).slice(0, 500),
           contactDate: asString(item.contactDate).slice(0, 10),
           followUpDate: asString(item.followUpDate).slice(0, 10),
+          favorite: item.favorite === true,
         }))
         .filter((item) => item.name.trim().length > 0)
         .slice(0, 40)
