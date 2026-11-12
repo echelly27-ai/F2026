@@ -48,12 +48,21 @@ export type SortKey =
 export type SortDirection = "asc" | "desc";
 
 const DIRECTORY = colleges as DirectoryCollege[];
+const BY_ID = new Map(DIRECTORY.map((college) => [college.id, college]));
 const STATE_CODES = new Set(US_STATES.map((state) => state.value));
 const SAMPLE_OPENING_IDS = new Set<string>(DEMONSTRATION_OPENINGS.map((opening) => opening.collegeId));
 const SELECTIVITY_RANK = new Map(SAMPLE_SELECTIVITY.map((label, index) => [label, index]));
 
 export function stateName(code: string) {
   return US_STATES.find((state) => state.value === code)?.label ?? code;
+}
+
+export function getDirectoryCollege(id: string) {
+  return BY_ID.get(id) ?? null;
+}
+
+export function directoryCollegeParams() {
+  return DIRECTORY.map((college) => ({ id: college.id }));
 }
 
 export function collegeLocation(college: DirectoryCollege) {
