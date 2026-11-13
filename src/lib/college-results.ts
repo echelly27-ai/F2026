@@ -61,6 +61,30 @@ export function getDirectoryCollege(id: string) {
   return BY_ID.get(id) ?? null;
 }
 
+const BY_NAME = new Map<string, DirectoryCollege[]>();
+for (const college of DIRECTORY) {
+  const key = college.name.trim().toLowerCase().replace(/\s+/g, " ");
+  const list = BY_NAME.get(key);
+  if (list) list.push(college);
+  else BY_NAME.set(key, [college]);
+}
+
+function placeIncludes(place: string, token: string) {
+  const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`\\b${escaped}\\b`, "i").test(place);
+}
+
+/** Match a saved school to the directory page. Duplicate names also need the saved state. */
+export function directoryCollegeByName(name: string, location = "") {
+  const matches = BY_NAME.get(name.trim().toLowerCase().replace(/\s+/g, " "));
+  if (!matches?.length) return null;
+  if (matches.length === 1) return matches[0];
+  const narrowed = matches.filter(
+    (college) => placeIncludes(location, college.state) || placeIncludes(location, stateName(college.state)),
+  );
+  return narrowed.length === 1 ? narrowed[0] : null;
+}
+
 export function directoryCollegeParams() {
   return DIRECTORY.map((college) => ({ id: college.id }));
 }
