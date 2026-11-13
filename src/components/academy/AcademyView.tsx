@@ -30,7 +30,7 @@ const ARTICLES = [
   {
     category: "Contacting coaches",
     title: "You send the message",
-    body: "A short note with your profile and film is something you send. Record the date on your tracker. NEXTUP does not email programs and does not assign a coach to do it.",
+    body: "On a college page, Send hands your note to that coach's published email and puts your email in reply-to. If no coach email is published, nothing is sent. Record the date on your tracker.",
   },
   {
     category: "Highlight video",

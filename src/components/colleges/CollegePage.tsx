@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Mail, Star } from "lucide-react";
@@ -41,23 +41,22 @@ function coachKey(coach: VerifiedCoach) {
   return `${coach.name}\n${coach.title}\n${coach.email ?? ""}`;
 }
 
-function mailtoFor(coach: VerifiedCoach & { email: string }, subject: string, message: string) {
-  const parts: string[] = [];
-  const trimmedSubject = subject.trim();
-  const trimmedMessage = message.trim();
-  if (trimmedSubject) parts.push(`subject=${encodeURIComponent(trimmedSubject)}`);
-  if (trimmedMessage) parts.push(`body=${encodeURIComponent(trimmedMessage)}`);
-  return `mailto:${coach.email}${parts.length ? `?${parts.join("&")}` : ""}`;
-}
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type SendState = "idle" | "sending" | "sent" | "failed";
 
 export function CollegePage({ college }: { college: DirectoryCollege }) {
-  const { ready, board, addCollege, updateCollege } = useApp();
+  const { ready, board, session, addCollege, updateCollege } = useApp();
   const [tab, setTab] = useState<TabId>("recruiting");
   const [message, setMessage] = useState("");
   const [composing, setComposing] = useState(false);
   const [selectedKey, setSelectedKey] = useState("");
   const [subject, setSubject] = useState("");
   const [draft, setDraft] = useState("");
+  const [replyTo, setReplyTo] = useState("");
+  const [replyError, setReplyError] = useState("");
+  const [sendState, setSendState] = useState<SendState>("idle");
+  const prefilledReply = useRef(false);
 
   const fact = publishedCollegeFact(college.id);
   const sample = sampleMetrics(college.id, college.control);
@@ -75,8 +74,18 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
     emailStaff[0];
 
   useEffect(() => {
+    if (prefilledReply.current) return;
+    const known = board.profile.email.trim() || session?.email.trim() || "";
+    if (!known) return;
+    prefilledReply.current = true;
+    setReplyTo(known);
+  }, [board.profile.email, session]);
+
+  useEffect(() => {
     if (!composing) return;
-    document.getElementById("coach-email-subject")?.focus();
+    const reply = document.getElementById("coach-email-reply") as HTMLInputElement | null;
+    const target = reply && !reply.value.trim() ? reply : document.getElementById("coach-email-subject");
+    target?.focus();
   }, [composing]);
 
   function entryFields(favorite: boolean) {
@@ -110,7 +119,45 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
   function openCompose() {
     if (!selected) return;
     setSelectedKey(coachKey(selected));
+    setSendState("idle");
     setComposing(true);
+  }
+
+  async function sendToCoach(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!selected?.email) return;
+    const visitorEmail = replyTo.trim();
+    if (!EMAIL.test(visitorEmail)) {
+      setReplyError("Enter the email you want this coach to reply to.");
+      document.getElementById("coach-email-reply")?.focus();
+      return;
+    }
+    if (!subject.trim() || !draft.trim()) return;
+    setReplyError("");
+    setSendState("sending");
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/coach-mail`, {
+        method: "POST",
+        headers: { "content-type": "application/json", accept: "application/json" },
+        cache: "no-store",
+        body: JSON.stringify({
+          collegeId: college.id,
+          coachName: selected.name,
+          coachTitle: selected.title,
+          replyTo: visitorEmail,
+          subject,
+          message: draft,
+        }),
+      });
+      const body = (await response.json().catch(() => null)) as { accepted?: boolean; reason?: string } | null;
+      if (response.ok && body?.accepted === true) {
+        setSendState("sent");
+        return;
+      }
+      setSendState("failed");
+    } catch {
+      setSendState("failed");
+    }
   }
 
   return (
@@ -205,13 +252,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
                 })}
               </ul>
             </aside>
-            <form
-              className="flex flex-col gap-4 p-5 sm:p-6"
-              onSubmit={(event) => {
-                event.preventDefault();
-                window.location.href = mailtoFor(selected, subject, draft);
-              }}
-            >
+            <form className="flex flex-col gap-4 p-5 sm:p-6" onSubmit={sendToCoach}>
               <div className="flex items-start justify-between gap-3">
                 <h2 id="email-coach-title" className="font-display text-3xl uppercase text-paper">
                   Email coach
@@ -227,13 +268,35 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
                 </span>
                 <span className="break-all text-sm text-mist">{selected.email}</span>
               </div>
+              <Field label="Your email" id="coach-email-reply" error={replyError} hint="The coach's reply comes to this address.">
+                <input
+                  id="coach-email-reply"
+                  className={inputClass}
+                  type="email"
+                  autoComplete="email"
+                  value={replyTo}
+                  maxLength={320}
+                  required
+                  aria-invalid={Boolean(replyError)}
+                  aria-describedby={replyError ? "coach-email-reply-error" : "coach-email-reply-hint"}
+                  onChange={(event) => {
+                    setReplyTo(event.target.value);
+                    if (replyError) setReplyError("");
+                    if (sendState !== "idle") setSendState("idle");
+                  }}
+                />
+              </Field>
               <Field label="Subject" id="coach-email-subject">
                 <input
                   id="coach-email-subject"
                   className={inputClass}
                   value={subject}
                   maxLength={200}
-                  onChange={(event) => setSubject(event.target.value)}
+                  required
+                  onChange={(event) => {
+                    setSubject(event.target.value);
+                    if (sendState !== "idle") setSendState("idle");
+                  }}
                 />
               </Field>
               <Field label="Message" id="coach-email-message">
@@ -242,20 +305,31 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
                   className={cn(inputClass, "min-h-36 resize-y")}
                   value={draft}
                   maxLength={4000}
-                  onChange={(event) => setDraft(event.target.value)}
+                  required
+                  onChange={(event) => {
+                    setDraft(event.target.value);
+                    if (sendState !== "idle") setSendState("idle");
+                  }}
                 />
               </Field>
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="max-w-md text-sm leading-relaxed text-mist">
-                  Send opens your email app with this coach's published address. NEXTUP does not send the message.
+                  Send delivers this note to the coach's published address. Your email is the reply-to.
                 </p>
-                <a
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-5 py-2.5 text-sm font-semibold text-ink hover:bg-lime-2"
-                  href={mailtoFor(selected, subject, draft)}
-                >
-                  Send
-                </a>
+                <Button type="submit" disabled={sendState === "sending"}>
+                  {sendState === "sending" ? "Sending" : "Send"}
+                </Button>
               </div>
+              {sendState === "sent" ? (
+                <p role="status" className="text-sm font-semibold text-lime">
+                  Sent. {selected.name} can reply to {replyTo.trim()}.
+                </p>
+              ) : null}
+              {sendState === "failed" ? (
+                <p role="status" className="text-sm font-semibold text-rose-200">
+                  This message was not sent.
+                </p>
+              ) : null}
             </form>
           </div>
         </section>
@@ -312,11 +386,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
                       <p className="font-semibold text-paper">{coach.name}</p>
                       <p className="mt-1 text-sm text-mist">{roleLabel(coach.role)}</p>
                       {showTitle ? <p className="text-sm text-mist">{coach.title}</p> : null}
-                      {coach.email ? (
-                        <a className="mt-1 inline-block text-sm font-semibold text-lime" href={`mailto:${coach.email}`}>
-                          {coach.email}
-                        </a>
-                      ) : null}
+                      {coach.email ? <p className="mt-1 text-sm font-semibold text-lime">{coach.email}</p> : null}
                       <p className="mt-1 break-all text-xs text-mist">
                         Source{" "}
                         <a className="text-lime" href={coach.sourceUrl} rel="noreferrer">
