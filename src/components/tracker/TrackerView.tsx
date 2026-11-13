@@ -1,15 +1,19 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { Star } from "lucide-react";
 import { SignedOutState } from "@/components/auth/SignedOutState";
+import { SchoolMark } from "@/components/colleges/SchoolMark";
 import { Container, PageHeader } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { DemoNote } from "@/components/ui/DemoNote";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Field, inputClass } from "@/components/ui/Field";
+import { directoryCollegeByName } from "@/lib/college-results";
 import { formatDate } from "@/lib/format";
+import { schoolLogo } from "@/lib/school-logo";
 import type { CollegeEntry, RecruitStatus } from "@/lib/types";
 import { DIVISIONS, STATUSES } from "@/lib/types";
 import { validateCollege } from "@/lib/validate";
@@ -219,6 +223,7 @@ export function TrackerView() {
             const activity = sampleActivity(college);
             const place = college.location.trim() || "City and state not listed";
             const division = college.division.trim() || "Division not listed";
+            const directory = directoryCollegeByName(college.name, college.location);
             return (
               <li key={college.id} className="rounded-2xl border border-line bg-panel p-4">
                 <div className="flex items-start gap-3">
@@ -243,7 +248,17 @@ export function TrackerView() {
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
                       <div className="min-w-0">
-                        <h2 className="text-lg font-semibold text-paper">{college.name}</h2>
+                        {directory ? (
+                          <Link
+                            href={`/find-colleges/${directory.id}`}
+                            className="flex min-w-0 items-center gap-3 text-paper hover:text-lime"
+                          >
+                            <SchoolMark name={college.name} logo={schoolLogo(directory.id)} />
+                            <h2 className="text-lg font-semibold">{college.name}</h2>
+                          </Link>
+                        ) : (
+                          <h2 className="text-lg font-semibold text-paper">{college.name}</h2>
+                        )}
                         <p className="mt-1 text-sm text-mist">
                           {division} · {place}
                         </p>

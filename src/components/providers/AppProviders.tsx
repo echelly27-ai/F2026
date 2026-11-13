@@ -5,15 +5,18 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import { createDefaultBoard, withActivity } from "@/lib/board";
 import {
   clearSession,
-  loadBoard,
+  loadNamedBoard,
   loadSession,
+  parkLegacyBoard,
   saveBoard,
+  saveNamedBoard,
   saveSession,
   storageAvailable,
 } from "@/lib/storage";
@@ -78,15 +81,18 @@ export function AppProviders({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [board, setBoard] = useState<BoardState>(() => createDefaultBoard());
   const [resetNonce, setResetNonce] = useState(0);
+  const tookOver = useRef(false);
   const supabaseEnabled = isSupabaseConfigured();
 
   useEffect(() => {
     let cancel = false;
     (async () => {
-      const localBoard = loadBoard();
       const localSession = loadSession();
-      let nextBoard = localBoard ?? createDefaultBoard();
+      if (localSession?.mode === "demo") parkLegacyBoard(localSession.name);
+      else parkLegacyBoard();
+      let nextBoard = createDefaultBoard();
       let nextSession: Session | null = localSession?.mode === "demo" ? localSession : null;
+      if (nextSession) nextBoard = loadNamedBoard(nextSession.name) ?? createDefaultBoard();
       let nextWarning: string | null = null;
 
       if (localSession?.mode !== "demo") {
@@ -115,8 +121,8 @@ export function AppProviders({ children }: { children: ReactNode }) {
         }
       }
 
-      if (cancel) return;
-      setBoard(applyName(nextBoard, nextSession));
+      if (cancel || tookOver.current) return;
+      setBoard(nextSession?.mode === "demo" ? nextBoard : applyName(nextBoard, nextSession));
       setSession(nextSession);
       setWarning(nextWarning);
       setStorageOk(storageAvailable());
@@ -130,11 +136,12 @@ export function AppProviders({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!ready || !storageOk) return;
     try {
-      saveBoard(board);
+      if (session?.mode === "demo") saveNamedBoard(session.name, board);
+      else if (session?.mode === "supabase") saveBoard(board);
     } catch {
       // The board remains in memory for this visit if storage rejects the write.
     }
-  }, [board, ready, storageOk]);
+  }, [board, ready, session, storageOk]);
 
   useEffect(() => {
     if (!ready || session?.mode !== "supabase" || !session.userId) return;
@@ -167,16 +174,19 @@ export function AppProviders({ children }: { children: ReactNode }) {
       board,
       resetNonce,
       signInDemo: (name, email) => {
+        tookOver.current = true;
         const nextSession: Session = { mode: "demo", name: name.trim(), email: email.trim() };
+        if (ready && session?.mode === "demo") saveNamedBoard(session.name, board);
+        else parkLegacyBoard(session?.mode === "demo" ? session.name : null);
+        const stored = loadNamedBoard(nextSession.name) ?? createDefaultBoard();
         setSession(nextSession);
         saveSession(nextSession);
-        setBoard((prev) => {
-          const named = applyName(prev, nextSession);
-          return stamp({
-            ...named,
-            activity: withActivity(prev.activity, "Demo session started on this device."),
-          });
-        });
+        setBoard(
+          stamp({
+            ...stored,
+            activity: withActivity(stored.activity, "Demo session started on this device."),
+          }),
+        );
         setResetNonce((nonce) => nonce + 1);
       },
       signInSupabase: async (email, password) => {
@@ -194,20 +204,23 @@ export function AppProviders({ children }: { children: ReactNode }) {
           name: data.user.email ?? email.trim(),
           userId: data.user.id,
         };
+        if (session?.mode === "demo") saveNamedBoard(session.name, board);
         setSession(nextSession);
         saveSession(nextSession);
         const pulled = await pullBoard(supabase, data.user.id);
         if (pulled.warning) setWarning(pulled.warning);
-        if (pulled.board) {
-          setBoard(stamp(applyName(pulled.board, nextSession)));
-        } else {
-          setBoard((prev) =>
-            stamp({
-              ...applyName(prev, nextSession),
-              activity: withActivity(prev.activity, "Signed in with Supabase. This device's board will sync."),
-            }),
-          );
-        }
+        const base = pulled.board ?? createDefaultBoard();
+        setBoard(
+          stamp({
+            ...applyName(base, nextSession),
+            activity: withActivity(
+              base.activity,
+              pulled.board
+                ? "Signed in with Supabase."
+                : "Signed in with Supabase. This account has no saved board yet.",
+            ),
+          }),
+        );
         setResetNonce((nonce) => nonce + 1);
         return null;
       },
@@ -226,12 +239,14 @@ export function AppProviders({ children }: { children: ReactNode }) {
             name: data.user.email ?? email.trim(),
             userId: data.user.id,
           };
+          if (session?.mode === "demo") saveNamedBoard(session.name, board);
           setSession(nextSession);
           saveSession(nextSession);
-          setBoard((prev) =>
+          const fresh = createDefaultBoard();
+          setBoard(
             stamp({
-              ...applyName(prev, nextSession),
-              activity: withActivity(prev.activity, "Created a Supabase account and kept this device's board."),
+              ...applyName(fresh, nextSession),
+              activity: withActivity(fresh.activity, "Created a Supabase account on this device."),
             }),
           );
           return null;
@@ -239,6 +254,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
         return "CONFIRM: Account created. Confirm the email from Supabase, then sign in. Demo mode still works now.";
       },
       signOut: async () => {
+        if (session?.mode === "demo") saveNamedBoard(session.name, board);
         if (session?.mode === "supabase") {
           const supabase = await getSupabase();
           await supabase?.auth.signOut();
@@ -399,11 +415,10 @@ export function AppProviders({ children }: { children: ReactNode }) {
       },
       resetDemo: () => {
         const fresh = createDefaultBoard();
-        const named = applyName(fresh, session);
         setBoard(
           stamp({
-            ...named,
-            activity: withActivity(named.activity, "Reset the demo board on this device."),
+            ...fresh,
+            activity: withActivity(fresh.activity, "Reset the demo board on this device."),
           }),
         );
         setResetNonce((nonce) => nonce + 1);

@@ -83,11 +83,10 @@ function initials(name: string) {
 }
 
 export function ProfileSummary() {
-  const { ready, session, board, updateProfile } = useApp();
+  const { ready, session, board, updateProfile, resetNonce } = useApp();
   const [section, setSection] = useState<SectionId>("summary");
   const [editing, setEditing] = useState<RowId | null>(null);
   const [draft, setDraft] = useState<AthleteProfile>(board.profile);
-  const [synced, setSynced] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [message, setMessage] = useState("");
   const profile = board.profile;
@@ -96,11 +95,16 @@ export function ProfileSummary() {
   const displayName = profileName || session?.name?.trim() || "";
   const classYear = profile.gradYear.trim();
 
+  const sessionName = session?.name ?? "";
   useEffect(() => {
-    if (!ready || synced) return;
+    if (!ready) return;
     setDraft(board.profile);
-    setSynced(true);
-  }, [board.profile, ready, synced]);
+    setEditing(null);
+    setErrors({});
+    setMessage("");
+    // Reset the editor when the signed-in board changes, not on every field save.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, resetNonce, sessionName]);
 
   function setField<K extends keyof AthleteProfile>(key: K, value: AthleteProfile[K]) {
     setMessage("");

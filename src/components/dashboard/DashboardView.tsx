@@ -25,7 +25,10 @@ export function DashboardView() {
   const counts = statusCounts(board.colleges);
   const checklistDone = board.checklist.filter((item) => item.done).length;
   const followUp = nextFollowUp(board.colleges);
-  const displayName = board.profile.firstName || session?.name || "";
+  const displayName =
+    session?.mode === "demo" && session.name.trim()
+      ? session.name.trim()
+      : board.profile.firstName || session?.name || "";
   const height = formatHeightParts(board.profile.heightFeet, board.profile.heightInches);
   const strengths = board.profile.strengths
     .split(",")
@@ -111,7 +114,9 @@ export function DashboardView() {
             <div>
               <dt className="text-mist">Name</dt>
               <dd className="text-paper">
-                {[board.profile.firstName, board.profile.lastName].filter(Boolean).join(" ") || "Not added yet"}
+                {[board.profile.firstName, board.profile.lastName].filter(Boolean).join(" ") ||
+                  (session.mode === "demo" ? session.name.trim() : "") ||
+                  "Not added yet"}
               </dd>
             </div>
             <div>
