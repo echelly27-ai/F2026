@@ -12,7 +12,7 @@ export type VerifiedCoach = {
 
 const STAFF = staffData as Record<string, VerifiedCoach[]>;
 
-/** Men's basketball coaches whose email was copied from that school's official athletics staff page. */
+/** Men's basketball coaches whose email was copied from that school's official athletics staff page. Schools checked with no published coach email are listed in mens-basketball-staff-checks.json. */
 export function verifiedStaff(collegeId: string): VerifiedCoach[] {
   return STAFF[collegeId] ?? [];
 }
