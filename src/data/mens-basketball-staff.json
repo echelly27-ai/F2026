@@ -22840,5 +22840,924 @@
       "email": "hinzj@beloit.edu",
       "sourceUrl": "https://beloitcollegeathletics.com/sports/mbball/coaches"
     }
+  ],
+  "107141": [
+    {
+      "name": "Jason Beschta",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "jbeschta@jbu.edu",
+      "sourceUrl": "https://jbuathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Nate Quilling",
+      "role": "assistant",
+      "title": "Associate Head Coach",
+      "email": "nquilling@jbu.edu",
+      "sourceUrl": "https://jbuathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "129774": [
+    {
+      "name": "Todd Peretz",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "peretz_t@mitchell.edu",
+      "sourceUrl": "https://www.mitchellathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Alick Furtick",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "furtick_a@mitchell.edu",
+      "sourceUrl": "https://www.mitchellathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "137953": [
+    {
+      "name": "Zach Shank",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "zshank@tcj.edu",
+      "sourceUrl": "https://trinityeagles.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "141237": [
+    {
+      "name": "Jon Yeh",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "jyeh@tmu.edu",
+      "sourceUrl": "https://tmbears.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "John Green",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "jgreen@tmu.edu",
+      "sourceUrl": "https://tmbears.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Kaylee O'Herron",
+      "role": "assistant",
+      "title": "Graduate Assistant Men's Basketball Coach",
+      "email": "koherron@tmu.edu",
+      "sourceUrl": "https://tmbears.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Samuel Ashley",
+      "role": "assistant",
+      "title": "Graduate Assistant Men's Basketball Coach",
+      "email": "sashley@tmu.edu",
+      "sourceUrl": "https://tmbears.com/sports/mens-basketball/coaches"
+    }
+  ],
+  "151111": [
+    {
+      "name": "Connor Harr",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "conharr@iu.edu",
+      "sourceUrl": "https://iuindyjags.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Dan Monteroso",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "dmonter@iu.edu",
+      "sourceUrl": "https://iuindyjags.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Devin Heath-Granger",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "dheathg@iu.edu",
+      "sourceUrl": "https://iuindyjags.com/sports/mbball/coaches"
+    },
+    {
+      "name": "John Peckinpaugh",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "jpeckin@iu.edu",
+      "sourceUrl": "https://iuindyjags.com/sports/mbball/coaches"
+    }
+  ],
+  "151388": [
+    {
+      "name": "Mark Hester",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "hester3@iu.edu",
+      "sourceUrl": "https://www.iueredwolves.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Bishop Smith",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "bishsmit@iu.edu",
+      "sourceUrl": "https://www.iueredwolves.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "152381": [
+    {
+      "name": "Maverick Harris",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "Maverick.Harris@smwc.edu",
+      "sourceUrl": "https://smwcathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "James Davis",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "james.davis@smwc.edu",
+      "sourceUrl": "https://smwcathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "153250": [
+    {
+      "name": "Brian Van Haaften",
+      "role": "head",
+      "title": "Head Coach Men's Basketball",
+      "email": "brian.vanhaaften@dordt.edu",
+      "sourceUrl": "https://godordt.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Drew Edwards",
+      "role": "assistant",
+      "title": "Graduate Assistant Coach",
+      "email": "Drew.Edwards@dordt.edu",
+      "sourceUrl": "https://godordt.com/sports/mbball/coaches"
+    },
+    {
+      "name": "JD Boer",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "JD.Boer@dordt.edu",
+      "sourceUrl": "https://godordt.com/sports/mbball/coaches"
+    }
+  ],
+  "154013": [
+    {
+      "name": "Aaron Jennings",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "ajennings@mtmercy.edu",
+      "sourceUrl": "https://www.mountmercymustangs.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Addison Bode",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "abode@mtmercy.edu",
+      "sourceUrl": "https://www.mountmercymustangs.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "154235": [
+    {
+      "name": "Ray Shovlain",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "ShovlainRaymondJ@sau.edu",
+      "sourceUrl": "https://saubees.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Jim Kiss",
+      "role": "assistant",
+      "title": "Associate Head Coach",
+      "email": "KissJamesD@sau.edu",
+      "sourceUrl": "https://saubees.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "154688": [
+    {
+      "name": "Trent Scheer",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "trent.scheer@bakeru.edu",
+      "sourceUrl": "https://www.bakerwildcats.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Joshua Kelly",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "joshua.kelly@bakeru.edu",
+      "sourceUrl": "https://www.bakerwildcats.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "155812": [
+    {
+      "name": "Troy Brown",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "Troy.Brown@stmary.edu",
+      "sourceUrl": "https://www.gospires.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Demarius Houston",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "Houston554@stmary.edu",
+      "sourceUrl": "https://www.gospires.com/sports/mbball/coaches"
+    }
+  ],
+  "159656": [
+    {
+      "name": "Trey Lindsey",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "cllindse@loyno.edu",
+      "sourceUrl": "https://loyolawolfpack.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Daniel Venzant",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "dtvenzan@loyno.edu",
+      "sourceUrl": "https://loyolawolfpack.com/sports/mbball/coaches"
+    }
+  ],
+  "161226": [
+    {
+      "name": "Christopher Piscioneri",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "christopher.piscioneri@maine.edu",
+      "sourceUrl": "https://goumfbeavers.com/sports/mbball/coaches"
+    }
+  ],
+  "162210": [
+    {
+      "name": "Jerry McFarland",
+      "role": "head",
+      "title": "Varsity Head Coach",
+      "email": "wmcfarlan@wau.edu",
+      "sourceUrl": "https://www.wauathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "171492": [
+    {
+      "name": "Tom Church",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "churchte@northwood.edu",
+      "sourceUrl": "https://www.gonorthwood.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Lance Maney",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "maneyl@northwood.edu",
+      "sourceUrl": "https://www.gonorthwood.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Matt Bullinger",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "bullingm@northwood.edu",
+      "sourceUrl": "https://www.gonorthwood.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Todd Simons",
+      "role": "assistant",
+      "title": "Graduate Assistant Coach",
+      "email": "simonstp47@northwood.edu",
+      "sourceUrl": "https://www.gonorthwood.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "172334": [
+    {
+      "name": "John Pigatti",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "john.pigatti@arbor.edu",
+      "sourceUrl": "https://saucougars.com/sports/mbball/coaches"
+    }
+  ],
+  "173258": [
+    {
+      "name": "Tyler Grey",
+      "role": "head",
+      "title": "Men's Basketball Interim Head Coach",
+      "email": "tgrey@carleton.edu",
+      "sourceUrl": "https://athletics.carleton.edu/sports/mbball/coaches"
+    }
+  ],
+  "176318": [
+    {
+      "name": "Edward Newton",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "Enewton@rustcollege.edu",
+      "sourceUrl": "https://rust.prestosports.com/information/directory/index"
+    },
+    {
+      "name": "Kenny Dawkins",
+      "role": "assistant",
+      "title": "Assistant Mens Basketball Coach",
+      "email": "kdawkins@rustcollege.edu",
+      "sourceUrl": "https://rust.prestosports.com/information/directory/index"
+    }
+  ],
+  "177551": [
+    {
+      "name": "Adam Hooker",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "hookera@hssu.edu",
+      "sourceUrl": "https://hornetsathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Matthew Smith",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach / Game Day Coordinator",
+      "email": "smithm@hssu.edu",
+      "sourceUrl": "https://hornetsathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "186371": [
+    {
+      "name": "Stuart Pradia",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "sp1901@camden.rutgers.edu",
+      "sourceUrl": "https://scarletraptors.com/sports/mbball/coaches"
+    }
+  ],
+  "189705": [
+    {
+      "name": "Jim Christian",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "christ41@canisius.edu",
+      "sourceUrl": "https://gogriffs.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Herschel Jenkins",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "jenkin25@canisius.edu",
+      "sourceUrl": "https://gogriffs.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Kian Boroujerdi",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "boroujek@canisius.edu",
+      "sourceUrl": "https://gogriffs.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Scott Galst",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "galsts@canisius.edu",
+      "sourceUrl": "https://gogriffs.com/sports/mbball/coaches"
+    }
+  ],
+  "190716": [
+    {
+      "name": "Andy Stark",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "starka@dyu.edu",
+      "sourceUrl": "https://dyusaints.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Adam Bartley",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "bartleya@dyu.edu",
+      "sourceUrl": "https://dyusaints.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Jake Sweeney",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "sweeneyj@dyu.edu",
+      "sourceUrl": "https://dyusaints.com/sports/mbball/coaches"
+    }
+  ],
+  "191630": [
+    {
+      "name": "Stefan Thompson",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "STHOMPSON@hws.edu",
+      "sourceUrl": "https://hwsathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "DJ Harter",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "HARTER@hws.edu",
+      "sourceUrl": "https://hwsathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Dennis Pysnack",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "pysnack@hws.edu",
+      "sourceUrl": "https://hwsathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "191931": [
+    {
+      "name": "Kris Saulny",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "ksaulny@iona.edu",
+      "sourceUrl": "https://ionagaels.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Landry Kosmalski",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "lkosmalski@iona.edu",
+      "sourceUrl": "https://ionagaels.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Pat Buckley",
+      "role": "assistant",
+      "title": "Assistant Coach/Operations",
+      "email": "pbuckley@iona.edu",
+      "sourceUrl": "https://ionagaels.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Patrick Wallace",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "pwallace@iona.edu",
+      "sourceUrl": "https://ionagaels.com/sports/mbball/coaches"
+    }
+  ],
+  "192819": [
+    {
+      "name": "John Dunne",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "mens.basketball@marist.edu",
+      "sourceUrl": "https://goredfoxes.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Brandon Hall",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "Brandon.Hall@Marist.edu",
+      "sourceUrl": "https://goredfoxes.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Curtis Wilson",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "Curtis.Wilson@Marist.edu",
+      "sourceUrl": "https://goredfoxes.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Dalip Bhatia",
+      "role": "assistant",
+      "title": "Associate Head Coach",
+      "email": "Dalip.Bhatia@Marist.edu",
+      "sourceUrl": "https://goredfoxes.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Dan Bozzelli",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "Dan.Bozzelli@Marist.edu",
+      "sourceUrl": "https://goredfoxes.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Mike Rejniak",
+      "role": "assistant",
+      "title": "Assistant Coach/Operations",
+      "email": "Michael.Rejniak@Marist.edu",
+      "sourceUrl": "https://goredfoxes.com/sports/mbball/coaches"
+    }
+  ],
+  "193016": [
+    {
+      "name": "Charles Marquardt",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "cmarquardt@mercy.edu",
+      "sourceUrl": "https://mercyathletics.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Kevin Major",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "kmajor3@mercy.edu",
+      "sourceUrl": "https://mercyathletics.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Reggie Dorsey",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "rdorseyii@mercy.edu",
+      "sourceUrl": "https://mercyathletics.com/sports/mens-basketball/coaches"
+    }
+  ],
+  "193584": [
+    {
+      "name": "Kevin Broderick",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "kbroder0@naz.edu",
+      "sourceUrl": "https://nazathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Dennis Walker",
+      "role": "assistant",
+      "title": "Associate Head Men's Basketball Coach",
+      "email": "dwalker81@naz.edu",
+      "sourceUrl": "https://nazathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Derrick Cahill",
+      "role": "assistant",
+      "title": "Head JV Coach/Assistant Varsity Coach",
+      "email": "dcahill4@naz.edu",
+      "sourceUrl": "https://nazathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Jake Burgio",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "jburgio3@naz.edu",
+      "sourceUrl": "https://nazathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "194578": [
+    {
+      "name": "David Danzig",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "ddanzig@pratt.edu",
+      "sourceUrl": "https://goprattgo.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Radovan Zivkovic",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "rzivkov2@pratt.edu",
+      "sourceUrl": "https://goprattgo.com/sports/mbball/coaches"
+    }
+  ],
+  "194958": [
+    {
+      "name": "Mark Saladzius",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "Saladzius_Mark@roberts.edu",
+      "sourceUrl": "https://robertsredhawks.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Kevin Rhodes",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "rhodes_kevin@roberts.edu",
+      "sourceUrl": "https://robertsredhawks.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Michael Brooks",
+      "role": "assistant",
+      "title": "Assistant Coach/Recruiting Coordinator",
+      "email": "brooks_michael@roberts.edu",
+      "sourceUrl": "https://robertsredhawks.com/sports/mbball/coaches"
+    }
+  ],
+  "195030": [
+    {
+      "name": "Luke Flockerzi",
+      "role": "head",
+      "title": "Men's Basketball Head Coach",
+      "email": "lflockerzi@sports.rochester.edu",
+      "sourceUrl": "https://uofrathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Chris Manning",
+      "role": "assistant",
+      "title": "Men's Basketball Assistant Coach",
+      "email": "cmanning@sports.rochester.edu",
+      "sourceUrl": "https://uofrathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Dan Kaigler",
+      "role": "assistant",
+      "title": "Men's Basketball Assistant Coach",
+      "email": "dkaigler@sports.Rochester.edu",
+      "sourceUrl": "https://uofrathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "195128": [
+    {
+      "name": "Brian Barnes",
+      "role": "head",
+      "title": "Assistant Athletic Director for Compliance, Head Men's Basketball Coach",
+      "email": "barneb@sage.edu",
+      "sourceUrl": "https://www.sagegators.com/information/directory/index"
+    }
+  ],
+  "195474": [
+    {
+      "name": "Lawrence Rowley",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "lrowley@siena.edu",
+      "sourceUrl": "https://sienasaints.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Matt Blue",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "mblue@siena.edu",
+      "sourceUrl": "https://sienasaints.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Shaun Morris",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "smorris@siena.edu",
+      "sourceUrl": "https://sienasaints.com/sports/mbball/coaches"
+    }
+  ],
+  "196185": [
+    {
+      "name": "Cameron Conover",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "Cameron.Conover@oneonta.edu",
+      "sourceUrl": "https://oneontaathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Tanner Kallfelz",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "tanner.kallfelz@oneonta.edu",
+      "sourceUrl": "https://oneontaathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "William Zuntag",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "william.zuntag@oneonta.edu",
+      "sourceUrl": "https://oneontaathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "196200": [
+    {
+      "name": "Jim Bechtel",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "bechtejg@potsdam.edu",
+      "sourceUrl": "https://potsdambears.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Austin Brooks",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "brooksaj@potsdam.edu",
+      "sourceUrl": "https://potsdambears.com/sports/mbball/coaches"
+    }
+  ],
+  "199032": [
+    {
+      "name": "Anthony Barringer",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "anthony.barringer@montreat.edu",
+      "sourceUrl": "https://montreatcavaliers.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Ben McCrickard",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "benjamin.mccrickard@montreat.edu",
+      "sourceUrl": "https://montreatcavaliers.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Wyatt Baggett",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "wyatt.baggett@montreat.edu",
+      "sourceUrl": "https://montreatcavaliers.com/sports/mbball/coaches"
+    }
+  ],
+  "200059": [
+    {
+      "name": "Derek Selvig",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "derek.selvig@dickinsonstate.edu",
+      "sourceUrl": "https://dsubluehawks.com/sports/mbball/coaches"
+    }
+  ],
+  "200226": [
+    {
+      "name": "Brandon McGruder",
+      "role": "head",
+      "title": "Head Coach (5th)",
+      "email": "brandon.mcgruder@mayvillestate.edu",
+      "sourceUrl": "https://msucomets.com/sports/mbball/coaches"
+    }
+  ],
+  "203757": [
+    {
+      "name": "Jake DuPree",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "jdupree@lourdes.edu",
+      "sourceUrl": "https://lourdesathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Brett Lauf",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "BLauf@lourdes.edu",
+      "sourceUrl": "https://lourdesathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "207157": [
+    {
+      "name": "George Milsap",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "gmilsap@ru.edu",
+      "sourceUrl": "https://rusaints.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Eli Riley",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "eriley21@ru.edu",
+      "sourceUrl": "https://rusaints.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "207351": [
+    {
+      "name": "Charles Belt",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "cbeltii@opsu.edu",
+      "sourceUrl": "https://www.opsuaggies.com/information/directory/index"
+    },
+    {
+      "name": "Curtis Grant-Brown",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "cgrantb@opsu.edu",
+      "sourceUrl": "https://www.opsuaggies.com/information/directory/index"
+    }
+  ],
+  "209065": [
+    {
+      "name": "Elijah Gurash",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "egurash@linfield.edu",
+      "sourceUrl": "https://golinfieldwildcats.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Matt Gehrke",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "mgehrke@linfield.edu",
+      "sourceUrl": "https://golinfieldwildcats.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Reed Brown",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "rbrown4@linfield.edu",
+      "sourceUrl": "https://golinfieldwildcats.com/sports/mbball/coaches"
+    }
+  ],
+  "214069": [
+    {
+      "name": "Will Chandler",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "wchandler@misericordia.edu",
+      "sourceUrl": "https://athletics.misericordia.edu/staff-directory"
+    }
+  ],
+  "227331": [
+    {
+      "name": "Marcus Thompson",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "mdthompson@ollusa.edu",
+      "sourceUrl": "https://www.ollusaintsathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "BJ Alzaid",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "balzaid@ollusa.edu",
+      "sourceUrl": "https://www.ollusaintsathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Brandon Branch",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "bbranch@ollusa.edu",
+      "sourceUrl": "https://www.ollusaintsathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "232025": [
+    {
+      "name": "Jimmy Allen",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "jballen@emoryhenry.edu",
+      "sourceUrl": "https://gowasps.com/information/directory/index"
+    },
+    {
+      "name": "Colin Willitts",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "cswillitts26@emoryhenry.edu",
+      "sourceUrl": "https://gowasps.com/information/directory/index"
+    },
+    {
+      "name": "Parker Gravitt",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "pgravitt@emoryhenry.edu",
+      "sourceUrl": "https://gowasps.com/information/directory/index"
+    }
+  ],
+  "235167": [
+    {
+      "name": "Cameron Swanson",
+      "role": "head",
+      "title": "Men's Basketball Head Coach",
+      "email": "Cam.Swanson@evergreen.edu",
+      "sourceUrl": "https://gogeoducks.com/sports/mbball/coaches"
+    }
+  ],
+  "237057": [
+    {
+      "name": "John Lamanna",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "lamannaj@whitman.edu",
+      "sourceUrl": "https://whitmanblues.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Adam Berg",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "berga@whitman.edu",
+      "sourceUrl": "https://whitmanblues.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Ethan Engeman",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "engemane@whitman.edu",
+      "sourceUrl": "https://whitmanblues.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Shawn James",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "shawnj@whitman.edu",
+      "sourceUrl": "https://whitmanblues.com/sports/mbball/coaches"
+    }
+  ],
+  "436827": [
+    {
+      "name": "Duane Witter",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "wcr24004@uconn.edu",
+      "sourceUrl": "https://uconnaverypointathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "447689": [
+    {
+      "name": "Chase Teichmann",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "cteichmann@ggc.edu",
+      "sourceUrl": "https://ggcathletics.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Ryan McDaniel",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "rmcdaniel2@ggc.edu",
+      "sourceUrl": "https://ggcathletics.com/sports/mens-basketball/coaches"
+    }
+  ],
+  "492069": [
+    {
+      "name": "Mo Capaci",
+      "role": "head",
+      "title": "Men's Basketball Head Coach",
+      "email": "mo.capaci@champion.edu",
+      "sourceUrl": "https://championtigers.com/information/directory/index"
+    }
   ]
 }
