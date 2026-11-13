@@ -38,10 +38,10 @@ function roleLabel(role: VerifiedCoach["role"]) {
 }
 
 function coachKey(coach: VerifiedCoach) {
-  return `${coach.name}\n${coach.email}`;
+  return `${coach.name}\n${coach.title}\n${coach.email ?? ""}`;
 }
 
-function mailtoFor(coach: VerifiedCoach, subject: string, message: string) {
+function mailtoFor(coach: VerifiedCoach & { email: string }, subject: string, message: string) {
   const parts: string[] = [];
   const trimmedSubject = subject.trim();
   const trimmedMessage = message.trim();
@@ -63,12 +63,16 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
   const sample = sampleMetrics(college.id, college.control);
   const opening = DEMONSTRATION_OPENINGS.find((item) => item.collegeId === college.id);
   const staff = verifiedStaff(college.id);
+  const emailStaff = staff.filter((coach): coach is VerifiedCoach & { email: string } => Boolean(coach.email));
   const saved = board.colleges.find((item) => item.name.toLowerCase() === college.name.toLowerCase());
   const place = fact ? `${fact.city}, ${stateName(college.state)}` : `City not listed · ${stateName(college.state)}`;
   const division = fact?.division ?? "Division not listed";
   const conference = fact?.conference ?? "Not listed";
   const control = college.control ?? "Not listed";
-  const selected = staff.find((coach) => coachKey(coach) === selectedKey) ?? staff.find((coach) => coach.role === "head") ?? staff[0];
+  const selected =
+    emailStaff.find((coach) => coachKey(coach) === selectedKey) ??
+    emailStaff.find((coach) => coach.role === "head") ??
+    emailStaff[0];
 
   useEffect(() => {
     if (!composing) return;
@@ -134,7 +138,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
             <Star className="size-4" fill={saved?.favorite ? "currentColor" : "none"} aria-hidden="true" />
             {saved?.favorite ? "Saved" : "Save"}
           </Button>
-          {staff.length ? (
+          {emailStaff.length ? (
             <Button
               type="button"
               variant="secondary"
@@ -178,7 +182,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
                 Coach
               </p>
               <ul className="mt-3 max-h-52 space-y-2 overflow-y-auto lg:max-h-[28rem]" aria-labelledby="email-coach-coaches">
-                {staff.map((coach) => {
+                {emailStaff.map((coach) => {
                   const active = coachKey(coach) === coachKey(selected);
                   const title = coach.title.toLowerCase() !== roleLabel(coach.role).toLowerCase() ? coach.title : null;
                   return (
@@ -308,9 +312,11 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
                       <p className="font-semibold text-paper">{coach.name}</p>
                       <p className="mt-1 text-sm text-mist">{roleLabel(coach.role)}</p>
                       {showTitle ? <p className="text-sm text-mist">{coach.title}</p> : null}
-                      <a className="mt-1 inline-block text-sm font-semibold text-lime" href={`mailto:${coach.email}`}>
-                        {coach.email}
-                      </a>
+                      {coach.email ? (
+                        <a className="mt-1 inline-block text-sm font-semibold text-lime" href={`mailto:${coach.email}`}>
+                          {coach.email}
+                        </a>
+                      ) : null}
                       <p className="mt-1 break-all text-xs text-mist">
                         Source{" "}
                         <a className="text-lime" href={coach.sourceUrl} rel="noreferrer">
