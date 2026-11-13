@@ -59,6 +59,51 @@ const ARTICLES = [
   },
 ] as const;
 
+const VIDEOS = [
+  {
+    topic: "Getting recruited",
+    title: "How to Get Recruited to Play College Basketball | Featuring TJ Rosene and Mano Watsa",
+    channel: "PGC Basketball - Point Guard College",
+    url: "https://www.youtube.com/watch?v=1CVN91wGnRs",
+  },
+  {
+    topic: "Profile",
+    title: "SportsRecruits 101",
+    channel: "SportsRecruits",
+    url: "https://www.youtube.com/watch?v=8ZXHJn14bmg",
+  },
+  {
+    topic: "Film",
+    title: "How to make an effective Video Highlight for College Coaches?",
+    channel: "Recruiting With Alex",
+    url: "https://www.youtube.com/watch?v=gn8iH6ZAAC8",
+  },
+  {
+    topic: "Contacting coaches",
+    title: "How To ACTUALLY Contact College Coaches & Get Responses",
+    channel: "BTII Basketball",
+    url: "https://www.youtube.com/watch?v=tnINRW8YVfQ",
+  },
+  {
+    topic: "Visits",
+    title: "Day in The Life of Jared McCain Houston Basketball Official Visit Part 1",
+    channel: "Jared McCain",
+    url: "https://www.youtube.com/watch?v=6zjjm1sIj_Q",
+  },
+  {
+    topic: "Applications",
+    title: "Game Plan for Success: The College Admissions Playbook for Student-Athletes",
+    channel: "Collegewise",
+    url: "https://www.youtube.com/watch?v=Ws51Sd2TpfI",
+  },
+  {
+    topic: "NCAA path",
+    title: "NCAA Initial-Eligibility Webinar for College-Bound Student-Athletes",
+    channel: "NCAA Eligibility Center",
+    url: "https://www.youtube.com/watch?v=J2CKtH6-nfc",
+  },
+] as const;
+
 export function AcademyView() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
@@ -77,9 +122,43 @@ export function AcademyView() {
       <PageHeader
         eyebrow="NXTUP Academy"
         title="Recruiting lessons"
-        lede="Short original notes on the steps you do yourself. NEXTUP does not contact coaches or file applications for you."
+        lede="Public videos and short original notes on the steps you do yourself. NEXTUP does not contact coaches or file applications for you."
       />
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+      <section className="mt-10" aria-labelledby="academy-videos">
+        <h2 id="academy-videos" className="font-display text-4xl uppercase leading-none text-paper">
+          Watch the process
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist">
+          These are public videos on building a profile, film, contacting coaches, visits, applications, and the NCAA
+          path. Each title and channel is the one published on YouTube.
+        </p>
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          {VIDEOS.map((video) => {
+            const id = new URL(video.url).searchParams.get("v");
+            return (
+              <article key={video.url} className="overflow-hidden rounded-2xl border border-line bg-panel">
+                <div className="relative aspect-video bg-black">
+                  <iframe
+                    className="absolute inset-0 h-full w-full"
+                    src={`https://www.youtube-nocookie.com/embed/${id}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                </div>
+                <div className="p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime">{video.topic}</p>
+                  <h3 className="mt-2 text-xl font-semibold text-paper">{video.title}</h3>
+                  <p className="mt-2 text-sm text-mist">{video.channel}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row">
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
