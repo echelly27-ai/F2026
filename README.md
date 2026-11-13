@@ -49,9 +49,7 @@ Then run the SQL in `supabase/schema.sql` in the Supabase SQL editor. It creates
 
 ## Coach email
 
-Send on a college page posts the note to `/api/coach-mail`. The recipient is the address on that school's staff record. The visitor's email is the reply-to. A coach with no published email is not emailed.
-
-`RESEND_API_KEY` sends through Resend. `COACH_MAIL_FROM` is the verified sender, such as `NEXTUP <mail@yourdomain.com>`. Leave the key unset and the local mail fallback accepts the message on that server instead of an outside inbox. GitHub Pages is a static export, so it does not run this route.
+Send on a college page asks FlowForm, from the browser, to deliver the note to the address on that school's staff record. The visitor's email is the reply-to. The page says it was sent only after FlowForm accepts it. A coach with no published email is not contacted. No mail API key is included in the page.
 
 ## Live site
 
