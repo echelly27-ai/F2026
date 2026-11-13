@@ -47,6 +47,12 @@ Use the anon public key only. Do not create a `NEXT_PUBLIC_` variable for the se
 
 Then run the SQL in `supabase/schema.sql` in the Supabase SQL editor. It creates `athlete_boards` with row level security so a signed-in user can read and write only their own row. Email confirmation depends on your Supabase Auth settings. If confirmation is required, create the account, confirm the email, then sign in. Demo mode still works beside that.
 
+## Coach email
+
+Send on a college page posts the note to `/api/coach-mail`. The recipient is the address on that school's staff record. The visitor's email is the reply-to. A coach with no published email is not emailed.
+
+`RESEND_API_KEY` sends through Resend. `COACH_MAIL_FROM` is the verified sender, such as `NEXTUP <mail@yourdomain.com>`. Leave the key unset and the local mail fallback accepts the message on that server instead of an outside inbox. GitHub Pages is a static export, so it does not run this route.
+
 ## Live site
 
 GitHub Pages serves the static export at [https://echelly27-ai.github.io/F2026/](https://echelly27-ai.github.io/F2026/). Pushes to `main` run `.github/workflows/pages.yml` with `GITHUB_PAGES=true`, which sets `basePath` to `/F2026`. A normal `npm run build` stays a standard Next.js build for Vercel.
