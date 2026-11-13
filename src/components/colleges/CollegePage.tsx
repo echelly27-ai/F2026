@@ -12,6 +12,7 @@ import { DemoNote } from "@/components/ui/DemoNote";
 import { schoolLogo } from "@/lib/school-logo";
 import { Field, inputClass } from "@/components/ui/Field";
 import { verifiedStaff, type VerifiedCoach } from "@/lib/basketball-staff";
+import { sendCoachMail } from "@/lib/send-coach-mail";
 import { DEMONSTRATION_OPENINGS, publishedCollegeFact } from "@/lib/college-facts";
 import {
   collegeLocation,
@@ -135,29 +136,15 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
     if (!subject.trim() || !draft.trim()) return;
     setReplyError("");
     setSendState("sending");
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/coach-mail`, {
-        method: "POST",
-        headers: { "content-type": "application/json", accept: "application/json" },
-        cache: "no-store",
-        body: JSON.stringify({
-          collegeId: college.id,
-          coachName: selected.name,
-          coachTitle: selected.title,
-          replyTo: visitorEmail,
-          subject,
-          message: draft,
-        }),
-      });
-      const body = (await response.json().catch(() => null)) as { accepted?: boolean; reason?: string } | null;
-      if (response.ok && body?.accepted === true) {
-        setSendState("sent");
-        return;
-      }
-      setSendState("failed");
-    } catch {
-      setSendState("failed");
-    }
+    const result = await sendCoachMail({
+      collegeId: college.id,
+      coachName: selected.name,
+      coachTitle: selected.title,
+      replyTo: visitorEmail,
+      subject,
+      message: draft,
+    });
+    setSendState(result.accepted ? "sent" : "failed");
   }
 
   return (

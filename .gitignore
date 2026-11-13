@@ -37,9 +37,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# static export holds the mail route aside while GitHub Pages builds
-.pages-api-hold
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
