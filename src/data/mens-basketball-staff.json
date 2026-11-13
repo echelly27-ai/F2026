@@ -19802,5 +19802,359 @@
       "email": "kingmat@carolinau.edu",
       "sourceUrl": "https://cubruins.com/sports/mens-basketball/coaches"
     }
+  ],
+  "110635": [
+    {
+      "name": "Adam Mazarei",
+      "role": "assistant",
+      "title": "Associate Head Coach",
+      "email": "adammazarei@berkeley.edu",
+      "sourceUrl": "https://calbears.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Jarred Jackson",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "jjackson1@berkeley.edu",
+      "sourceUrl": "https://calbears.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Ken Moses",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "ken.moses@berkeley.edu",
+      "sourceUrl": "https://calbears.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Matt Scherbenske",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "mscherb2@berkeley.edu",
+      "sourceUrl": "https://calbears.com/sports/mens-basketball/coaches"
+    }
+  ],
+  "110671": [
+    {
+      "name": "Gus Argenal",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "agustin.argenal@ucr.edu",
+      "sourceUrl": "https://gohighlanders.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Blake Wetherington",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "blake.wetherington@ucr.edu",
+      "sourceUrl": "https://gohighlanders.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Evan Oliver",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "eoliver@ucr.edu",
+      "sourceUrl": "https://gohighlanders.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Matthew Musselman",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "matthew.musselman@ucr.edu",
+      "sourceUrl": "https://gohighlanders.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Reuben Williams",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "reubenw@ucr.edu",
+      "sourceUrl": "https://gohighlanders.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Tim Bross",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "timothy.bross@ucr.edu",
+      "sourceUrl": "https://gohighlanders.com/sports/mens-basketball/coaches"
+    }
+  ],
+  "130314": [
+    {
+      "name": "Glen Miller",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "gmiller@usj.edu",
+      "sourceUrl": "https://www.usjbluejays.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Tyler Olander",
+      "role": "head",
+      "title": "Acting Head Coach",
+      "email": "tolander@usj.edu",
+      "sourceUrl": "https://www.usjbluejays.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Jeff Calhoun",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "jacalhoun@usj.edu",
+      "sourceUrl": "https://www.usjbluejays.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Stephen Laffin",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "slaffin@usj.edu",
+      "sourceUrl": "https://www.usjbluejays.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "131113": [
+    {
+      "name": "Dan Burke",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "daniel.j.burke@wilmu.edu",
+      "sourceUrl": "https://wildcats.athletics.wilmu.edu/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Andrew Feeley",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "andrew.b.feeley@wilmu.edu",
+      "sourceUrl": "https://wildcats.athletics.wilmu.edu/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Vincent Goldsberry",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "vincent.l.goldsberry@wilmu.edu",
+      "sourceUrl": "https://wildcats.athletics.wilmu.edu/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Shai Henry",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "shai.d.henry@wilmu.edu",
+      "sourceUrl": "https://wildcats.athletics.wilmu.edu/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Cole Matthews",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "cole.r.matthews@wilmu.edu",
+      "sourceUrl": "https://wildcats.athletics.wilmu.edu/sports/mbkb/coaches/index"
+    }
+  ],
+  "131399": [
+    {
+      "name": "Mike Riley",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "mriley@udc.edu",
+      "sourceUrl": "https://www.udcfirebirds.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Anthony Iati",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "aiati@udc.edu",
+      "sourceUrl": "https://www.udcfirebirds.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "152530": [
+    {
+      "name": "Austin Peters",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "mbasketball@taylor.edu",
+      "sourceUrl": "https://www.taylortrojans.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Tanner Heick",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "tanner_heick@taylor.edu",
+      "sourceUrl": "https://www.taylortrojans.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Alex Gross",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "alex_gross@taylor.edu",
+      "sourceUrl": "https://www.taylortrojans.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "154350": [
+    {
+      "name": "Kyle Jones",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "kyle.jones@simpson.edu",
+      "sourceUrl": "https://simpsonathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "154518": [
+    {
+      "name": "Michael Wirth",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "michael.wirth@waldorf.edu",
+      "sourceUrl": "https://waldorfwarriors.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Nick Ackerman",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "nicholas.ackerman@waldorf.edu",
+      "sourceUrl": "https://waldorfwarriors.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "154721": [
+    {
+      "name": "Terrence Murphy",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "murphytr@bethanylb.edu",
+      "sourceUrl": "https://www.bethanyswedes.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Aaron Havis",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "havisaj@bethanylb.edu",
+      "sourceUrl": "https://www.bethanyswedes.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "166452": [
+    {
+      "name": "Alex Burt",
+      "role": "head",
+      "title": "Head Coach - Men's Basketball",
+      "email": "alexander.burt@lesley.edu",
+      "sourceUrl": "https://lesleyathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Anik Grover",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "anik.grover@lesley.edu",
+      "sourceUrl": "https://lesleyathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "176628": [
+    {
+      "name": "Alex Slawson",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "alexander.slawson@avila.edu",
+      "sourceUrl": "https://www.avilaathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Adam Rieschl",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "adam.rieschl@avila.edu",
+      "sourceUrl": "https://www.avilaathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "195243": [
+    {
+      "name": "John Alesi",
+      "role": "head",
+      "title": "Men's Basketball Head Coach",
+      "email": "jalesi@stac.edu",
+      "sourceUrl": "https://www.stacathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "D'Vonne Trumbo",
+      "role": "assistant",
+      "title": "Men's Basketball Associate Head Coach",
+      "email": "dtrumbo@stac.edu",
+      "sourceUrl": "https://www.stacathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Connor Birchard",
+      "role": "assistant",
+      "title": "Men's Basketball Assistant",
+      "email": "cbirchar@stac.edu",
+      "sourceUrl": "https://www.stacathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Matt Backs",
+      "role": "assistant",
+      "title": "Men's Basketball Assistant",
+      "email": "mbacks@stac.edu",
+      "sourceUrl": "https://www.stacathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "207722": [
+    {
+      "name": "Landon Hughey",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "lhughey@usao.edu",
+      "sourceUrl": "https://www.usaoathletics.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Tyler Brown",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "tbrown@usao.edu",
+      "sourceUrl": "https://www.usaoathletics.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "211440": [
+    {
+      "name": "Justin Simon",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "jsimon2@andrew.cmu.edu",
+      "sourceUrl": "https://athletics.cmu.edu/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Benji Oxman",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "boxman@andrew.cmu.edu",
+      "sourceUrl": "https://athletics.cmu.edu/sports/mbkb/coaches/index"
+    }
+  ],
+  "228042": [
+    {
+      "name": "Kyle McLeroy",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "KPmcleroy@schreiner.edu",
+      "sourceUrl": "https://www.schreinermountaineers.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Albert Almanza",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "ABAlmanza@schreiner.edu",
+      "sourceUrl": "https://www.schreinermountaineers.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Roy Kiser",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "RLKiser@schreiner.edu",
+      "sourceUrl": "https://www.schreinermountaineers.com/sports/mbkb/coaches/index"
+    }
+  ],
+  "459949": [
+    {
+      "name": "David Smith",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "dsmith2@tamusa.edu",
+      "sourceUrl": "https://www.tamusasports.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Zach Adair",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "zadair@tamusa.edu",
+      "sourceUrl": "https://www.tamusasports.com/sports/mbkb/coaches/index"
+    }
   ]
 }
