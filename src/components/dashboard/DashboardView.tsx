@@ -193,9 +193,6 @@ export function DashboardView() {
               <ButtonLink href="/tracker" variant="secondary">
                 Open recruiting tracker
               </ButtonLink>
-              <ButtonLink href="/players" variant="secondary">
-                Browse the public list
-              </ButtonLink>
             </div>
           </section>
           <section className="rounded-2xl border border-line bg-panel p-5" aria-labelledby="activity-heading">
@@ -247,17 +244,15 @@ export function DashboardView() {
             Saved players
           </h2>
           {savedPlayers.length === 0 ? (
-            <p className="mt-3 text-sm text-mist">
-              Save a player from Explore or a profile. The watchlist stays in this browser.
-            </p>
+            <p className="mt-3 text-sm text-mist">No saved players.</p>
           ) : (
             <ul className="mt-4 space-y-3">
               {savedPlayers.map((player) => (
                 <li key={player.id} className="flex items-center justify-between gap-3 text-sm">
-                  <Link href={`/players/${player.id}`} className="text-paper hover:text-lime">
+                  <span className="text-paper">
                     {player.name}
                     <span className="mt-0.5 block text-mist">{player.position}</span>
-                  </Link>
+                  </span>
                   <Button size="sm" variant="ghost" onClick={() => toggleWatch(player.id, player.name)}>
                     Remove
                   </Button>
