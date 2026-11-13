@@ -17,10 +17,13 @@ export async function generateMetadata({
   const college = getDirectoryCollege(id);
   if (!college) return { title: "College" };
   const staff = verifiedStaff(id);
+  const withEmail = staff.some((coach) => coach.email);
   return {
     title: college.name,
     description: staff.length
-      ? `${college.name} men's basketball coaches with emails published on the school's athletics staff page. Tuition, selectivity, and enrollment on this page are samples.`
+      ? withEmail
+        ? `${college.name} men's basketball coaches, with an email when the school's athletics staff page prints one. Tuition, selectivity, and enrollment on this page are samples.`
+        : `${college.name} men's basketball coaches listed from the school's athletics staff page. That page does not print a coach email. Tuition, selectivity, and enrollment on this page are samples.`
       : `${college.name} in the college directory. Tuition, selectivity, and enrollment on this page are samples. Staff contacts are not published here.`,
   };
 }
