@@ -6012,6 +6012,15 @@
       "sourceUrl": "https://aupanthers.com/sports/mens-basketball/coaches"
     }
   ],
+  "188526": [
+    {
+      "name": "Robert Coleman",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "robert.coleman@acphs.edu",
+      "sourceUrl": "https://acphspanthers.com/sports/mens-basketball/coaches"
+    }
+  ],
   "188641": [
     {
       "name": "Erich Kaempffe",
@@ -12072,6 +12081,36 @@
       "title": "Assistant Coach",
       "email": "kyle.steigenga@cornerstone.edu",
       "sourceUrl": "https://cugoldeneagles.com/sports/mens-basketball/coaches"
+    }
+  ],
+  "170675": [
+    {
+      "name": "Josh Pickens",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "jpickens@ltu.edu",
+      "sourceUrl": "https://ltuathletics.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Joe Lightfoot",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "jlightfoo@ltu.edu",
+      "sourceUrl": "https://ltuathletics.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Ty Searles",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "tsearles@ltu.edu",
+      "sourceUrl": "https://ltuathletics.com/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Kyle Capps",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "kcapps@ltu.edu",
+      "sourceUrl": "https://ltuathletics.com/sports/mens-basketball/coaches"
     }
   ],
   "170806": [
@@ -25736,6 +25775,22 @@
       "title": "Men's Basketball Coach",
       "email": "gfawbush@welch.edu",
       "sourceUrl": "https://welch.edu/campus-life/athletics/"
+    }
+  ],
+  "482936": [
+    {
+      "name": "Dennis Hopson",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "dhopson@floridapoly.edu",
+      "sourceUrl": "https://athletics.floridapoly.edu/sports/mens-basketball/coaches"
+    },
+    {
+      "name": "Clark Maloney",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "cmaloney@floridapoly.edu",
+      "sourceUrl": "https://athletics.floridapoly.edu/sports/mens-basketball/coaches"
     }
   ],
   "485546": [
