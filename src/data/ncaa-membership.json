@@ -1,0 +1,3694 @@
+{
+  "100654": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "100663": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "100706": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "100724": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "100751": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "100830": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "100858": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "101435": {
+    "division": "NCAA Division III",
+    "conference": "Collegiate Conference of the South"
+  },
+  "101480": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "101587": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "101675": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "101709": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "101879": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "102049": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "102094": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "102234": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "102368": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "102377": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "102553": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "102614": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "104179": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "104717": {
+    "division": "NCAA Division I",
+    "conference": "Mountain West Conference"
+  },
+  "105330": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "106245": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "106342": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "106458": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "106704": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "107044": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "107071": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "107080": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "107512": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "107558": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "108092": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "109785": {
+    "division": "NCAA Division II",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "110097": {
+    "division": "NCAA Division II",
+    "conference": "Pacific West Conference"
+  },
+  "110361": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110404": {
+    "division": "NCAA Division III",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "110413": {
+    "division": "NCAA Division III",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "110486": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110495": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "110510": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "110529": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "110538": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "110547": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "110556": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "110565": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110574": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "110592": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "110608": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110617": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110635": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "110644": {
+    "division": "NCAA Division I",
+    "conference": "Mountain West Conference"
+  },
+  "110653": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110662": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "110671": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110680": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110705": {
+    "division": "NCAA Division I",
+    "conference": "Big West Conference"
+  },
+  "110714": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "111948": {
+    "division": "NCAA Division III",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "112075": {
+    "division": "NCAA Division II",
+    "conference": "Pacific West Conference"
+  },
+  "113698": {
+    "division": "NCAA Division II",
+    "conference": "Pacific West Conference"
+  },
+  "114813": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "115755": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "117140": {
+    "division": "NCAA Division III",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "117946": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "118693": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "120254": {
+    "division": "NCAA Division III",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "120883": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "121150": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "121309": {
+    "division": "NCAA Division II",
+    "conference": "Pacific West Conference"
+  },
+  "121691": {
+    "division": "NCAA Division III",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "122409": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "122436": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "122597": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "122612": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "122755": {
+    "division": "NCAA Division I",
+    "conference": "Mountain West Conference"
+  },
+  "122931": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "123554": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "123572": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "123961": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "125727": {
+    "division": "NCAA Division II",
+    "conference": "Pacific West Conference"
+  },
+  "125763": {
+    "division": "NCAA Division III",
+    "conference": "Southern California Intercollegiate Athletic Conf."
+  },
+  "126182": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "126580": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "126614": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "126669": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "126678": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "126775": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "127060": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "127185": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "127556": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "127565": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "127741": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "127918": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "128106": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "128391": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "128498": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "128744": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "128771": {
+    "division": "NCAA Division I",
+    "conference": "Northeast Conference"
+  },
+  "128902": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "129020": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "129215": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "129242": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "129525": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "129774": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "129941": {
+    "division": "NCAA Division II",
+    "conference": "Northeast Conference"
+  },
+  "130183": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "130226": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "130253": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "130314": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "130493": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "130590": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "130697": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "130776": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "130794": {
+    "division": "NCAA Division I",
+    "conference": "The Ivy League"
+  },
+  "130934": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "130943": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "130989": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "131113": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "131159": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "131399": {
+    "division": "NCAA Division II",
+    "conference": "East Coast Conference"
+  },
+  "131450": {
+    "division": "NCAA Division III",
+    "conference": "United East Conference"
+  },
+  "131469": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "131496": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "131520": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "132471": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "132602": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "132657": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "132903": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "133492": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "133526": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "133669": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "133711": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "133881": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "133951": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "134079": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "134097": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "134130": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "134945": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Sun Conference"
+  },
+  "135726": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "136172": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Sun Conference"
+  },
+  "136215": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "136330": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "136950": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "137032": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "137351": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "137546": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Sun Conference"
+  },
+  "137847": {
+    "division": "NCAA Division II",
+    "conference": "Sunshine State Conference"
+  },
+  "138354": {
+    "division": "NCAA Division II",
+    "conference": "Atlantic Sun Conference"
+  },
+  "138600": {
+    "division": "NCAA Division III",
+    "conference": "Collegiate Conference of the South"
+  },
+  "138716": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "138947": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "139144": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "139311": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "139366": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "139393": {
+    "division": "NCAA Division III",
+    "conference": "Collegiate Conference of the South"
+  },
+  "139658": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "139719": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "139764": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "139931": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "139940": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "139959": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "140234": {
+    "division": "NCAA Division III",
+    "conference": "Collegiate Conference of the South"
+  },
+  "140447": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "140553": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "140696": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "140818": {
+    "division": "NCAA Division III",
+    "conference": "Collegiate Conference of the South"
+  },
+  "140960": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "140988": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "141264": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "141334": {
+    "division": "NCAA Division II",
+    "conference": "United Athletic Conference"
+  },
+  "141361": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "141565": {
+    "division": "NCAA Division II",
+    "conference": "Pacific West Conference"
+  },
+  "141644": {
+    "division": "NCAA Division II",
+    "conference": "Pacific West Conference"
+  },
+  "142115": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "142276": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "142285": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "142461": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "143084": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "143118": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "143288": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "143358": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "144005": {
+    "division": "NCAA Division I",
+    "conference": "Northeast Conference"
+  },
+  "144050": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "144351": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "144740": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "144892": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "144962": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "144971": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "145372": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "145600": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "145619": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "145637": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "145646": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "145691": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "145725": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "145813": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "146427": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "146481": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "146612": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "146719": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "147013": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "147244": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "147341": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "147660": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "147679": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "147703": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "147767": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "148016": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "148131": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "148405": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "148487": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "148496": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "148654": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "149231": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "149772": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "149781": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "150066": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "150136": {
+    "division": "NCAA Division I",
+    "conference": "Mid-American Conference"
+  },
+  "150163": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "150400": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "150455": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "150534": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "150604": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "150756": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "151102": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "151263": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "151306": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "151324": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "151351": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "151777": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "152080": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "152318": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "152390": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "152567": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "152600": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "152673": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "153001": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "153108": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "153144": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "153162": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "153269": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "153278": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "153384": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "153603": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "153658": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "153825": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "153834": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "154095": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "154350": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "154493": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "154527": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "155025": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "155061": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "155317": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "155335": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "155399": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "155681": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "156082": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "156125": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "156213": {
+    "division": "NCAA Division III",
+    "conference": "Collegiate Conference of the South"
+  },
+  "156286": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Sun Conference"
+  },
+  "156295": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "156408": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "156620": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "157058": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "157076": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "157085": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "157289": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "157386": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "157401": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "157447": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "157757": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "157809": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "157818": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "157951": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "159009": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "159647": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "159717": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "159966": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "160612": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "160658": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "160977": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "161004": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "161086": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "161253": {
+    "division": "NCAA Division I",
+    "conference": "America East Conference"
+  },
+  "161299": {
+    "division": "NCAA Division III",
+    "conference": "North Atlantic Conference"
+  },
+  "161341": {
+    "division": "NCAA Division III",
+    "conference": "North Atlantic Conference"
+  },
+  "161457": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "161554": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "161563": {
+    "division": "NCAA Division III",
+    "conference": "North Atlantic Conference"
+  },
+  "162007": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "162283": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "162584": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "162654": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "162760": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "162928": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "163046": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "163268": {
+    "division": "NCAA Division I",
+    "conference": "America East Conference"
+  },
+  "163286": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "163338": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "163453": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "163462": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "163578": {
+    "division": "NCAA Division III",
+    "conference": "United East Conference"
+  },
+  "163851": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "163912": {
+    "division": "NCAA Division III",
+    "conference": "United East Conference"
+  },
+  "164076": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "164173": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "164216": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "164270": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "164447": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "164465": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "164562": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "164580": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "164739": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "164924": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "164988": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "165015": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "165024": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "165334": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "165529": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "165574": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "165662": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "165671": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "165699": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "165820": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "165866": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "165936": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "166027": {
+    "division": "NCAA Division I",
+    "conference": "The Ivy League"
+  },
+  "166124": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "166391": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "166452": {
+    "division": "NCAA Division III",
+    "conference": "North Atlantic Conference"
+  },
+  "166513": {
+    "division": "NCAA Division I",
+    "conference": "America East Conference"
+  },
+  "166629": {
+    "division": "NCAA Division I",
+    "conference": "Mid-American Conference"
+  },
+  "166638": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "166683": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "166692": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "166850": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "166939": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "167260": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "167288": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "167358": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "167598": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "167729": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "167783": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "167835": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "167899": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "167987": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "167996": {
+    "division": "NCAA Division I",
+    "conference": "Northeast Conference"
+  },
+  "168005": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "168148": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "168218": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "168227": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "168254": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "168263": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "168281": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "168342": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "168421": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "168430": {
+    "division": "NCAA Division III",
+    "conference": "Massachusetts State Collegiate Athletic Conference"
+  },
+  "168528": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "168546": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "168591": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "169080": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "169248": {
+    "division": "NCAA Division I",
+    "conference": "Mid-American Conference"
+  },
+  "169479": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "169716": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "169798": {
+    "division": "NCAA Division I",
+    "conference": "Mid-American Conference"
+  },
+  "169910": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "170082": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "170286": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "170301": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "170532": {
+    "division": "NCAA Division III",
+    "conference": "Michigan Intercollegiate Athletic Association"
+  },
+  "170639": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "171100": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "171128": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "171456": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "171492": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "171571": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "172051": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "172644": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "172699": {
+    "division": "NCAA Division I",
+    "conference": "Mid-American Conference"
+  },
+  "173045": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "173124": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "173142": {
+    "division": "NCAA Division III",
+    "conference": "Upper Midwest Athletic Conference"
+  },
+  "173160": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "173258": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "173452": {
+    "division": "NCAA Division III",
+    "conference": "Upper Midwest Athletic Conference"
+  },
+  "173647": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "173665": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "173902": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "173920": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "174066": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "174075": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "174233": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "174251": {
+    "division": "NCAA Division III",
+    "conference": "Upper Midwest Athletic Conference"
+  },
+  "174358": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "174437": {
+    "division": "NCAA Division III",
+    "conference": "Upper Midwest Athletic Conference"
+  },
+  "174491": {
+    "division": "NCAA Division III",
+    "conference": "Upper Midwest Athletic Conference"
+  },
+  "174747": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "174817": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "174844": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "174862": {
+    "division": "NCAA Division III",
+    "conference": "Upper Midwest Athletic Conference"
+  },
+  "174914": {
+    "division": "NCAA Division I",
+    "conference": "The Summit League"
+  },
+  "175005": {
+    "division": "NCAA Division III",
+    "conference": "Minnesota Intercollegiate Athletic Conference"
+  },
+  "175078": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "175272": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "175342": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "175421": {
+    "division": "NCAA Division III",
+    "conference": "Collegiate Conference of the South"
+  },
+  "175616": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "175856": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "175980": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "176017": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "176035": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "176044": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "176080": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "176372": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "176965": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "177214": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "177940": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "177968": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "178059": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "178341": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "178387": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "178396": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "178402": {
+    "division": "NCAA Division I",
+    "conference": "The Summit League"
+  },
+  "178411": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "178420": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "178615": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "178624": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "179043": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "179159": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "179326": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "179557": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "179867": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "179894": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "179946": {
+    "division": "NCAA Division III",
+    "conference": "St. Louis Intercollegiate Athletic Conference"
+  },
+  "179955": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Valley Conference"
+  },
+  "180179": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "180461": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "180489": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "180948": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "181002": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "181215": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "181394": {
+    "division": "NCAA Division I",
+    "conference": "The Summit League"
+  },
+  "181446": {
+    "division": "NCAA Division III",
+    "conference": "American Rivers Conference"
+  },
+  "181464": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "181783": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "182281": {
+    "division": "NCAA Division I",
+    "conference": "Mountain West Conference"
+  },
+  "182290": {
+    "division": "NCAA Division I",
+    "conference": "Mountain West Conference"
+  },
+  "182634": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "182670": {
+    "division": "NCAA Division I",
+    "conference": "The Ivy League"
+  },
+  "182795": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "182980": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "183026": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "183062": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "183080": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "183211": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "183239": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "183910": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "183974": {
+    "division": "NCAA Division III",
+    "conference": "Atlantic East Conference"
+  },
+  "184348": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "184603": {
+    "division": "NCAA Division I",
+    "conference": "Northeast Conference"
+  },
+  "184612": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "184773": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "184782": {
+    "division": "NCAA Division III",
+    "conference": "New Jersey Athletic Conference"
+  },
+  "185262": {
+    "division": "NCAA Division III",
+    "conference": "New Jersey Athletic Conference"
+  },
+  "185572": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "185590": {
+    "division": "NCAA Division III",
+    "conference": "New Jersey Athletic Conference"
+  },
+  "185828": {
+    "division": "NCAA Division I",
+    "conference": "America East Conference"
+  },
+  "186131": {
+    "division": "NCAA Division I",
+    "conference": "The Ivy League"
+  },
+  "186283": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "186432": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "186584": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "186618": {
+    "division": "NCAA Division III",
+    "conference": "Atlantic East Conference"
+  },
+  "186867": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "186876": {
+    "division": "NCAA Division III",
+    "conference": "New Jersey Athletic Conference"
+  },
+  "187134": {
+    "division": "NCAA Division III",
+    "conference": "New Jersey Athletic Conference"
+  },
+  "187444": {
+    "division": "NCAA Division III",
+    "conference": "New Jersey Athletic Conference"
+  },
+  "187897": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "188304": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "188429": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "188641": {
+    "division": "NCAA Division III",
+    "conference": "Empire 8"
+  },
+  "189088": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "190044": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "190099": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "190415": {
+    "division": "NCAA Division I",
+    "conference": "The Ivy League"
+  },
+  "190725": {
+    "division": "NCAA Division II",
+    "conference": "East Coast Conference"
+  },
+  "190983": {
+    "division": "NCAA Division III",
+    "conference": "Empire 8"
+  },
+  "191241": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "191515": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "191533": {
+    "division": "NCAA Division III",
+    "conference": "Empire 8"
+  },
+  "191621": {
+    "division": "NCAA Division III",
+    "conference": "Allegheny Mountain Collegiate Conference"
+  },
+  "191649": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "191968": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "192192": {
+    "division": "NCAA Division III",
+    "conference": "Empire 8"
+  },
+  "192323": {
+    "division": "NCAA Division I",
+    "conference": "Northeast Conference"
+  },
+  "192448": {
+    "division": "NCAA Division I",
+    "conference": "Northeast Conference"
+  },
+  "193353": {
+    "division": "NCAA Division III",
+    "conference": "Skyline Conference"
+  },
+  "193900": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "193973": {
+    "division": "NCAA Division I",
+    "conference": "Metro Conference"
+  },
+  "194310": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "194824": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "195003": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "195030": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "195128": {
+    "division": "NCAA Division III",
+    "conference": "Empire 8"
+  },
+  "195164": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "195216": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "195243": {
+    "division": "NCAA Division II",
+    "conference": "East Coast Conference"
+  },
+  "195304": {
+    "division": "NCAA Division III",
+    "conference": "Skyline Conference"
+  },
+  "195526": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "195809": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "196042": {
+    "division": "NCAA Division III",
+    "conference": "Skyline Conference"
+  },
+  "196079": {
+    "division": "NCAA Division I",
+    "conference": "America East Conference"
+  },
+  "196097": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "196176": {
+    "division": "NCAA Division III",
+    "conference": "New Jersey Athletic Conference"
+  },
+  "196413": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "196866": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "197045": {
+    "division": "NCAA Division III",
+    "conference": "Empire 8"
+  },
+  "197133": {
+    "division": "NCAA Division III",
+    "conference": "Liberty League"
+  },
+  "197197": {
+    "division": "NCAA Division I",
+    "conference": "Northeast Conference"
+  },
+  "197708": {
+    "division": "NCAA Division III",
+    "conference": "Skyline Conference"
+  },
+  "197869": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "197911": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "197984": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "198066": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "198136": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "198215": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "198303": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "198385": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "198419": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "198464": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "198507": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "198516": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "198543": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "198561": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "198598": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "198613": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "198695": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "198756": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "198808": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "198835": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "198862": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "198899": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "198950": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "198969": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "199069": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "199102": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "199139": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "199148": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "199157": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "199218": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "199272": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "199281": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "199306": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "199412": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Sun Conference"
+  },
+  "199607": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "199643": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "199847": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "199865": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "199962": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "199999": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "200004": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "200156": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "200217": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "200253": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "200280": {
+    "division": "NCAA Division I",
+    "conference": "The Summit League"
+  },
+  "201104": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "201195": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "201371": {
+    "division": "NCAA Division III",
+    "conference": "Heartland Collegiate Athletic Conference"
+  },
+  "201548": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "201645": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "201654": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "201690": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "202134": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "202480": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "202523": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "202763": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "203085": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "203128": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "203368": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "203535": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "203580": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "203775": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "203845": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "204185": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "204264": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "204501": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "204617": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "204635": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "204909": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "204936": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "205443": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "205957": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "206048": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "206084": {
+    "division": "NCAA Division I",
+    "conference": "Mid-American Conference"
+  },
+  "206349": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "206437": {
+    "division": "NCAA Division II",
+    "conference": "Great Midwest Athletic Conference"
+  },
+  "206507": {
+    "division": "NCAA Division III",
+    "conference": "Ohio Athletic Conference"
+  },
+  "206525": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "206589": {
+    "division": "NCAA Division III",
+    "conference": "North Coast Athletic Conference"
+  },
+  "206622": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "206695": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "206862": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "206914": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "206941": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "207041": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "207263": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "207306": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "207324": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "207403": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "207582": {
+    "division": "NCAA Division I",
+    "conference": "The Summit League"
+  },
+  "207661": {
+    "division": "NCAA Division II",
+    "conference": "Mid-America Intercollegiate Athletics Association"
+  },
+  "207847": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "207865": {
+    "division": "NCAA Division II",
+    "conference": "Great American Conference"
+  },
+  "207971": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "208822": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "209056": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "209542": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "209551": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "209612": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "209807": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "209825": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "210401": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "210429": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "210571": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "210669": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "210739": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "210775": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "211088": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "211158": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "211273": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "211291": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "211431": {
+    "division": "NCAA Division III",
+    "conference": "Allegheny Mountain Collegiate Conference"
+  },
+  "211440": {
+    "division": "NCAA Division III",
+    "conference": "University Athletic Association"
+  },
+  "211468": {
+    "division": "NCAA Division III",
+    "conference": "United East Conference"
+  },
+  "211556": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "211583": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "211981": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "212009": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "212054": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "212106": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "212115": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "212133": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "212197": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "212577": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "212601": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "212656": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "212674": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "212805": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "212832": {
+    "division": "NCAA Division III",
+    "conference": "Atlantic East Conference"
+  },
+  "212911": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "212984": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "213011": {
+    "division": "NCAA Division III",
+    "conference": "Atlantic East Conference"
+  },
+  "213251": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "213303": {
+    "division": "NCAA Division III",
+    "conference": "United East Conference"
+  },
+  "213321": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "213349": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "213358": {
+    "division": "NCAA Division III",
+    "conference": "Allegheny Mountain Collegiate Conference"
+  },
+  "213367": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "213385": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "213400": {
+    "division": "NCAA Division III",
+    "conference": "United East Conference"
+  },
+  "213507": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "213543": {
+    "division": "NCAA Division I",
+    "conference": "Patriot League"
+  },
+  "213598": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "213668": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "213783": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "213826": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "213987": {
+    "division": "NCAA Division II",
+    "conference": "Northeast Conference"
+  },
+  "213996": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "214041": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "214069": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Freedom"
+  },
+  "214157": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "214166": {
+    "division": "NCAA Division III",
+    "conference": "Allegheny Mountain Collegiate Conference"
+  },
+  "214175": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "214272": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "215062": {
+    "division": "NCAA Division I",
+    "conference": "The Ivy League"
+  },
+  "215266": {
+    "division": "NCAA Division III",
+    "conference": "Allegheny Mountain Collegiate Conference"
+  },
+  "215275": {
+    "division": "NCAA Division III",
+    "conference": "Allegheny Mountain Collegiate Conference"
+  },
+  "215284": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "215442": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "215655": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "215743": {
+    "division": "NCAA Division I",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "215770": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "215798": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "215929": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "215947": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "216010": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "216038": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "216278": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "216287": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "216339": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "216357": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "216366": {
+    "division": "NCAA Division II",
+    "conference": "Central Atlantic Collegiate Conference"
+  },
+  "216524": {
+    "division": "NCAA Division III",
+    "conference": "Centennial Conference"
+  },
+  "216597": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "216667": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "216694": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "216764": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "216807": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "216852": {
+    "division": "NCAA Division III",
+    "conference": "Middle Atlantic Conference Commonwealth"
+  },
+  "216931": {
+    "division": "NCAA Division III",
+    "conference": "Landmark Conference"
+  },
+  "217013": {
+    "division": "NCAA Division III",
+    "conference": "United East Conference"
+  },
+  "217156": {
+    "division": "NCAA Division I",
+    "conference": "The Ivy League"
+  },
+  "217165": {
+    "division": "NCAA Division I",
+    "conference": "America East Conference"
+  },
+  "217235": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "217402": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "217420": {
+    "division": "NCAA Division III",
+    "conference": "Little East Conference"
+  },
+  "217484": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "217518": {
+    "division": "NCAA Division III",
+    "conference": "Conference of New England"
+  },
+  "217536": {
+    "division": "NCAA Division III",
+    "conference": "New England Women's and Men's Athletic Conference"
+  },
+  "217624": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "217633": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "217688": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "217721": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "217776": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "217819": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "217873": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "217882": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "217907": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "217961": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "217998": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "218061": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "218070": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "218229": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "218414": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "218441": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "218539": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "218645": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "218654": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "218663": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "218724": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "218733": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "218742": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "218964": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "218973": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "219000": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "219046": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "219259": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "219347": {
+    "division": "NCAA Division II",
+    "conference": "Rocky Mountain Athletic Conference"
+  },
+  "219356": {
+    "division": "NCAA Division I",
+    "conference": "The Summit League"
+  },
+  "219383": {
+    "division": "NCAA Division II",
+    "conference": "Northern Sun Intercollegiate Conference"
+  },
+  "219471": {
+    "division": "NCAA Division I",
+    "conference": "The Summit League"
+  },
+  "219602": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "219709": {
+    "division": "NCAA Division I",
+    "conference": "Missouri Valley Conference"
+  },
+  "219806": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "219833": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "219976": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Sun Conference"
+  },
+  "220075": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "220516": {
+    "division": "NCAA Division II",
+    "conference": "Conference Carolinas"
+  },
+  "220598": {
+    "division": "NCAA Division II",
+    "conference": "Southern Intercol. Ath. Conf."
+  },
+  "220613": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "220631": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "220710": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "220862": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "220978": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "221351": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "221519": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "221759": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "221838": {
+    "division": "NCAA Division I",
+    "conference": "Ohio Valley Conference"
+  },
+  "221847": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "221892": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "221953": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "221971": {
+    "division": "NCAA Division II",
+    "conference": "Gulf South Conference"
+  },
+  "221999": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "222178": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "222831": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "222983": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "223232": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "224004": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "224147": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "224226": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "224323": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "224527": {
+    "division": "NCAA Division III",
+    "conference": "American Southwest Conference"
+  },
+  "224545": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "225247": {
+    "division": "NCAA Division III",
+    "conference": "American Southwest Conference"
+  },
+  "225511": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "225548": {
+    "division": "NCAA Division III",
+    "conference": "American Southwest Conference"
+  },
+  "225627": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "226091": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "226152": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "226231": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "226383": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "226471": {
+    "division": "NCAA Division III",
+    "conference": "American Southwest Conference"
+  },
+  "226587": {
+    "division": "NCAA Division III",
+    "conference": "American Southwest Conference"
+  },
+  "226833": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "227216": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "227368": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "227526": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "227757": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "227863": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "227881": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "228042": {
+    "division": "NCAA Division III",
+    "conference": "American Southwest Conference"
+  },
+  "228149": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "228246": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "228343": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "228431": {
+    "division": "NCAA Division I",
+    "conference": "Southland Conference"
+  },
+  "228459": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "228501": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "228529": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "228705": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "228723": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "228769": {
+    "division": "NCAA Division I",
+    "conference": "United Athletic Conference"
+  },
+  "228778": {
+    "division": "NCAA Division I",
+    "conference": "Southeastern Conference"
+  },
+  "228787": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "228796": {
+    "division": "NCAA Division I",
+    "conference": "Mountain West Conference"
+  },
+  "228802": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "228875": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "228981": {
+    "division": "NCAA Division III",
+    "conference": "Southern Collegiate Athletic Conference"
+  },
+  "229018": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "229027": {
+    "division": "NCAA Division I",
+    "conference": "American Conference"
+  },
+  "229063": {
+    "division": "NCAA Division I",
+    "conference": "Southwestern Athletic Conf."
+  },
+  "229115": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "229179": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "229267": {
+    "division": "NCAA Division III",
+    "conference": "Southern Athletic Association"
+  },
+  "229814": {
+    "division": "NCAA Division II",
+    "conference": "Lone Star Conference"
+  },
+  "230038": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "230603": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "230728": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "230764": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "230959": {
+    "division": "NCAA Division III",
+    "conference": "New England Small College Athletic Conference"
+  },
+  "230995": {
+    "division": "NCAA Division III",
+    "conference": "Great Northeast Athletic Conference"
+  },
+  "231059": {
+    "division": "NCAA Division II",
+    "conference": "Northeast 10 Conference"
+  },
+  "231174": {
+    "division": "NCAA Division I",
+    "conference": "America East Conference"
+  },
+  "231420": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "231581": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "231624": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "231651": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "231712": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "232043": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "232089": {
+    "division": "NCAA Division III",
+    "conference": "Conference Carolinas"
+  },
+  "232186": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "232256": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "232265": {
+    "division": "NCAA Division I",
+    "conference": "Coastal Athletic Association"
+  },
+  "232308": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "232423": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "232557": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "232566": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "232609": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "232672": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "232681": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "232706": {
+    "division": "NCAA Division III",
+    "conference": "Atlantic East Conference"
+  },
+  "232937": {
+    "division": "NCAA Division I",
+    "conference": "Mid-Eastern Athletic Conf."
+  },
+  "232982": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "233277": {
+    "division": "NCAA Division I",
+    "conference": "Big South Conference"
+  },
+  "233295": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "233301": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "233374": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "233426": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "233541": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "233611": {
+    "division": "NCAA Division III",
+    "conference": "USA South Athletic Conference"
+  },
+  "233718": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "233897": {
+    "division": "NCAA Division II",
+    "conference": "South Atlantic Conference"
+  },
+  "233921": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "234030": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic 10 Conference"
+  },
+  "234085": {
+    "division": "NCAA Division I",
+    "conference": "Southern Conference"
+  },
+  "234155": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "234164": {
+    "division": "NCAA Division II",
+    "conference": "Central Intercollegiate Athletic Association"
+  },
+  "234207": {
+    "division": "NCAA Division III",
+    "conference": "Old Dominion Athletic Conf."
+  },
+  "234827": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "235097": {
+    "division": "NCAA Division I",
+    "conference": "Big Sky Conference"
+  },
+  "235316": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "236230": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "236328": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "236452": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "236577": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "236595": {
+    "division": "NCAA Division I",
+    "conference": "West Coast Conference"
+  },
+  "236939": {
+    "division": "NCAA Division I",
+    "conference": "Pac-12 Conference"
+  },
+  "237011": {
+    "division": "NCAA Division II",
+    "conference": "Great Northwest Athletic Conference"
+  },
+  "237057": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "237066": {
+    "division": "NCAA Division III",
+    "conference": "Northwest Conference"
+  },
+  "237181": {
+    "division": "NCAA Division III",
+    "conference": "Presidents' Athletic Conference"
+  },
+  "237312": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "237330": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "237358": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "237367": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "237385": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "237525": {
+    "division": "NCAA Division I",
+    "conference": "Sun Belt Conference"
+  },
+  "237783": {
+    "division": "NCAA Division II",
+    "conference": "Independent"
+  },
+  "237792": {
+    "division": "NCAA Division II",
+    "conference": "Pennsylvania State Athletic Conference"
+  },
+  "237899": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "237932": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "237969": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "238032": {
+    "division": "NCAA Division I",
+    "conference": "Big 12 Conference"
+  },
+  "238078": {
+    "division": "NCAA Division II",
+    "conference": "Mountain East Conference"
+  },
+  "238193": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "238333": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "238458": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "238476": {
+    "division": "NCAA Division III",
+    "conference": "College Conference of Illinois & Wisconsin"
+  },
+  "238616": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "238980": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "239017": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "239071": {
+    "division": "NCAA Division III",
+    "conference": "Independent"
+  },
+  "239080": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "239105": {
+    "division": "NCAA Division I",
+    "conference": "BIG EAST Conference"
+  },
+  "239318": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "239628": {
+    "division": "NCAA Division III",
+    "conference": "Midwest Conference"
+  },
+  "240189": {
+    "division": "NCAA Division III",
+    "conference": "Wisconsin Intercollegiate Athletic Conference"
+  },
+  "240268": {
+    "division": "NCAA Division III",
+    "conference": "Wisconsin Intercollegiate Athletic Conference"
+  },
+  "240277": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "240329": {
+    "division": "NCAA Division III",
+    "conference": "Wisconsin Intercollegiate Athletic Conference"
+  },
+  "240338": {
+    "division": "NCAA Division III",
+    "conference": "Northern Athletics Collegiate Conference"
+  },
+  "240365": {
+    "division": "NCAA Division III",
+    "conference": "Wisconsin Intercollegiate Athletic Conference"
+  },
+  "240374": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "240426": {
+    "division": "NCAA Division III",
+    "conference": "Upper Midwest Athletic Conference"
+  },
+  "240444": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  },
+  "240453": {
+    "division": "NCAA Division I",
+    "conference": "Horizon League"
+  },
+  "240462": {
+    "division": "NCAA Division III",
+    "conference": "Wisconsin Intercollegiate Athletic Conference"
+  },
+  "240471": {
+    "division": "NCAA Division III",
+    "conference": "Wisconsin Intercollegiate Athletic Conference"
+  },
+  "240480": {
+    "division": "NCAA Division III",
+    "conference": "Wisconsin Intercollegiate Athletic Conference"
+  },
+  "240727": {
+    "division": "NCAA Division I",
+    "conference": "Mountain West Conference"
+  },
+  "243744": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Coast Conference"
+  },
+  "366711": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "409698": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "433660": {
+    "division": "NCAA Division I",
+    "conference": "Atlantic Sun Conference"
+  },
+  "445188": {
+    "division": "NCAA Division II",
+    "conference": "California Collegiate Athletic Association"
+  },
+  "445708": {
+    "division": "NCAA Division III",
+    "conference": "Coast-To-Coast Athletic Conference"
+  },
+  "482149": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "482158": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "482680": {
+    "division": "NCAA Division II",
+    "conference": "Peach Belt Conference"
+  },
+  "486840": {
+    "division": "NCAA Division I",
+    "conference": "Conference USA"
+  },
+  "487524": {
+    "division": "NCAA Division III",
+    "conference": "North Atlantic Conference"
+  },
+  "490805": {
+    "division": "NCAA Division II",
+    "conference": "Great Lakes Intercollegiate Athletic Conference"
+  },
+  "495767": {
+    "division": "NCAA Division I",
+    "conference": "Big Ten Conference"
+  }
+}

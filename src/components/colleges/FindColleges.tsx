@@ -10,9 +10,9 @@ import { DemoNote } from "@/components/ui/DemoNote";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Field, inputClass } from "@/components/ui/Field";
 import {
-  CHECKED_COLLEGE_FACTS,
   DEMONSTRATION_OPENINGS,
   OPENING_POSITIONS,
+  publishedCollegeFact,
 } from "@/lib/college-facts";
 import {
   collegeLocation,
@@ -27,7 +27,11 @@ import { cn } from "@/lib/format";
 const DIRECTORY = colleges as DirectoryCollege[];
 const PATHS = mapPaths as { id: string; d: string }[];
 const BY_ID = new Map(DIRECTORY.map((college) => [college.id, college]));
-const CONFERENCES = [...new Set(Object.values(CHECKED_COLLEGE_FACTS).map((fact) => fact.conference))].sort();
+const CONFERENCES = [
+  ...new Set(
+    DIRECTORY.map((college) => publishedCollegeFact(college.id)?.conference).filter((conference): conference is string => Boolean(conference)),
+  ),
+].sort();
 
 function stateLabel(code: string) {
   return stateName(code);
@@ -246,6 +250,10 @@ export function FindColleges() {
               >
                 <option value="any">Any</option>
                 <option value="NCAA Division I">NCAA Division I</option>
+                <option value="NCAA Division II">NCAA Division II</option>
+                <option value="NCAA Division III">NCAA Division III</option>
+                <option value="NAIA">NAIA</option>
+                <option value="JUCO">JUCO</option>
               </select>
             </Field>
             <Field label="Conference, when checked" id="filter-conference">
@@ -335,7 +343,7 @@ export function FindColleges() {
               {openings.map((opening) => {
                 const college = BY_ID.get(opening.collegeId);
                 if (!college) return null;
-                const fact = CHECKED_COLLEGE_FACTS[college.id];
+                const fact = publishedCollegeFact(college.id);
                 return (
                   <li key={opening.id} className="rounded-2xl border border-line bg-panel p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lime">Demonstration</p>
