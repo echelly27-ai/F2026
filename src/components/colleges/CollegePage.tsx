@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Star } from "lucide-react";
+import { Mail, Star } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button } from "@/components/ui/Button";
@@ -11,7 +11,7 @@ import { SchoolMark } from "@/components/colleges/SchoolMark";
 import { DemoNote } from "@/components/ui/DemoNote";
 import { schoolLogo } from "@/lib/school-logo";
 import { Field, inputClass } from "@/components/ui/Field";
-import { verifiedStaff } from "@/lib/basketball-staff";
+import { verifiedStaff, type VerifiedCoach } from "@/lib/basketball-staff";
 import { CHECKED_COLLEGE_FACTS, DEMONSTRATION_OPENINGS } from "@/lib/college-facts";
 import {
   collegeLocation,
@@ -33,12 +33,31 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]["id"];
 
+function roleLabel(role: VerifiedCoach["role"]) {
+  return role === "head" ? "Head coach" : "Assistant coach";
+}
+
+function coachKey(coach: VerifiedCoach) {
+  return `${coach.name}\n${coach.email}`;
+}
+
+function mailtoFor(coach: VerifiedCoach, subject: string, message: string) {
+  const parts: string[] = [];
+  const trimmedSubject = subject.trim();
+  const trimmedMessage = message.trim();
+  if (trimmedSubject) parts.push(`subject=${encodeURIComponent(trimmedSubject)}`);
+  if (trimmedMessage) parts.push(`body=${encodeURIComponent(trimmedMessage)}`);
+  return `mailto:${coach.email}${parts.length ? `?${parts.join("&")}` : ""}`;
+}
+
 export function CollegePage({ college }: { college: DirectoryCollege }) {
   const { ready, board, addCollege, updateCollege } = useApp();
   const [tab, setTab] = useState<TabId>("recruiting");
-  const [draft, setDraft] = useState("");
-  const [syncedKey, setSyncedKey] = useState("");
   const [message, setMessage] = useState("");
+  const [composing, setComposing] = useState(false);
+  const [selectedKey, setSelectedKey] = useState("");
+  const [subject, setSubject] = useState("");
+  const [draft, setDraft] = useState("");
 
   const fact = CHECKED_COLLEGE_FACTS[college.id];
   const sample = sampleMetrics(college.id, college.control);
@@ -49,22 +68,21 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
   const division = fact?.division ?? "Division not listed";
   const conference = fact?.conference ?? "Not listed";
   const control = college.control ?? "Not listed";
-  const noteSaved = (saved?.notes ?? "").trim();
-  const noteDirty = draft.trim() !== noteSaved;
-  const savedKey = ready ? `${saved?.id ?? "new"}:${saved?.notes ?? ""}` : "";
-  if (savedKey && savedKey !== syncedKey) {
-    setSyncedKey(savedKey);
-    setDraft(saved?.notes ?? "");
-  }
+  const selected = staff.find((coach) => coachKey(coach) === selectedKey) ?? staff.find((coach) => coach.role === "head") ?? staff[0];
 
-  function entryFields(notes: string, favorite: boolean) {
+  useEffect(() => {
+    if (!composing) return;
+    document.getElementById("coach-email-subject")?.focus();
+  }, [composing]);
+
+  function entryFields(favorite: boolean) {
     return {
       name: college.name,
       location: collegeLocation(college),
       division: fact?.division ?? "",
       conference: fact?.conference ?? "",
       status: "interested" as const,
-      notes,
+      notes: "",
       contactDate: "",
       followUpDate: "",
       favorite,
@@ -73,7 +91,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
 
   function saveFavorite() {
     if (!saved) {
-      const error = addCollege(entryFields(draft.trim(), true));
+      const error = addCollege(entryFields(true));
       setMessage(error ?? `Saved ${college.name} to My Colleges.`);
       return;
     }
@@ -85,16 +103,10 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
     setMessage(saved.favorite ? `Cleared the favorite on ${college.name}.` : `Saved ${college.name} to My Colleges.`);
   }
 
-  function saveNote() {
-    const notes = draft.trim();
-    if (saved) {
-      updateCollege(saved.id, { notes }, notes ? `Updated the note for ${college.name}.` : `Cleared the note for ${college.name}.`);
-      setMessage("Note saved on your board.");
-      return;
-    }
-    if (!notes) return;
-    const error = addCollege(entryFields(notes, false));
-    setMessage(error ?? "Note saved on your board.");
+  function openCompose() {
+    if (!selected) return;
+    setSelectedKey(coachKey(selected));
+    setComposing(true);
   }
 
   return (
@@ -111,7 +123,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
             <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-lime">{division}</p>
           </div>
         </div>
-        <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-start">
+        <div className="mt-6 flex flex-wrap items-center gap-3">
           <Button
             type="button"
             disabled={!ready}
@@ -122,27 +134,22 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
             <Star className="size-4" fill={saved?.favorite ? "currentColor" : "none"} aria-hidden="true" />
             {saved?.favorite ? "Saved" : "Save"}
           </Button>
-          <form
-            className="w-full max-w-xl"
-            onSubmit={(event) => {
-              event.preventDefault();
-              saveNote();
-            }}
-          >
-            <Field label="Note" id="college-note" hint="Saved on your board with this college.">
-              <textarea
-                id="college-note"
-                className={cn(inputClass, "min-h-24 resize-y")}
-                value={draft}
-                maxLength={500}
-                disabled={!ready}
-                onChange={(event) => setDraft(event.target.value)}
-              />
-            </Field>
-            <Button type="submit" variant="secondary" className="mt-3" disabled={!ready || !noteDirty}>
-              Save note
+          {staff.length ? (
+            <Button
+              type="button"
+              variant="secondary"
+              aria-expanded={composing}
+              aria-controls="email-coach"
+              onClick={() => (composing ? setComposing(false) : openCompose())}
+            >
+              <Mail className="size-4" aria-hidden="true" />
+              Email coach
             </Button>
-          </form>
+          ) : (
+            <Button type="button" variant="secondary" disabled>
+              No coach email is published
+            </Button>
+          )}
         </div>
         {saved ? <p className="mt-4 text-sm text-mist">On My Colleges.</p> : null}
         {message ? (
@@ -151,6 +158,104 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
           </p>
         ) : null}
       </header>
+
+      {composing && selected ? (
+        <section
+          id="email-coach"
+          aria-labelledby="email-coach-title"
+          className="mt-6 overflow-hidden rounded-2xl border border-line bg-navy"
+        >
+          <div className="grid lg:grid-cols-[18rem_minmax(0,1fr)]">
+            <aside className="border-b border-line bg-ink p-5 lg:border-b-0 lg:border-r">
+              <div className="flex items-center gap-3">
+                <SchoolMark name={college.name} logo={schoolLogo(college.id)} />
+                <div className="min-w-0">
+                  <p className="font-display text-2xl uppercase leading-none text-paper">{college.name}</p>
+                  <p className="mt-2 text-sm text-mist">{place}</p>
+                </div>
+              </div>
+              <p id="email-coach-coaches" className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-lime">
+                Coach
+              </p>
+              <ul className="mt-3 max-h-52 space-y-2 overflow-y-auto lg:max-h-[28rem]" aria-labelledby="email-coach-coaches">
+                {staff.map((coach) => {
+                  const active = coachKey(coach) === coachKey(selected);
+                  const title = coach.title.toLowerCase() !== roleLabel(coach.role).toLowerCase() ? coach.title : null;
+                  return (
+                    <li key={coachKey(coach)}>
+                      <button
+                        type="button"
+                        aria-pressed={active}
+                        className={cn(
+                          "w-full rounded-xl border px-3 py-2 text-left",
+                          active ? "border-lime bg-lime/10" : "border-line hover:border-lime",
+                        )}
+                        onClick={() => setSelectedKey(coachKey(coach))}
+                      >
+                        <span className="block font-semibold text-paper">{coach.name}</span>
+                        <span className="mt-0.5 block text-sm text-mist">{roleLabel(coach.role)}</span>
+                        {title ? <span className="block text-sm text-mist">{title}</span> : null}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </aside>
+            <form
+              className="flex flex-col gap-4 p-5 sm:p-6"
+              onSubmit={(event) => {
+                event.preventDefault();
+                window.location.href = mailtoFor(selected, subject, draft);
+              }}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <h2 id="email-coach-title" className="font-display text-3xl uppercase text-paper">
+                  Email coach
+                </h2>
+                <Button type="button" variant="ghost" size="sm" onClick={() => setComposing(false)}>
+                  Close
+                </Button>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm font-medium text-mist">To</span>
+                <span className="inline-flex max-w-full items-center rounded-full border border-line bg-panel px-3 py-1 text-sm font-semibold text-paper">
+                  <span className="truncate">{selected.name}</span>
+                </span>
+                <span className="break-all text-sm text-mist">{selected.email}</span>
+              </div>
+              <Field label="Subject" id="coach-email-subject">
+                <input
+                  id="coach-email-subject"
+                  className={inputClass}
+                  value={subject}
+                  maxLength={200}
+                  onChange={(event) => setSubject(event.target.value)}
+                />
+              </Field>
+              <Field label="Message" id="coach-email-message">
+                <textarea
+                  id="coach-email-message"
+                  className={cn(inputClass, "min-h-36 resize-y")}
+                  value={draft}
+                  maxLength={4000}
+                  onChange={(event) => setDraft(event.target.value)}
+                />
+              </Field>
+              <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="max-w-md text-sm leading-relaxed text-mist">
+                  Send opens your email app with this coach's published address. NEXTUP does not send the message.
+                </p>
+                <a
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-5 py-2.5 text-sm font-semibold text-ink hover:bg-lime-2"
+                  href={mailtoFor(selected, subject, draft)}
+                >
+                  Send
+                </a>
+              </div>
+            </form>
+          </div>
+        </section>
+      ) : null}
 
       <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="College sections">
         {TABS.map((item) => (
@@ -197,12 +302,11 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
             {staff.length ? (
               <ul className="mt-4 space-y-4">
                 {staff.map((coach) => {
-                  const roleLabel = coach.role === "head" ? "Head coach" : "Assistant coach";
-                  const showTitle = coach.title.toLowerCase() !== roleLabel.toLowerCase();
+                  const showTitle = coach.title.toLowerCase() !== roleLabel(coach.role).toLowerCase();
                   return (
-                    <li key={`${coach.name}-${coach.email}`} className="border-t border-line pt-4 first:border-t-0 first:pt-0">
+                    <li key={coachKey(coach)} className="border-t border-line pt-4 first:border-t-0 first:pt-0">
                       <p className="font-semibold text-paper">{coach.name}</p>
-                      <p className="mt-1 text-sm text-mist">{roleLabel}</p>
+                      <p className="mt-1 text-sm text-mist">{roleLabel(coach.role)}</p>
                       {showTitle ? <p className="text-sm text-mist">{coach.title}</p> : null}
                       <a className="mt-1 inline-block text-sm font-semibold text-lime" href={`mailto:${coach.email}`}>
                         {coach.email}
