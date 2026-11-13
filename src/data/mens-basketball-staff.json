@@ -23759,5 +23759,138 @@
       "email": "mo.capaci@champion.edu",
       "sourceUrl": "https://championtigers.com/information/directory/index"
     }
+  ],
+  "133553": [
+    {
+      "name": "Steve Ridder",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "ridders@erau.edu",
+      "sourceUrl": "https://erauathletics.com/sports/mbball/coaches"
+    },
+    {
+      "name": "CJ Henagan",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "henaganc@erau.edu",
+      "sourceUrl": "https://erauathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "178697": [
+    {
+      "name": "Josh Mawhorr",
+      "role": "head",
+      "title": "Athletic Director and Men's Basketball Head Coach",
+      "email": "jmawhorr@cofo.edu",
+      "sourceUrl": "https://bobcats.cofo.edu/Staff-Directory"
+    },
+    {
+      "name": "Heath Carmichael",
+      "role": "assistant",
+      "title": "Men's Basketball Assistant Coach",
+      "email": "hcarmichael@cofo.edu",
+      "sourceUrl": "https://bobcats.cofo.edu/Staff-Directory"
+    }
+  ],
+  "196219": [
+    {
+      "name": "Jack Dignan",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "john.dignan@purchase.edu",
+      "sourceUrl": "https://www.purchasecollegeathletics.com/sports/mbball/coaches"
+    }
+  ],
+  "204024": [
+    {
+      "name": "Andrew Dakich",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "dakicha@miamioh.edu",
+      "sourceUrl": "https://miamiredhawks.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Ben Botts",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "bottsb@miamioh.edu",
+      "sourceUrl": "https://miamiredhawks.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Carl Richburg",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "Carl.Richburg@miamioh.edu",
+      "sourceUrl": "https://miamiredhawks.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Elijah Pennington",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "pennine@miamioh.edu",
+      "sourceUrl": "https://miamiredhawks.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Khristian Smith",
+      "role": "assistant",
+      "title": "Associate Head Coach",
+      "email": "Khristian.Smith@miamioh.edu",
+      "sourceUrl": "https://miamiredhawks.com/sports/mbball/coaches"
+    }
+  ],
+  "211644": [
+    {
+      "name": "Damian Pitts",
+      "role": "head",
+      "title": "Head Coach",
+      "email": "dpitts@pennwest.edu",
+      "sourceUrl": "https://clariongoldeneagles.com/sports/mbball/coaches"
+    },
+    {
+      "name": "Mike McCready",
+      "role": "assistant",
+      "title": "Assistant Coach",
+      "email": "mmccready@pennwest.edu",
+      "sourceUrl": "https://clariongoldeneagles.com/sports/mbball/coaches"
+    }
+  ],
+  "217907": [
+    {
+      "name": "Nick Pasqua",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "npasqua@coker.edu",
+      "sourceUrl": "https://www.cokercobras.com/information/directory/index"
+    },
+    {
+      "name": "Matthew Kempter",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "mkempter@coker.edu",
+      "sourceUrl": "https://www.cokercobras.com/information/directory/index"
+    }
+  ],
+  "217934": [
+    {
+      "name": "Ryan Sweeney",
+      "role": "head",
+      "title": "Head Men's Basketball Coach",
+      "email": "rsweeney@columbiasc.edu",
+      "sourceUrl": "https://gokoalas.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Bryan Bethea",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "bbethea@columbiasc.edu",
+      "sourceUrl": "https://gokoalas.com/sports/mbkb/coaches/index"
+    },
+    {
+      "name": "Chase Ridenour",
+      "role": "assistant",
+      "title": "Assistant Men's Basketball Coach",
+      "email": "CRidenour@columbiasc.edu",
+      "sourceUrl": "https://gokoalas.com/sports/mbkb/coaches/index"
+    }
   ]
 }
