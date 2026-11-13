@@ -1,10 +1,13 @@
+import membershipData from "@/data/ncaa-membership.json";
+
 /** Checked public facts for a small set of men's basketball programs.
  * City, NCAA division, and conference are included only where the campus and membership are public knowledge.
+ * NCAA division and conference for other members come from the NCAA directory.
  * Every other directory row stays limited to the IPEDS name, state, and control.
  */
 export type CheckedCollegeFact = {
   city: string;
-  division: "NCAA Division I";
+  division: "NCAA Division I" | "NCAA Division II" | "NCAA Division III" | "NAIA" | "JUCO";
   conference: string;
 };
 
@@ -66,7 +69,28 @@ export const CHECKED_COLLEGE_FACTS: Record<string, CheckedCollegeFact> = {
   "243780": { city: "West Lafayette", division: "NCAA Division I", conference: "Big Ten" },
   "126614": { city: "Boulder", division: "NCAA Division I", conference: "Big 12" },
   "495767": { city: "University Park", division: "NCAA Division I", conference: "Big Ten" },
+  // Montana divisions are the labels each school's athletics site publishes.
+  "180106": { city: "Helena", division: "NAIA", conference: "Frontier Conference" },
+  "180179": { city: "Billings", division: "NCAA Division II", conference: "Great Northwest Athletic Conference" },
+  "180258": { city: "", division: "NAIA", conference: "Frontier Conference" },
+  "180416": { city: "", division: "NAIA", conference: "Frontier Conference" },
+  "180461": { city: "Bozeman", division: "NCAA Division I", conference: "Big Sky Conference" },
+  "180489": { city: "Missoula", division: "NCAA Division I", conference: "Big Sky Conference" },
+  "180522": { city: "", division: "NAIA", conference: "Frontier Conference" },
+  "180595": { city: "", division: "NAIA", conference: "Frontier Conference" },
+  "180692": { city: "", division: "NAIA", conference: "Frontier Conference" },
 };
+
+const NCAA_MEMBERSHIP = membershipData as Record<string, { division: CheckedCollegeFact["division"]; conference: string }>;
+
+/** Checked campus facts win. Otherwise use the NCAA directory's division and conference. */
+export function publishedCollegeFact(id: string): CheckedCollegeFact | null {
+  const checked = CHECKED_COLLEGE_FACTS[id];
+  if (checked) return checked;
+  const ncaa = NCAA_MEMBERSHIP[id];
+  if (!ncaa?.division) return null;
+  return { city: "", division: ncaa.division, conference: ncaa.conference };
+}
 
 /** Demonstration roster spots. Not live openings and not coach contacts. */
 export const DEMONSTRATION_OPENINGS = [

@@ -1,5 +1,5 @@
 import colleges from "@/data/colleges.json";
-import { CHECKED_COLLEGE_FACTS, DEMONSTRATION_OPENINGS } from "@/lib/college-facts";
+import { DEMONSTRATION_OPENINGS, publishedCollegeFact } from "@/lib/college-facts";
 import { US_STATES } from "@/lib/profile-options";
 
 export type DirectoryCollege = {
@@ -53,6 +53,21 @@ const STATE_CODES = new Set(US_STATES.map((state) => state.value));
 const SAMPLE_OPENING_IDS = new Set<string>(DEMONSTRATION_OPENINGS.map((opening) => opening.collegeId));
 const SELECTIVITY_RANK = new Map(SAMPLE_SELECTIVITY.map((label, index) => [label, index]));
 
+/** Strongest NCAA division first. Unlisted schools follow D3. NAIA and JUCO follow the NCAA divisions. */
+const DIVISION_RANK: Record<string, number> = {
+  "NCAA Division I": 0,
+  "NCAA Division II": 1,
+  "NCAA Division III": 2,
+  NAIA: 4,
+  JUCO: 5,
+};
+const UNLISTED_DIVISION_RANK = 3;
+
+export function divisionRank(division: string) {
+  if (!division) return UNLISTED_DIVISION_RANK;
+  return DIVISION_RANK[division] ?? UNLISTED_DIVISION_RANK;
+}
+
 export function stateName(code: string) {
   return US_STATES.find((state) => state.value === code)?.label ?? code;
 }
@@ -90,8 +105,8 @@ export function directoryCollegeParams() {
 }
 
 export function collegeLocation(college: DirectoryCollege) {
-  const fact = CHECKED_COLLEGE_FACTS[college.id];
-  if (fact) return `${fact.city}, ${college.state}`;
+  const fact = publishedCollegeFact(college.id);
+  if (fact?.city) return `${fact.city}, ${college.state}`;
   return stateName(college.state);
 }
 
@@ -117,7 +132,7 @@ export function sampleMetrics(id: string, control: DirectoryCollege["control"]) 
 }
 
 export function toResultRow(college: DirectoryCollege): CollegeResultRow {
-  const fact = CHECKED_COLLEGE_FACTS[college.id];
+  const fact = publishedCollegeFact(college.id);
   const sample = sampleMetrics(college.id, college.control);
   return {
     college,
@@ -158,7 +173,7 @@ export function filterColleges(search: CollegeSearch) {
   return DIRECTORY.filter((college) => {
     if (search.states.length > 0 && !search.states.includes(college.state)) return false;
     if (search.control !== "any" && college.control !== search.control) return false;
-    const fact = CHECKED_COLLEGE_FACTS[college.id];
+    const fact = publishedCollegeFact(college.id);
     if (search.division !== "any" && fact?.division !== search.division) return false;
     if (search.conference !== "any" && fact?.conference !== search.conference) return false;
     if (!needle) return true;
@@ -192,7 +207,7 @@ function sortValue(row: CollegeResultRow, key: SortKey): string | number {
     case "name":
       return row.college.name;
     case "division":
-      return row.division;
+      return divisionRank(row.division);
     case "athletic":
       return SELECTIVITY_RANK.get(row.athletic) ?? 0;
     case "academic":

@@ -12,7 +12,7 @@ import { DemoNote } from "@/components/ui/DemoNote";
 import { schoolLogo } from "@/lib/school-logo";
 import { Field, inputClass } from "@/components/ui/Field";
 import { verifiedStaff, type VerifiedCoach } from "@/lib/basketball-staff";
-import { CHECKED_COLLEGE_FACTS, DEMONSTRATION_OPENINGS } from "@/lib/college-facts";
+import { DEMONSTRATION_OPENINGS, publishedCollegeFact } from "@/lib/college-facts";
 import {
   collegeLocation,
   collegeSearchParams,
@@ -59,7 +59,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
   const [subject, setSubject] = useState("");
   const [draft, setDraft] = useState("");
 
-  const fact = CHECKED_COLLEGE_FACTS[college.id];
+  const fact = publishedCollegeFact(college.id);
   const sample = sampleMetrics(college.id, college.control);
   const opening = DEMONSTRATION_OPENINGS.find((item) => item.collegeId === college.id);
   const staff = verifiedStaff(college.id);

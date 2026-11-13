@@ -41,9 +41,10 @@ export function CollegeResults() {
   const params = useSearchParams();
   const search = parseCollegeSearch(params);
   const { ready, board, addCollege, removeCollege } = useApp();
-  const [sortKey, setSortKey] = useState<SortKey>("name");
+  const [chosenSort, setChosenSort] = useState<SortKey | null>(null);
   const [direction, setDirection] = useState<SortDirection>("asc");
   const [message, setMessage] = useState("");
+  const sortKey = chosenSort ?? (search.states.length > 0 ? "division" : "name");
 
   const rows = sortResultRows(filterColleges(search).map(toResultRow), sortKey, direction);
 
@@ -57,7 +58,7 @@ export function CollegeResults() {
       setDirection((current) => (current === "asc" ? "desc" : "asc"));
       return;
     }
-    setSortKey(key);
+    setChosenSort(key);
     setDirection("asc");
   }
 
@@ -87,7 +88,11 @@ export function CollegeResults() {
       <PageHeader
         eyebrow="Directory"
         title="College results"
-        lede={`${searchSummary(search)}. Names and states come from the college directory. City and division show only where a public fact was checked.`}
+        lede={`${searchSummary(search)}. Names and states come from the college directory. City and division show only where a public fact was checked.${
+          search.states.length > 0
+            ? " NCAA Division I, II, and III come first. Schools with no listed division follow D3, then NAIA and JUCO. Names stay alphabetical inside each group."
+            : ""
+        }`}
       />
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <ButtonLink href={returnQuery ? `/find-colleges?${returnQuery}` : "/find-colleges"} variant="secondary">
