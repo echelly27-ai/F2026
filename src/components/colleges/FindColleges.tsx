@@ -6,7 +6,6 @@ import colleges from "@/data/colleges.json";
 import mapPaths from "@/data/us-map.json";
 import { Container, PageHeader } from "@/components/layout/Container";
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { DemoNote } from "@/components/ui/DemoNote";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Field, inputClass } from "@/components/ui/Field";
 import {
@@ -102,14 +101,8 @@ export function FindColleges() {
       <PageHeader
         eyebrow="Directory"
         title="Find colleges"
-        lede="Search degree-granting institutions by name and state. Names, states, and public or private control come from the IPEDS list collected February 2, 2023. This is not a ranking."
+        lede="Search degree-granting institutions by name and state. Names, states, and public or private control come from the IPEDS list collected February 2, 2023."
       />
-      <div className="mt-6">
-        <DemoNote>
-          City, division, and conference show only for programs with a checked public fact. Roster openings on the
-          second tab are demonstration data. NEXTUP does not list coach contacts.
-        </DemoNote>
-      </div>
 
       <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="College search">
         <button
@@ -300,10 +293,6 @@ export function FindColleges() {
           <h2 id="openings-heading" className="font-display text-3xl uppercase text-paper">
             Demonstration openings
           </h2>
-          <DemoNote>
-            Every card below is a sample roster spot for the layout. It is not a live opening, and there is no coach
-            contact.
-          </DemoNote>
           <div className="grid gap-3 rounded-2xl border border-line bg-panel p-4 sm:grid-cols-3">
             <Field label="Position" id="opening-position">
               <select id="opening-position" className={inputClass} value={openingPosition} onChange={(event) => setOpeningPosition(event.target.value)}>
@@ -354,9 +343,6 @@ export function FindColleges() {
                     </p>
                     <p className="mt-3 text-sm text-paper">
                       Position {opening.position} · Class of {opening.gradYear} · Status: demonstration
-                    </p>
-                    <p className="mt-2 text-xs leading-relaxed text-mist">
-                      Not a live roster spot. No coach email or phone is attached.
                     </p>
                     <ButtonLink href={`/find-colleges/${college.id}`} variant="secondary" size="sm" className="mt-4">
                       View program

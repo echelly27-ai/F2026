@@ -1,4 +1,4 @@
-import { ArrowRight, ClipboardList, Search, Shield, Target } from "lucide-react";
+import { ArrowRight, ClipboardList, Search, Target } from "lucide-react";
 import { RecruitingGuide } from "@/components/home/RecruitingGuide";
 import { Container } from "@/components/layout/Container";
 import { SamplePhone } from "@/components/home/SamplePhone";
@@ -20,11 +20,6 @@ const BENEFITS = [
     icon: Target,
     title: "Schools you choose",
     text: "Group programs you are researching and keep the follow-up dates you set.",
-  },
-  {
-    icon: Shield,
-    title: "Your file stays yours",
-    text: "Contact details stay on your board. NEXTUP does not invent offers or coach contacts.",
   },
 ];
 
@@ -49,9 +44,6 @@ export default function HomePage() {
             <h1 className="mt-4 max-w-3xl font-display text-[clamp(3.2rem,7.2vw,6rem)] uppercase leading-[0.88] text-paper">
               Show your game. Get recruited.
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-mist sm:text-lg">
-              Build a profile, add your film and stats, and track the colleges on your list.
-            </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <ButtonLink href="/profile#profile-editor">
                 Build your profile

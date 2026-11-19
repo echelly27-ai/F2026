@@ -1,4 +1,4 @@
-import { Check, Clapperboard, GraduationCap, School, SlidersHorizontal } from "lucide-react";
+import { Check, GraduationCap, School, SlidersHorizontal } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { emptyProfile, profileCompletion } from "@/lib/board";
@@ -72,8 +72,7 @@ export function RecruitingGuide({
           </Title>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-mist sm:text-lg">
             College recruiting gets clearer when sport, class, measurables, academics, and film live in one place.
-            Then you name the schools you want and record the outreach you send. NEXTUP keeps that work on your
-            board. It does not contact coaches or assign someone to recruit for you.
+            Then you name the schools you want and record the outreach you send.
           </p>
           <ol className="mt-8 space-y-4">
             {STEPS.map((step) => (
@@ -127,22 +126,11 @@ export function RecruitingGuide({
                 <div className="h-full bg-lime" style={{ width: `${completion.percent}%` }} />
               </div>
               <p className="mt-2 text-xs text-mist">
-                {completion.filled} of {completion.total} fields on this sample. Blank fields stay blank.
+                {completion.filled} of {completion.total} fields on this sample.
               </p>
             </div>
 
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              <section className="rounded-2xl border border-line bg-panel p-4">
-                <div className="flex items-center gap-2 text-lime">
-                  <Clapperboard aria-hidden="true" size={16} />
-                  <PanelTitle className="text-xs font-semibold uppercase tracking-[0.16em]">Film</PanelTitle>
-                </div>
-                <p className="mt-3 text-sm font-semibold text-paper">No highlight link</p>
-                <p className="mt-1 text-xs leading-relaxed text-mist">
-                  Sample slot. Add a URL you control. This is not a real tape.
-                </p>
-              </section>
-
               <section className="rounded-2xl border border-line bg-panel p-4">
                 <div className="flex items-center gap-2 text-lime">
                   <GraduationCap aria-hidden="true" size={16} />
@@ -150,7 +138,6 @@ export function RecruitingGuide({
                 </div>
                 <p className="mt-3 text-sm font-semibold text-paper">GPA 3.6</p>
                 <p className="mt-1 text-xs text-paper">SAT 1200 · ACT 25</p>
-                <p className="mt-1 text-xs leading-relaxed text-mist">Sample academics. Not a real student record.</p>
               </section>
 
               <section className="rounded-2xl border border-line bg-panel p-4">
@@ -176,9 +163,6 @@ export function RecruitingGuide({
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 text-xs leading-relaxed text-mist">
-                  Fictional campuses on this sample. Not offers, and no coach is attached.
-                </p>
               </section>
             </div>
           </div>

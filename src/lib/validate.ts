@@ -13,7 +13,7 @@ export function validateDemoSignIn(name: string, email: string) {
     errors.name = "Use 60 characters or fewer.";
   }
   if (!EMAIL.test(email.trim())) {
-    errors.email = "Enter a valid email. In demo mode it stays in this browser.";
+    errors.email = "Enter a valid email.";
   }
   return errors;
 }

@@ -8,7 +8,6 @@ import { Container, PageHeader } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { ButtonLink } from "@/components/ui/Button";
 import { SchoolMark } from "@/components/colleges/SchoolMark";
-import { DemoNote } from "@/components/ui/DemoNote";
 import { schoolLogo } from "@/lib/school-logo";
 import {
   collegeLocation,
@@ -100,14 +99,6 @@ export function CollegeResults() {
         </ButtonLink>
         <p className="text-sm text-mist">{rows.length === 1 ? "1 college" : `${rows.length} colleges`}</p>
       </div>
-      <div className="mt-4">
-        <DemoNote>
-          Athletic selectivity, academic selectivity, in-state tuition, out-of-state tuition, and undergraduate
-          enrollment are samples. They are not the school’s published costs or admission rates. A roster mark appears
-          only on a labeled sample row and is not a live opening. NEXTUP does not list coach contacts.
-        </DemoNote>
-      </div>
-
       {rows.length === 0 ? (
         <p className="mt-6 text-lg font-semibold text-paper">No colleges</p>
       ) : (

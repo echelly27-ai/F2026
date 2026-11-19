@@ -10,7 +10,7 @@ const ARTICLES = [
   {
     category: "How recruiting works",
     title: "The work is yours",
-    body: "Build one profile, add film you control, list schools you are researching, and write down the dates you reach out. NXTUP Academy explains those steps. It does not contact coaches for you.",
+    body: "Build one profile, add film you control, list schools you are researching, and write down the dates you reach out. NXTUP Academy explains those steps.",
   },
   {
     category: "NCAA divisions",
@@ -20,7 +20,7 @@ const ARTICLES = [
   {
     category: "Eligibility",
     title: "Eligibility starts with your coursework",
-    body: "Core courses, grades, and amateur status are checked by the association you are entering. Keep your own transcript notes. This page does not certify eligibility.",
+    body: "Core courses, grades, and amateur status are checked by the association you are entering. Keep your own transcript notes.",
   },
   {
     category: "NAIA and JUCO",
@@ -30,32 +30,32 @@ const ARTICLES = [
   {
     category: "Contacting coaches",
     title: "You send the message",
-    body: "On a college page, Send hands your note to that coach's published email and puts your email in reply-to. If no coach email is published, nothing is sent. Record the date on your tracker.",
+    body: "On a college page, Send hands your note to that coach's published email and puts your email in reply-to. Record the date on your tracker.",
   },
   {
     category: "Highlight video",
     title: "Keep the film link with the profile",
-    body: "Paste a YouTube or Hudl link you control. A highlight is useful when the measurable facts sit next to it. The link is not a scholarship offer.",
+    body: "Paste a YouTube or Hudl link you control. A highlight is useful when the measurable facts sit next to it.",
   },
   {
     category: "Scholarships",
     title: "Aid is decided by the school",
-    body: "Athletic aid, academic aid, and need-based aid are awarded by the institution. A directory listing is not an offer and does not estimate your package.",
+    body: "Athletic aid, academic aid, and need-based aid are awarded by the institution.",
   },
   {
     category: "Applications",
     title: "The application is separate from the sports note",
-    body: "Admissions forms, deadlines, and transcripts belong to the college. Track the date you applied in My Colleges. NEXTUP does not submit the application.",
+    body: "Admissions forms, deadlines, and transcripts belong to the college. Track the date you applied in My Colleges.",
   },
   {
     category: "Timelines",
     title: "Use dates you choose",
-    body: "Follow-up dates are reminders you set after you reach out. They are not a coach's calendar and they are not a signing deadline.",
+    body: "Follow-up dates are reminders you set after you reach out.",
   },
   {
     category: "International athletes",
     title: "Ask the school about academic records",
-    body: "Transcripts, English testing, and amateurism reviews vary by destination. Bring the documents the school lists. This guide does not replace that school's international office.",
+    body: "Transcripts, English testing, and amateurism reviews vary by destination. Bring the documents the school lists.",
   },
 ] as const;
 
@@ -122,7 +122,7 @@ export function AcademyView() {
       <PageHeader
         eyebrow="NXTUP Academy"
         title="Recruiting lessons"
-        lede="Public videos and short original notes on the steps you do yourself. NEXTUP does not contact coaches or file applications for you."
+        lede="Public videos and short original notes on the steps you do yourself."
       />
       <section className="mt-10" aria-labelledby="academy-videos">
         <h2 id="academy-videos" className="font-display text-4xl uppercase leading-none text-paper">

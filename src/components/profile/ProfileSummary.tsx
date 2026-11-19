@@ -146,7 +146,7 @@ export function ProfileSummary() {
       return;
     }
     setErrors({});
-    setMessage("Saved on this device.");
+    setMessage("Saved.");
     setEditing(null);
   }
 
@@ -192,12 +192,6 @@ export function ProfileSummary() {
             Basketball
             {classYear ? ` · Class of ${classYear}` : " · Class year not added"}
           </p>
-          <div className="mt-5 rounded-xl border border-line bg-navy p-4">
-            <h3 className="text-sm font-semibold text-paper">Your profile</h3>
-            <p className="mt-2 text-sm leading-relaxed text-mist">
-              This file stays on your board. Contact details are not added to public prospect pages.
-            </p>
-          </div>
           <div className="mt-5">
             <div className="flex items-center justify-between gap-3 text-sm">
               <p className="font-semibold text-paper">Profile completion</p>
@@ -265,7 +259,7 @@ export function ProfileSummary() {
           ) : null}
 
           {section === "athletics" ? (
-            <SectionForm title="Athletics" lede="Position and size saved on this device." message={message} errors={errors} onSubmit={save}>
+            <SectionForm title="Athletics" message={message} errors={errors} onSubmit={save}>
               <PositionField value={draft.position} onChange={(value) => setField("position", value)} />
               <SizeFields draft={draft} errors={errors} setField={setField} />
             </SectionForm>
@@ -290,14 +284,13 @@ export function ProfileSummary() {
           {section === "information" ? (
             <SectionForm
               title="My information"
-              lede="Name and contact details stay on your board. They are not added to public prospect pages."
               message={message}
               errors={errors}
               onSubmit={save}
             >
               <TextField id="firstName" label="First name" value={draft.firstName} error={errors.firstName} autoComplete="given-name" onChange={(value) => setField("firstName", value)} />
               <TextField id="lastName" label="Last name" value={draft.lastName} error={errors.lastName} autoComplete="family-name" onChange={(value) => setField("lastName", value)} />
-              <TextField id="email" label="Email" type="email" value={draft.email} error={errors.email} autoComplete="email" hint="Stored on your board only." onChange={(value) => setField("email", value)} />
+              <TextField id="email" label="Email" type="email" value={draft.email} error={errors.email} autoComplete="email" onChange={(value) => setField("email", value)} />
               <TextField id="school" label="High school" value={draft.school} onChange={(value) => setField("school", value)} />
               <TextField id="city" label="City" value={draft.city} onChange={(value) => setField("city", value)} />
               <SelectField
@@ -320,7 +313,7 @@ export function ProfileSummary() {
           ) : null}
 
           {section === "stats" ? (
-            <SectionForm title="Key stats" lede="Season averages you enter. These are not a published ranking." message={message} errors={errors} onSubmit={save}>
+            <SectionForm title="Key stats" message={message} errors={errors} onSubmit={save}>
               <StatFields draft={draft} errors={errors} setField={setField} />
             </SectionForm>
           ) : null}
@@ -328,7 +321,6 @@ export function ProfileSummary() {
           {section === "preferences" ? (
             <SectionForm
               title="Preferences"
-              lede="How you describe your game. NEXTUP does not contact coaches for you."
               message={message}
               errors={errors}
               onSubmit={save}
@@ -439,7 +431,6 @@ function RowFields({
         value={draft.email}
         error={errors.email}
         autoComplete="email"
-        hint="Stored on your board only. Public prospect pages do not show it."
         onChange={(value) => setField("email", value)}
       />
     );

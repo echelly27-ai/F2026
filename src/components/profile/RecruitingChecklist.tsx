@@ -10,7 +10,6 @@ export function RecruitingChecklist() {
       <h2 id="checklist-heading" className="font-display text-4xl uppercase text-paper">
         Recruiting checklist
       </h2>
-      <p className="mt-2 text-sm text-mist">Checking an item updates this list and stays on this device.</p>
       <ul className="mt-4 grid gap-3 md:grid-cols-2">
         {board.checklist.map((item) => (
           <li key={item.id}>

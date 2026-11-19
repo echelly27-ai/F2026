@@ -8,7 +8,6 @@ import { SchoolMark } from "@/components/colleges/SchoolMark";
 import { Container, PageHeader } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { DemoNote } from "@/components/ui/DemoNote";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { Field, inputClass } from "@/components/ui/Field";
 import { directoryCollegeByName } from "@/lib/college-results";
@@ -25,10 +24,10 @@ const STATUS_LABEL: Record<RecruitStatus, string> = {
 };
 
 const SAMPLE_LINES = [
-  "Sample view counted for this row. Not a visit by a program.",
-  "Sample search counted for this row. Not someone looking up your file.",
-  "Sample follow counted for this row. Not a program following you.",
-  "Sample open counted for this row. Not a message that was opened.",
+  "Sample view counted for this row.",
+  "Sample search counted for this row.",
+  "Sample follow counted for this row.",
+  "Sample open counted for this row.",
 ] as const;
 
 type SortKey = "name" | "division" | "views" | "searches" | "follows" | "opens";
@@ -107,13 +106,6 @@ export function TrackerView() {
         title="My Colleges"
         lede="Schools you save from Find Colleges. Interested, Contacted, and Evaluating still sort the same list."
       />
-      <div className="mt-6">
-        <DemoNote>
-          The activity on this page is a sample. Counts are not coach actions. No coach name, email, or opened message
-          is attached to a school.
-        </DemoNote>
-      </div>
-
       <div className="mt-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-end">
           <div className="min-w-0 flex-1">
@@ -192,11 +184,7 @@ export function TrackerView() {
 
       {board.colleges.length === 0 ? (
         <div className="mt-4">
-          <EmptyState
-            title="No colleges yet"
-            body="Search on Find Colleges and save a school. It will show up on this list."
-            action={<ButtonLink href="/find-colleges">Find Colleges</ButtonLink>}
-          />
+          <ButtonLink href="/find-colleges">Find Colleges</ButtonLink>
         </div>
       ) : visible.length === 0 ? (
         <div className="mt-4">

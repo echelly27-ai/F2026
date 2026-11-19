@@ -23,8 +23,6 @@ export const metadata: Metadata = {
     default: "NEXTUP",
     template: "%s · NEXTUP",
   },
-  description:
-    "NEXTUP is a basketball recruiting workspace. Build a profile, track schools, and look up colleges.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

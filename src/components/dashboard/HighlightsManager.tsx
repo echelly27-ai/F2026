@@ -69,11 +69,7 @@ export function HighlightsManager() {
           {message}
         </p>
       ) : null}
-      {board.profile.highlights.length === 0 ? (
-        <p className="mt-4 rounded-xl border border-dashed border-line px-4 py-6 text-sm text-mist">
-          No film links yet. Add a YouTube or Hudl URL you want on your profile.
-        </p>
-      ) : (
+      {board.profile.highlights.length > 0 ? (
         <ul className="mt-4 grid gap-4 lg:grid-cols-2">
           {board.profile.highlights.map((highlight) => (
             <li key={highlight.id} className="space-y-3">
@@ -94,7 +90,7 @@ export function HighlightsManager() {
             </li>
           ))}
         </ul>
-      )}
+      ) : null}
     </section>
   );
 }
