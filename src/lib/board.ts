@@ -31,19 +31,19 @@ export const CHECKLIST_TEMPLATE: ChecklistItem[] = [
   {
     id: "stats",
     label: "Enter season statistics",
-    detail: "Use your own numbers. NEXTUP does not invent a game log.",
+    detail: "Use your own numbers.",
     done: false,
   },
   {
     id: "schools",
     label: "Add schools you are researching",
-    detail: "Track programs you choose. This is not an offer list.",
+    detail: "Track programs you choose.",
     done: false,
   },
   {
     id: "outreach",
     label: "Record an outreach date",
-    detail: "Log a date you contacted a program. NEXTUP does not contact coaches.",
+    detail: "Log a date you contacted a program.",
     done: false,
   },
   {
@@ -96,7 +96,7 @@ export function createDefaultBoard(): BoardState {
     activity: [
       {
         id: "seed",
-        text: "Demo board created on this device.",
+        text: "Demo board created.",
         at: "",
       },
     ],

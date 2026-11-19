@@ -4,7 +4,7 @@ import { FindColleges } from "@/components/colleges/FindColleges";
 
 export const metadata: Metadata = {
   title: "Find Colleges",
-  description: "Search a public directory of U.S. colleges by name and state. Not a ranking and not a list of coach contacts.",
+  description: "Search a public directory of U.S. colleges by name and state.",
 };
 
 export default function FindCollegesPage() {

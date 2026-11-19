@@ -43,7 +43,7 @@ export async function pullBoard(supabase: SupabaseClient, userId: string) {
     return {
       board: null as BoardState | null,
       warning:
-        "Signed in, but athlete_boards is not available yet. Your board stays on this device until the SQL in supabase/schema.sql is applied.",
+        "Signed in, but athlete_boards is not available yet. Apply the SQL in supabase/schema.sql.",
     };
   }
 
@@ -52,7 +52,7 @@ export async function pullBoard(supabase: SupabaseClient, userId: string) {
   if (!board) {
     return {
       board: null,
-      warning: "The cloud board could not be read. Using the copy on this device.",
+      warning: "The cloud board could not be read.",
     };
   }
   return { board, warning: null };

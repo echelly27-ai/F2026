@@ -117,7 +117,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
             }
           }
         } catch {
-          nextWarning = "Supabase could not be reached. Using the board stored on this device.";
+          nextWarning = "Supabase could not be reached.";
         }
       }
 
@@ -154,7 +154,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
         const message = await pushBoard(supabase, userId, snapshot);
         if (message) {
           setWarning(
-            "Cloud save failed. Your board is still stored on this device. Apply supabase/schema.sql if you have not created athlete_boards.",
+            "Cloud save failed. Apply supabase/schema.sql if you have not created athlete_boards.",
           );
         }
       })();
@@ -184,7 +184,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
         setBoard(
           stamp({
             ...stored,
-            activity: withActivity(stored.activity, "Demo session started on this device."),
+            activity: withActivity(stored.activity, "Demo session started."),
           }),
         );
         setResetNonce((nonce) => nonce + 1);
@@ -246,7 +246,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
           setBoard(
             stamp({
               ...applyName(fresh, nextSession),
-              activity: withActivity(fresh.activity, "Created a Supabase account on this device."),
+              activity: withActivity(fresh.activity, "Created a Supabase account."),
             }),
           );
           return null;
@@ -418,7 +418,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
         setBoard(
           stamp({
             ...fresh,
-            activity: withActivity(fresh.activity, "Reset the demo board on this device."),
+            activity: withActivity(fresh.activity, "Reset the demo board."),
           }),
         );
         setResetNonce((nonce) => nonce + 1);

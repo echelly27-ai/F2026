@@ -69,7 +69,6 @@ export function SamplePhone() {
                   </div>
                 </dl>
                 <p className="mt-3 text-[11px] font-semibold text-paper">GPA 3.6 · SAT 1200 · ACT 25</p>
-                <p className="mt-1 text-[10px] leading-relaxed text-mist">Sample academics. Not a real student record.</p>
               </div>
             </div>
           </div>

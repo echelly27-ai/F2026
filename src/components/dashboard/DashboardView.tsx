@@ -60,9 +60,7 @@ export function DashboardView() {
           {displayName ? `Welcome, ${displayName}.` : "Welcome to your board."}
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist">
-          {session.mode === "demo"
-            ? `Demo session for ${session.email}. Nothing here is a real recruiting account.`
-            : `Supabase session for ${session.email}. Your board also stays on this device.`}
+          {session.mode === "demo" ? `Demo session for ${session.email}.` : `Supabase session for ${session.email}.`}
         </p>
       </header>
 
@@ -100,7 +98,6 @@ export function DashboardView() {
         <article className="rounded-2xl border border-line bg-panel p-4">
           <p className="text-sm text-mist">Next follow-up you set</p>
           <p className="mt-2 text-lg font-semibold text-paper">{followUp ? formatDate(followUp) : "None yet"}</p>
-          <p className="mt-2 text-xs text-mist">A date you choose, not a coach&apos;s calendar</p>
         </article>
       </section>
 
@@ -221,9 +218,7 @@ export function DashboardView() {
               Manage
             </Link>
           </div>
-          {board.colleges.length === 0 ? (
-            <p className="mt-3 text-sm text-mist">No schools yet. Add the programs you are researching.</p>
-          ) : (
+          {board.colleges.length > 0 ? (
             <ul className="mt-4 space-y-3">
               {board.colleges.slice(0, 4).map((college) => (
                 <li key={college.id} className="flex items-center justify-between gap-3 text-sm">
@@ -237,15 +232,13 @@ export function DashboardView() {
                 </li>
               ))}
             </ul>
-          )}
+          ) : null}
         </section>
-        <section id="watchlist" className="rounded-2xl border border-line bg-panel p-5" aria-labelledby="watch-heading">
-          <h2 id="watch-heading" className="font-display text-3xl uppercase text-paper">
-            Saved players
-          </h2>
-          {savedPlayers.length === 0 ? (
-            <p className="mt-3 text-sm text-mist">No saved players.</p>
-          ) : (
+        {savedPlayers.length > 0 ? (
+          <section id="watchlist" className="rounded-2xl border border-line bg-panel p-5" aria-labelledby="watch-heading">
+            <h2 id="watch-heading" className="font-display text-3xl uppercase text-paper">
+              Saved players
+            </h2>
             <ul className="mt-4 space-y-3">
               {savedPlayers.map((player) => (
                 <li key={player.id} className="flex items-center justify-between gap-3 text-sm">
@@ -259,13 +252,13 @@ export function DashboardView() {
                 </li>
               ))}
             </ul>
-          )}
-        </section>
+          </section>
+        ) : null}
       </div>
 
       <section className="rounded-2xl border border-line p-5">
         <h2 className="text-sm font-semibold text-paper">Reset demo board</h2>
-        <p className="mt-1 text-sm text-mist">Clears profile edits, checklist marks, schools, film links, and saved players on this device.</p>
+        <p className="mt-1 text-sm text-mist">Clears profile edits, checklist marks, schools, film links, and saved players.</p>
         {confirmReset ? (
           <div className="mt-3 flex flex-wrap gap-2">
             <Button

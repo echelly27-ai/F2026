@@ -17,18 +17,13 @@ export function SignInView() {
 
   return (
     <Container className="py-10 sm:py-14">
-      <PageHeader
-        eyebrow="Sign in"
-        title="Demo session"
-        lede="Demo mode keeps a name and email in this browser. It is not a production login, and no password is stored in the app for the demo."
-      />
+      <PageHeader eyebrow="Sign in" title="Demo session" />
 
       {session ? (
         <section className="mt-6 max-w-xl rounded-2xl border border-line bg-panel p-5">
           <h2 className="font-display text-3xl uppercase text-paper">You are signed in</h2>
           <p className="mt-2 text-sm text-mist">
-            {session.mode === "demo" ? "Demo-only session" : "Signed-in session"} for {session.email}. Your board
-            remains on this device if you sign out.
+            {session.mode === "demo" ? "Demo-only session" : "Signed-in session"} for {session.email}.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <ButtonLink href="/dashboard">Go to dashboard</ButtonLink>
@@ -55,9 +50,6 @@ export function SignInView() {
         }}
       >
         <h2 className="font-display text-3xl uppercase text-paper">Continue in demo mode</h2>
-        <p className="mt-2 text-sm leading-relaxed text-mist">
-          Clearly a demo. The email is not verified and is not a password. Use it to label your local board.
-        </p>
         <div className="mt-4 space-y-4">
           <Field label="Name" id="demo-name" error={demoErrors.name}>
             <input

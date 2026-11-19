@@ -99,15 +99,12 @@ export function ProfileForm() {
           highlights: board.profile.highlights,
         });
         setErrors({});
-        setMessage("Profile saved on this device.");
+        setMessage("Profile saved.");
       }}
     >
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="font-display text-4xl uppercase text-paper">Edit profile</h2>
-          <p className="mt-1 text-sm text-mist">
-            This is your board. Editing it does not change a public prospect profile.
-          </p>
         </div>
         {message ? (
           <p role="status" className="text-sm font-medium text-lime">
@@ -140,7 +137,7 @@ export function ProfileForm() {
             required
           />
         </Field>
-        <Field label="Email" id="email" error={errors.email} hint="Optional. Stored with your board.">
+        <Field label="Email" id="email" error={errors.email}>
           <input
             id="email"
             type="email"
@@ -148,7 +145,7 @@ export function ProfileForm() {
             onChange={(event) => setField("email", event.target.value)}
             className={inputClass}
             aria-invalid={Boolean(errors.email)}
-            aria-describedby={describedBy("email", errors.email, "Optional. Stored with your board.")}
+            aria-describedby={describedBy("email", errors.email)}
             autoComplete="email"
           />
         </Field>

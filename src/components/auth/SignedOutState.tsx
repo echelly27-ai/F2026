@@ -1,6 +1,5 @@
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { EmptyState } from "@/components/ui/EmptyState";
 
 export function SignedOutState({ pageTitle }: { pageTitle: string }) {
   return (
@@ -10,11 +9,7 @@ export function SignedOutState({ pageTitle }: { pageTitle: string }) {
         <h1 className="mt-2 font-display text-5xl uppercase leading-[0.9] text-paper sm:text-6xl">{pageTitle}</h1>
       </header>
       <div className="mt-8">
-        <EmptyState
-          title="Nothing is available"
-          body="Start a demo session to see what you saved on this device."
-          action={<ButtonLink href="/sign-in">Sign in</ButtonLink>}
-        />
+        <ButtonLink href="/sign-in">Sign in</ButtonLink>
       </div>
     </Container>
   );

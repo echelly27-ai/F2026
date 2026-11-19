@@ -8,7 +8,6 @@ import { Container } from "@/components/layout/Container";
 import { useApp } from "@/components/providers/AppProviders";
 import { Button } from "@/components/ui/Button";
 import { SchoolMark } from "@/components/colleges/SchoolMark";
-import { DemoNote } from "@/components/ui/DemoNote";
 import { schoolLogo } from "@/lib/school-logo";
 import { Field, inputClass } from "@/components/ui/Field";
 import { verifiedStaff, type VerifiedCoach } from "@/lib/basketball-staff";
@@ -359,7 +358,7 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
           </dl>
           {opening ? (
             <p className="mt-4 text-sm text-paper">
-              Sample roster mark: {opening.position}, class of {opening.gradYear}. Not a live opening.
+              Sample roster mark: {opening.position}, class of {opening.gradYear}.
             </p>
           ) : null}
           <div className="mt-6 rounded-xl border border-line bg-navy p-4">
@@ -387,11 +386,6 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
             ) : (
               <p className="mt-2 text-sm leading-relaxed text-mist">Staff contacts are not published here.</p>
             )}
-          </div>
-          <div className="mt-4">
-            <DemoNote>
-              Athletic selectivity is a sample. It is not a coach rating, and a roster mark is not a live opening.
-            </DemoNote>
           </div>
         </section>
       ) : null}
@@ -429,12 +423,6 @@ export function CollegePage({ college }: { college: DirectoryCollege }) {
             <Fact label="Out-of-state tuition" value={formatSampleDollars(sample.outStateTuition)} sample />
             <Fact label="Undergraduate enrollment" value={formatSampleCount(sample.enrollment)} sample />
           </dl>
-          <div className="mt-4">
-            <DemoNote>
-              Academic selectivity, tuition, and undergraduate enrollment are samples. They are not this school’s
-              published costs or admission rates.
-            </DemoNote>
-          </div>
         </section>
       ) : null}
     </Container>

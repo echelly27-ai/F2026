@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Container, PageHeader } from "@/components/layout/Container";
-import { DemoNote } from "@/components/ui/DemoNote";
 
 const STORAGE_KEY = "nextup-development-v1";
 
@@ -91,17 +90,10 @@ export function DevelopmentView() {
 
   return (
     <Container className="py-10 sm:py-14">
-      <PageHeader
-        eyebrow="Player development"
-        title="Practice checks"
-        lede="Sample workout checks you can mark off on this device. They are placeholders, not filmed sessions or measured progress."
-      />
-      <div className="mt-6">
-        <DemoNote>
-          {ready ? `${done.length} of ${ITEM_IDS.length} sample checks marked.` : "Loading your saved checks."} Nothing
-          here is a test result.
-        </DemoNote>
-      </div>
+      <PageHeader eyebrow="Player development" title="Practice checks" />
+      <p className="mt-6 text-sm text-mist">
+        {ready ? `${done.length} of ${ITEM_IDS.length} sample checks marked.` : "Loading your saved checks."}
+      </p>
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         {CATEGORIES.map((category) => (
           <section key={category.title} className="rounded-2xl border border-line bg-panel p-5">
@@ -116,10 +108,7 @@ export function DevelopmentView() {
                       checked={done.includes(item.id)}
                       onChange={() => toggle(item.id)}
                     />
-                    <span>
-                      {item.label}
-                      <span className="mt-1 block text-mist">No video is attached. Check it when you do the work.</span>
-                    </span>
+                    <span>{item.label}</span>
                   </label>
                 </li>
               ))}

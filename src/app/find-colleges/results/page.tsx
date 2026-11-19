@@ -4,8 +4,7 @@ import { CollegeResults } from "@/components/colleges/CollegeResults";
 
 export const metadata: Metadata = {
   title: "College results",
-  description:
-    "College results for the states and name you searched. Tuition, selectivity, and enrollment on this page are samples.",
+  description: "College results for the states and name you searched.",
 };
 
 export default function CollegeResultsPage() {

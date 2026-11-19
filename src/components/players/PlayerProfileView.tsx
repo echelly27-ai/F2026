@@ -15,7 +15,6 @@ import type { Prospect } from "@/lib/types";
 
 export function PlayerProfileView({ player }: { player: Prospect }) {
   const { ready, board, savePlayerNote } = useApp();
-  const saved = board.watchlist.includes(player.id);
   const storedNote = board.notes.find((item) => item.playerId === player.id);
   const [note, setNote] = useState(storedNote?.note ?? "");
   const [noteFor, setNoteFor] = useState(player.id);
@@ -45,11 +44,9 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
             sizes="(max-width: 1024px) 100vw, 40vw"
             initialsClassName="text-7xl"
           />
-          <p className="mt-2 text-xs leading-relaxed text-mist">
-            {hasPlayerPhoto(player.photo)
-              ? "Public recruiting photo from 247Sports. It is not from a private account."
-              : "No verified public photo was available, so initials are shown on a plain dark placeholder."}
-          </p>
+          {hasPlayerPhoto(player.photo) ? (
+            <p className="mt-2 text-xs leading-relaxed text-mist">Public recruiting photo from 247Sports.</p>
+          ) : null}
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-lime">
@@ -100,7 +97,7 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
           </dl>
           <p className="mt-4 text-sm leading-relaxed text-mist">
             Facts are from the {RANKING_SOURCE.publisher} {RANKING_SOURCE.title}, checked {RANKING_SOURCE.checkedOn}.
-            Rankings change. NEXTUP did not write a scouting report for {player.name}.
+            Rankings change.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <WatchToggle playerId={player.id} playerName={player.name} />
@@ -108,11 +105,6 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
               View watchlist
             </ButtonLink>
           </div>
-          <p className="mt-3 text-sm text-mist">
-            {saved
-              ? "On your watchlist in this browser. NEXTUP does not email the player or publish your note."
-              : "Saving adds this player to a watchlist stored on this device. It does not contact anyone."}
-          </p>
         </div>
       </div>
 
@@ -124,12 +116,7 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
           <div className="mt-4 max-w-3xl">
             <FilmFrame title={`${player.name} highlight`} url={videoUrl} note="Public link stored with this profile." />
           </div>
-        ) : (
-          <p className="mt-3 rounded-2xl border border-dashed border-line bg-panel px-4 py-6 text-sm text-mist">
-            No highlight URL is stored for {player.name}. The ranking row checked {RANKING_SOURCE.checkedOn} does not
-            include a working video link, so nothing is embedded.
-          </p>
-        )}
+        ) : null}
         {reportUrl ? (
           <a
             href={reportUrl}
@@ -146,10 +133,6 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
         <h2 id="note-heading" className="font-display text-3xl uppercase text-paper">
           Recruiting inquiry
         </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-mist">
-          Save {player.name} to the watchlist on this device and keep a private note. NEXTUP does not publish a phone
-          number, email, or street address, and it does not send this note.
-        </p>
         <div className="mt-4">
           <WatchToggle playerId={player.id} playerName={player.name} />
         </div>
@@ -158,7 +141,7 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
           onSubmit={(event) => {
             event.preventDefault();
             savePlayerNote(player.id, note, player.name);
-            setNoteMessage(note.trim() ? "Note saved on this device." : "Note cleared.");
+            setNoteMessage(note.trim() ? "Note saved." : "Note cleared.");
           }}
         >
           <label htmlFor="player-note" className="text-sm font-medium text-paper">
@@ -189,39 +172,24 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
         </form>
       </section>
 
-      <section className="mt-8 rounded-2xl border border-line bg-panel p-5" aria-labelledby="commitment-heading">
-        <h2 id="commitment-heading" className="font-display text-3xl uppercase text-paper">
-          Recruiting status
-        </h2>
-        {player.listedCommitment ? (
+      {player.listedCommitment ? (
+        <section className="mt-8 rounded-2xl border border-line bg-panel p-5" aria-labelledby="commitment-heading">
+          <h2 id="commitment-heading" className="font-display text-3xl uppercase text-paper">
+            Recruiting status
+          </h2>
           <p className="mt-3 text-sm leading-relaxed text-mist">
             The ranking row lists a commitment to{" "}
             <span className="text-paper">{player.listedCommitment.school}</span> dated{" "}
-            <span className="text-paper">{player.listedCommitment.date}</span>. That is the school name and date
-            published on the row. NEXTUP did not record an offer, a visit, or a coach contact.
+            <span className="text-paper">{player.listedCommitment.date}</span>.
           </p>
-        ) : (
-          <p className="mt-3 text-sm leading-relaxed text-mist">
-            No college commitment is listed on this ranking row. NEXTUP does not add offers or coach contacts.
-          </p>
-        )}
-      </section>
+        </section>
+      ) : null}
 
-      <section className="mt-8" aria-labelledby="record-heading">
-        <h2 id="record-heading" className="font-display text-4xl uppercase text-paper">
-          Stored record
-        </h2>
-        <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-2">
-          <div>
-            <dt className="text-mist">Season stats</dt>
-            <dd className="mt-1 text-paper">Not on the public ranking row.</dd>
-          </div>
-          <div>
-            <dt className="text-mist">Academics</dt>
-            <dd className="mt-1 text-paper">Not published. GPA and test scores are not stored here.</dd>
-          </div>
-        </dl>
-        {profileUrl ? (
+      {profileUrl ? (
+        <section className="mt-8" aria-labelledby="record-heading">
+          <h2 id="record-heading" className="font-display text-4xl uppercase text-paper">
+            Stored record
+          </h2>
           <a
             href={profileUrl}
             className="mt-4 inline-flex text-sm font-semibold text-lime hover:text-lime-2"
@@ -230,8 +198,8 @@ export function PlayerProfileView({ player }: { player: Prospect }) {
           >
             ESPN ranking profile
           </a>
-        ) : null}
-      </section>
+        </section>
+      ) : null}
     </div>
   );
 }

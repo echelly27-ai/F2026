@@ -19,10 +19,6 @@ export function SiteFooter() {
       <Container className="grid gap-8 py-10 sm:grid-cols-[1.4fr_1fr]">
         <div>
           <Logo />
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-mist">
-            NEXTUP is a basketball recruiting workspace. Build a profile, keep your school list, and look up
-            colleges. It does not invent offers or coach contacts.
-          </p>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-2 text-sm">
           {LINKS.map((link) => (
@@ -33,7 +29,7 @@ export function SiteFooter() {
         </nav>
       </Container>
       <Container className="flex flex-col gap-2 border-t border-line py-4 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
-        <p>© NEXTUP. Demo data stays in your browser.</p>
+        <p>© NEXTUP</p>
         <p>Basketball photography from Unsplash, Pexels, and public game photographs.</p>
       </Container>
     </footer>

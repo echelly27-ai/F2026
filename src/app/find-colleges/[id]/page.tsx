@@ -22,9 +22,9 @@ export async function generateMetadata({
     title: college.name,
     description: staff.length
       ? withEmail
-        ? `${college.name} men's basketball coaches, with an email when the school's athletics staff page prints one. Tuition, selectivity, and enrollment on this page are samples.`
-        : `${college.name} men's basketball coaches listed from the school's athletics staff page. That page does not print a coach email. Tuition, selectivity, and enrollment on this page are samples.`
-      : `${college.name} in the college directory. Tuition, selectivity, and enrollment on this page are samples. Staff contacts are not published here.`,
+        ? `${college.name} men's basketball coaches, with an email when the school's athletics staff page prints one.`
+        : `${college.name} men's basketball coaches listed from the school's athletics staff page.`
+      : `${college.name} in the college directory.`,
   };
 }
 
